@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		309C3E1E5E067158DA0F8B2C /* libPods-Gallery.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71A286852C7FF83EA767FD67 /* libPods-Gallery.a */; };
 		76605E082101B6ED00115FA6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E072101B6ED00115FA6 /* AppDelegate.m */; };
 		76605E0B2101B6ED00115FA6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E0A2101B6ED00115FA6 /* ViewController.m */; };
 		76605E0E2101B6ED00115FA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76605E0C2101B6ED00115FA6 /* Main.storyboard */; };
@@ -15,6 +16,15 @@
 		76605E162101B6EF00115FA6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E152101B6EF00115FA6 /* main.m */; };
 		76605E202101B6EF00115FA6 /* GalleryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E1F2101B6EF00115FA6 /* GalleryTests.m */; };
 		76605E2B2101B6EF00115FA6 /* GalleryUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E2A2101B6EF00115FA6 /* GalleryUITests.m */; };
+		76605E412101CACA00115FA6 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E3F2101CACA00115FA6 /* BaseViewController.m */; };
+		76605E492101CB4400115FA6 /* UIColor+UIColor_StringToRGB.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E462101CB4400115FA6 /* UIColor+UIColor_StringToRGB.m */; };
+		76605E4A2101CB4400115FA6 /* UITableView+EmptyData.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E472101CB4400115FA6 /* UITableView+EmptyData.m */; };
+		76605E512101CBAE00115FA6 /* DataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E4D2101CBAE00115FA6 /* DataRequest.m */; };
+		76605E522101CBAE00115FA6 /* NetRequestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E4E2101CBAE00115FA6 /* NetRequestClass.m */; };
+		76605E562101CC1C00115FA6 /* UserInfoSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E542101CC1C00115FA6 /* UserInfoSingleton.m */; };
+		76605E5C2101CC8300115FA6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E5B2101CC8300115FA6 /* LoginViewController.m */; };
+		76605E602101CCB100115FA6 /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E5F2101CCB000115FA6 /* CommonUtil.m */; };
+		76605E632101CCBA00115FA6 /* UploadImageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E612101CCBA00115FA6 /* UploadImageObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E670789B90931CD9C6C9E2D /* Pods-Gallery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gallery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gallery/Pods-Gallery.debug.xcconfig"; sourceTree = "<group>"; };
+		71A286852C7FF83EA767FD67 /* libPods-Gallery.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Gallery.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76605E032101B6ED00115FA6 /* Gallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76605E062101B6ED00115FA6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		76605E072101B6ED00115FA6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -51,6 +63,28 @@
 		76605E262101B6EF00115FA6 /* GalleryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GalleryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76605E2A2101B6EF00115FA6 /* GalleryUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GalleryUITests.m; sourceTree = "<group>"; };
 		76605E2C2101B6EF00115FA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76605E3B2101C61200115FA6 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		76605E3C2101C77D00115FA6 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		76605E3D2101C79400115FA6 /* WeakStrongMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeakStrongMacro.h; sourceTree = "<group>"; };
+		76605E3F2101CACA00115FA6 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		76605E402101CACA00115FA6 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		76605E432101CB4400115FA6 /* UIColor+UIColor_StringToRGB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+UIColor_StringToRGB.h"; sourceTree = "<group>"; };
+		76605E442101CB4400115FA6 /* UITableView+EmptyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+EmptyData.h"; sourceTree = "<group>"; };
+		76605E462101CB4400115FA6 /* UIColor+UIColor_StringToRGB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+UIColor_StringToRGB.m"; sourceTree = "<group>"; };
+		76605E472101CB4400115FA6 /* UITableView+EmptyData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+EmptyData.m"; sourceTree = "<group>"; };
+		76605E4D2101CBAE00115FA6 /* DataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataRequest.m; sourceTree = "<group>"; };
+		76605E4E2101CBAE00115FA6 /* NetRequestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetRequestClass.m; sourceTree = "<group>"; };
+		76605E4F2101CBAE00115FA6 /* NetRequestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetRequestClass.h; sourceTree = "<group>"; };
+		76605E502101CBAE00115FA6 /* DataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataRequest.h; sourceTree = "<group>"; };
+		76605E542101CC1C00115FA6 /* UserInfoSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoSingleton.m; sourceTree = "<group>"; };
+		76605E552101CC1C00115FA6 /* UserInfoSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoSingleton.h; sourceTree = "<group>"; };
+		76605E5A2101CC8300115FA6 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		76605E5B2101CC8300115FA6 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		76605E5E2101CCB000115FA6 /* CommonUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtil.h; sourceTree = "<group>"; };
+		76605E5F2101CCB000115FA6 /* CommonUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtil.m; sourceTree = "<group>"; };
+		76605E612101CCBA00115FA6 /* UploadImageObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImageObject.m; sourceTree = "<group>"; };
+		76605E622101CCBA00115FA6 /* UploadImageObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImageObject.h; sourceTree = "<group>"; };
+		A729398D12F9CD51A838399F /* Pods-Gallery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gallery.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gallery/Pods-Gallery.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				309C3E1E5E067158DA0F8B2C /* libPods-Gallery.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +113,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4BF4BE34423DE0849C3C0DFA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				71A286852C7FF83EA767FD67 /* libPods-Gallery.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		76605DFA2101B6ED00115FA6 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +128,8 @@
 				76605E1E2101B6EF00115FA6 /* GalleryTests */,
 				76605E292101B6EF00115FA6 /* GalleryUITests */,
 				76605E042101B6ED00115FA6 /* Products */,
+				A4A11029BD96BF87E72CB7E2 /* Pods */,
+				4BF4BE34423DE0849C3C0DFA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,8 +146,14 @@
 		76605E052101B6ED00115FA6 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
-				76605E062101B6ED00115FA6 /* AppDelegate.h */,
-				76605E072101B6ED00115FA6 /* AppDelegate.m */,
+				76605E5D2101CCA600115FA6 /* Helper */,
+				76605E532101CC1C00115FA6 /* DataInfo */,
+				76605E4C2101CBAE00115FA6 /* Request */,
+				76605E422101CB4400115FA6 /* Category */,
+				76605E3E2101CACA00115FA6 /* Base */,
+				76605E3A2101C5EE00115FA6 /* Config */,
+				76605E392101C0B500115FA6 /* Classes */,
+				76605E382101B70800115FA6 /* AppDelegate */,
 				76605E092101B6ED00115FA6 /* ViewController.h */,
 				76605E0A2101B6ED00115FA6 /* ViewController.m */,
 				76605E0C2101B6ED00115FA6 /* Main.storyboard */,
@@ -132,6 +183,118 @@
 			path = GalleryUITests;
 			sourceTree = "<group>";
 		};
+		76605E382101B70800115FA6 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				76605E062101B6ED00115FA6 /* AppDelegate.h */,
+				76605E072101B6ED00115FA6 /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		76605E392101C0B500115FA6 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				76605E572101CC5C00115FA6 /* Login */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		76605E3A2101C5EE00115FA6 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				76605E3B2101C61200115FA6 /* PrefixHeader.pch */,
+				76605E3C2101C77D00115FA6 /* Config.h */,
+				76605E3D2101C79400115FA6 /* WeakStrongMacro.h */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		76605E3E2101CACA00115FA6 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				76605E402101CACA00115FA6 /* BaseViewController.h */,
+				76605E3F2101CACA00115FA6 /* BaseViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		76605E422101CB4400115FA6 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				76605E432101CB4400115FA6 /* UIColor+UIColor_StringToRGB.h */,
+				76605E462101CB4400115FA6 /* UIColor+UIColor_StringToRGB.m */,
+				76605E442101CB4400115FA6 /* UITableView+EmptyData.h */,
+				76605E472101CB4400115FA6 /* UITableView+EmptyData.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		76605E4C2101CBAE00115FA6 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				76605E4F2101CBAE00115FA6 /* NetRequestClass.h */,
+				76605E4E2101CBAE00115FA6 /* NetRequestClass.m */,
+				76605E502101CBAE00115FA6 /* DataRequest.h */,
+				76605E4D2101CBAE00115FA6 /* DataRequest.m */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		76605E532101CC1C00115FA6 /* DataInfo */ = {
+			isa = PBXGroup;
+			children = (
+				76605E552101CC1C00115FA6 /* UserInfoSingleton.h */,
+				76605E542101CC1C00115FA6 /* UserInfoSingleton.m */,
+			);
+			path = DataInfo;
+			sourceTree = "<group>";
+		};
+		76605E572101CC5C00115FA6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				76605E592101CC7200115FA6 /* View */,
+				76605E582101CC6A00115FA6 /* Controller */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		76605E582101CC6A00115FA6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				76605E5A2101CC8300115FA6 /* LoginViewController.h */,
+				76605E5B2101CC8300115FA6 /* LoginViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		76605E592101CC7200115FA6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		76605E5D2101CCA600115FA6 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				76605E5E2101CCB000115FA6 /* CommonUtil.h */,
+				76605E5F2101CCB000115FA6 /* CommonUtil.m */,
+				76605E622101CCBA00115FA6 /* UploadImageObject.h */,
+				76605E612101CCBA00115FA6 /* UploadImageObject.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		A4A11029BD96BF87E72CB7E2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5E670789B90931CD9C6C9E2D /* Pods-Gallery.debug.xcconfig */,
+				A729398D12F9CD51A838399F /* Pods-Gallery.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,9 +302,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 76605E2F2101B6EF00115FA6 /* Build configuration list for PBXNativeTarget "Gallery" */;
 			buildPhases = (
+				F4FFAB15CA09B9D008047426 /* [CP] Check Pods Manifest.lock */,
 				76605DFF2101B6ED00115FA6 /* Sources */,
 				76605E002101B6ED00115FA6 /* Frameworks */,
 				76605E012101B6ED00115FA6 /* Resources */,
+				411CA902CA3A89D36A100AB4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,14 +422,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		411CA902CA3A89D36A100AB4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Gallery/Pods-Gallery-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gallery/Pods-Gallery-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4FFAB15CA09B9D008047426 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Gallery-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		76605DFF2101B6ED00115FA6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				76605E0B2101B6ED00115FA6 /* ViewController.m in Sources */,
+				76605E412101CACA00115FA6 /* BaseViewController.m in Sources */,
+				76605E522101CBAE00115FA6 /* NetRequestClass.m in Sources */,
+				76605E492101CB4400115FA6 /* UIColor+UIColor_StringToRGB.m in Sources */,
+				76605E5C2101CC8300115FA6 /* LoginViewController.m in Sources */,
+				76605E562101CC1C00115FA6 /* UserInfoSingleton.m in Sources */,
+				76605E602101CCB100115FA6 /* CommonUtil.m in Sources */,
+				76605E512101CBAE00115FA6 /* DataRequest.m in Sources */,
 				76605E162101B6EF00115FA6 /* main.m in Sources */,
+				76605E632101CCBA00115FA6 /* UploadImageObject.m in Sources */,
 				76605E082101B6ED00115FA6 /* AppDelegate.m in Sources */,
+				76605E4A2101CB4400115FA6 /* UITableView+EmptyData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,11 +644,16 @@
 		};
 		76605E302101B6EF00115FA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E670789B90931CD9C6C9E2D /* Pods-Gallery.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 339DUDKSZG;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Gallery/Config/PrefixHeader.pch;
 				INFOPLIST_FILE = Gallery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -448,11 +666,16 @@
 		};
 		76605E312101B6EF00115FA6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A729398D12F9CD51A838399F /* Pods-Gallery.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 339DUDKSZG;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Gallery/Config/PrefixHeader.pch;
 				INFOPLIST_FILE = Gallery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
