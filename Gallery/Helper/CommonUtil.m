@@ -276,59 +276,6 @@ static NSDateFormatter *cachedDateFormatter = nil;
   return result;
 }
 
-/**
- 首页箱子的状态
- 
- status对应值
- 1.库房
- 2.运输
- 3.客存
- 4.打包
- 5.配送
- 6.回收
- 7.清洁
- @param state 状态
- @return 返回字典
- */
-+ (NSDictionary *)homeBoxStateWithState:(NSString *)state {
-  NSDictionary *dictionary;
-  NSString *string, *imgStr;
-  switch ([state integerValue]) {
-    case 1:
-      string = @"库存中";
-      imgStr = @"home_state_stock";
-      break;
-    case 2:
-      string = @"运输中";
-      imgStr = @"home_state_transport";
-      break;
-    case 3:
-      string = @"";
-      imgStr = @"";
-      break;
-    case 4:
-      string = @"打包中";
-      imgStr = @"home_state_pack";
-      break;
-    case 5:
-      string = @"配送中";
-      imgStr = @"home_state_distribution";
-      
-      break;
-    case 6:
-      string = @"回收中";
-      imgStr = @"home_state_recovery";
-      break;
-      
-    default:
-      string = @"";
-      imgStr = @"";
-      break;
-  }
-  
-  dictionary = @{@"stateString":string,@"imgString":imgStr};
-  return dictionary;
-}
 
 /**
  根据颜色返回一个像素大小的纯色图片

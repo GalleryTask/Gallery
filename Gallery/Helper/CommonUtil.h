@@ -84,21 +84,6 @@
 +(UIViewController *)getCurrentVC;
 
 
-/**
- 首页箱子的状态
-
- status对应值
- 1.库房
- 2.运输
- 3.客存
- 4.打包
- 5.配送
- 6.回收
- 7.清洁
- @param state 状态
- @return 返回字典
- */
-+ (NSDictionary *)homeBoxStateWithState:(NSString *)state;
 
 /**
  自动计算字符串高度
