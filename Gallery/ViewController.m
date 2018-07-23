@@ -16,11 +16,6 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-
-  // b
-
-    //孙的分支写东西11111
-
 }
 
 
