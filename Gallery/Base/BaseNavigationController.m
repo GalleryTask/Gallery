@@ -34,7 +34,7 @@
   
   // 去掉navigation bar 上的分割线
 //  [navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-  [navigationBar setShadowImage:[[UIImage alloc] init]];
+//  [navigationBar setShadowImage:[[UIImage alloc] init]];
   // 不透明
   navigationBar.translucent = NO;
 }

@@ -584,6 +584,7 @@
 				76605E562101CC1C00115FA6 /* UserInfoSingleton.m in Sources */,
 				76605E602101CCB100115FA6 /* CommonUtil.m in Sources */,
 				7655CC8D2150F89200D206C2 /* NetRequestClass.m in Sources */,
+				76E7C05A2152319E009CECAF /* QuoteViewController.m in Sources */,
 				760E94732151F0D100592929 /* HomeViewController.m in Sources */,
 				7655CC792150F27E00D206C2 /* TabBarController.m in Sources */,
 				846F2F7821522E8C00AB76D5 /* MateriaIInformationViewController.m in Sources */,

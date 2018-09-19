@@ -7,7 +7,11 @@
 //
 
 #import "HomeViewController.h"
+
 #import "MateriaIInformationViewController.h"
+
+#import "QuoteViewController.h"
+
 @interface HomeViewController ()
 
 @property (nonatomic, strong) UIScrollView  *scrollView;
@@ -27,6 +31,13 @@
     [self.navigationController pushViewController:materiaVC animated:YES];
 }
 
+- (void)btnClick:(UIButton *)button {
+  QuoteViewController *vc = [[QuoteViewController alloc] init];
+  [vc setValue:self.boxList[button.tag-100] forKey:@"titleString"];
+  [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma marks - getters
 -(UIScrollView *)scrollView {
   if (!_scrollView) {
     _scrollView = [[UIScrollView alloc] init];
@@ -34,18 +45,19 @@
     [_scrollView setContentSize:CGSizeMake((SCREEN_WIDTH-20)*12 + 110, 0)];
     
     for (int i = 0; i < self.boxList.count; i++) {
-      UIImageView *imgView = [[UIImageView alloc] init];
-      [imgView setFrame:CGRectMake((SCREEN_WIDTH-10)*i, 60, SCREEN_WIDTH-20, SCREEN_WIDTH-20)];
-      [imgView setBackgroundColor:BASECOLOR_LIGHTGRAY];
-      [imgView setUserInteractionEnabled:NO];
-      [_scrollView addSubview:imgView];
+      UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+      [btn setFrame:CGRectMake((SCREEN_WIDTH-10)*i, SCALE_SIZE*70, SCREEN_WIDTH-20, SCREEN_WIDTH-20)];
+      [btn setBackgroundColor:BASECOLOR_LIGHTGRAY];
+      [btn setTag:(100+i)];
+      [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+      [_scrollView addSubview:btn];
       
       UILabel *titleLabel = [[UILabel alloc] init];
       [titleLabel setText:self.boxList[i]];
       [_scrollView addSubview:titleLabel];
       [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(imgView);
-        make.top.mas_equalTo(imgView.mas_bottom).offset(SCALE_SIZE*15);
+        make.centerX.equalTo(btn);
+        make.top.mas_equalTo(btn.mas_bottom).offset(SCALE_SIZE*20);
       }];
     }
   }
