@@ -68,13 +68,13 @@
     [self.titlelabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(15);
         make.centerY.equalTo(self);
+      make.width.mas_equalTo(100);
     }];
     
     [self.detailTextField mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.spitView.mas_top);
-        make.right.mas_equalTo(15);
-        make.left.equalTo(self.titlelabel.mas_right);
-        make.top.equalTo(self);
+      make.left.equalTo(self.titlelabel.mas_right);
+      make.right.mas_equalTo(15);
+      make.centerY.equalTo(self);
     }];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

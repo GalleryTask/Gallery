@@ -8,8 +8,6 @@
 
 #import "HomeViewController.h"
 
-#import "MateriaIInformationViewController.h"
-
 #import "QuoteViewController.h"
 
 @interface HomeViewController ()
@@ -25,10 +23,6 @@
     [super viewDidLoad];
   self.navigationItem.title = @"报价";
   [self.view addSubview:self.scrollView];
-    
-    
-    MateriaIInformationViewController *materiaVC = [[MateriaIInformationViewController alloc] init];
-    [self.navigationController pushViewController:materiaVC animated:YES];
 }
 
 - (void)btnClick:(UIButton *)button {
