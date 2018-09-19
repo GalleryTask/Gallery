@@ -50,5 +50,20 @@
 		<key>2001</key>
 		<string>关闭失败，请联系工作人员</string>
 	</dict>
+	<key>BoxList</key>
+	<array>
+		<string>平口箱</string>
+		<string>自锁底平口箱</string>
+		<string>拉链纸箱4.0</string>
+		<string>一撕得4.X</string>
+		<string>一撕得5.0</string>
+		<string>一撕得5.X</string>
+		<string>飞机盒</string>
+		<string>一撕得飞机盒</string>
+		<string>异型箱</string>
+		<string>自锁底拉链箱</string>
+		<string>扣底平口箱</string>
+		<string>扣底拉链箱</string>
+	</array>
 </dict>
 </plist>
