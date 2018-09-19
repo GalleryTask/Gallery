@@ -10,23 +10,25 @@
 
 @interface HomeViewController ()
 
+@property (nonatomic, strong) UIScrollView  *scrollView;
+
 @end
 
 @implementation HomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  self.title = @"首页";
+  self.navigationItem.title = @"报价";
+  [self.view addSubview:self.scrollView];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(UIScrollView *)scrollView {
+  if (!_scrollView) {
+    _scrollView = [[UIScrollView alloc] init];
+    [_scrollView setFrame:self.view.frame];
+    [_scrollView setBackgroundColor:BASECOLOR_BLUE];
+  }
+  return _scrollView;
 }
-*/
 
 @end
