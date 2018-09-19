@@ -31,6 +31,7 @@
 		76605E5C2101CC8300115FA6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E5B2101CC8300115FA6 /* LoginViewController.m */; };
 		76605E602101CCB100115FA6 /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E5F2101CCB000115FA6 /* CommonUtil.m */; };
 		76605E632101CCBA00115FA6 /* UploadImageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E612101CCBA00115FA6 /* UploadImageObject.m */; };
+		76E7C05A2152319E009CECAF /* QuoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E7C0592152319E009CECAF /* QuoteViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		76605E5F2101CCB000115FA6 /* CommonUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtil.m; sourceTree = "<group>"; };
 		76605E612101CCBA00115FA6 /* UploadImageObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImageObject.m; sourceTree = "<group>"; };
 		76605E622101CCBA00115FA6 /* UploadImageObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImageObject.h; sourceTree = "<group>"; };
+		76E7C0582152319E009CECAF /* QuoteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuoteViewController.h; sourceTree = "<group>"; };
+		76E7C0592152319E009CECAF /* QuoteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuoteViewController.m; sourceTree = "<group>"; };
 		A729398D12F9CD51A838399F /* Pods-Gallery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gallery.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gallery/Pods-Gallery.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,6 +175,8 @@
 			children = (
 				760E94712151F0D100592929 /* HomeViewController.h */,
 				760E94722151F0D100592929 /* HomeViewController.m */,
+				76E7C0582152319E009CECAF /* QuoteViewController.h */,
+				76E7C0592152319E009CECAF /* QuoteViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -558,6 +563,7 @@
 				76605E562101CC1C00115FA6 /* UserInfoSingleton.m in Sources */,
 				76605E602101CCB100115FA6 /* CommonUtil.m in Sources */,
 				7655CC8D2150F89200D206C2 /* NetRequestClass.m in Sources */,
+				76E7C05A2152319E009CECAF /* QuoteViewController.m in Sources */,
 				760E94732151F0D100592929 /* HomeViewController.m in Sources */,
 				7655CC792150F27E00D206C2 /* TabBarController.m in Sources */,
 				76605E162101B6EF00115FA6 /* main.m in Sources */,
