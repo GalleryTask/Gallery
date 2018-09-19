@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>TabBarDic</key>
+	<dict>
+		<key>controllers</key>
+		<array>
+			<string>HomeViewController</string>
+			<string>MeViewController</string>
+		</array>
+		<key>titles</key>
+		<array>
+			<string>首页</string>
+			<string>我的</string>
+		</array>
+		<key>positionX</key>
+		<array>
+			<string>10</string>
+			<string>5</string>
+			<string>0</string>
+			<string>-5</string>
+			<string>-10</string>
+		</array>
+		<key>tabBarSelectedImg</key>
+		<array>
+			<string>tool_button_home_selected</string>
+			<string>tool_button_me_selected</string>
+		</array>
+		<key>tabBarDefaultImg</key>
+		<array>
+			<string>tool_button_home_default</string>
+			<string>tool_button_me_default</string>
+		</array>
+	</dict>
+	<key>ErrorCode</key>
+	<dict>
+		<key>0001</key>
+		<string>账号不存在</string>
+		<key>0004</key>
+		<string>登录失败</string>
+		<key>0005</key>
+		<string>授权失败</string>
+		<key>1000</key>
+		<string>非法AppId</string>
+		<key>1001</key>
+		<string>非法code</string>
+		<key>1002</key>
+		<string>非法token</string>
+		<key>2001</key>
+		<string>关闭失败，请联系工作人员</string>
+	</dict>
+</dict>
+</plist>
