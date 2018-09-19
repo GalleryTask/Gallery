@@ -19,14 +19,32 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
 }
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
     }
     return self;
+}
+
+-(void)setTitleStr:(NSString *)titleStr{
+    if (titleStr) {
+        self.titlelabel.text = titleStr;
+    }
+}
+-(void)setDetailStr:(NSString *)detailStr{
+    if (detailStr) {
+        self.detailTextField.text = detailStr;
+    }
+}
+-(void)setPlaceholderStr:(NSString *)placeholderStr{
+    if (placeholderStr) {
+        self.detailTextField.placeholder = placeholderStr;
+    }
 }
 -(UILabel *)titlelabel{
     if (!_titlelabel) {
@@ -44,7 +62,8 @@
         _detailTextField = [[UITextField alloc] init];
         _detailTextField.enabled = NO;
         [_detailTextField setFont:FONTSIZE(15)];
-        _detailTextField.placeholder = @"请选择";
+        //_detailTextField.placeholder = @"请选择";
+        _detailTextField.textAlignment = NSTextAlignmentLeft;
         [self.contentView addSubview:_detailTextField];
     }
     return _detailTextField;
@@ -68,12 +87,10 @@
     [self.titlelabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(15);
         make.centerY.equalTo(self);
-      make.width.mas_equalTo(100);
     }];
     
     [self.detailTextField mas_remakeConstraints:^(MASConstraintMaker *make) {
-      make.left.equalTo(self.titlelabel.mas_right);
-      make.right.mas_equalTo(15);
+      make.right.mas_equalTo(-15);
       make.centerY.equalTo(self);
     }];
 }

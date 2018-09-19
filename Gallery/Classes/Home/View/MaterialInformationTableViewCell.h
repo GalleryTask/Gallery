@@ -10,6 +10,10 @@
 
 @interface MaterialInformationTableViewCell : UITableViewCell
 
+@property(nonatomic, strong)NSString *titleStr;
+@property(nonatomic, strong)NSString *detailStr;
+@property(nonatomic, strong)NSString *placeholderStr;
+
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 
 @end

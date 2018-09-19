@@ -39,29 +39,29 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MaterialInformationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MaterialInformationTableViewCell" forIndexPath:indexPath];
+    if (indexPath.section == 0) {
 
-//    if (indexPath.section == 0) {
-//
-//        cell.titleLabel.text = @"层数";
-//        cell.detailTextField.text = @"三层";
-//    }else{
-//        if (indexPath.row == 0) {
-//            cell.titleLabel.text = @"类型";
-//            cell.detailTextField.placeholder = @"请选择类型";
-//        }else if (indexPath.row == 1){
-//            cell.titleLabel.text = @"等级";
-//            cell.detailTextField.placeholder = @"请选择等级";
-//        }else if (indexPath.row == 2){
-//            cell.titleLabel.text = @"克重";
-//            cell.detailTextField.placeholder = @"请选择克重";
-//        }else if (indexPath.section == 2 && indexPath.row == 3){
-//            cell.titleLabel.text = @"楞型";
-//            cell.detailTextField.placeholder = @"请选择楞型";
-//        }else{
-//            cell.titleLabel.text = @"品牌系列";
-//            cell.detailTextField.placeholder = @"";
-//        }
-//    }
+        cell.titleStr = @"层数";
+        cell.detailStr = @"三层";
+    }else{
+        cell.detailStr = @"";
+        if (indexPath.row == 0) {
+            cell.titleStr = @"类型";
+            cell.placeholderStr = @"请选择类型";
+        }else if (indexPath.row == 1){
+            cell.titleStr = @"等级";
+            cell.placeholderStr = @"请选择等级";
+        }else if (indexPath.row == 2){
+            cell.titleStr = @"克重";
+            cell.placeholderStr = @"请选择克重";
+        }else if (indexPath.section == 2 && indexPath.row == 3){
+            cell.titleStr = @"楞型";
+            cell.placeholderStr = @"请选择楞型";
+        }else{
+            cell.titleStr = @"品牌系列";
+            cell.placeholderStr = @"";
+        }
+    }
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -76,9 +76,9 @@
     
     
     UIView *view1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 49.5)];
-    view1.backgroundColor = [UIColor whiteColor];
+    view1.backgroundColor = BASECOLOR_BACKGROUND_GRAY;
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, SCREEN_WIDTH, 49.5)];
-    titleLabel.font = [UIFont systemFontOfSize:15];
+    [titleLabel setFont:FONTSIZE(15)];
     [view1 addSubview:titleLabel];
     titleLabel.text = self.sectionArray[section];
     [headerView addSubview:view1];
