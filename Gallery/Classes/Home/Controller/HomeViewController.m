@@ -7,7 +7,7 @@
 //
 
 #import "HomeViewController.h"
-
+#import "MateriaIInformationViewController.h"
 @interface HomeViewController ()
 
 @property (nonatomic, strong) UIScrollView  *scrollView;
@@ -21,6 +21,10 @@
     [super viewDidLoad];
   self.navigationItem.title = @"报价";
   [self.view addSubview:self.scrollView];
+    
+    
+    MateriaIInformationViewController *materiaVC = [[MateriaIInformationViewController alloc] init];
+    [self.navigationController pushViewController:materiaVC animated:YES];
 }
 
 -(UIScrollView *)scrollView {
