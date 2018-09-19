@@ -51,13 +51,13 @@
     tabBarItem.image = [[UIImage imageNamed:dic[@"tabBarDefaultImg"][i]]
                      imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     // 设置items图片和文字的距离
-    tabBarItem.titlePositionAdjustment = UIOffsetMake([dic[@"positionX"][i] intValue], -3);
+//    tabBarItem.titlePositionAdjustment = UIOffsetMake([dic[@"positionX"][i] intValue], -3);
     // 设置items的文字
     tabBarItem.title = dic[@"titles"][i];
 
     [controller setTabBarItem:tabBarItem];
     
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:controller];
     [self addChildViewController:nav];
   }
 }

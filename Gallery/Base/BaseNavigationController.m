@@ -33,7 +33,7 @@
   navigationBar.titleTextAttributes = dict;
   
   // 去掉navigation bar 上的分割线
-  [navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+//  [navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
   [navigationBar setShadowImage:[[UIImage alloc] init]];
 }
 

@@ -46,7 +46,7 @@
 #define BASECOLOR_LIGHTBLACK        [UIColor hexStringToColor:@"#666666"]
 #define BASECOLOR_DARKBLACK         [UIColor hexStringToColor:@"#333333"]
 #define BASECOLOR_BUTTON_BLACK      [UIColor hexStringToColor:@"#001A26"]
-#define BASECOLOR_BLUE              [UIColor hexStringToColor:@"#1F96FF"]
+#define BASECOLOR_BLUE              [UIColor hexStringToColor:@"#418eff"]
 #define BASECOLOR_GREEN             [UIColor hexStringToColor:@"#77D977"]
 #define BASECOLOR_RED               [UIColor hexStringToColor:@"#FF4C4C"]
 

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		309C3E1E5E067158DA0F8B2C /* libPods-Gallery.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71A286852C7FF83EA767FD67 /* libPods-Gallery.a */; };
+		760E94692151ED9B00592929 /* DataList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 760E94682151ED9B00592929 /* DataList.plist */; };
+		760E94732151F0D100592929 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E94722151F0D100592929 /* HomeViewController.m */; };
+		760E94762151F0DB00592929 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E94752151F0DB00592929 /* MeViewController.m */; };
 		7655CC792150F27E00D206C2 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7655CC742150F27C00D206C2 /* TabBarController.m */; };
 		7655CC7A2150F27E00D206C2 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7655CC762150F27D00D206C2 /* BaseNavigationController.m */; };
 		7655CC872150F81600D206C2 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7655CC862150F81600D206C2 /* BaseViewController.m */; };
@@ -50,6 +53,11 @@
 /* Begin PBXFileReference section */
 		5E670789B90931CD9C6C9E2D /* Pods-Gallery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gallery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gallery/Pods-Gallery.debug.xcconfig"; sourceTree = "<group>"; };
 		71A286852C7FF83EA767FD67 /* libPods-Gallery.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Gallery.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		760E94682151ED9B00592929 /* DataList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DataList.plist; sourceTree = "<group>"; };
+		760E94712151F0D100592929 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		760E94722151F0D100592929 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		760E94742151F0DB00592929 /* MeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
+		760E94752151F0DB00592929 /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		7655CC732150F27300D206C2 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		7655CC742150F27C00D206C2 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		7655CC752150F27D00D206C2 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
@@ -130,6 +138,67 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		760E94672151ED6200592929 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				760E94682151ED9B00592929 /* DataList.plist */,
+				76605E142101B6EE00115FA6 /* Info.plist */,
+				76605E152101B6EF00115FA6 /* main.m */,
+				7655CC912150F92A00D206C2 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		760E946A2151F08800592929 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				760E94702151F0B400592929 /* View */,
+				760E946C2151F09600592929 /* Controller */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		760E946B2151F09000592929 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				760E946F2151F0A800592929 /* View */,
+				760E946D2151F09C00592929 /* Controller */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
+		760E946C2151F09600592929 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				760E94712151F0D100592929 /* HomeViewController.h */,
+				760E94722151F0D100592929 /* HomeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		760E946D2151F09C00592929 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				760E94742151F0DB00592929 /* MeViewController.h */,
+				760E94752151F0DB00592929 /* MeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		760E946F2151F0A800592929 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		760E94702151F0B400592929 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		76605DFA2101B6ED00115FA6 = {
 			isa = PBXGroup;
 			children = (
@@ -165,11 +234,9 @@
 				76605E382101B70800115FA6 /* AppDelegate */,
 				76605E092101B6ED00115FA6 /* ViewController.h */,
 				76605E0A2101B6ED00115FA6 /* ViewController.m */,
+				760E94672151ED6200592929 /* Supporting Files */,
 				76605E0C2101B6ED00115FA6 /* Main.storyboard */,
 				76605E112101B6EE00115FA6 /* LaunchScreen.storyboard */,
-				76605E142101B6EE00115FA6 /* Info.plist */,
-				76605E152101B6EF00115FA6 /* main.m */,
-				7655CC912150F92A00D206C2 /* Assets.xcassets */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -204,6 +271,8 @@
 		76605E392101C0B500115FA6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				760E946B2151F09000592929 /* Me */,
+				760E946A2151F08800592929 /* Home */,
 				76605E572101CC5C00115FA6 /* Login */,
 			);
 			path = Classes;
@@ -417,6 +486,7 @@
 			files = (
 				76605E132101B6EE00115FA6 /* LaunchScreen.storyboard in Resources */,
 				7655CC922150F92A00D206C2 /* Assets.xcassets in Resources */,
+				760E94692151ED9B00592929 /* DataList.plist in Resources */,
 				76605E0E2101B6ED00115FA6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -488,6 +558,7 @@
 				76605E562101CC1C00115FA6 /* UserInfoSingleton.m in Sources */,
 				76605E602101CCB100115FA6 /* CommonUtil.m in Sources */,
 				7655CC8D2150F89200D206C2 /* NetRequestClass.m in Sources */,
+				760E94732151F0D100592929 /* HomeViewController.m in Sources */,
 				7655CC792150F27E00D206C2 /* TabBarController.m in Sources */,
 				76605E162101B6EF00115FA6 /* main.m in Sources */,
 				76605E632101CCBA00115FA6 /* UploadImageObject.m in Sources */,
@@ -496,6 +567,7 @@
 				7655CC7A2150F27E00D206C2 /* BaseNavigationController.m in Sources */,
 				7655CC8C2150F89200D206C2 /* BaseDataRequest.m in Sources */,
 				7655CC902150F8CD00D206C2 /* DataRequest.m in Sources */,
+				760E94762151F0DB00592929 /* MeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,7 +742,7 @@
 				DEVELOPMENT_TEAM = 339DUDKSZG;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Gallery/Config/PrefixHeader.pch;
-				INFOPLIST_FILE = Gallery/Info.plist;
+				INFOPLIST_FILE = "Gallery/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -692,7 +764,7 @@
 				DEVELOPMENT_TEAM = 339DUDKSZG;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Gallery/Config/PrefixHeader.pch;
-				INFOPLIST_FILE = Gallery/Info.plist;
+				INFOPLIST_FILE = "Gallery/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
