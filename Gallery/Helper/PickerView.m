@@ -32,6 +32,12 @@
 }
 
 - (void)pickerViewWithDelegate:(id<PickerViewDelegate>)delegate dataSource:(NSArray *)array title:(NSString *)title {
+  // 初始化状态
+  self.selectedRow = 0;
+  self.selectedTitle = array[0];
+  [self.pickerView selectRow:0 inComponent:0 animated:NO];
+  
+  // 赋值
   self.isPop = true;
   _delegate = delegate;
   _dataArray = array;
@@ -40,7 +46,8 @@
   
   UIViewController *vc = [CommonUtil getCurrentVC];
   [vc.view addSubview:self];
-  [self.pickerView selectRow:0 inComponent:0 animated:NO];
+  
+  // 刷新pickerview
   [self.pickerView reloadAllComponents];
   
   [self.overlayBtn setAlpha:1];
