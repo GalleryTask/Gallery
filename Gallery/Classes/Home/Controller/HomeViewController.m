@@ -36,11 +36,11 @@
   if (!_scrollView) {
     _scrollView = [[UIScrollView alloc] init];
     [_scrollView setFrame:self.view.frame];
-    [_scrollView setContentSize:CGSizeMake((SCREEN_WIDTH-20)*12 + 110, 0)];
+    [_scrollView setContentSize:CGSizeMake((SCREEN_WIDTH-40)*12 + 130, 0)];
     
     for (int i = 0; i < self.boxList.count; i++) {
       UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-      [btn setFrame:CGRectMake((SCREEN_WIDTH-10)*i, SCALE_SIZE*70, SCREEN_WIDTH-20, SCREEN_WIDTH-20)];
+      [btn setFrame:CGRectMake((SCREEN_WIDTH-30)*i+10, SCALE_SIZE*70, SCREEN_WIDTH-40, SCREEN_WIDTH-40)];
       [btn setBackgroundColor:BASECOLOR_LIGHTGRAY];
       [btn setTag:(100+i)];
       [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
