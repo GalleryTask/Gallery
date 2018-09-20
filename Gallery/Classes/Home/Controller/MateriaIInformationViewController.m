@@ -8,10 +8,12 @@
 
 #import "MateriaIInformationViewController.h"
 #import "MaterialInformationTableViewCell.h"
-@interface MateriaIInformationViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "PickerView.h"
+
+@interface MateriaIInformationViewController ()<UITableViewDelegate,UITableViewDataSource, PickerViewDelegate>
 
 @property(nonatomic, strong)NSArray* sectionArray;
-
+@property (nonatomic, strong) PickerView  *pickerView;
 @end
 
 @implementation MateriaIInformationViewController
@@ -90,6 +92,28 @@
     
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  
+  if (indexPath.row == 0) {
+    
+    NSArray *array = @[@"最大面",@"次小面",@"最小面"];
+    [self.pickerView pickerViewWithDelegate:self dataSource:array title:@"配材"];
+  } else {
+    NSArray *array = @[@"最大面",@"次小面",@"最面",@"fgdfh",@"sdffg"];
+     [self.pickerView pickerViewWithDelegate:self dataSource:array title:@"等级"];
+  }
+}
+
+-(void)pickerViewWithSelectedRow:(NSInteger)row selectedTitle:(NSString *)title {
+  NSLog(@"%ld,%@",row,title);
+}
+
+-(PickerView *)pickerView {
+  if (!_pickerView) {
+    _pickerView = [[PickerView alloc] init];
+  }
+  return _pickerView;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
