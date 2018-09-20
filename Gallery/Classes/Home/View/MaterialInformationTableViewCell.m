@@ -62,8 +62,7 @@
         _detailTextField = [[UITextField alloc] init];
         _detailTextField.enabled = NO;
         [_detailTextField setFont:FONTSIZE(15)];
-        //_detailTextField.placeholder = @"请选择";
-        _detailTextField.textAlignment = NSTextAlignmentLeft;
+        _detailTextField.textAlignment = NSTextAlignmentRight;
         [self.contentView addSubview:_detailTextField];
     }
     return _detailTextField;
