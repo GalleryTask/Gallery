@@ -19,6 +19,7 @@
 @property (nonatomic, assign) BOOL           isPop;      // 是否是弹出状态 默认为否
 @property (nonatomic, assign) NSInteger      selectedRow;
 @property (nonatomic, copy)   NSString       *selectedTitle;
+@property (nonatomic, strong) UIView         *backView;
 
 @end
 
@@ -61,7 +62,7 @@
   [self updateView];
   [self removeFromSuperview];
   
-  // 点击确定button时
+  //  点击确定button时
   if (button.tag == 200) {
     if (_delegate && [_delegate respondsToSelector:@selector(pickerViewWithSelectedRow:selectedTitle:)]) {
       [_delegate pickerViewWithSelectedRow:self.selectedRow selectedTitle:self.selectedTitle];
@@ -95,7 +96,7 @@
 // 返回指定列，行的高度，就是自定义行的高度
 - (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component{
 
-  return 30.0f;
+  return 40.0f;
 }
 
 
@@ -130,17 +131,6 @@
 
 
 #pragma mark - getters
--(UIPickerView *)pickerView {
-  if (!_pickerView) {
-    _pickerView = [[UIPickerView alloc] init];
-    [_pickerView setBackgroundColor:[UIColor whiteColor]];
-    [_pickerView setDelegate:self];
-    [_pickerView setDataSource:self];
-    [self.overlayBtn addSubview:_pickerView];
-  }
-  return _pickerView;
-}
-
 -(UIButton *)overlayBtn {
   if (!_overlayBtn) {
     _overlayBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -152,6 +142,27 @@
   }
   return _overlayBtn;
 }
+
+-(UIView *)backView {
+  if (!_backView) {
+    _backView = [[UIView alloc] initWithFrame:CGRectMake(0, SCALE_SIZE*44+SCREEN_HEIGHT, SCREEN_WIDTH, SCALE_SIZE*244)];
+    [_backView setBackgroundColor:[UIColor whiteColor]];
+    [self.overlayBtn addSubview:_backView];
+  }
+  return _backView;
+}
+
+-(UIPickerView *)pickerView {
+  if (!_pickerView) {
+    _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*200)];
+    [_pickerView setBackgroundColor:[UIColor whiteColor]];
+    [_pickerView setDelegate:self];
+    [_pickerView setDataSource:self];
+    [self.backView addSubview:_pickerView];
+  }
+  return _pickerView;
+}
+
 
 -(UILabel *)titleLabel {
   if (!_titleLabel) {
@@ -194,8 +205,8 @@
   if (!_topView) {
     _topView = [[UIView alloc] init];
     [_topView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
-    [_topView setFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCALE_SIZE*44)];
-    [self.overlayBtn addSubview:_topView];
+    [_topView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*44)];
+    [self.backView addSubview:_topView];
   }
   return _topView;
 }
@@ -203,31 +214,16 @@
 -(void)updateConstraints {
   [super updateConstraints];
   
-  [self.pickerView mas_remakeConstraints:^(MASConstraintMaker *make) {
-    make.width.left.equalTo(self);
-    make.height.mas_equalTo(SCALE_SIZE*200+SafeAreaBottomHeight);
+  [self.backView mas_remakeConstraints:^(MASConstraintMaker *make) {
+    make.left.width.equalTo(self);
+    make.height.mas_equalTo(SCALE_SIZE*244+SafeAreaBottomHeight);
     if (self.isPop) {
-      make.bottom.equalTo(self);
+      make.bottom.equalTo(self.overlayBtn).offset(-NAVIGATIONBAR_HEIGHT);
     } else {
       make.bottom.equalTo(self).offset(SCALE_SIZE*244+SafeAreaBottomHeight);
     }
   }];
-  
-  [self.topView mas_remakeConstraints:^(MASConstraintMaker *make) {
-    make.width.left.equalTo(self);
-    make.bottom.equalTo(self.pickerView.mas_top);
-    make.height.mas_equalTo(SCALE_SIZE*44);
-  }];
-  
-  [self.overlayBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
-    if (self.isPop) {
-      make.edges.equalTo(self);
-      
-    } else {
-      make.top.equalTo(self.mas_bottom);
-    }
-  }];
-  
+ 
 }
 
 -(void)layoutSubviews {
@@ -236,6 +232,19 @@
   [self.overlayBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
     make.edges.equalTo(self);
   }];
+  
+  [self.topView mas_remakeConstraints:^(MASConstraintMaker *make) {
+    make.top.width.left.equalTo(self.backView);
+    make.height.mas_equalTo(SCALE_SIZE*44);
+  }];
+  
+  [self.pickerView mas_remakeConstraints:^(MASConstraintMaker *make) {
+    make.width.left.equalTo(self);
+    make.top.equalTo(self.topView.mas_bottom);
+    make.height.mas_equalTo(SCALE_SIZE*200);
+  }];
+  
+ 
   
   [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
     make.centerX.centerY.equalTo(self.topView);
