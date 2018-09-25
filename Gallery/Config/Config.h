@@ -15,7 +15,8 @@
 #define IS_IPHONE_6  (fabs((double)[[UIScreen mainScreen]bounds].size.height - (double)667) < DBL_EPSILON)
 #define IS_IPHONE_6P (fabs((double)[[UIScreen mainScreen]bounds].size.height - (double)736) < DBL_EPSILON)
 #define IS_IPHONE_X  (fabs((double)[[UIScreen mainScreen]bounds].size.height - (double)812) < DBL_EPSILON)
-//#define IS_IPHONE_XSMAX (fabs((double)[[UIScreen mainScreen]bounds].size.height - (double)896) < DBL_EPSILON)
+#define IS_IPHONE_XSMAX (fabs((double)[[UIScreen mainScreen]bounds].size.height - (double)896) < DBL_EPSILON)
+
 // 屏幕宽度
 #define SCREEN_WIDTH             [UIScreen mainScreen].bounds.size.width
 // 屏幕高度
