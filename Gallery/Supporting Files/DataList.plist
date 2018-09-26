@@ -86,6 +86,7 @@
 				<string>印刷方式</string>
 				<string>印刷颜色</string>
 				<string>印刷面积</string>
+				<string>波浪胶条</string>
 			</array>
 		</dict>
 		<dict>
@@ -103,42 +104,162 @@
 	<dict>
 		<key>年度用量</key>
 		<array>
-			<string>100万以下</string>
-			<string>100-500万</string>
-			<string>500万以上</string>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>100万以下</string>
+				<key>titleId</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>100-500万</string>
+				<key>titleId</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>500万以上</string>
+				<key>titleId</key>
+				<string></string>
+			</dict>
 		</array>
 		<key>开口方向</key>
 		<array>
-			<string>最大面</string>
-			<string>次小面</string>
-			<string>最小面</string>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>最大面</string>
+				<key>titleId</key>
+				<string>123214324</string>
+			</dict>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>次小面</string>
+				<key>titleId</key>
+				<string>423542532464326</string>
+			</dict>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>最小面</string>
+				<key>titleId</key>
+				<string>402883f1234vcdfg45645648rt684</string>
+			</dict>
 		</array>
 		<key>口径</key>
 		<array>
-			<string>外径</string>
-			<string>内径</string>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>外径</string>
+				<key>titleId</key>
+				<string>402880ec539eb3e101539eb5346f0001</string>
+			</dict>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>内径</string>
+				<key>titleId</key>
+				<string>402880ec539eb3e101539eb4e78b0000</string>
+			</dict>
 		</array>
 		<key>印刷方式</key>
 		<array>
-			<string>胶印</string>
-			<string>水印</string>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>胶印</string>
+				<key>titleId</key>
+				<string>1</string>
+			</dict>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>水印</string>
+				<key>titleId</key>
+				<string>2</string>
+			</dict>
 		</array>
 		<key>印刷颜色</key>
 		<array>
-			<string>无色</string>
-			<string>单色</string>
-			<string>2-3色</string>
-			<string>4-5色</string>
-			<string>6-7色</string>
-			<string>8-9色</string>
-			<string>10色及以上</string>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>无色</string>
+				<key>titleId</key>
+				<string>297ebe0e57bce5450157bdcfc7a300f3</string>
+			</dict>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>单色</string>
+				<key>titleId</key>
+				<string>297ebe0e57bce5450157bdcfee5500f4</string>
+			</dict>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>2-3色</string>
+				<key>titleId</key>
+				<string>297ebe0e57bce5450157bdd033fa00f5</string>
+			</dict>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>4-5色</string>
+				<key>titleId</key>
+				<string>297ebe0e57bce5450157bdd0a65c00f6</string>
+			</dict>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>6-7色</string>
+				<key>titleId</key>
+				<string>297ebe0e57bce5450157bdd1ac9300f7</string>
+			</dict>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>8-9色</string>
+				<key>titleId</key>
+				<string>297ebe0e57bce5450157bdd2003200f8</string>
+			</dict>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>10色及以上</string>
+				<key>titleId</key>
+				<string>297ebe0e57bce5450157bdd271e900f9</string>
+			</dict>
 		</array>
 		<key>印刷面积</key>
 		<array>
-			<string>小面积</string>
-			<string>无关</string>
-			<string>满版实地</string>
-			<string>大面积</string>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>小面积</string>
+				<key>titleId</key>
+				<string>12312321</string>
+			</dict>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>无关</string>
+				<key>titleId</key>
+				<string>fdsfds</string>
+			</dict>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>满版实地</string>
+				<key>titleId</key>
+				<string>1231232114G546D1G</string>
+			</dict>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>大面积</string>
+				<key>titleId</key>
+				<string>1231232113454sadda</string>
+			</dict>
+		</array>
+		<key>波浪胶条</key>
+		<array>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>30MM波浪胶条</string>
+				<key>titleId</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>pickerViewTitle</key>
+				<string>15MM波浪胶条</string>
+				<key>titleId</key>
+				<string></string>
+			</dict>
 		</array>
 	</dict>
 </dict>

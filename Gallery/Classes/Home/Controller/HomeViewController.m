@@ -23,10 +23,6 @@
     [super viewDidLoad];
   self.navigationItem.title = @"报价";
   [self.view addSubview:self.scrollView];
-  NSLog(@"%d",IS_IPHONE_X);
-  NSLog(@"%d",IS_IPHONE_6P);
-  NSLog(@"%f",SCREEN_HEIGHT);
-  NSLog(@"%d",SafeAreaBottomHeight);
 }
 
 - (void)btnClick:(UIButton *)button {

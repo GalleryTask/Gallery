@@ -26,6 +26,7 @@
 @property (nonatomic, copy) NSString  *printingMethodStr; // 印刷方式
 @property (nonatomic, copy) NSString  *printingColorStr; // 印刷颜色
 @property (nonatomic, copy) NSString  *printingAreaStr; // 印刷面积
+@property (nonatomic, copy) NSString  *wavyStripStr; // 波浪胶条
 
 @end
 
@@ -35,13 +36,6 @@
     [super viewDidLoad];
 
   self.title = [NSString stringWithFormat:@"%@报价",self.titleString] ;
-  
-//  BaseNavigationController *navController = (BaseNavigationController *)self.navigationController;
-//  [navController setNavigationBarRightItemWithButtonTitle:@"配材"];
-//  [navController showRightNavBtnWithClick:^(id sender) {
-//    MateriaIInformationViewController *materiaVC = [[MateriaIInformationViewController alloc] init];
-//    [self.navigationController pushViewController:materiaVC animated:YES];
-//  }];
   
   [self.tableView registerClass:[QuoteCell class] forCellReuseIdentifier:@"quoteCell"];
   [self.tableView setSectionHeaderHeight:44];
@@ -89,6 +83,9 @@
       case 5:
         [cell setDetailString:self.printingAreaStr];
         break;
+      case 6:
+        [cell setDetailString:self.wavyStripStr];
+        break;
         
       default:
         break;
@@ -121,6 +118,9 @@
       case 5:
         [self.pickerView pickerViewWithDelegate:self dataSource:self.pickerList[@"印刷面积"] title:@"印刷面积"];
         break;
+      case 6:
+        [self.pickerView pickerViewWithDelegate:self dataSource:self.pickerList[@"波浪胶条"] title:@"波浪胶条"];
+        break;
         
       default:
         break;
@@ -129,13 +129,17 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  if (([self.titleString isEqualToString:@"平口箱"] || [self.titleString isEqualToString:@"自锁底平口箱"]
+      || [self.titleString isEqualToString:@"飞机盒"]) && indexPath.section == 1 && indexPath.row == 6) {
+    // 不是拉链箱隐藏波浪胶条
+    return 0;
+  }
   return 60;
 }
 
 #pragma marks - pickerView delegate
--(void)pickerViewWithSelectedRow:(NSInteger)row selectedTitle:(NSString *)title {
-//  NSLog(@"%ld,%@",row,title);
-//  NSLog(@"%ld, %ld",self.didSelectedIndexPath.section,self.didSelectedIndexPath.row);
+-(void)pickerViewWithSelectedRow:(NSInteger)row selectedTitle:(NSString *)title selectedId:(nonnull NSString *)selectedId {
+
   if (self.didSelectedIndexPath.section == 1) {
     switch (self.didSelectedIndexPath.row) {
       case 0:
@@ -155,6 +159,9 @@
         break;
       case 5:
         self.printingAreaStr = title;
+        break;
+      case 6:
+        self.wavyStripStr = title;
         break;
         
       default:
@@ -195,8 +202,9 @@
   self.amountStr = @"请选择年度用量";
   self.directionStr = @"请选择开口方向";
   self.caliberStr = @"请选择口径";
-  self.printingMethodStr = @"选择方式";
-  self.printingColorStr = @"选择颜色";
-  self.printingAreaStr = @"选择面积";
+  self.printingMethodStr = @"请选择方式";
+  self.printingColorStr = @"请选择颜色";
+  self.printingAreaStr = @"请选择面积";
+  self.wavyStripStr = @"请选择波浪胶条";
 }
 @end

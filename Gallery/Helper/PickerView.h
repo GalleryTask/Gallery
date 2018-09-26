@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol  PickerViewDelegate  <NSObject>
 
 @optional
-- (void)pickerViewWithSelectedRow:(NSInteger)row selectedTitle:(NSString *)title;
+- (void)pickerViewWithSelectedRow:(NSInteger)row selectedTitle:(NSString *)title selectedId:(NSString *)selectedId;
 
 @end
 
