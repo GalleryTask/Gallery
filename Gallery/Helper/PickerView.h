@@ -30,7 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)pickerViewWithDelegate:(id<PickerViewDelegate>)delegate
                     dataSource:(NSArray *)array
-                         title:(NSString *)title;
+                         title:(NSString *)title
+                   selectedRow:(NSInteger)selectedRow;
 
 @end
 

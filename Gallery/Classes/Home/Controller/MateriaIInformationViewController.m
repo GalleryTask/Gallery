@@ -94,14 +94,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   
-  if (indexPath.row == 0) {
-    
-    NSArray *array = @[@"最大面",@"次小面",@"最小面"];
-    [self.pickerView pickerViewWithDelegate:self dataSource:array title:@"配材"];
-  } else {
-    NSArray *array = @[@"最大面",@"次小面",@"最面",@"fgdfh",@"sdffg"];
-     [self.pickerView pickerViewWithDelegate:self dataSource:array title:@"等级"];
-  }
+//  if (indexPath.row == 0) {
+//    
+//    NSArray *array = @[@"最大面",@"次小面",@"最小面"];
+//    [self.pickerView pickerViewWithDelegate:self dataSource:array title:@"配材"];
+//  } else {
+//    NSArray *array = @[@"最大面",@"次小面",@"最面",@"fgdfh",@"sdffg"];
+//     [self.pickerView pickerViewWithDelegate:self dataSource:array title:@"等级"];
+//  }
 }
 
 -(void)pickerViewWithSelectedRow:(NSInteger)row selectedTitle:(NSString *)title {

@@ -17,7 +17,7 @@
 @property (nonatomic, strong) UILabel        *titleLabel;
 @property (nonatomic, strong) UIButton       *overlayBtn;
 @property (nonatomic, assign) BOOL           isPop;      // 是否是弹出状态 默认为否
-@property (nonatomic, assign) NSInteger      selectedRow;
+@property (nonatomic, assign) NSInteger      row;
 @property (nonatomic, copy)   NSString       *selectedTitle;
 @property (nonatomic, copy)   NSString       *selectedId;
 @property (nonatomic, strong) UIView         *backView;
@@ -33,13 +33,11 @@
   return self;
 }
 
-- (void)pickerViewWithDelegate:(id<PickerViewDelegate>)delegate dataSource:(NSArray *)array title:(NSString *)title {
+- (void)pickerViewWithDelegate:(id<PickerViewDelegate>)delegate dataSource:(NSArray *)array title:(NSString *)title selectedRow:(NSInteger)selectedRow {
   // 初始化状态
-  self.selectedRow = 0;
-  self.selectedTitle = array[0][@"pickerViewTitle"];
-  self.selectedId = array[0][@"titleId"];
-  
-  [self.pickerView selectRow:0 inComponent:0 animated:NO];
+  self.row = selectedRow;
+  self.selectedTitle = array[self.row][@"name"];
+  self.selectedId = array[self.row][@"id"];
   
   // 赋值
   self.isPop = true;
@@ -56,6 +54,8 @@
   
   [self.overlayBtn setAlpha:1];
   [self updateView];
+  
+  [self.pickerView selectRow:selectedRow inComponent:0 animated:YES];
 }
 
 - (void)btnClick:(UIButton *)button {
@@ -68,7 +68,7 @@
   //  点击确定button时
   if (button.tag == 200) {
     if (_delegate && [_delegate respondsToSelector:@selector(pickerViewWithSelectedRow:selectedTitle:selectedId:)]) {
-      [_delegate pickerViewWithSelectedRow:self.selectedRow selectedTitle:self.selectedTitle selectedId:self.selectedId];
+      [_delegate pickerViewWithSelectedRow:self.row selectedTitle:self.selectedTitle selectedId:self.selectedId];
     }
   }
 }
@@ -106,7 +106,7 @@
 // 显示的标题
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
   
-  NSString *str = [self.dataArray objectAtIndex:row][@"pickerViewTitle"];
+  NSString *str = [self.dataArray objectAtIndex:row][@"name"];
   
   return str;
 }
@@ -114,7 +114,7 @@
 // 显示的标题字体、颜色等属性
 - (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
   
-  NSString *str = [self.dataArray objectAtIndex:row][@"pickerViewTitle"];
+  NSString *str = [self.dataArray objectAtIndex:row][@"name"];
   
   NSMutableAttributedString *AttributedString = [[NSMutableAttributedString alloc]initWithString:str];
   
@@ -127,9 +127,9 @@
 // 被选择的行
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
   
-  self.selectedRow = row;
-  self.selectedTitle = [self.dataArray objectAtIndex:row][@"pickerViewTitle"];
-  self.selectedId = [self.dataArray objectAtIndex:row][@"titleId"];
+  self.row = row;
+  self.selectedTitle = [self.dataArray objectAtIndex:row][@"name"];
+  self.selectedId = [self.dataArray objectAtIndex:row][@"id"];
 }
 
 

@@ -2,21 +2,26 @@
   "list": [
     {
       "group": "地区信息",
-      "title": "选择大区",
-      "rowArray":[]
+      "rowArray":[{
+        "title":"地区"
+      }]
     },
     {
-      "rowArray":[{
+     "group": "纸箱信息",
+     "rowArray":[{
       "content": "请选择年度用量",
-      "group": "纸箱信息",
+      "selectedRow":0,
       "list": [
         {
+          "id": "",
           "name": "100万以下"
         },
         {
+          "id": "",
           "name": "100-500万"
         },
         {
+          "id": "",
           "name": "500万以上"
         }
       ],
@@ -24,7 +29,7 @@
     },
     {
       "content": "请选择开口方向",
-      "group": "纸箱信息",
+      "selectedRow":0,
       "list": [
         {
           "id": "123214324",
@@ -43,7 +48,7 @@
     },
     {
       "content": "请选择口径",
-      "group": "纸箱信息",
+      "selectedRow":0,
       "list": [
         {
           "id": "402880ec539eb3e101539eb4e78b0000",
@@ -58,7 +63,7 @@
     },
     {
       "content": "请选择印刷方式",
-      "group": "纸箱信息",
+      "selectedRow":0,
       "list": [
         {
           "id": "1",
@@ -73,7 +78,7 @@
     },
     {
       "content": "请选择印刷颜色",
-      "group": "纸箱信息",
+      "selectedRow":0,
       "list": [
         {
           "id": "297ebe0e57bce5450157bdcfc7a300f3",
@@ -108,7 +113,7 @@
     },
     {
       "content": "请选择印刷面积",
-      "group": "纸箱信息",
+      "selectedRow":0,
       "list": [
         {
           "id": "12312321",
@@ -128,10 +133,23 @@
         }
       ],
       "title": "印刷面积"
-    },
-    {
+    },{
+      "content": "请选择波浪胶条",
+      "selectedRow":0,
+      "list": [
+        {
+          "id": "",
+          "name": "30MM波浪胶条"
+        },
+        {
+          "id": "",
+          "name": "15MM波浪胶条"
+        }
+      ],
+      "title": "波浪胶条"
+    },{
       "content": "请选择工艺",
-      "group": "纸箱信息",
+      "selectedRow":0,
       "list": [
         {
           "id": "4028810257e171cf0157e19dda230008",
@@ -183,37 +201,23 @@
         }
       ],
       "title": "工艺"
-    },
-    {
-      "content": "请选择波浪胶条",
-      "group": "纸箱信息",
-      "list": [
-        {
-          "name": "30MM波浪胶条"
-        },
-        {
-          "name": "15MM波浪胶条"
-        }
-      ],
-      "title": "波浪胶条"
     }]
     },
     {
-      "group": "地区信息",
-      "title": "选择大区",
+      "group": "配材信息",
       "rowArray":[{
-      "group": "配材信息",
+      "content": "",
+      "list": [],
       "title": "面纸"
-    },
-    {
-      "group": "配材信息",
+    },{
+      "content": "",
+      "list": [],
       "title": "楞纸"
-    },
-    {
-      "group": "配材信息",
+    },{
+      "content": "",
+      "list": [],
       "title": "里纸"
     }]
-    },
-    
+    }
   ]
 }
