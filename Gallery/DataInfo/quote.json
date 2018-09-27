@@ -2,9 +2,11 @@
   "list": [
     {
       "group": "地区信息",
-      "title": "选择大区"
+      "title": "选择大区",
+      "rowArray":[]
     },
     {
+      "rowArray":[{
       "content": "请选择年度用量",
       "group": "纸箱信息",
       "list": [
@@ -194,8 +196,12 @@
         }
       ],
       "title": "波浪胶条"
+    }]
     },
     {
+      "group": "地区信息",
+      "title": "选择大区",
+      "rowArray":[{
       "group": "配材信息",
       "title": "面纸"
     },
@@ -206,6 +212,8 @@
     {
       "group": "配材信息",
       "title": "里纸"
-    }
+    }]
+    },
+    
   ]
 }
