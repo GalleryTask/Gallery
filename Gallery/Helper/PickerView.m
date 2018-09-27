@@ -8,9 +8,10 @@
 
 #import "PickerView.h"
 
-@interface PickerView () <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface PickerView () <UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UIPickerView   *pickerView;
+@property (nonatomic, strong) UITableView    *tableView;
 @property (nonatomic, strong) UIView         *topView;
 @property (nonatomic, strong) UIButton       *cancelBtn;
 @property (nonatomic, strong) UIButton       *doneBtn;
@@ -49,6 +50,14 @@
   UIViewController *vc = [CommonUtil getCurrentVC];
   [vc.view addSubview:self];
   
+  // 创建pickerView
+  [self.backView addSubview:self.pickerView];
+  [self.pickerView mas_remakeConstraints:^(MASConstraintMaker *make) {
+    make.width.left.equalTo(self);
+    make.top.equalTo(self.topView.mas_bottom);
+    make.height.mas_equalTo(SCALE_SIZE*200);
+  }];
+  
   // 刷新pickerview
   [self.pickerView reloadAllComponents];
   
@@ -58,12 +67,36 @@
   [self.pickerView selectRow:selectedRow inComponent:0 animated:YES];
 }
 
+- (void)pickerViewWithDelegate:(id<PickerViewDelegate>)delegate dataSource:(NSArray *)array title:(NSString *)title {
+  
+  UIViewController *vc = [CommonUtil getCurrentVC];
+  [vc.view addSubview:self];
+  
+  [self.backView addSubview:self.tableView];
+  [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
+    make.width.left.equalTo(self);
+    make.top.equalTo(self.topView.mas_bottom);
+    make.height.mas_equalTo(SCALE_SIZE*200);
+  }];
+  
+  self.isPop = true;
+  _delegate = delegate;
+  _dataArray = array;
+  [self.titleLabel setText:title];
+  [self.overlayBtn setAlpha:1];
+  [self updateView];
+}
+
+
+
 - (void)btnClick:(UIButton *)button {
  
   self.isPop = false;
   [self.overlayBtn setAlpha:0];
   [self updateView];
   [self removeFromSuperview];
+  [self.pickerView removeFromSuperview];
+  [self.tableView removeFromSuperview];
   
   //  点击确定button时
   if (button.tag == 200) {
@@ -83,7 +116,6 @@
 }
 
 #pragma mark pickerview function
-
 // 返回有几列
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
   
@@ -133,6 +165,25 @@
 }
 
 
+#pragma mark - tableView delegate
+#pragma mark - tableView
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+  return self.dataArray.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+  return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return 40;
+}
 
 #pragma mark - getters
 -(UIButton *)overlayBtn {
@@ -162,7 +213,7 @@
     [_pickerView setBackgroundColor:[UIColor whiteColor]];
     [_pickerView setDelegate:self];
     [_pickerView setDataSource:self];
-    [self.backView addSubview:_pickerView];
+//    [self.backView addSubview:_pickerView];
   }
   return _pickerView;
 }
@@ -173,7 +224,6 @@
     _titleLabel = [[UILabel alloc] init];
     [_titleLabel setTextColor:BASECOLOR_MIDDLEBLACK];
     [_titleLabel setFont:FONTSIZE(14)];
-//    [_titleLabel setText:@"到货时间"];
     [self.topView addSubview:_titleLabel];
   }
   return _titleLabel;
@@ -215,6 +265,17 @@
   return _topView;
 }
 
+-(UITableView *)tableView {
+  if (!_tableView) {
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*200) style:UITableViewStylePlain];
+    [_tableView setDelegate:self];
+    [_tableView setDataSource:self];
+    [_tableView setBackgroundColor:[UIColor redColor]];
+    [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+  }
+  return _tableView;
+}
+
 -(void)updateConstraints {
   [super updateConstraints];
   
@@ -242,13 +303,6 @@
     make.height.mas_equalTo(SCALE_SIZE*44);
   }];
   
-  [self.pickerView mas_remakeConstraints:^(MASConstraintMaker *make) {
-    make.width.left.equalTo(self);
-    make.top.equalTo(self.topView.mas_bottom);
-    make.height.mas_equalTo(SCALE_SIZE*200);
-  }];
-  
- 
   
   [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
     make.centerX.centerY.equalTo(self.topView);

@@ -73,6 +73,10 @@
   
   self.didSelectedIndexPath = indexPath;
   if (indexPath.section == 1) {
+    if (indexPath.row == 7) {
+      [self.pickerView pickerViewWithDelegate:self dataSource:self.dataArray[indexPath.section][@"rowArray"][indexPath.row][@"list"] title:self.dataArray[indexPath.section][@"rowArray"][indexPath.row][@"title"]];
+      return;
+    }
 
     [self.pickerView pickerViewWithDelegate:self
                                  dataSource:self.dataArray[indexPath.section][@"rowArray"][indexPath.row][@"list"]
