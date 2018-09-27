@@ -7,7 +7,7 @@
 //
 
 #import "PickerView.h"
-
+#import "SelectTableViewCell.h"
 @interface PickerView () <UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UIPickerView   *pickerView;
@@ -30,6 +30,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
   if (self = [super initWithFrame:frame]) {
     [self setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+      
   }
   return self;
 }
@@ -173,16 +174,18 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+  SelectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SelectTableViewCell" forIndexPath:indexPath];
+    cell.titleString = [NSString stringWithFormat:@"%@",self.dataArray[indexPath.row][@"name"]];
   return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  
+  [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return 40;
+  return SCALE_SIZE*44;
 }
 
 #pragma mark - getters
@@ -271,7 +274,7 @@
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
     [_tableView setBackgroundColor:[UIColor redColor]];
-    [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    [_tableView registerClass:[SelectTableViewCell class] forCellReuseIdentifier:@"SelectTableViewCell"];
   }
   return _tableView;
 }
