@@ -27,7 +27,8 @@
 
 - (void)btnClick:(UIButton *)button {
   QuoteViewController *vc = [[QuoteViewController alloc] init];
-  [vc setValue:self.boxList[button.tag-100] forKey:@"titleString"];
+  [vc setValue:self.boxList[button.tag-100][@"boxTitle"] forKey:@"titleString"];
+  [vc setValue:self.boxList[button.tag-100][@"boxId"] forKey:@"boxId"];
   [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -47,7 +48,7 @@
       [_scrollView addSubview:btn];
       
       UILabel *titleLabel = [[UILabel alloc] init];
-      [titleLabel setText:self.boxList[i]];
+      [titleLabel setText:self.boxList[i][@"boxTitle"]];
       [_scrollView addSubview:titleLabel];
       [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(btn);

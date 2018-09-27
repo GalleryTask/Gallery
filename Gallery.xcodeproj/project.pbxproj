@@ -11,6 +11,7 @@
 		760E94692151ED9B00592929 /* DataList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 760E94682151ED9B00592929 /* DataList.plist */; };
 		760E94732151F0D100592929 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E94722151F0D100592929 /* HomeViewController.m */; };
 		760E94762151F0DB00592929 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E94752151F0DB00592929 /* MeViewController.m */; };
+		76110A5F215C809D001D8453 /* quote.json in Resources */ = {isa = PBXBuildFile; fileRef = 76110A5E215C809D001D8453 /* quote.json */; };
 		7620C1662159D61D00AD6653 /* QuoteSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7620C1652159D61D00AD6653 /* QuoteSectionView.m */; };
 		7620C1692159E0F600AD6653 /* QuoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7620C1682159E0F600AD6653 /* QuoteCell.m */; };
 		764CDD96215376770028CE81 /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 764CDD95215376770028CE81 /* PickerView.m */; };
@@ -64,6 +65,7 @@
 		760E94722151F0D100592929 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		760E94742151F0DB00592929 /* MeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		760E94752151F0DB00592929 /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
+		76110A5E215C809D001D8453 /* quote.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quote.json; sourceTree = "<group>"; };
 		7620C1642159D61D00AD6653 /* QuoteSectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuoteSectionView.h; sourceTree = "<group>"; };
 		7620C1652159D61D00AD6653 /* QuoteSectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuoteSectionView.m; sourceTree = "<group>"; };
 		7620C1672159E0F600AD6653 /* QuoteCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuoteCell.h; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 		76605E532101CC1C00115FA6 /* DataInfo */ = {
 			isa = PBXGroup;
 			children = (
+				76110A5E215C809D001D8453 /* quote.json */,
 				76605E552101CC1C00115FA6 /* UserInfoSingleton.h */,
 				76605E542101CC1C00115FA6 /* UserInfoSingleton.m */,
 			);
@@ -516,6 +519,7 @@
 			files = (
 				76605E132101B6EE00115FA6 /* LaunchScreen.storyboard in Resources */,
 				7655CC922150F92A00D206C2 /* Assets.xcassets in Resources */,
+				76110A5F215C809D001D8453 /* quote.json in Resources */,
 				760E94692151ED9B00592929 /* DataList.plist in Resources */,
 				76605E0E2101B6ED00115FA6 /* Main.storyboard in Resources */,
 			);

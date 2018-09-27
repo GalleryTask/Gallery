@@ -15,18 +15,26 @@
 @interface QuoteViewController () <PickerViewDelegate>
 
 @property (nonatomic, copy) NSString  *titleString;
+@property (nonatomic, copy) NSString  *boxId;
 @property (nonatomic, strong) QuoteSectionView  *sectionView;
 @property (nonatomic, strong) NSArray  *sectionArray;
 @property (nonatomic, strong) NSDictionary  *pickerList;
 @property (nonatomic, strong) PickerView  *pickerView;
 @property (nonatomic, strong) NSIndexPath  *didSelectedIndexPath;
 @property (nonatomic, copy) NSString  *amountStr;    // 年度用量
+@property (nonatomic, copy) NSString  *amountId;
 @property (nonatomic, copy) NSString  *directionStr; // 开口方向
+@property (nonatomic, copy) NSString  *directionId;
 @property (nonatomic, copy) NSString  *caliberStr;   // 口径
+@property (nonatomic, copy) NSString  *caliberId;
 @property (nonatomic, copy) NSString  *printingMethodStr; // 印刷方式
+@property (nonatomic, copy) NSString  *printingMethodId;
 @property (nonatomic, copy) NSString  *printingColorStr; // 印刷颜色
+@property (nonatomic, copy) NSString  *printingColorId;
 @property (nonatomic, copy) NSString  *printingAreaStr; // 印刷面积
+@property (nonatomic, copy) NSString  *printingAreaId;
 @property (nonatomic, copy) NSString  *wavyStripStr; // 波浪胶条
+@property (nonatomic, copy) NSString  *wavyStripId;
 
 @end
 
@@ -134,6 +142,10 @@
     // 不是拉链箱隐藏波浪胶条
     return 0;
   }
+  // 如果印刷方式为不为胶印隐藏工艺
+  if (![self.printingMethodStr isEqualToString:@"胶印"] && indexPath.section == 1 && indexPath.row == 7) {
+    return 0;
+  }
   return 60;
 }
 
@@ -144,24 +156,31 @@
     switch (self.didSelectedIndexPath.row) {
       case 0:
         self.amountStr = title;
+        self.amountId = selectedId;
         break;
       case 1:
         self.directionStr = title;
+        self.directionId = selectedId;
         break;
       case 2:
         self.caliberStr = title;
+        self.caliberId = selectedId;
         break;
       case 3:
         self.printingMethodStr = title;
+        self.printingMethodId = selectedId;
         break;
       case 4:
         self.printingColorStr = title;
+        self.printingColorId = selectedId;
         break;
       case 5:
         self.printingAreaStr = title;
+        self.printingAreaId = selectedId;
         break;
       case 6:
         self.wavyStripStr = title;
+        self.wavyStripId = selectedId;
         break;
         
       default:
@@ -195,6 +214,17 @@
     _pickerView = [[PickerView alloc] init];
   }
   return _pickerView;
+}
+
+// 读取本地JSON文件
+- (NSDictionary *)readLocalFileWithName:(NSString *)name {
+  // 获取文件路径
+  NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"json"];
+  // 将文件数据化
+  NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+  // 对数据进行JSON格式化并返回字典形式
+  return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+  
 }
 
 
