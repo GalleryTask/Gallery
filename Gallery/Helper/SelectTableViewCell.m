@@ -20,19 +20,10 @@
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        //    self.selectionStyle = UITableViewCellSelectionStyleNone;
+      self.selectionStyle = UITableViewCellSelectionStyleNone;
 //        [self setClipsToBounds:YES];
     }
     return self;
-}
-
-#pragma mark - 重写cell的frame
--(void)setFrame:(CGRect)frame {
-    
-    self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.frame] ;
-    self.selectedBackgroundView.backgroundColor = BASECOLOR_BACKGROUND_GRAY;
-    
-    [super setFrame:frame];
 }
 
 -(void)setTitleString:(NSString *)titleString{
@@ -90,9 +81,15 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    UIColor *lineColor = self.lineView.backgroundColor;
-    [super setSelected:selected animated:animated];
-    self.lineView.backgroundColor = lineColor;
+  UIColor *lineColor = self.lineView.backgroundColor;
+  [super setSelected:selected animated:animated];
+  self.lineView.backgroundColor = lineColor;
+  
+  if (selected) {
+    self.selectImageView.image = [UIImage imageNamed:@"btn-xuanzhong"];
+  } else{
+    self.selectImageView.image = [UIImage imageNamed:@"btn-weixuanzhong"];
+  }
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {

@@ -176,12 +176,20 @@
   
   SelectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SelectTableViewCell" forIndexPath:indexPath];
     cell.titleString = [NSString stringWithFormat:@"%@",self.dataArray[indexPath.row][@"name"]];
+  for (NSIndexPath *index in self.tableView.indexPathsForSelectedRows) {
+    if (indexPath.row == index.row) {
+      [tableView selectRowAtIndexPath:index animated:NO scrollPosition:UITableViewScrollPositionNone];
+    }
+  }
   return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+
+  SelectTableViewCell *cell = (SelectTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+  [cell setSelected:YES];
+  
+  NSLog(@"%@",self.tableView.indexPathsForSelectedRows);
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -273,8 +281,8 @@
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*200) style:UITableViewStylePlain];
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
-    [_tableView setBackgroundColor:[UIColor redColor]];
     [_tableView registerClass:[SelectTableViewCell class] forCellReuseIdentifier:@"SelectTableViewCell"];
+    _tableView.allowsMultipleSelection = YES;
   }
   return _tableView;
 }
