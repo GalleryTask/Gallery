@@ -72,6 +72,7 @@
   
   UIViewController *vc = [CommonUtil getCurrentVC];
   [vc.view addSubview:self];
+  self.selectedTitle = @"";
   
   [self.backView addSubview:self.tableView];
   [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -101,6 +102,14 @@
   
   //  点击确定button时
   if (button.tag == 200) {
+    if ([self.selectedTitle isEqualToString:@""]) {
+      
+      for (NSIndexPath *indexPath in self.tableView.indexPathsForSelectedRows) {
+        NSString *str = self.dataArray[indexPath.row][@"name"];
+        self.selectedTitle = [self.selectedTitle stringByAppendingString:[NSString stringWithFormat:@"%@、",str]];
+      }
+      self.selectedTitle = [self.selectedTitle stringByReplacingCharactersInRange:NSMakeRange(self.selectedTitle.length-1, 1) withString:@""];
+    }
     if (_delegate && [_delegate respondsToSelector:@selector(pickerViewWithSelectedRow:selectedTitle:selectedId:)]) {
       [_delegate pickerViewWithSelectedRow:self.row selectedTitle:self.selectedTitle selectedId:self.selectedId];
     }
@@ -189,7 +198,7 @@
   SelectTableViewCell *cell = (SelectTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
   [cell setSelected:YES];
   
-  NSLog(@"%@",self.tableView.indexPathsForSelectedRows);
+//  NSLog(@"%@",self.tableView.indexPathsForSelectedRows);
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

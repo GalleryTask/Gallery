@@ -25,6 +25,7 @@
 #import "UserInfoSingleton.h"
 #import "UITableView+EmptyData.h"
 #import "CommonUtil.h"
+#import "ResultModel.h"
 
 
 

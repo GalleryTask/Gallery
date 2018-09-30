@@ -19,5 +19,14 @@
 //  }];
 }
 
+#pragma mark - 获取省市区信息
+- (void)getAreaTree {
+  NSString *url = @"/sysArea/nbox/getAreaTreaDate";
+//  ParamterModel *model = [[ParamterModel alloc] init];
+//  [self netRequestWithMethodType:RequestMethodTypePOST URLString:url params:[model toDictionary] successBlock:^(id returnValue) {
+//    AreaTreeResult *result = [[AreaTreeResult alloc] initWithDictionary:returnValue error:nil];
+//    self.returnBlock(result.data);
+//  }];
+}
 
 @end
