@@ -12,13 +12,6 @@
 
 @implementation SceneView
 
-//-(instancetype)initWithFrame:(CGRect)frame {
-//  if (self = [super initWithFrame:frame]) {
-//    [self createSceneView];
-//  }
-//  return self;
-//}
-
 - (id)initWithSceneName:(NSString *)sceneName frame:(CGRect)frame {
   if (self = [super init]) {
     [self setFrame:frame];
@@ -38,7 +31,7 @@
   cameraNode.camera.automaticallyAdjustsZRange = true;
 //  cameraNode.camera.zFar = 400;//视距
   [scene.rootNode addChildNode:cameraNode];
-  cameraNode.position = SCNVector3Make(0, 10, 100);
+  cameraNode.position = SCNVector3Make(0, 10, 50);
   // 创建灯光
   SCNNode *node = [SCNNode node];
   node.light = [SCNLight light];
