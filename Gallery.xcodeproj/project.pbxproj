@@ -40,6 +40,8 @@
 		76605E602101CCB100115FA6 /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E5F2101CCB000115FA6 /* CommonUtil.m */; };
 		76605E632101CCBA00115FA6 /* UploadImageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E612101CCBA00115FA6 /* UploadImageObject.m */; };
 		76E7C05E2152393A009CECAF /* QuoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E7C05C2152393A009CECAF /* QuoteViewController.m */; };
+		76EE836E216B4B5000D317FF /* SceneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE836C216B4B5000D317FF /* SceneView.m */; };
+		76EE836F216B4B5000D317FF /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 76EE836D216B4B5000D317FF /* art.scnassets */; };
 		842FB016215CD2460082336C /* SelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FB015215CD2460082336C /* SelectTableViewCell.m */; };
 		846F2F7821522E8C00AB76D5 /* MateriaIInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F2F7721522E8C00AB76D5 /* MateriaIInformationViewController.m */; };
 		846F2F8121522F9700AB76D5 /* MaterialInformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F2F8021522F9700AB76D5 /* MaterialInformationTableViewCell.m */; };
@@ -130,6 +132,9 @@
 		76605E622101CCBA00115FA6 /* UploadImageObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImageObject.h; sourceTree = "<group>"; };
 		76E7C05C2152393A009CECAF /* QuoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuoteViewController.m; sourceTree = "<group>"; };
 		76E7C05D2152393A009CECAF /* QuoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuoteViewController.h; sourceTree = "<group>"; };
+		76EE836B216B4B5000D317FF /* SceneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneView.h; sourceTree = "<group>"; };
+		76EE836C216B4B5000D317FF /* SceneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneView.m; sourceTree = "<group>"; };
+		76EE836D216B4B5000D317FF /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		842FB014215CD2460082336C /* SelectTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectTableViewCell.h; sourceTree = "<group>"; };
 		842FB015215CD2460082336C /* SelectTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectTableViewCell.m; sourceTree = "<group>"; };
 		846F2F7621522E8C00AB76D5 /* MateriaIInformationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MateriaIInformationViewController.h; sourceTree = "<group>"; };
@@ -187,6 +192,7 @@
 		760E946A2151F08800592929 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				76EE836A216B4B5000D317FF /* SceneView */,
 				761AF2D5215E0B2700F596D3 /* YJLocationPicker */,
 				760E94702151F0B400592929 /* View */,
 				760E946C2151F09600592929 /* Controller */,
@@ -444,6 +450,16 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		76EE836A216B4B5000D317FF /* SceneView */ = {
+			isa = PBXGroup;
+			children = (
+				76EE836B216B4B5000D317FF /* SceneView.h */,
+				76EE836C216B4B5000D317FF /* SceneView.m */,
+				76EE836D216B4B5000D317FF /* art.scnassets */,
+			);
+			path = SceneView;
+			sourceTree = "<group>";
+		};
 		A4A11029BD96BF87E72CB7E2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -559,6 +575,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76110A63215CAB47001D8453 /* quote.json in Resources */,
+				76EE836F216B4B5000D317FF /* art.scnassets in Resources */,
 				76605E132101B6EE00115FA6 /* LaunchScreen.storyboard in Resources */,
 				7655CC922150F92A00D206C2 /* Assets.xcassets in Resources */,
 				760E94692151ED9B00592929 /* DataList.plist in Resources */,
@@ -634,6 +651,7 @@
 				76605E562101CC1C00115FA6 /* UserInfoSingleton.m in Sources */,
 				76E7C05E2152393A009CECAF /* QuoteViewController.m in Sources */,
 				761AF2D4215E0AB200F596D3 /* ResultModel.m in Sources */,
+				76EE836E216B4B5000D317FF /* SceneView.m in Sources */,
 				76605E602101CCB100115FA6 /* CommonUtil.m in Sources */,
 				7655CC8D2150F89200D206C2 /* NetRequestClass.m in Sources */,
 				760E94732151F0D100592929 /* HomeViewController.m in Sources */,

@@ -7,8 +7,8 @@
 //
 
 #import "HomeViewController.h"
-
 #import "QuoteViewController.h"
+#import "SceneView.h"
 
 @interface HomeViewController ()
 
@@ -25,10 +25,12 @@
   [self.view addSubview:self.scrollView];
 }
 
-- (void)btnClick:(UIButton *)button {
+- (void)btnClick:(id)sender  {
+  
+  UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
   QuoteViewController *vc = [[QuoteViewController alloc] init];
-  [vc setValue:self.boxList[button.tag-100][@"boxTitle"] forKey:@"titleString"];
-  [vc setValue:self.boxList[button.tag-100][@"boxId"] forKey:@"boxId"];
+  [vc setValue:self.boxList[[tap view].tag-100][@"boxTitle"] forKey:@"titleString"];
+  [vc setValue:self.boxList[[tap view].tag-100][@"boxId"] forKey:@"boxId"];
   [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -40,19 +42,22 @@
     [_scrollView setContentSize:CGSizeMake((SCREEN_WIDTH-40)*12 + 130, 0)];
     
     for (int i = 0; i < self.boxList.count; i++) {
-      UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-      [btn setFrame:CGRectMake((SCREEN_WIDTH-30)*i+10, SCALE_SIZE*70, SCREEN_WIDTH-40, SCREEN_WIDTH-40)];
-      [btn setBackgroundColor:BASECOLOR_LIGHTGRAY];
-      [btn setTag:(100+i)];
-      [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-      [_scrollView addSubview:btn];
+     
+      SceneView *sceneView = [[SceneView alloc] initWithSceneName:@"art.scnassets/nbox3gai" frame:CGRectMake((SCREEN_WIDTH-30)*i+10, SCALE_SIZE*70, SCREEN_WIDTH-40, SCREEN_WIDTH-40)];
+      [_scrollView addSubview:sceneView];
+      
+      UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(btnClick:)];
+      [sceneView addGestureRecognizer:tap];
+      
+      UIView *tapView = [tap view];
+      [tapView setTag:(100+i)];
       
       UILabel *titleLabel = [[UILabel alloc] init];
       [titleLabel setText:self.boxList[i][@"boxTitle"]];
       [_scrollView addSubview:titleLabel];
       [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(btn);
-        make.top.mas_equalTo(btn.mas_bottom).offset(SCALE_SIZE*20);
+        make.centerX.equalTo(sceneView);
+        make.top.mas_equalTo(sceneView.mas_bottom).offset(SCALE_SIZE*20);
       }];
     }
   }
