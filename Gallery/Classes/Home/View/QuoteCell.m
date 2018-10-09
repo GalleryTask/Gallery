@@ -8,7 +8,7 @@
 
 #import "QuoteCell.h"
 
-@interface QuoteCell()
+@interface QuoteCell() <UITextFieldDelegate>
 
 @property (nonatomic, strong) UILabel  *titleLabel;
 @property (nonatomic, strong) UIView   *lineView;
@@ -22,11 +22,31 @@
   
   self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
   if (self) {
-//    self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self setClipsToBounds:YES];
   }
   return self;
 }
+
+
+#pragma mark - 键盘右下角事件
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+  [textField resignFirstResponder];
+  return  YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+  [self.detailLabel setHidden:YES];
+  [_delegate quoteCellTextFieldShouldBeginEditing:self.indexPath];
+  return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+  [self.detailLabel setHidden:NO];
+  [_delegate quoteCellTextFieldShouldBeginEditing:textField indexPath:self.indexPath];
+  textField.text = @"";
+  return YES;
+}
+
 
 #pragma mark - 重写cell的frame
 -(void)setFrame:(CGRect)frame {
@@ -46,8 +66,23 @@
 
 -(void)setDetailString:(NSString *)detailString {
   if (detailString) {
-    [self.detailLabel setText:detailString];
+    [self.textField setHidden:YES];
+    if (self.indexPath.section == 1 ) {
+      if (self.indexPath.row == 8 || self.indexPath.row == 9 || self.indexPath.row == 10) {
+        [self.textField setHidden:NO];
+//        [self.detailLabel setHidden:YES];
+//        [self.textField setPlaceholder:detailString];
+      } else {
+        [self.textField setHidden:YES];
+//        [self.detailLabel setHidden:NO];
+      }
+      [self.detailLabel setText:detailString];
+    }
   }
+}
+
+-(void)setIndexPath:(NSIndexPath *)indexPath {
+  _indexPath = indexPath;
 }
 
 #pragma marks - getters
@@ -79,6 +114,23 @@
   return _lineView;
 }
 
+-(UITextField *)textField {
+  if (!_textField) {
+    _textField = [[UITextField alloc] init];
+    [_textField setFont:FONTSIZE(14)];
+    [_textField setAutocorrectionType:UITextAutocorrectionTypeNo];
+    [_textField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
+    [_textField setKeyboardType:UIKeyboardTypeNumberPad];
+    [_textField setValue:BASECOLOR_DARKBLACK forKeyPath:@"_placeholderLabel.textColor"];
+    [_textField setValue:FONTSIZE(14) forKeyPath:@"_placeholderLabel.font"];
+    [_textField setDelegate:self];
+    //    [_accountField setClearButtonMode:UITextFieldViewModeWhileEditing];
+    [_textField setReturnKeyType:UIReturnKeyDone];
+    [self.contentView addSubview:_textField];
+  }
+  return _textField;
+}
+
 -(void)layoutSubviews {
   [super layoutSubviews];
   
@@ -90,6 +142,12 @@
   [self.detailLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
     make.right.equalTo(self).offset(-SCALE_SIZE*20);
     make.centerY.equalTo(self);
+  }];
+  
+  [self.textField mas_remakeConstraints:^(MASConstraintMaker *make) {
+    make.right.equalTo(self).offset(-SCALE_SIZE*20);
+    make.centerY.height.equalTo(self);
+    make.width.mas_equalTo(SCALE_SIZE*100);
   }];
   
   [self.lineView mas_remakeConstraints:^(MASConstraintMaker *make) {

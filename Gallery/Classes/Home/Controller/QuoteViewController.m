@@ -7,12 +7,11 @@
 //
 
 #import "QuoteViewController.h"
-#import "MateriaIInformationViewController.h"
 #import "QuoteSectionView.h"
 #import "QuoteCell.h"
 #import "PickerView.h"
 
-@interface QuoteViewController () <PickerViewDelegate>
+@interface QuoteViewController () <PickerViewDelegate, QuoteCellDelegate>
 
 @property (nonatomic, copy) NSString  *titleString;
 @property (nonatomic, copy) NSString  *boxId;
@@ -29,6 +28,8 @@
 @property (nonatomic, copy) NSString  *printingColorId; // 印刷颜色
 @property (nonatomic, copy) NSString  *printingAreaId; // 印刷面积
 @property (nonatomic, copy) NSString  *wavyStripId; // 波浪胶条
+@property (nonatomic, strong) UIView  *footerView;
+
 
 @end
 
@@ -41,6 +42,7 @@
   
   [self.tableView registerClass:[QuoteCell class] forCellReuseIdentifier:@"quoteCell"];
   [self.tableView setSectionHeaderHeight:44];
+  [self.tableView setTableFooterView:self.footerView];
 }
 
 
@@ -63,6 +65,8 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
   QuoteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"quoteCell" forIndexPath:indexPath];
+  [cell setDelegate:self];
+  [cell setIndexPath:indexPath];
   [cell setTitleString:self.dataArray[indexPath.section][@"rowArray"][indexPath.row][@"title"]];
   [cell setDetailString:self.dataArray[indexPath.section][@"rowArray"][indexPath.row][@"content"]];
   return cell;
@@ -71,17 +75,25 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
   
+//  QuoteCell *cell = (QuoteCell *)[tableView cellForRowAtIndexPath:indexPath];
+//  [cell.textField resignFirstResponder];
+  
   self.didSelectedIndexPath = indexPath;
   if (indexPath.section == 1) {
     if (indexPath.row == 7) {
+      // 弹出工艺
       [self.pickerView pickerViewWithDelegate:self dataSource:self.dataArray[indexPath.section][@"rowArray"][indexPath.row][@"list"] title:self.dataArray[indexPath.section][@"rowArray"][indexPath.row][@"title"]];
       return;
+    } else if (indexPath.row != 8 && indexPath.row != 9 && indexPath.row != 10) {
+      // 当不是长度，宽度，和高度时弹出pickerView
+      [self.pickerView pickerViewWithDelegate:self
+                                   dataSource:self.dataArray[indexPath.section][@"rowArray"][indexPath.row][@"list"]
+                                        title:self.dataArray[indexPath.section][@"rowArray"][indexPath.row][@"title"]
+                                  selectedRow:[self.dataArray[indexPath.section][@"rowArray"][indexPath.row][@"selectedRow"] integerValue]];
+    } else {
+      
     }
 
-    [self.pickerView pickerViewWithDelegate:self
-                                 dataSource:self.dataArray[indexPath.section][@"rowArray"][indexPath.row][@"list"]
-                                      title:self.dataArray[indexPath.section][@"rowArray"][indexPath.row][@"title"]
-                                selectedRow:[self.dataArray[indexPath.section][@"rowArray"][indexPath.row][@"selectedRow"] integerValue]];
   }
 }
 
@@ -91,28 +103,32 @@
     // 不是拉链箱隐藏波浪胶条
     return 0;
   }
-  // 如果印刷方式为不为胶印隐藏工艺
   if (![self.dataArray[1][@"rowArray"][3][@"content"]isEqualToString:@"胶印"]
       && indexPath.section == 1 && indexPath.row == 7) {
+    // 如果印刷方式为不为胶印隐藏工艺
     return 0;
   }
   return 60;
+}
+
+
+#pragma marks - quoteCell delegate
+-(void)quoteCellTextFieldShouldBeginEditing:(NSIndexPath *)indexPath {
+  [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+
+-(void)quoteCellTextFieldShouldBeginEditing:(UITextField *)textField indexPath:(NSIndexPath *)indexPath {
+  
+  [self dataReplaceObjectWithRow:0 indexPath:indexPath content:textField.text];
+  [self.tableView reloadData];
+
 }
 
 #pragma marks - pickerView delegate
 -(void)pickerViewWithSelectedRow:(NSInteger)row selectedTitle:(NSString *)title selectedId:(nonnull NSString *)selectedId {
 
   if (self.didSelectedIndexPath.section == 1) {
-    NSMutableDictionary *dic =[NSMutableDictionary dictionaryWithDictionary:self.dataArray[self.didSelectedIndexPath.section]];
-    NSMutableArray *array =[NSMutableArray arrayWithArray:dic[@"rowArray"]] ;
-    NSDictionary *item = [array objectAtIndex:self.didSelectedIndexPath.row];
-    NSMutableDictionary *mutableItem = [NSMutableDictionary dictionaryWithDictionary:item];
-    [mutableItem setObject:title forKey:@"content"];
-    [mutableItem setObject:[NSNumber numberWithInteger:row] forKey:@"selectedRow"];
-    [array setObject:mutableItem atIndexedSubscript:self.didSelectedIndexPath.row];
-    [dic setValue:array forKey:@"rowArray"];
-    [self.dataArray replaceObjectAtIndex:self.didSelectedIndexPath.section withObject:dic];
-
+    [self dataReplaceObjectWithRow:row indexPath:self.didSelectedIndexPath content:title];
     switch (self.didSelectedIndexPath.row) {
       case 0:
         self.amountId = selectedId;
@@ -143,8 +159,27 @@
   [self.tableView reloadData];
 }
 
-#pragma mark - getters
 
+/**
+ 将缓存数据中数据进行修改
+
+ @param row 当前pickerView选择的row
+ @param indexPath 当前点击的indexPath
+ @param content 提示内容
+ */
+- (void)dataReplaceObjectWithRow:(NSInteger)row indexPath:(NSIndexPath *)indexPath content:(NSString *)content {
+  NSMutableDictionary *dic =[NSMutableDictionary dictionaryWithDictionary:self.dataArray[indexPath.section]];
+  NSMutableArray *array =[NSMutableArray arrayWithArray:dic[@"rowArray"]] ;
+  NSDictionary *item = [array objectAtIndex:indexPath.row];
+  NSMutableDictionary *mutableItem = [NSMutableDictionary dictionaryWithDictionary:item];
+  [mutableItem setObject:content forKey:@"content"];
+  [mutableItem setObject:[NSNumber numberWithInteger:row] forKey:@"selectedRow"];
+  [array setObject:mutableItem atIndexedSubscript:indexPath.row];
+  [dic setValue:array forKey:@"rowArray"];
+  [self.dataArray replaceObjectAtIndex:indexPath.section withObject:dic];
+}
+
+#pragma mark - getters
 -(NSArray *)dataArray {
   if (!_dataArray) {
     _dataArray = [NSMutableArray arrayWithArray:[self readLocalFileWithName:@"quote"][@"list"]];
@@ -157,6 +192,14 @@
     _pickerView = [[PickerView alloc] init];
   }
   return _pickerView;
+}
+
+-(UIView *)footerView {
+  if (!_footerView) {
+    _footerView = [[UIView alloc] init];
+    [_footerView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*100)];
+  }
+  return _footerView;
 }
 
 // 读取本地JSON文件

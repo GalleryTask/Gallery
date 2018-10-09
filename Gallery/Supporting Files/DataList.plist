@@ -125,42 +125,6 @@
 			<string>4028810465b2064a0165b398033d0006</string>
 		</dict>
 	</array>
-	<key>QuoteList</key>
-	<array>
-		<dict>
-			<key>sectionTitle</key>
-			<string>地区信息</string>
-			<key>rowArray</key>
-			<array>
-				<string>选择大区</string>
-			</array>
-		</dict>
-		<dict>
-			<key>sectionTitle</key>
-			<string>纸箱信息</string>
-			<key>rowArray</key>
-			<array>
-				<string>年度用量</string>
-				<string>开口方向</string>
-				<string>口径</string>
-				<string>印刷方式</string>
-				<string>印刷颜色</string>
-				<string>印刷面积</string>
-				<string>波浪胶条</string>
-				<string>工艺</string>
-			</array>
-		</dict>
-		<dict>
-			<key>sectionTitle</key>
-			<string>配材信息</string>
-			<key>rowArray</key>
-			<array>
-				<string>面纸</string>
-				<string>楞纸</string>
-				<string>里纸</string>
-			</array>
-		</dict>
-	</array>
 	<key>PickerViewList</key>
 	<dict>
 		<key>年度用量</key>

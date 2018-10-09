@@ -133,7 +133,8 @@
         }
       ],
       "title": "印刷面积"
-    },{
+    },
+    {
       "content": "请选择波浪胶条",
       "selectedRow":0,
       "list": [
@@ -147,7 +148,8 @@
         }
       ],
       "title": "波浪胶条"
-    },{
+    },
+    {
       "content": "请选择工艺",
       "selectedRow":0,
       "list": [
@@ -201,7 +203,19 @@
         }
       ],
       "title": "工艺"
-    }]
+    },
+     {
+       "content": "请输入长度(mm)",
+       "title": "长度",
+     },
+     {
+       "content": "请输入宽度(mm)",
+       "title": "宽度",
+     },
+     {
+       "content": "请输入高度(mm)",
+       "title": "高度",
+     }]
     },
     {
       "group": "配材信息",

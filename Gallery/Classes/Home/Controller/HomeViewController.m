@@ -43,7 +43,8 @@
     
     for (int i = 0; i < self.boxList.count; i++) {
      
-      SceneView *sceneView = [[SceneView alloc] initWithSceneName:@"art.scnassets/nbox3gai" frame:CGRectMake((SCREEN_WIDTH-30)*i+10, SCALE_SIZE*70, SCREEN_WIDTH-40, SCREEN_WIDTH-40)];
+      SceneView *sceneView = [[SceneView alloc] initWithSceneName:@"art.scnassets/nbox3gai"
+                                                            frame:CGRectMake((SCREEN_WIDTH-30)*i+10, SCALE_SIZE*70, SCREEN_WIDTH-40, SCREEN_WIDTH-40)];
       [_scrollView addSubview:sceneView];
       
       UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(btnClick:)];
