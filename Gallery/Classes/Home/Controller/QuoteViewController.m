@@ -11,7 +11,7 @@
 #import "QuoteCell.h"
 #import "PickerView.h"
 
-@interface QuoteViewController () <PickerViewDelegate, QuoteCellDelegate>
+@interface QuoteViewController () <PickerViewDelegate>
 
 @property (nonatomic, copy) NSString  *titleString;
 @property (nonatomic, copy) NSString  *boxId;
@@ -65,8 +65,6 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
   QuoteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"quoteCell" forIndexPath:indexPath];
-  [cell setDelegate:self];
-  [cell setIndexPath:indexPath];
   [cell setTitleString:self.dataArray[indexPath.section][@"rowArray"][indexPath.row][@"title"]];
   [cell setDetailString:self.dataArray[indexPath.section][@"rowArray"][indexPath.row][@"content"]];
   return cell;
@@ -75,9 +73,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
   
-//  QuoteCell *cell = (QuoteCell *)[tableView cellForRowAtIndexPath:indexPath];
-//  [cell.textField resignFirstResponder];
-  
+
   self.didSelectedIndexPath = indexPath;
   if (indexPath.section == 1) {
     if (indexPath.row == 7) {
@@ -91,7 +87,7 @@
                                         title:self.dataArray[indexPath.section][@"rowArray"][indexPath.row][@"title"]
                                   selectedRow:[self.dataArray[indexPath.section][@"rowArray"][indexPath.row][@"selectedRow"] integerValue]];
     } else {
-      
+      [self pushAlertViewWithIndexPath:indexPath];
     }
 
   }
@@ -109,19 +105,6 @@
     return 0;
   }
   return 60;
-}
-
-
-#pragma marks - quoteCell delegate
--(void)quoteCellTextFieldShouldBeginEditing:(NSIndexPath *)indexPath {
-  [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-}
-
--(void)quoteCellTextFieldShouldBeginEditing:(UITextField *)textField indexPath:(NSIndexPath *)indexPath {
-  
-  [self dataReplaceObjectWithRow:0 indexPath:indexPath content:textField.text];
-  [self.tableView reloadData];
-
 }
 
 #pragma marks - pickerView delegate
@@ -179,6 +162,43 @@
   [self.dataArray replaceObjectAtIndex:indexPath.section withObject:dic];
 }
 
+
+- (void)pushAlertViewWithIndexPath:(NSIndexPath *)indexPath {
+  
+  NSString *title;
+  switch (indexPath.row) {
+    case 8:
+      title = @"长度";
+      break;
+    case 9:
+      title = @"宽度";
+      break;
+    case 10:
+      title = @"高度";
+      break;
+      
+    default:
+      break;
+  }
+  
+  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
+  //增加取消按钮；
+  [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+  //定义第一个输入框；
+  [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+    textField.placeholder = [NSString stringWithFormat:@"输入%@(mm)",title];
+    [textField setKeyboardType:UIKeyboardTypeNumberPad];
+    //    [textField setText:weakSelf.products.productCount];
+  }];
+  //增加确定按钮；
+  [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    //获取第1个输入框；
+    UITextField *textField = alertController.textFields.firstObject;
+    [self dataReplaceObjectWithRow:0 indexPath:indexPath content:textField.text];
+    [self.tableView reloadData];
+  }]];
+  [self presentViewController:alertController animated:true completion:nil];
+}
 #pragma mark - getters
 -(NSArray *)dataArray {
   if (!_dataArray) {
