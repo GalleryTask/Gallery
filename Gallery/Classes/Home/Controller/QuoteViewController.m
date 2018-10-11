@@ -30,7 +30,6 @@
 @property (nonatomic, copy) NSString  *wavyStripId; // 波浪胶条
 @property (nonatomic, strong) UIView  *footerView;
 
-
 @end
 
 @implementation QuoteViewController
@@ -199,6 +198,12 @@
   }]];
   [self presentViewController:alertController animated:true completion:nil];
 }
+
+#pragma mark - 报价点击
+- (void)quoteBtnClick:(id)sender {
+  
+}
+
 #pragma mark - getters
 -(NSArray *)dataArray {
   if (!_dataArray) {
@@ -218,6 +223,16 @@
   if (!_footerView) {
     _footerView = [[UIView alloc] init];
     [_footerView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*100)];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitleColor:BASECOLOR_BLUE forState:UIControlStateNormal];
+    [button setBackgroundImage:[CommonUtil imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    [button setBackgroundImage:[CommonUtil imageWithColor:BASECOLOR_BACKGROUND_GRAY] forState:UIControlStateHighlighted];
+    [button setTitle:@"开始报价" forState:UIControlStateNormal];
+    [button setFrame:CGRectMake(0, 44, SCREEN_WIDTH, SCALE_SIZE*50)];
+    [button addTarget:self action:@selector(quoteBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [[button titleLabel] setFont:[UIFont boldSystemFontOfSize:SCALE_SIZE*18]];
+    [_footerView addSubview:button];
   }
   return _footerView;
 }
