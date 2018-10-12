@@ -66,6 +66,7 @@
     _detailLabel = [[UILabel alloc] init];
     [_detailLabel setTextColor:BASECOLOR_LIGHTBLACK];
     [_detailLabel setFont:FONTSIZE(14)];
+    [_detailLabel setTextAlignment:NSTextAlignmentRight];
     [self.contentView addSubview:_detailLabel];
   }
   return _detailLabel;
@@ -84,11 +85,13 @@
   
   [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
     make.left.equalTo(self).offset(SCALE_SIZE*20);
+    make.width.mas_equalTo(SCALE_SIZE*100);
     make.centerY.equalTo(self);
   }];
   
   [self.detailLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
     make.right.equalTo(self).offset(-SCALE_SIZE*20);
+    make.left.equalTo(self.titleLabel.mas_right);
     make.centerY.equalTo(self);
   }];
   
