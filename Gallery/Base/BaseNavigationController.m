@@ -154,6 +154,9 @@
     [_rightNavigationBtn setTitleColor:BASECOLOR_BLACK forState:UIControlStateNormal];
     [[_rightNavigationBtn titleLabel] setFont:FONTSIZE(14)];
   }
+  if (!self.myController) {
+    self.myController = [CommonUtil getCurrentVC];
+  }
   UIBarButtonItem *rightBtnItem = [[UIBarButtonItem alloc] initWithCustomView:_rightNavigationBtn];
   self.myController.navigationItem.rightBarButtonItem = rightBtnItem;
   return _rightNavigationBtn;

@@ -15,7 +15,7 @@
 
 - (id)initWithSceneName:(NSString *)sceneName frame:(CGRect)frame;
 
-- (void)sceneViewSetMaterialWithImage:(UIImage *)image;
+- (void)sceneViewReflectiveImage:(UIImage *)image;
 
 - (void)sceneViewDiffuseImage:(UIImage *)image;
 

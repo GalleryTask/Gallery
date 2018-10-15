@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "QuoteViewController.h"
 #import "SceneView.h"
+#import "UploadImageObject.h"
 
 @interface HomeViewController ()
 
@@ -22,10 +23,61 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   self.navigationItem.title = @"报价";
-  [self.view addSubview:self.scrollView];
+  BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
+  [nav setNavigationBarRightItemWithButtonTitle:@"上传图片"];
+  [nav showRightNavBtnWithClick:^(id sender) {
+    [self uploadImage];
+  }];
+  
+  [self createSceneView];
 }
 
-- (void)btnClick:(id)sender  {
+- (void)createSceneView {
+  for (int i = 0; i < self.boxList.count; i++) {
+    
+    // 创建3D展示view
+    SceneView *sceneView = [[SceneView alloc] initWithSceneName:@"art.scnassets/nbox3gai"
+                                                          frame:CGRectMake((SCREEN_WIDTH-30)*i+10, SCALE_SIZE*70, SCREEN_WIDTH-40, SCREEN_WIDTH-40)];
+    [self.scrollView addSubview:sceneView];
+    
+    if (i == 1) {
+      [sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"180X180"]];
+      [sceneView sceneViewReflectiveImage:[UIImage imageNamed:@"180X180"]];
+    } else {
+      if (i == 0) {
+        
+      } else {
+        [sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"180X180"]];
+      }
+    }
+    
+    // 添加点击手势
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(btnClick:)];
+    [sceneView addGestureRecognizer:tap];
+    
+    UIView *tapView = [tap view];
+    [tapView setTag:(100 + i)];
+    
+    UILabel *titleLabel = [[UILabel alloc] init];
+    [titleLabel setText:self.boxList[i][@"boxTitle"]];
+    [_scrollView addSubview:titleLabel];
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.centerX.equalTo(sceneView);
+      make.top.mas_equalTo(sceneView.mas_bottom).offset(SCALE_SIZE*20);
+    }];
+  }
+}
+
+- (void)uploadImage {
+  UploadImageObject *upload = [[UploadImageObject alloc] init];
+  [upload uploadImageWithController:self Block:^(UIImage *image) {
+    SceneView *sceneView = [self.scrollView viewWithTag:100];
+    [sceneView sceneViewDiffuseImage:image];
+    [sceneView sceneViewReflectiveImage:image];
+  }];
+}
+
+- (void)btnClick:(id)sender {
   
   UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
   QuoteViewController *vc = [[QuoteViewController alloc] init];
@@ -40,40 +92,8 @@
     _scrollView = [[UIScrollView alloc] init];
     [_scrollView setFrame:self.view.frame];
     [_scrollView setContentSize:CGSizeMake((SCREEN_WIDTH-40)*12 + 130, 0)];
+    [self.view addSubview:_scrollView];
     
-    for (int i = 0; i < self.boxList.count; i++) {
-     
-      SceneView *sceneView = [[SceneView alloc] initWithSceneName:@"art.scnassets/nbox3gai"
-                                                            frame:CGRectMake((SCREEN_WIDTH-30)*i+10, SCALE_SIZE*70, SCREEN_WIDTH-40, SCREEN_WIDTH-40)];
-//      sceneView.scnView.tag = 200 + i;
-      [_scrollView addSubview:sceneView];
-      
-      if (i == 1) {
-        [sceneView sceneViewSetMaterialWithImage:[UIImage imageNamed:@"180X180"]];
-        [sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"180X180"]];
-      } else {
-        [sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"message"]];
-      }
-      
-      if (i == 2) {
-        [sceneView sceneViewSetMaterialWithImage:[UIImage imageNamed:@"message"]];
-      }
-      
-      
-      UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(btnClick:)];
-      [sceneView addGestureRecognizer:tap];
-      
-      UIView *tapView = [tap view];
-      [tapView setTag:(100+i)];
-      
-      UILabel *titleLabel = [[UILabel alloc] init];
-      [titleLabel setText:self.boxList[i][@"boxTitle"]];
-      [_scrollView addSubview:titleLabel];
-      [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(sceneView);
-        make.top.mas_equalTo(sceneView.mas_bottom).offset(SCALE_SIZE*20);
-      }];
-    }
   }
   return _scrollView;
 }

@@ -28,14 +28,20 @@
 }
 
 // 设置反光效果
--(void)sceneViewSetMaterialWithImage:(UIImage *)image {
+-(void)sceneViewReflectiveImage:(UIImage *)image {
   self.material.fresnelExponent = 1.7;
   self.material.reflective.contents = image;
+  for (SCNNode *aNode in self.scene.rootNode.childNodes) {
+    [aNode.geometry setMaterials:@[self.material]];
+  }
 }
 
 // 设置贴图图片
 - (void)sceneViewDiffuseImage:(UIImage *)image {
   self.material.diffuse.contents = image;
+  for (SCNNode *aNode in self.scene.rootNode.childNodes) {
+    [aNode.geometry setMaterials:@[self.material]];
+  }
 }
 
 #pragma mark - 创建3D模型场景
@@ -58,9 +64,7 @@
   // 创建展示场景
   [self addSubview:self.scnView];
 
-  for (SCNNode *aNode in self.scene.rootNode.childNodes) {
-    [aNode.geometry setMaterials:@[self.material]];
-  }
+  
 }
 
 // 创建展示场景
