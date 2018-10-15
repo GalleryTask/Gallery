@@ -7,11 +7,13 @@
 //
 
 #import "SceneView.h"
-#import <SceneKit/SceneKit.h>
+
 
 @interface SceneView()
 
 @property (nonatomic, strong) SCNNode  *spotNode;  // 灯光节点
+@property (nonatomic, strong) SCNScene  *scene;
+@property (nonatomic, strong) SCNMaterial  *material;
 
 @end
 
@@ -25,47 +27,69 @@
   return self;
 }
 
+// 设置反光效果
+-(void)sceneViewSetMaterialWithImage:(UIImage *)image {
+  self.material.fresnelExponent = 1.7;
+  self.material.reflective.contents = image;
+}
+
+// 设置贴图图片
+- (void)sceneViewDiffuseImage:(UIImage *)image {
+  self.material.diffuse.contents = image;
+}
+
 #pragma mark - 创建3D模型场景
 - (void)createSceneViewWithSceneName:(NSString *)sceneName {
   
   // 初始化场景
-  SCNScene *scene = [SCNScene sceneNamed:sceneName];
+  self.scene = [SCNScene sceneNamed:sceneName];
   
   SCNNode *cameraNode = [SCNNode node];
   cameraNode.camera = [SCNCamera camera];
   cameraNode.camera.automaticallyAdjustsZRange = true;
 //  cameraNode.camera.zFar = 400;//视距
-  [scene.rootNode addChildNode:cameraNode];
   cameraNode.position = SCNVector3Make(0, 10, 50);
+  [self.scene.rootNode addChildNode:cameraNode];
   
   // 创建灯光
-  [scene.rootNode addChildNode:self.spotNode];
+  [self.scene.rootNode addChildNode:self.spotNode];
   
-  // 材质
-  SCNMaterial *material = [SCNMaterial new];
-  material.diffuse.contents = [UIImage imageNamed:@"180X180"];
-  material.lightingModelName = SCNLightingModelLambert;
   
-  for (SCNNode *aNode in scene.rootNode.childNodes) {
-    [aNode.geometry setMaterials:@[material]];
-  }
-
   // 创建展示场景
-  SCNView *scnView = [[SCNView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-  [self addSubview:scnView];
-  
-  // 设置场景
-  scnView.scene = scene;
-  // 设置背景颜色
-  scnView.backgroundColor = [UIColor hexStringToColor:@"#F5F5F5"];
-  // 允许控制摄像机位置
-  scnView.allowsCameraControl = YES;
-  // 不显示数据控制台
-  scnView.showsStatistics = NO;
-  
+  [self addSubview:self.scnView];
+
+  for (SCNNode *aNode in self.scene.rootNode.childNodes) {
+    [aNode.geometry setMaterials:@[self.material]];
+  }
 }
 
+// 创建展示场景
+-(SCNView *)scnView {
+  if (!_scnView) {
+    // 创建展示场景
+    _scnView = [[SCNView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    // 设置场景
+    _scnView.scene = self.scene;
+    // 设置背景颜色
+    _scnView.backgroundColor = [UIColor hexStringToColor:@"#F5F5F5"];
+    // 允许控制摄像机位置
+    _scnView.allowsCameraControl = YES;
+    // 不显示数据控制台
+    _scnView.showsStatistics = NO;
+  }
+  return _scnView;
+}
 
+// 设置材质
+-(SCNMaterial *)material {
+  if (!_material) {
+    _material = [SCNMaterial new];
+    _material.lightingModelName = SCNLightingModelLambert;
+  }
+  return _material;
+}
+
+// 创建灯光
 - (SCNNode *)spotNode{
   if (!_spotNode) {
     SCNLight *spotLight = [SCNLight light];// 创建光对象

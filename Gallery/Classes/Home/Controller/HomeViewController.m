@@ -45,7 +45,20 @@
      
       SceneView *sceneView = [[SceneView alloc] initWithSceneName:@"art.scnassets/nbox3gai"
                                                             frame:CGRectMake((SCREEN_WIDTH-30)*i+10, SCALE_SIZE*70, SCREEN_WIDTH-40, SCREEN_WIDTH-40)];
+//      sceneView.scnView.tag = 200 + i;
       [_scrollView addSubview:sceneView];
+      
+      if (i == 1) {
+        [sceneView sceneViewSetMaterialWithImage:[UIImage imageNamed:@"180X180"]];
+        [sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"180X180"]];
+      } else {
+        [sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"message"]];
+      }
+      
+      if (i == 2) {
+        [sceneView sceneViewSetMaterialWithImage:[UIImage imageNamed:@"message"]];
+      }
+      
       
       UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(btnClick:)];
       [sceneView addGestureRecognizer:tap];

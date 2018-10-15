@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SceneKit/SceneKit.h>
 
 @interface SceneView : UIView
 
+@property (nonatomic, strong) SCNView *scnView;
+
 - (id)initWithSceneName:(NSString *)sceneName frame:(CGRect)frame;
+
+- (void)sceneViewSetMaterialWithImage:(UIImage *)image;
+
+- (void)sceneViewDiffuseImage:(UIImage *)image;
 
 @end
