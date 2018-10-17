@@ -108,7 +108,10 @@
         NSString *str = self.dataArray[indexPath.row][@"name"];
         self.selectedTitle = [self.selectedTitle stringByAppendingString:[NSString stringWithFormat:@"%@、",str]];
       }
-      self.selectedTitle = [self.selectedTitle stringByReplacingCharactersInRange:NSMakeRange(self.selectedTitle.length-1, 1) withString:@""];
+      if (self.selectedTitle.length > 1) {
+        
+        self.selectedTitle = [self.selectedTitle stringByReplacingCharactersInRange:NSMakeRange(self.selectedTitle.length-1, 1) withString:@""];
+      }
     }
     if (_delegate && [_delegate respondsToSelector:@selector(pickerViewWithSelectedRow:selectedTitle:selectedId:)]) {
       [_delegate pickerViewWithSelectedRow:self.row selectedTitle:self.selectedTitle selectedId:self.selectedId];

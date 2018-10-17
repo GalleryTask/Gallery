@@ -42,6 +42,7 @@
   [self.tableView registerClass:[QuoteCell class] forCellReuseIdentifier:@"quoteCell"];
   [self.tableView setSectionHeaderHeight:44];
   [self.tableView setTableFooterView:self.footerView];
+  
 }
 
 

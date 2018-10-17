@@ -7,11 +7,12 @@
 //
 
 #import "SceneView.h"
-
+#import <SceneKit/SceneKit.h>
 
 @interface SceneView()
 
-@property (nonatomic, strong) SCNNode  *spotNode;  // 灯光节点
+@property (nonatomic, strong) SCNView     *scnView;
+@property (nonatomic, strong) SCNNode   *spotNode;  // 灯光节点
 @property (nonatomic, strong) SCNScene  *scene;
 @property (nonatomic, strong) SCNMaterial  *material;
 
@@ -53,18 +54,14 @@
   SCNNode *cameraNode = [SCNNode node];
   cameraNode.camera = [SCNCamera camera];
   cameraNode.camera.automaticallyAdjustsZRange = true;
-//  cameraNode.camera.zFar = 400;//视距
   cameraNode.position = SCNVector3Make(0, 10, 50);
   [self.scene.rootNode addChildNode:cameraNode];
   
   // 创建灯光
   [self.scene.rootNode addChildNode:self.spotNode];
   
-  
   // 创建展示场景
   [self addSubview:self.scnView];
-
-  
 }
 
 // 创建展示场景
