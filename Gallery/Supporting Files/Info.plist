@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
 	<string>一撕得报价</string>
 	<key>CFBundleExecutable</key>
@@ -41,5 +41,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>需要您的同意才能打开相机</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>需要您的同意才能读取媒体资料库</string>
 </dict>
 </plist>
