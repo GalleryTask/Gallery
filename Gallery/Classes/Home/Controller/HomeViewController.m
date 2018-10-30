@@ -7,7 +7,6 @@
 //
 
 #import "HomeViewController.h"
-#import "QuoteViewController.h"
 #import "SceneView.h"
 #import "UploadImageObject.h"
 
@@ -30,6 +29,7 @@
   }];
   
   [self createSceneView];
+  
 }
 
 - (void)createSceneView {
@@ -79,11 +79,11 @@
 
 - (void)btnClick:(id)sender {
   
-  UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
-  QuoteViewController *vc = [[QuoteViewController alloc] init];
-  [vc setValue:self.boxList[[tap view].tag-100][@"boxTitle"] forKey:@"titleString"];
-  [vc setValue:self.boxList[[tap view].tag-100][@"boxId"] forKey:@"boxId"];
-  [self.navigationController pushViewController:vc animated:YES];
+//  UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
+//  QuoteViewController *vc = [[QuoteViewController alloc] init];
+//  [vc setValue:self.boxList[[tap view].tag-100][@"boxTitle"] forKey:@"titleString"];
+//  [vc setValue:self.boxList[[tap view].tag-100][@"boxId"] forKey:@"boxId"];
+//  [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma marks - getters
