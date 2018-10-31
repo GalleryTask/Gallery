@@ -22,7 +22,7 @@
 
 @implementation SceneView
 
-- (id)initWithSceneName:(NSString *)sceneName frame:(CGRect)frame {
+- (id)initWithSceneName:(NSURL *)sceneName frame:(CGRect)frame {
   if (self = [super init]) {
     [self setFrame:frame];
     [self createSceneViewWithSceneName:sceneName];
@@ -80,11 +80,11 @@
 }
 
 #pragma mark - 创建3D模型场景
-- (void)createSceneViewWithSceneName:(NSString *)sceneName {
+- (void)createSceneViewWithSceneName:(NSURL *)sceneName {
   
   // 初始化场景
-  self.scene = [SCNScene sceneNamed:sceneName];
-  
+ // self.scene = [SCNScene sceneNamed:sceneName];
+   self.scene = [SCNScene sceneWithURL:sceneName options:nil error:nil];
   SCNNode *cameraNode = [SCNNode node];
   cameraNode.camera = [SCNCamera camera];
   cameraNode.camera.automaticallyAdjustsZRange = true;
