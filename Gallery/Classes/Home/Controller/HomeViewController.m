@@ -37,29 +37,25 @@
     [addBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [addBtn setTitle:@"加" forState:UIControlStateNormal];
     [addBtn addTarget:self action:@selector(addBtn) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:addBtn];
+    [self.scrollView addSubview:addBtn];
+  
     
     UIButton *deleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [deleBtn setFrame:CGRectMake(250, 600, 100, 50)];
     [deleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [deleBtn setTitle:@"减" forState:UIControlStateNormal];
     [deleBtn addTarget:self action:@selector(deleBtn) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:deleBtn];
+    [self.scrollView addSubview:deleBtn];
 }
 
 - (void)addBtn {
-    
-    SceneView *sceneView = [self.scrollView viewWithTag:100];
-    [sceneView addNode];
-    
+  SceneView *sceneView = [self.scrollView viewWithTag:100];
+  [sceneView addNode];
 }
 
 - (void)deleBtn {
-    
-    
-    SceneView *sceneView = [self.scrollView viewWithTag:100];
-    [sceneView removeNode];
-    
+  SceneView *sceneView = [self.scrollView viewWithTag:100];
+  [sceneView removeNode];
 }
 
 - (void)downloadZip {
@@ -67,7 +63,7 @@
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     //这里我们用本地链接替代一下，可以使用任意url链接
-    NSURL *URL = [NSURL URLWithString:@"file:///Users/admin/Desktop/model.scnassets.zip"];
+    NSURL *URL = [NSURL URLWithString:@"file:///Users/andong/Desktop/model.scnassets.zip"];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     
     NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
