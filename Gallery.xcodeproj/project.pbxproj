@@ -11,13 +11,11 @@
 		760E94692151ED9B00592929 /* DataList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 760E94682151ED9B00592929 /* DataList.plist */; };
 		760E94732151F0D100592929 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E94722151F0D100592929 /* HomeViewController.m */; };
 		760E94762151F0DB00592929 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E94752151F0DB00592929 /* MeViewController.m */; };
-		7610D6E121884BAA002514EC /* nbox3gai.dae in Resources */ = {isa = PBXBuildFile; fileRef = 7610D6E021884BAA002514EC /* nbox3gai.dae */; };
 		761AF2D4215E0AB200F596D3 /* ResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 761AF2D3215E0AB200F596D3 /* ResultModel.m */; };
 		761AF2DC215E0B2700F596D3 /* YJToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 761AF2D6215E0B2700F596D3 /* YJToolBar.m */; };
 		761AF2DD215E0B2700F596D3 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 761AF2D7215E0B2700F596D3 /* UIView+Frame.m */; };
 		761AF2DE215E0B2700F596D3 /* YJLocationPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 761AF2D8215E0B2700F596D3 /* YJLocationPicker.m */; };
 		7627E55921898D9E00C7A5A3 /* nbox3gai.dae in Resources */ = {isa = PBXBuildFile; fileRef = 7627E55821898D9E00C7A5A3 /* nbox3gai.dae */; };
-		7627E55B218996EA00C7A5A3 /* cowboy.dae in Resources */ = {isa = PBXBuildFile; fileRef = 7627E55A218996EA00C7A5A3 /* cowboy.dae */; };
 		7655CC792150F27E00D206C2 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7655CC742150F27C00D206C2 /* TabBarController.m */; };
 		7655CC7A2150F27E00D206C2 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7655CC762150F27D00D206C2 /* BaseNavigationController.m */; };
 		7655CC872150F81600D206C2 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7655CC862150F81600D206C2 /* BaseViewController.m */; };
@@ -66,7 +64,6 @@
 		760E94722151F0D100592929 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		760E94742151F0DB00592929 /* MeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		760E94752151F0DB00592929 /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
-		7610D6E021884BAA002514EC /* nbox3gai.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = nbox3gai.dae; sourceTree = "<group>"; };
 		761AF2D2215E0AB200F596D3 /* ResultModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultModel.h; sourceTree = "<group>"; };
 		761AF2D3215E0AB200F596D3 /* ResultModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultModel.m; sourceTree = "<group>"; };
 		761AF2D6215E0B2700F596D3 /* YJToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJToolBar.m; sourceTree = "<group>"; };
@@ -76,7 +73,6 @@
 		761AF2DA215E0B2700F596D3 /* YJLocationPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJLocationPicker.h; sourceTree = "<group>"; };
 		761AF2DB215E0B2700F596D3 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		7627E55821898D9E00C7A5A3 /* nbox3gai.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = nbox3gai.dae; sourceTree = "<group>"; };
-		7627E55A218996EA00C7A5A3 /* cowboy.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = cowboy.dae; sourceTree = "<group>"; };
 		7655CC732150F27300D206C2 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		7655CC742150F27C00D206C2 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		7655CC752150F27D00D206C2 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
@@ -193,7 +189,6 @@
 		760E946C2151F09600592929 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7610D6E021884BAA002514EC /* nbox3gai.dae */,
 				760E94712151F0D100592929 /* HomeViewController.h */,
 				760E94722151F0D100592929 /* HomeViewController.m */,
 			);
@@ -422,7 +417,6 @@
 			children = (
 				76EE836B216B4B5000D317FF /* SceneView.h */,
 				76EE836C216B4B5000D317FF /* SceneView.m */,
-				7627E55A218996EA00C7A5A3 /* cowboy.dae */,
 				7627E55821898D9E00C7A5A3 /* nbox3gai.dae */,
 			);
 			path = SceneView;
@@ -544,10 +538,8 @@
 			files = (
 				76605E132101B6EE00115FA6 /* LaunchScreen.storyboard in Resources */,
 				7655CC922150F92A00D206C2 /* Assets.xcassets in Resources */,
-				7610D6E121884BAA002514EC /* nbox3gai.dae in Resources */,
 				7627E55921898D9E00C7A5A3 /* nbox3gai.dae in Resources */,
 				760E94692151ED9B00592929 /* DataList.plist in Resources */,
-				7627E55B218996EA00C7A5A3 /* cowboy.dae in Resources */,
 				76605E0E2101B6ED00115FA6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

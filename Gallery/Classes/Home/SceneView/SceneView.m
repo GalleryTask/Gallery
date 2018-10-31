@@ -16,7 +16,7 @@
 @property (nonatomic, strong) SCNScene  *scene;
 @property (nonatomic, strong) SCNMaterial  *material;
 
-@property (nonatomic, strong) SCNNode   *ggNode;  // 灯光节点
+@property (nonatomic, strong) SCNNode   *ggNode;  // 
 
 @end
 
@@ -42,15 +42,32 @@
 }
 
 - (void)removeNode {
-  //  [shirtNode.geometry setMaterials:@[self.material]];
-  [UIView animateWithDuration:0.5 animations:^{
+
+  if ([self.scene.rootNode.childNodes containsObject:self.ggNode]) {
     
-    [self.ggNode removeFromParentNode];
-  }];
+    SCNAnimationEvent *event = [SCNAnimationEvent animationEventWithKeyTime:0.5 block:^(id<SCNAnimation>  _Nonnull animation, id  _Nonnull animatedObject, BOOL playingBackward) {
+      
+      [self.ggNode removeAllAnimations];
+      [self.ggNode removeFromParentNode];
+    }];
+    
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.y"];
+    animation.duration = 1;
+    animation.fromValue = @"0";
+    animation.toValue = @"200";
+    animation.animationEvents = @[event];
+    animation.repeatCount = 0;
+    animation.fillMode=kCAFillModeForwards;
+    animation.removedOnCompletion = NO;
+    
+    [self.ggNode addAnimation:animation forKey:nil];
+  }
 }
 
 - (void)addNode {
-  [self.scene.rootNode addChildNode:self.ggNode];
+
+   [self.scene.rootNode addChildNode:self.ggNode];
+
 }
 
 -(SCNNode *)ggNode {
@@ -64,16 +81,7 @@
 // 设置贴图图片
 - (void)sceneViewDiffuseImage:(UIImage *)image {
   self.material.diffuse.contents = image;
-  
-//  SCNNode *shirtNode = [self.scene.rootNode childNodeWithName:@"_" recursively:YES];
-//  [shirtNode.geometry setMaterials:@[self.material]];
-  
-//  [shirtNode removeFromParentNode];
-  
-//  SCNNode *sNode = [self.scene.rootNode childNodeWithName:@"___2" recursively:YES];
-//  [sNode.geometry setMaterials:@[self.material]];
-  
-//  shirtNode.geometry.firstMaterial.diffuse.contents =image;
+
   for (SCNNode *aNode in self.scene.rootNode.childNodes) {
     [aNode.geometry setMaterials:@[self.material]];
   }
