@@ -11,7 +11,7 @@
 @interface SceneView : UIView
 
 
-- (id)initWithSceneName:(NSString *)sceneName frame:(CGRect)frame;
+- (id)initWithSceneName:(NSURL *)sceneName frame:(CGRect)frame;
 
 - (void)sceneViewReflectiveImage:(UIImage *)image;
 
