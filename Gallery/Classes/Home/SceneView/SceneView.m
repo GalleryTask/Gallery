@@ -16,6 +16,8 @@
 @property (nonatomic, strong) SCNScene  *scene;
 @property (nonatomic, strong) SCNMaterial  *material;
 
+@property (nonatomic, strong) SCNNode   *ggNode;  // 灯光节点
+
 @end
 
 @implementation SceneView
@@ -32,14 +34,46 @@
 -(void)sceneViewReflectiveImage:(UIImage *)image {
   self.material.fresnelExponent = 1.7;
   self.material.reflective.contents = image;
+
   for (SCNNode *aNode in self.scene.rootNode.childNodes) {
     [aNode.geometry setMaterials:@[self.material]];
   }
+  
+}
+
+- (void)removeNode {
+  //  [shirtNode.geometry setMaterials:@[self.material]];
+  [UIView animateWithDuration:0.5 animations:^{
+    
+    [self.ggNode removeFromParentNode];
+  }];
+}
+
+- (void)addNode {
+  [self.scene.rootNode addChildNode:self.ggNode];
+}
+
+-(SCNNode *)ggNode {
+  if (!_ggNode) {
+    self.ggNode = [self.scene.rootNode childNodeWithName:@"_" recursively:YES];
+    
+  }
+  return _ggNode;
 }
 
 // 设置贴图图片
 - (void)sceneViewDiffuseImage:(UIImage *)image {
   self.material.diffuse.contents = image;
+  
+//  SCNNode *shirtNode = [self.scene.rootNode childNodeWithName:@"_" recursively:YES];
+//  [shirtNode.geometry setMaterials:@[self.material]];
+  
+//  [shirtNode removeFromParentNode];
+  
+//  SCNNode *sNode = [self.scene.rootNode childNodeWithName:@"___2" recursively:YES];
+//  [sNode.geometry setMaterials:@[self.material]];
+  
+//  shirtNode.geometry.firstMaterial.diffuse.contents =image;
   for (SCNNode *aNode in self.scene.rootNode.childNodes) {
     [aNode.geometry setMaterials:@[self.material]];
   }

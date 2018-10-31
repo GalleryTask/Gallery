@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "SceneView.h"
 #import "UploadImageObject.h"
+#import "AFNetworking.h"
 
 @interface HomeViewController ()
 
@@ -28,16 +29,71 @@
     [self uploadImage];
   }];
   
+  
   [self createSceneView];
   
+  UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+  [addBtn setFrame:CGRectMake(50, 600, 100, 50)];
+  [addBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+  [addBtn setTitle:@"加" forState:UIControlStateNormal];
+  [addBtn addTarget:self action:@selector(addBtn) forControlEvents:UIControlEventTouchUpInside];
+  [self.view addSubview:addBtn];
+  
+  UIButton *deleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+  [deleBtn setFrame:CGRectMake(250, 600, 100, 50)];
+  [deleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+  [deleBtn setTitle:@"减" forState:UIControlStateNormal];
+  [deleBtn addTarget:self action:@selector(deleBtn) forControlEvents:UIControlEventTouchUpInside];
+  [self.view addSubview:deleBtn];
+}
+
+- (void)addBtn {
+
+    SceneView *sceneView = [self.scrollView viewWithTag:100];
+    [sceneView addNode];
+    
+}
+
+- (void)deleBtn {
+
+    
+    SceneView *sceneView = [self.scrollView viewWithTag:100];
+    [sceneView removeNode];
+
+}
+
+- (void)downloadZip {
+  
+  NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+  AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+  //这里我们用本地链接替代一下，可以使用任意url链接
+  NSURL *URL = [NSURL URLWithString:@"file:///User/andong/Desktop/model.scnassets"];
+  NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+  
+  NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+    
+    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+    return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+    
+  } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+    NSLog(@"File downloaded to: %@", filePath);
+    
+    [self createSceneView];
+  }];
+  [downloadTask resume];
 }
 
 - (void)createSceneView {
+  
+//  NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+//  // 这里的dae文件名字是我们导出时定义的文件名，下面一段代码中加载的SCNNode是我们之前在面板中改过的模型名
+//  documentsDirectoryURL = [documentsDirectoryURL URLByAppendingPathComponent:@"model.scnassets/nbox3gai"];
   for (int i = 0; i < self.boxList.count; i++) {
     
     // 创建3D展示view
-    SceneView *sceneView = [[SceneView alloc] initWithSceneName:@"art.scnassets/nbox3gai"
+    SceneView *sceneView = [[SceneView alloc] initWithSceneName:@"nbox3gai"
                                                           frame:CGRectMake((SCREEN_WIDTH-30)*i+10, SCALE_SIZE*70, SCREEN_WIDTH-40, SCREEN_WIDTH-40)];
+    sceneView.tag = 100;
     [self.scrollView addSubview:sceneView];
     
     if (i == 1) {

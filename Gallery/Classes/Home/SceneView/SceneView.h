@@ -17,4 +17,7 @@
 
 - (void)sceneViewDiffuseImage:(UIImage *)image;
 
+- (void)removeNode;
+
+- (void)addNode;
 @end
