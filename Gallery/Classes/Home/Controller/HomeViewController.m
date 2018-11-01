@@ -28,12 +28,10 @@
     [nav showRightNavBtnWithClick:^(id sender) {
         [self uploadImage];
     }];
-    
-    
-    //[self createSceneView];
+  
     [self downloadZip];
     UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [addBtn setFrame:CGRectMake(50, 600, 100, 50)];
+    [addBtn setFrame:CGRectMake(50, 500*SCALE_SIZE, 100, 50)];
     [addBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [addBtn setTitle:@"加" forState:UIControlStateNormal];
     [addBtn addTarget:self action:@selector(addBtn) forControlEvents:UIControlEventTouchUpInside];
@@ -41,7 +39,7 @@
   
     
     UIButton *deleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [deleBtn setFrame:CGRectMake(250, 600, 100, 50)];
+    [deleBtn setFrame:CGRectMake(250, 500*SCALE_SIZE, 100, 50)];
     [deleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [deleBtn setTitle:@"减" forState:UIControlStateNormal];
     [deleBtn addTarget:self action:@selector(deleBtn) forControlEvents:UIControlEventTouchUpInside];

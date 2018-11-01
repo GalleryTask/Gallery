@@ -54,7 +54,7 @@
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.y"];
     animation.duration = 1;
     animation.fromValue = @"0";
-    animation.toValue = @"200";
+    animation.toValue = @"100";
     animation.animationEvents = @[event];
     animation.repeatCount = 0;
     animation.fillMode=kCAFillModeForwards;
@@ -66,8 +66,20 @@
 
 - (void)addNode {
 
-   [self.scene.rootNode addChildNode:self.ggNode];
-
+  if (![self.scene.rootNode.childNodes containsObject:self.ggNode]) {
+  SCNAnimationEvent *event = [SCNAnimationEvent animationEventWithKeyTime:0.5 block:^(id<SCNAnimation>  _Nonnull animation, id  _Nonnull animatedObject, BOOL playingBackward) {
+  }];
+  
+  CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.y"];
+  animation.duration = 0.5;
+  animation.fromValue = @"100";
+  animation.toValue = @"0";
+  animation.animationEvents = @[event];
+  animation.repeatCount = 0;
+  
+  [self.scene.rootNode addChildNode:self.ggNode];
+  [self.ggNode addAnimation:animation forKey:nil];
+  }
 }
 
 -(SCNNode *)ggNode {
