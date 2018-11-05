@@ -65,6 +65,12 @@
   }];
 }
 
+- (void)netRequestWithDownloadFileWithURLString:(NSString *)URLString successBlock:(successReturnBlock)block {
+  [NetRequestClass netRequestDownloadFileWithURLString:URLString successHandle:^(NSURLSessionTask *task, id response) {
+    block(nil);
+  }];
+}
+
 #pragma mark - 网络请求成功返回
 - (void)successWithResponse:(id)responseObject block:(ReturnValueBlock)block {
   NSData *data = responseObject;

@@ -74,7 +74,7 @@ static CGFloat const PickerViewHeight = 240;
 //  } else {
   
     @weakify(self);
-    [self.dataRequest getAreaTree];
+//    [self.dataRequest getAreaTree];
     [self.dataRequest setBlockWithReturnBlock:^(id returnValue) {
       @strongify(self);
 //      [[UserInfoSingleton shareData] setAreaInfoArray:returnValue];

@@ -97,4 +97,13 @@ typedef enum : NSUInteger {
                            successHandle:(RequestManagerSuccessHandle)successHandle
                            failureHandle:(RequestManagerFailureHandle)failureHandle
                            progressBlock:(RequestManagerProgressHandle)progressHandle;
+
+
+/**
+ 下载文件
+
+ @param URLString 请求地址
+ @param successHandle 正确回调
+ */
++ (void)netRequestDownloadFileWithURLString:(NSString *)URLString successHandle:(RequestManagerSuccessHandle)successHandle;
 @end

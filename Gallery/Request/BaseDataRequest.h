@@ -34,6 +34,8 @@ typedef void (^successReturnBlock)(id returnValue);
                                       name:(NSString *)name
                                imagesArray:(NSArray *)images
                               successBlock:(successReturnBlock)block;
+
+- (void)netRequestWithDownloadFileWithURLString:(NSString *)URLString successBlock:(successReturnBlock)block;
 // 传入交互的Block块
 -(void)setBlockWithReturnBlock:(ReturnValueBlock)returnBlock
                 WithErrorBlock:(ErrorCodeBlock)errorBlock

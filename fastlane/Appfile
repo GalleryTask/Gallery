@@ -1,0 +1,10 @@
+app_identifier("com.Gallery") # The bundle identifier of your app
+apple_id("ysddeveloper@yiside.com") # Your Apple email address
+
+itc_team_id("118633342") # App Store Connect Team ID
+team_id("339DUDKSZG") # Developer Portal Team ID
+itc_team_id("118633342") # App Store Connect Team ID
+team_id("339DUDKSZG") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile

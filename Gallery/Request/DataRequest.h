@@ -10,9 +10,6 @@
 
 @interface DataRequest : BaseDataRequest
 
-/**
- 获取省市区信息
- */
-- (void)getAreaTree;
+- (void)downloadFile;
 
 @end

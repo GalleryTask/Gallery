@@ -29,7 +29,8 @@
         [self uploadImage];
     }];
   
-    [self downloadZip];
+//    [self downloadZip];
+  [self createSceneView];
     UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [addBtn setFrame:CGRectMake(50, 500*SCALE_SIZE, 100, 50)];
     [addBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -57,42 +58,17 @@
 }
 
 - (void)downloadZip {
-    
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-    //这里我们用本地链接替代一下，可以使用任意url链接
-    NSURL *URL = [NSURL URLWithString:@"file:///Users/andong/Desktop/model.scnassets.zip"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-    
-    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
-        
-        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-        return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
-        
-    } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-        NSLog(@"File downloaded to: %@", filePath);
-        NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        NSString *inputPath = [documentsDirectory stringByAppendingPathComponent:@"/model.scnassets.zip"];
-        
-        NSError *zipError = nil;
-        
-        [SSZipArchive unzipFileAtPath:inputPath toDestination:documentsDirectory overwrite:YES password:nil error:&zipError];
-        
-        if( zipError ){
-            NSLog(@"[GameVC] Something went wrong while unzipping: %@", zipError.debugDescription);
-        }else {
-            NSLog(@"[GameVC] Archive unzipped successfully");
-            [self  clearFlie:inputPath];
-            [self createSceneView];
-        }
-        
-    }];
-    [downloadTask resume];
-}
--(void)clearFlie:(NSString *)filePath{
-    NSError * error = nil ;
-    [[NSFileManager defaultManager ] removeItemAtPath :filePath error :&error];
+  
+  [self.dataRequest downloadFile];
+  @weakify(self);
+  [self.dataRequest setBlockWithReturnBlock:^(id returnValue) {
+    @strongify(self);
+    [self createSceneView];
+  } WithErrorBlock:^(id errorCode) {
+
+  } WithFailureBlock:^{
+
+  }];
 }
 
 - (void)createSceneView {
@@ -103,7 +79,7 @@
     for (int i = 0; i < self.boxList.count; i++) {
         
         // 创建3D展示view
-        SceneView *sceneView = [[SceneView alloc] initWithSceneName:documentsDirectoryURL
+        SceneView *sceneView = [[SceneView alloc] initWithSceneName:@"nbox3gai"
                                                               frame:CGRectMake((SCREEN_WIDTH-30)*i+10, SCALE_SIZE*70, SCREEN_WIDTH-40, SCREEN_WIDTH-40)];
         sceneView.tag = 100;
         [self.scrollView addSubview:sceneView];
