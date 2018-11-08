@@ -2,8 +2,8 @@
 //  HomeViewController.h
 //  Gallery
 //
-//  Created by 安东 on 2018/9/19.
-//  Copyright © 2018年 安东. All rights reserved.
+//  Created by 安东 on 08/11/2018.
+//  Copyright © 2018 安东. All rights reserved.
 //
 
 #import "BaseViewController.h"
