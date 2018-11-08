@@ -59,7 +59,7 @@
         _titleLabel = [[UILabel alloc] init];
         [_titleLabel setTextColor:BASECOLOR_BLACK_030];
         [_titleLabel setFont:FONTSIZE(13)];
-       // [_titleLabel setTextAlignment:(NSTextAlignmentCenter)];
+        [_titleLabel setTextAlignment:(NSTextAlignmentCenter)];
         [_titleLabel setText:@"精品彩盒方案一精品彩盒方案一"];
         [self.contentView addSubview:_titleLabel];
     }
