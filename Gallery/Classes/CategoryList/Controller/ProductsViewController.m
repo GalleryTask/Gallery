@@ -26,7 +26,7 @@ static NSString *cellIdentList = @"listCell";
 
 #pragma maek -UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((SCREEN_WIDTH*0.8-(SCALE_SIZE*10))/2, ((SCREEN_WIDTH*0.8-(SCALE_SIZE*10))/2-SCALE_SIZE*10) /124 *100 + SCALE_SIZE * 40);
+    return CGSizeMake((self.view.frame.size.width-(SCALE_SIZE*10))/2, ((self.view.frame.size.width-(SCALE_SIZE*10))/2-SCALE_SIZE*10) /124 *100 + SCALE_SIZE * 40);
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     return UIEdgeInsetsMake(0,SCALE_SIZE*5,0,SCALE_SIZE*5);
@@ -81,7 +81,7 @@ static NSString *cellIdentList = @"listCell";
         //layout.itemSize =CGSizeMake(110, 150);
         
         //2.初始化collectionView
-        _listCollection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH*0.8, SCREEN_HEIGHT) collectionViewLayout:layout];
+        _listCollection = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
         
         _listCollection.backgroundColor = [UIColor whiteColor];
         //注意，此处的ReuseIdentifier 必须和 cellForItemAtIndexPath 方法中 一致 均为 cellId

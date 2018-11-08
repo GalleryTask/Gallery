@@ -28,9 +28,9 @@
 
     [self.pictureImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(SCALE_SIZE*5);
-        make.width.mas_equalTo((SCREEN_WIDTH*0.8-(SCALE_SIZE*10))/2-SCALE_SIZE*10);
+        make.width.mas_equalTo((SCREEN_WIDTH*0.76-(SCALE_SIZE*10))/2-SCALE_SIZE*10);
         make.top.mas_equalTo(SCALE_SIZE *15);
-        make.height.mas_equalTo(((SCREEN_WIDTH*0.8-(SCALE_SIZE*10))/2-SCALE_SIZE*10) /124 *100);
+        make.height.mas_equalTo(((SCREEN_WIDTH*0.76-(SCALE_SIZE*10))/2-SCALE_SIZE*10) /124 *100);
     }];
     
     [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
