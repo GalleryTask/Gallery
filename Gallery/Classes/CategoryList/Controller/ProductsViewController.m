@@ -19,69 +19,61 @@ static NSString *cellIdentList = @"listCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
   [self.view setFrame:CGRectMake(SCREEN_WIDTH*0.24, 0, SCREEN_WIDTH*0.76, SCREEN_HEIGHT)];
-//  [self.view setBackgroundColor:BASECOLOR_LIGHTGRAY];
-
-    [self.listCollection setContentInset:UIEdgeInsetsMake(0, 0, SafeAreaBottomHeight+BASE_HEIGHT, 0)];
+  [self.listCollection setContentInset:UIEdgeInsetsMake(0, 0, SafeAreaBottomHeight+49, 0)];
 }
 
 #pragma maek -UICollectionViewDelegateFlowLayout
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake((self.view.frame.size.width-(SCALE_SIZE*10))/2, ((self.view.frame.size.width-(SCALE_SIZE*10))/2-SCALE_SIZE*10) /124 *100 + SCALE_SIZE * 40);
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake((SCREEN_WIDTH*0.76-(SCALE_SIZE*10))/2, ((SCREEN_WIDTH*0.76-(SCALE_SIZE*10))/2-SCALE_SIZE*10) /124 *100 + SCALE_SIZE * 40);
 }
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(0,SCALE_SIZE*5,0,SCALE_SIZE*5);
 }
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     
     return 0;
 }
 //列
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 0;
     
 }
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 1;
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 19;
 }
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return 7;
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 9;
 }
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CategoryListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentList forIndexPath:indexPath];
   
-    if (indexPath.row == 0) {
-        cell.contentView.backgroundColor = [UIColor redColor];
-    }
     return cell;
 }
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   
-    
 }
-
-
 
 #pragma mark - 一级tableView滚动时 实现当前类tableView的联动
 - (void)scrollToSelectedIndexPath:(NSIndexPath *)indexPath {
   
-//  [self.tableView selectRowAtIndexPath:([NSIndexPath indexPathForRow:0 inSection:indexPath.row])
-//                              animated:YES
-//                        scrollPosition:UITableViewScrollPositionTop];
+
+  [self.listCollection selectItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.row]
+                                    animated:YES
+                              scrollPosition:UICollectionViewScrollPositionTop];
 }
 
--(UICollectionView *)listCollection
-{
+-(UICollectionView *)listCollection {
     if (!_listCollection) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        //设置collectionView滚动方向
-        //    [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-        //该方法也可以设置itemSize
-        //layout.itemSize =CGSizeMake(110, 150);
         
         //2.初始化collectionView
-        _listCollection = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
+        _listCollection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH*0.76, SCREEN_HEIGHT-49-SafeAreaBottomHeight) collectionViewLayout:layout];
         
         _listCollection.backgroundColor = [UIColor whiteColor];
         //注意，此处的ReuseIdentifier 必须和 cellForItemAtIndexPath 方法中 一致 均为 cellId

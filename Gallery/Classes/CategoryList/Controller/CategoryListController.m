@@ -34,7 +34,7 @@
     make.width.mas_equalTo(SCREEN_WIDTH*0.24);
     make.height.equalTo(self.view);
   }];
-  [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, SafeAreaBottomHeight+BASE_HEIGHT, 0)];
+  [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, SafeAreaBottomHeight+49, 0)];
   [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
 }
 

@@ -197,6 +197,8 @@
 			children = (
 				7602112F2191856800C6F622 /* CategoryCell.h */,
 				760211302191856800C6F622 /* CategoryCell.m */,
+				8455A4D72194064300B52A2B /* CategoryListCollectionViewCell.h */,
+				8455A4D82194064300B52A2B /* CategoryListCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -208,8 +210,6 @@
 				7602112A21917D5F00C6F622 /* CategoryListController.m */,
 				7602112C21917DEB00C6F622 /* ProductsViewController.h */,
 				7602112D21917DEB00C6F622 /* ProductsViewController.m */,
-				8455A4D72194064300B52A2B /* CategoryListCollectionViewCell.h */,
-				8455A4D82194064300B52A2B /* CategoryListCollectionViewCell.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
