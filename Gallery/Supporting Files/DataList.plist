@@ -8,7 +8,7 @@
 		<array>
 			<string>HomeViewController</string>
 			<string>CategoryListController</string>
-			<string>UIViewController</string>
+			<string>ServiceViewController</string>
 			<string>UIViewController</string>
 			<string>MeViewController</string>
 		</array>
