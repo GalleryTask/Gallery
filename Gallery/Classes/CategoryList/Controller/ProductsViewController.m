@@ -26,7 +26,6 @@ static NSString *cellIdentList = @"listCell";
 
 #pragma maek -UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    //return CGSizeMake((SCREEN_WIDTH*0.8-(SCALE_SIZE*10))/2, (SCREEN_WIDTH*0.8-(SCALE_SIZE*10))/2+ SCALE_SIZE*30);
     return CGSizeMake((SCREEN_WIDTH*0.8-(SCALE_SIZE*10))/2, ((SCREEN_WIDTH*0.8-(SCALE_SIZE*10))/2-SCALE_SIZE*10) /124 *100 + SCALE_SIZE * 40);
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{

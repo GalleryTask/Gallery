@@ -57,7 +57,7 @@
 -(UILabel *)titleLabel{
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
-        [_titleLabel setTextColor:[UIColor blackColor]];
+        [_titleLabel setTextColor:BASECOLOR_BLACK_030];
         [_titleLabel setFont:FONTSIZE(13)];
        // [_titleLabel setTextAlignment:(NSTextAlignmentCenter)];
         [_titleLabel setText:@"精品彩盒方案一精品彩盒方案一"];
