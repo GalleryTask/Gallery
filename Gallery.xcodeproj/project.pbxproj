@@ -81,7 +81,6 @@
 		7602112F2191856800C6F622 /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
 		760211302191856800C6F622 /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
 		760E94682151ED9B00592929 /* DataList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DataList.plist; sourceTree = "<group>"; };
-		760E94712151F0D100592929 /* ServiceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceViewController.h; sourceTree = "<group>"; };
 		760E94722151F0D100592929 /* ServiceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceViewController.m; sourceTree = "<group>"; };
 		760E94742151F0DB00592929 /* MeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		760E94752151F0DB00592929 /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
@@ -147,13 +146,14 @@
 		76605E5F2101CCB000115FA6 /* CommonUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtil.m; sourceTree = "<group>"; };
 		76605E612101CCBA00115FA6 /* UploadImageObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImageObject.m; sourceTree = "<group>"; };
 		76605E622101CCBA00115FA6 /* UploadImageObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImageObject.h; sourceTree = "<group>"; };
+		76BE7AC521944C0B0062C64E /* CategoryDetallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryDetallCell.h; sourceTree = "<group>"; };
+		76BE7AC621944C160062C64E /* CategoryDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryDetailController.h; sourceTree = "<group>"; };
+		76BE7AC721944C5B0062C64E /* ServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceViewController.h; sourceTree = "<group>"; };
 		76EE836B216B4B5000D317FF /* SceneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneView.h; sourceTree = "<group>"; };
 		76EE836C216B4B5000D317FF /* SceneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneView.m; sourceTree = "<group>"; };
 		8455A4D72194064300B52A2B /* CategoryListCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryListCollectionViewCell.h; sourceTree = "<group>"; };
 		8455A4D82194064300B52A2B /* CategoryListCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryListCollectionViewCell.m; sourceTree = "<group>"; };
-		8455A4DB21942C0D00B52A2B /* CategoryDetallCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryDetallCell.h; sourceTree = "<group>"; };
 		8455A4DC21942C0D00B52A2B /* CategoryDetallCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryDetallCell.m; sourceTree = "<group>"; };
-		8455A4DE21942E5A00B52A2B /* CategoryDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryDetailController.h; sourceTree = "<group>"; };
 		8455A4DF21942E5A00B52A2B /* CategoryDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryDetailController.m; sourceTree = "<group>"; };
 		A729398D12F9CD51A838399F /* Pods-Gallery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gallery.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gallery/Pods-Gallery.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -208,7 +208,7 @@
 				760211302191856800C6F622 /* CategoryCell.m */,
 				8455A4D72194064300B52A2B /* CategoryListCollectionViewCell.h */,
 				8455A4D82194064300B52A2B /* CategoryListCollectionViewCell.m */,
-				8455A4DB21942C0D00B52A2B /* CategoryDetallCell.h */,
+				76BE7AC521944C0B0062C64E /* CategoryDetallCell.h */,
 				8455A4DC21942C0D00B52A2B /* CategoryDetallCell.m */,
 			);
 			path = View;
@@ -221,7 +221,7 @@
 				7602112A21917D5F00C6F622 /* CategoryListController.m */,
 				7602112C21917DEB00C6F622 /* ProductsViewController.h */,
 				7602112D21917DEB00C6F622 /* ProductsViewController.m */,
-				8455A4DE21942E5A00B52A2B /* CategoryDetailController.h */,
+				76BE7AC621944C160062C64E /* CategoryDetailController.h */,
 				8455A4DF21942E5A00B52A2B /* CategoryDetailController.m */,
 			);
 			path = Controller;
@@ -309,7 +309,7 @@
 		7611C4B921942EA700D6428E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				760E94712151F0D100592929 /* ServiceViewController.h */,
+				76BE7AC721944C5B0062C64E /* ServiceViewController.h */,
 				760E94722151F0D100592929 /* ServiceViewController.m */,
 			);
 			path = Controller;
