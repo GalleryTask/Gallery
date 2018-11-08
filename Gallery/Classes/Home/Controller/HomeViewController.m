@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"报价";
+    self.navigationItem.title = @"首页";
     BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
     [nav setNavigationBarRightItemWithButtonTitle:@"上传图片"];
     [nav showRightNavBtnWithClick:^(id sender) {

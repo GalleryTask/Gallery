@@ -101,7 +101,10 @@
 }
 
 -(void)changeCameraNodePosition {
-  _cameraNode.position = SCNVector3Make(0, 10, 30);
+//  self.cameraNode.position = SCNVector3Make(0, 10, 30);
+//  [self.cameraNode runAction:[SCNAction repeatAction:[SCNAction scaleTo:1 duration:1] count:1]];
+
+
 }
 
 #pragma mark - 创建3D模型场景

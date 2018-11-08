@@ -8,12 +8,16 @@
 		<array>
 			<string>HomeViewController</string>
 			<string>CategoryListController</string>
+			<string>UIViewController</string>
+			<string>UIViewController</string>
 			<string>MeViewController</string>
 		</array>
 		<key>titles</key>
 		<array>
 			<string>首页</string>
-			<string>商品</string>
+			<string>分类</string>
+			<string>至尊服务</string>
+			<string>订货单</string>
 			<string>我的</string>
 		</array>
 		<key>positionX</key>
@@ -27,13 +31,17 @@
 		<key>tabBarSelectedImg</key>
 		<array>
 			<string>tool_button_home_selected</string>
-			<string>tool_button_home_selected</string>
+			<string>tool_button_category_selected</string>
+			<string>tool_button_service_selected</string>
+			<string>tool_button_order_selected</string>
 			<string>tool_button_me_selected</string>
 		</array>
 		<key>tabBarDefaultImg</key>
 		<array>
 			<string>tool_button_home_default</string>
-			<string>tool_button_home_default</string>
+			<string>tool_button_category_default</string>
+			<string>tool_button_service_default</string>
+			<string>tool_button_order_default</string>
 			<string>tool_button_me_default</string>
 		</array>
 	</dict>

@@ -20,12 +20,12 @@
   [self setDelegate:self];
   // 设置默认文字的颜色
   [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary
-                                                     dictionaryWithObjectsAndKeys: BASECOLOR_BLACK,
+                                                     dictionaryWithObjectsAndKeys: BASECOLOR_LIGHTBLACK,
                                                      NSForegroundColorAttributeName, nil]
                                            forState:UIControlStateNormal];
   // 设置选中文字的颜色
   [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary
-                                                     dictionaryWithObjectsAndKeys: BASECOLOR_BLUE,
+                                                     dictionaryWithObjectsAndKeys: BASECOLOR_DARKBLACK,
                                                      NSForegroundColorAttributeName, nil]
                                            forState:UIControlStateSelected];
   
@@ -51,7 +51,7 @@
     tabBarItem.image = [[UIImage imageNamed:dic[@"tabBarDefaultImg"][i]]
                      imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     // 设置items图片和文字的距离
-//    tabBarItem.titlePositionAdjustment = UIOffsetMake([dic[@"positionX"][i] intValue], -3);
+    tabBarItem.titlePositionAdjustment = UIOffsetMake([dic[@"positionX"][i] intValue], -3);
     // 设置items的文字
     tabBarItem.title = dic[@"titles"][i];
 
