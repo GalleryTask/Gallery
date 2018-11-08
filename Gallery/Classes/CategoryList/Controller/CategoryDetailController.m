@@ -66,8 +66,7 @@ static NSString *cellIdentList = @"listCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   
-  CategoryDetailController * detailVC = [[CategoryDetailController alloc] init];
-  [self.navigationController pushViewController:detailVC animated:YES];
+
 }
 
 -(UICollectionView *)listCollection {

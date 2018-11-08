@@ -56,15 +56,7 @@
   }];
 }
 
--(UIImageView *)pictureImageView{
-    if (!_pictureImageView) {
-        _pictureImageView = [[UIImageView alloc] init];
-        [_pictureImageView setContentMode:UIViewContentModeScaleAspectFit];
-//        [_arrowImgView setImage:[UIImage imageNamed:@"arrow"]];
-        _pictureImageView.backgroundColor = [UIColor grayColor];
-        [self.contentView addSubview:_pictureImageView];
-    }
-    return _pictureImageView;
+
 -(UIImageView *)pictureImageView {
   if (!_pictureImageView) {
     _pictureImageView = [[UIImageView alloc] init];
@@ -74,17 +66,6 @@
   }
   return _pictureImageView;
 }
-
--(UILabel *)titleLabel{
-    if (!_titleLabel) {
-        _titleLabel = [[UILabel alloc] init];
-        [_titleLabel setTextColor:BASECOLOR_BLACK_030];
-        [_titleLabel setFont:FONTSIZE(13)];
-        [_titleLabel setTextAlignment:(NSTextAlignmentCenter)];
-        [_titleLabel setText:@"精品彩盒方案一精品彩盒方案一"];
-        [self.contentView addSubview:_titleLabel];
-    }
-    return _titleLabel;
 -(UILabel *)titleLabel {
   if (!_titleLabel) {
     _titleLabel = [[UILabel alloc] init];
