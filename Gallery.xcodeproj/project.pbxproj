@@ -312,6 +312,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7611C4C1219432D700D6428E /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Vender;
+			sourceTree = "<group>";
+		};
 		761AF2D1215E0A9600F596D3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,6 +366,7 @@
 		76605E052101B6ED00115FA6 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
+				7611C4C1219432D700D6428E /* Vender */,
 				761AF2D1215E0A9600F596D3 /* Model */,
 				76605E5D2101CCA600115FA6 /* Helper */,
 				76605E532101CC1C00115FA6 /* DataInfo */,

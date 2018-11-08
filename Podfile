@@ -9,5 +9,6 @@ pod 'Masonry',            '1.1.0', :inhibit_warnings => true
 pod 'MBProgressHUD',      '1.1.0'
 pod 'SSZipArchive',       '2.1.3'
 pod 'MMKV',               '1.0.12'
+pod 'SDCycleScrollView',  '1.75'
 
 end
