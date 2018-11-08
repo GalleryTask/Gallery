@@ -50,11 +50,20 @@
 - (void)addBtn {
   SceneView *sceneView = [self.scrollView viewWithTag:100];
   [sceneView addNode];
+  
+  MMKV *mv = [MMKV defaultMMKV];
+  [mv setObject:@"sssssssssssssssssss" forKey:@"string"];
+  [mv setObject:@"123" forKey:@"string"];
+  NSLog(@"%@",[mv getObjectOfClass:NSString.class forKey:@"string"]) ;
+  [mv removeValueForKey:@"string"];
+  NSLog(@"%@",[mv getObjectOfClass:NSString.class forKey:@"string"]) ;
 }
 
 - (void)deleBtn {
   SceneView *sceneView = [self.scrollView viewWithTag:100];
   [sceneView removeNode];
+  
+  [sceneView changeCameraNodePosition];
 }
 
 - (void)downloadZip {
@@ -79,21 +88,13 @@
     for (int i = 0; i < self.boxList.count; i++) {
         
         // 创建3D展示view
-        SceneView *sceneView = [[SceneView alloc] initWithSceneName:@"nbox3gai"
-                                                              frame:CGRectMake((SCREEN_WIDTH-30)*i+10, SCALE_SIZE*70, SCREEN_WIDTH-40, SCREEN_WIDTH-40)];
+        SceneView *sceneView = [[SceneView alloc] initWithSceneName:@"moxing.DAE"
+                                                              frame:CGRectMake((SCREEN_WIDTH-30)*i, SCALE_SIZE*70, SCREEN_WIDTH, SCREEN_WIDTH)];
         sceneView.tag = 100;
         [self.scrollView addSubview:sceneView];
-        
-        if (i == 1) {
-            [sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"180X180"]];
-            [sceneView sceneViewReflectiveImage:[UIImage imageNamed:@"180X180"]];
-        } else {
-            if (i == 0) {
-                
-            } else {
-                [sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"180X180"]];
-            }
-        }
+
+      [sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"B.tga"]];
+//      [sceneView sceneViewReflectiveImage:[UIImage imageNamed:@"B.tga"]];
         
         // 添加点击手势
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(btnClick:)];
@@ -135,7 +136,7 @@
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] init];
         [_scrollView setFrame:self.view.frame];
-        [_scrollView setContentSize:CGSizeMake((SCREEN_WIDTH-40)*12 + 130, 0)];
+//        [_scrollView setContentSize:CGSizeMake((SCREEN_WIDTH-40)*12 + 130, 0)];
         [self.view addSubview:_scrollView];
         
     }
@@ -144,9 +145,10 @@
 
 -(NSArray *)boxList {
     if (!_boxList) {
-        _boxList = [[[NSDictionary alloc] initWithContentsOfFile:
-                     [[NSBundle mainBundle] pathForResource:@"DataList.plist"ofType:nil]]
-                    objectForKey:@"BoxList"] ;
+//        _boxList = [[[NSDictionary alloc] initWithContentsOfFile:
+//                     [[NSBundle mainBundle] pathForResource:@"DataList.plist"ofType:nil]]
+//                    objectForKey:@"BoxList"] ;
+      _boxList = @[@{@"boxTitle":@"",@"boxId":@""}];
     }
     return _boxList;
 }

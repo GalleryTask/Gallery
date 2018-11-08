@@ -12,9 +12,10 @@
 @interface SceneView()
 
 @property (nonatomic, strong) SCNView     *scnView;
-@property (nonatomic, strong) SCNNode   *spotNode;  // 灯光节点
-@property (nonatomic, strong) SCNScene  *scene;
-@property (nonatomic, strong) SCNMaterial  *material;
+@property (nonatomic, strong) SCNNode     *spotNode;  // 灯光节点
+@property (nonatomic, strong) SCNNode     *cameraNode; // 角度
+@property (nonatomic, strong) SCNScene    *scene;
+@property (nonatomic, strong) SCNMaterial *material;
 
 @property (nonatomic, strong) SCNNode   *ggNode;  // 
 
@@ -39,6 +40,15 @@
     [aNode.geometry setMaterials:@[self.material]];
   }
   
+}
+
+// 设置贴图图片
+- (void)sceneViewDiffuseImage:(UIImage *)image {
+  self.material.diffuse.contents = image;
+  
+  for (SCNNode *aNode in self.scene.rootNode.childNodes) {
+    [aNode.geometry setMaterials:@[self.material]];
+  }
 }
 
 - (void)removeNode {
@@ -90,13 +100,8 @@
   return _ggNode;
 }
 
-// 设置贴图图片
-- (void)sceneViewDiffuseImage:(UIImage *)image {
-  self.material.diffuse.contents = image;
-
-  for (SCNNode *aNode in self.scene.rootNode.childNodes) {
-    [aNode.geometry setMaterials:@[self.material]];
-  }
+-(void)changeCameraNodePosition {
+  _cameraNode.position = SCNVector3Make(0, 10, 30);
 }
 
 #pragma mark - 创建3D模型场景
@@ -105,15 +110,10 @@
   // 初始化场景
   self.scene = [SCNScene sceneNamed:sceneName];
 //   self.scene = [SCNScene sceneWithURL:sceneName options:nil error:nil];
-  SCNNode *cameraNode = [SCNNode node];
-  cameraNode.camera = [SCNCamera camera];
-  cameraNode.camera.automaticallyAdjustsZRange = true;
-  cameraNode.position = SCNVector3Make(0, 10, 50);
-  [self.scene.rootNode addChildNode:cameraNode];
   
+  [self.scene.rootNode addChildNode:self.cameraNode];
   // 创建灯光
   [self.scene.rootNode addChildNode:self.spotNode];
-  
   // 创建展示场景
   [self addSubview:self.scnView];
 }
@@ -164,4 +164,13 @@
   return _spotNode;
 }
 
+-(SCNNode *)cameraNode {
+  if (!_cameraNode) {
+    _cameraNode = [SCNNode node];
+    _cameraNode.camera = [SCNCamera camera];
+    _cameraNode.camera.automaticallyAdjustsZRange = true;
+    _cameraNode.position = SCNVector3Make(0, 10, 50);
+  }
+  return _cameraNode;
+}
 @end
