@@ -20,12 +20,12 @@
   [self setDelegate:self];
   // 设置默认文字的颜色
   [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary
-                                                     dictionaryWithObjectsAndKeys: BASECOLOR_LIGHTBLACK,
+                                                     dictionaryWithObjectsAndKeys: BASECOLOR_BLACK_999,
                                                      NSForegroundColorAttributeName, nil]
                                            forState:UIControlStateNormal];
   // 设置选中文字的颜色
   [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary
-                                                     dictionaryWithObjectsAndKeys: BASECOLOR_DARKBLACK,
+                                                     dictionaryWithObjectsAndKeys: BASECOLOR_BLACK_333,
                                                      NSForegroundColorAttributeName, nil]
                                            forState:UIControlStateSelected];
   

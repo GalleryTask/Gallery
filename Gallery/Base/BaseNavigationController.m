@@ -28,8 +28,8 @@
   
   // 设置navigationBar上title的颜色与字体
   NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-  [dict setObject:BASECOLOR_BLACK forKey:NSForegroundColorAttributeName];
-  [dict setObject:[UIFont systemFontOfSize:18.f weight:UIFontWeightRegular] forKey:NSFontAttributeName];
+  [dict setObject:BASECOLOR_BLACK_333 forKey:NSForegroundColorAttributeName];
+  [dict setObject:[UIFont systemFontOfSize:18.f weight:UIFontWeightBold] forKey:NSFontAttributeName];
   navigationBar.titleTextAttributes = dict;
   
   // 去掉navigation bar 上的分割线

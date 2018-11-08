@@ -18,7 +18,7 @@ static NSString *cellIdentList = @"listCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  [self.view setFrame:CGRectMake(SCREEN_WIDTH*0.2, 0, SCREEN_WIDTH*0.8, SCREEN_HEIGHT)];
+  [self.view setFrame:CGRectMake(SCREEN_WIDTH*0.24, 0, SCREEN_WIDTH*0.76, SCREEN_HEIGHT)];
 //  [self.view setBackgroundColor:BASECOLOR_LIGHTGRAY];
 
     [self.listCollection setContentInset:UIEdgeInsetsMake(0, 0, SafeAreaBottomHeight+BASE_HEIGHT, 0)];
