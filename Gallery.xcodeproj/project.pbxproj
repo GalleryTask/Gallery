@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		309C3E1E5E067158DA0F8B2C /* libPods-Gallery.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71A286852C7FF83EA767FD67 /* libPods-Gallery.a */; };
-		76021125219144EB00C6F622 /* dimo.DAE in Resources */ = {isa = PBXBuildFile; fileRef = 76021124219144EB00C6F622 /* dimo.DAE */; };
 		7602112B21917D5F00C6F622 /* CategoryListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7602112A21917D5F00C6F622 /* CategoryListController.m */; };
 		7602112E21917DEB00C6F622 /* ProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7602112D21917DEB00C6F622 /* ProductsViewController.m */; };
 		760211312191856800C6F622 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 760211302191856800C6F622 /* CategoryCell.m */; };
@@ -19,6 +18,8 @@
 		7611C4A72193D56E00D6428E /* M.tga in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4A32193D56E00D6428E /* M.tga */; };
 		7611C4A82193D56E00D6428E /* moxing.DAE in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4A42193D56E00D6428E /* moxing.DAE */; };
 		7611C4A92193D56E00D6428E /* B.tga in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4A52193D56E00D6428E /* B.tga */; };
+		7611C4AF21940D2900D6428E /* gfy.DAE in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4AE21940D2900D6428E /* gfy.DAE */; };
+		7611C4B121940D3100D6428E /* sss.png in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4B021940D3100D6428E /* sss.png */; };
 		761AF2D4215E0AB200F596D3 /* ResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 761AF2D3215E0AB200F596D3 /* ResultModel.m */; };
 		761AF2DC215E0B2700F596D3 /* YJToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 761AF2D6215E0B2700F596D3 /* YJToolBar.m */; };
 		761AF2DD215E0B2700F596D3 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 761AF2D7215E0B2700F596D3 /* UIView+Frame.m */; };
@@ -67,7 +68,6 @@
 /* Begin PBXFileReference section */
 		5E670789B90931CD9C6C9E2D /* Pods-Gallery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gallery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gallery/Pods-Gallery.debug.xcconfig"; sourceTree = "<group>"; };
 		71A286852C7FF83EA767FD67 /* libPods-Gallery.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Gallery.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		76021124219144EB00C6F622 /* dimo.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = dimo.DAE; sourceTree = "<group>"; };
 		7602112921917D5F00C6F622 /* CategoryListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryListController.h; sourceTree = "<group>"; };
 		7602112A21917D5F00C6F622 /* CategoryListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryListController.m; sourceTree = "<group>"; };
 		7602112C21917DEB00C6F622 /* ProductsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductsViewController.h; sourceTree = "<group>"; };
@@ -83,6 +83,8 @@
 		7611C4A32193D56E00D6428E /* M.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = M.tga; sourceTree = "<group>"; };
 		7611C4A42193D56E00D6428E /* moxing.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = moxing.DAE; sourceTree = "<group>"; };
 		7611C4A52193D56E00D6428E /* B.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = B.tga; sourceTree = "<group>"; };
+		7611C4AE21940D2900D6428E /* gfy.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = gfy.DAE; sourceTree = "<group>"; };
+		7611C4B021940D3100D6428E /* sss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sss.png; sourceTree = "<group>"; };
 		761AF2D2215E0AB200F596D3 /* ResultModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultModel.h; sourceTree = "<group>"; };
 		761AF2D3215E0AB200F596D3 /* ResultModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultModel.m; sourceTree = "<group>"; };
 		761AF2D6215E0B2700F596D3 /* YJToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJToolBar.m; sourceTree = "<group>"; };
@@ -466,12 +468,13 @@
 			children = (
 				76EE836B216B4B5000D317FF /* SceneView.h */,
 				76EE836C216B4B5000D317FF /* SceneView.m */,
+				7611C4AE21940D2900D6428E /* gfy.DAE */,
 				7611C4A52193D56E00D6428E /* B.tga */,
 				7611C4A32193D56E00D6428E /* M.tga */,
 				7611C4A42193D56E00D6428E /* moxing.DAE */,
 				7611C4A22193D56D00D6428E /* R.tga */,
 				7627E55821898D9E00C7A5A3 /* nbox3gai.dae */,
-				76021124219144EB00C6F622 /* dimo.DAE */,
+				7611C4B021940D3100D6428E /* sss.png */,
 			);
 			path = SceneView;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7611C4B121940D3100D6428E /* sss.png in Resources */,
 				76605E132101B6EE00115FA6 /* LaunchScreen.storyboard in Resources */,
 				7611C4A62193D56E00D6428E /* R.tga in Resources */,
 				7655CC922150F92A00D206C2 /* Assets.xcassets in Resources */,
@@ -598,8 +602,8 @@
 				7611C4A72193D56E00D6428E /* M.tga in Resources */,
 				760E94692151ED9B00592929 /* DataList.plist in Resources */,
 				76605E0E2101B6ED00115FA6 /* Main.storyboard in Resources */,
-				76021125219144EB00C6F622 /* dimo.DAE in Resources */,
 				7611C4A82193D56E00D6428E /* moxing.DAE in Resources */,
+				7611C4AF21940D2900D6428E /* gfy.DAE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,7 @@
 #import "UploadImageObject.h"
 #import "AFNetworking.h"
 #import "SSZipArchive.h"
+
 @interface HomeViewController ()
 
 @property (nonatomic, strong) UIScrollView  *scrollView;
@@ -136,7 +137,6 @@
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] init];
         [_scrollView setFrame:self.view.frame];
-//        [_scrollView setContentSize:CGSizeMake((SCREEN_WIDTH-40)*12 + 130, 0)];
         [self.view addSubview:_scrollView];
         
     }
@@ -145,9 +145,6 @@
 
 -(NSArray *)boxList {
     if (!_boxList) {
-//        _boxList = [[[NSDictionary alloc] initWithContentsOfFile:
-//                     [[NSBundle mainBundle] pathForResource:@"DataList.plist"ofType:nil]]
-//                    objectForKey:@"BoxList"] ;
       _boxList = @[@{@"boxTitle":@"",@"boxId":@""}];
     }
     return _boxList;

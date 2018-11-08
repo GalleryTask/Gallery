@@ -22,11 +22,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   [self.view addSubview:self.productsVC.view];
-  self.categoryArr = @[@"AF",@"是鬼地方",@"打断点",@"订单",@"从长春",@"吧v",@"撒气无",@"阿尔额",@"Dev",@"未付",@"未付",@"阿发电房",@"的法尔",@"恶女",@"嗯嗯嗯",@"22分"];
+  self.categoryArr = @[@"美妆护理",@"数码3C",@"水果农特",@"医药保健",@"服装",@"酒水饮料",@"日化家纺",@"家具",@"家用电器",@"玩具饰品",@"家装五金",@"日化家纺",@"工业防护",@"工业防护",@"鞋袜箱包",@"鞋袜箱包",@"文化体育",@"仓储物流",@"汽车用品"];
   [self.tableView registerClass:[CategoryCell class] forCellReuseIdentifier:@"CategoryCell"];
   [self.tableView setRowHeight:SCALE_SIZE*60];
   [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
-    make.width.mas_equalTo(SCREEN_WIDTH*0.2);
+    make.width.mas_equalTo(SCREEN_WIDTH*0.24);
     make.height.equalTo(self.view);
   }];
   [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, SafeAreaBottomHeight+BASE_HEIGHT, 0)];
