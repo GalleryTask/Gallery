@@ -6,11 +6,12 @@
 //  Copyright © 2018 安东. All rights reserved.
 //
 
-#import "ShopDetailViewController.h"
+#import "ProductDetailViewController.h"
 #import "SDCycleScrollView.h"
 #import "HomeShowView.h"
+#import "SceneViewController.h"
 
-@interface ShopDetailViewController () <SDCycleScrollViewDelegate>
+@interface ProductDetailViewController () <SDCycleScrollViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIButton *exhibitionBtn;
@@ -19,7 +20,7 @@
 
 @end
 
-@implementation ShopDetailViewController
+@implementation ProductDetailViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -37,7 +38,8 @@
 
 // 3D展示按钮点击事件
 -(void)exhibitionButtonAction:(UIButton *)sender {
-  
+  SceneViewController *vc = [[SceneViewController alloc] init];
+  [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma marks - getters

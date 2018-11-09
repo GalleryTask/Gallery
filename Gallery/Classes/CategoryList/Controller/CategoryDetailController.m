@@ -8,7 +8,7 @@
 
 #import "CategoryDetailController.h"
 #import "CategoryDetallCell.h"
-#import "ShopDetailViewController.h"
+#import "ProductDetailViewController.h"
 @interface CategoryDetailController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
 
@@ -61,7 +61,7 @@ static NSString *cellIdentList = @"listCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   
-  ShopDetailViewController *detailVC = [[ShopDetailViewController alloc] init];
+  ProductDetailViewController *detailVC = [[ProductDetailViewController alloc] init];
   [self.navigationController pushViewController:detailVC animated:YES];
 }
 
