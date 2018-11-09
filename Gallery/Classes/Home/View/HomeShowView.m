@@ -30,11 +30,16 @@
   [self.currentCountLabel setText:[NSString stringWithFormat:@"%d",currentCount]];
 }
 
+-(void)setTitleString:(NSString *)titleString {
+  if (titleString) {
+    [self.titleLabel setText:titleString];
+  }
+}
+
 #pragma marks - getters
 -(UILabel *)titleLabel {
   if (!_titleLabel) {
     _titleLabel = [[UILabel alloc] init];
-    [_titleLabel setText:@"产品展示"];
     [_titleLabel setFont:[UIFont systemFontOfSize:SCALE_SIZE*20 weight:UIFontWeightBold]];
     [_titleLabel setTextColor:BASECOLOR_BLACK_333];
     [self addSubview:_titleLabel];

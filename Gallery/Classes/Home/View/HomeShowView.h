@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface HomeShowView : UIView
 
 @property (nonatomic, assign) int  currentCount;
+@property (nonatomic, copy) NSString  *titleString;
 
 @end
 
