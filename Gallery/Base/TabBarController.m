@@ -18,6 +18,9 @@
   [super viewDidLoad];
   // 设代理为自己
   [self setDelegate:self];
+  [UITabBar appearance].translucent = NO;
+//  [[UITabBar appearance] setBackgroundColor:[UIColor whiteColor]];
+  [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
   // 设置默认文字的颜色
   [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary
                                                      dictionaryWithObjectsAndKeys: BASECOLOR_BLACK_999,
@@ -64,12 +67,6 @@
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
   
-//  if (viewController == tabBarController.viewControllers[2]) {
-//    PlaceOrderController *vc = [[PlaceOrderController alloc] init];
-//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-//    [self presentViewController:nav animated:YES completion:nil];
-//    return NO;
-//  }
   return YES;
 }
 

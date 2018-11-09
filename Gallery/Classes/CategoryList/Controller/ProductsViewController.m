@@ -21,7 +21,6 @@ static NSString *cellIdentList = @"listCell";
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self.view setFrame:CGRectMake(SCREEN_WIDTH*0.24, 0, SCREEN_WIDTH*0.76, SCREEN_HEIGHT)];
-  [self.listCollection setContentInset:UIEdgeInsetsMake(0, 0, SafeAreaBottomHeight+49, 0)];
 }
 
 #pragma maek -UICollectionViewDelegateFlowLayout
@@ -53,7 +52,6 @@ static NSString *cellIdentList = @"listCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   CategoryListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentList forIndexPath:indexPath];
-  
   return cell;
 }
 
@@ -77,7 +75,7 @@ static NSString *cellIdentList = @"listCell";
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     
     //2.初始化collectionView
-    _listCollection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH*0.76, SCREEN_HEIGHT-49-SafeAreaBottomHeight) collectionViewLayout:layout];
+    _listCollection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH*0.76, SCREEN_HEIGHT-49-SafeAreaBottomHeight-NAVIGATIONBAR_HEIGHT) collectionViewLayout:layout];
     
     _listCollection.backgroundColor = [UIColor whiteColor];
     //注意，此处的ReuseIdentifier 必须和 cellForItemAtIndexPath 方法中 一致 均为 cellId

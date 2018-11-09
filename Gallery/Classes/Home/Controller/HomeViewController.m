@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "SDCycleScrollView.h"
+#import "CategoryDetailController.h"
 
 @interface HomeViewController () <SDCycleScrollViewDelegate>
 
@@ -26,7 +27,8 @@
 
 // SDCycleScrollView delegate 点击图片回调
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
-  
+  CategoryDetailController * detailVC = [[CategoryDetailController alloc] init];
+  [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 #pragma marks - getters
