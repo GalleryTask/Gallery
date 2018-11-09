@@ -24,6 +24,10 @@
     [super viewDidLoad];
   
   self.navigationItem.title = @"全部行业";
+  [self createInterfaceBuilder];
+}
+
+- (void)createInterfaceBuilder {
   [self.view addSubview:self.productsVC.view];
   self.categoryArr = @[@"美妆护理",@"数码3C",@"水果农特",@"医药保健",@"服装",@"酒水饮料",@"日化家纺",
                        @"家具",@"家用电器",@"玩具饰品",@"家装五金",@"日化家纺",@"工业防护",@"工业防护",
@@ -41,8 +45,10 @@
   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
   [nav setNavigationBarRightItemWithImageName:@"news" highlightImageName:@""];
   [nav showRightNavBtnWithClick:^(id sender) {
-    
   }];
+  
+//  UISearchBar *searchBar = [[UISearchBar alloc] init];
+  
 }
 
 #pragma mark - tableview delegate dataSource
