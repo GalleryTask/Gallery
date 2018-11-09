@@ -10,7 +10,7 @@
 #import "XLSlideSegmentedItem.h"
 
 //item间隔
-static const CGFloat ItemMargin = 22.0f;
+static const CGFloat ItemMargin = 20.0f;
 //button标题选中大小
 static const CGFloat ItemFontSize = 14.0f;
 //最大放大倍数
@@ -227,6 +227,7 @@ static const CGFloat ItemMaxScale = 1.0;
     item.transform = CGAffineTransformMakeScale(scale, scale);
 
     item.textLabel.textColor = indexPath.row == _selectedIndex ? _itemSelectedColor : _itemNormalColor;
+  
     return item;
 }
 
