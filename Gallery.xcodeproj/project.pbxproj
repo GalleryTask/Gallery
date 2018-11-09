@@ -52,6 +52,7 @@
 		8455A4D92194064300B52A2B /* CategoryListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8455A4D82194064300B52A2B /* CategoryListCollectionViewCell.m */; };
 		8455A4DD21942C0D00B52A2B /* CategoryDetallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8455A4DC21942C0D00B52A2B /* CategoryDetallCell.m */; };
 		8455A4E021942E5A00B52A2B /* CategoryDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8455A4DF21942E5A00B52A2B /* CategoryDetailController.m */; };
+		84EC1BCD21952B8E00527577 /* ShopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC1BCC21952B8E00527577 /* ShopDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +156,8 @@
 		8455A4D82194064300B52A2B /* CategoryListCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryListCollectionViewCell.m; sourceTree = "<group>"; };
 		8455A4DC21942C0D00B52A2B /* CategoryDetallCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryDetallCell.m; sourceTree = "<group>"; };
 		8455A4DF21942E5A00B52A2B /* CategoryDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryDetailController.m; sourceTree = "<group>"; };
+		84EC1BCB21952B8E00527577 /* ShopDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopDetailViewController.h; sourceTree = "<group>"; };
+		84EC1BCC21952B8E00527577 /* ShopDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopDetailViewController.m; sourceTree = "<group>"; };
 		A729398D12F9CD51A838399F /* Pods-Gallery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gallery.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gallery/Pods-Gallery.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -223,6 +226,8 @@
 				7602112D21917DEB00C6F622 /* ProductsViewController.m */,
 				76BE7AC621944C160062C64E /* CategoryDetailController.h */,
 				8455A4DF21942E5A00B52A2B /* CategoryDetailController.m */,
+				84EC1BCB21952B8E00527577 /* ShopDetailViewController.h */,
+				84EC1BCC21952B8E00527577 /* ShopDetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -758,6 +763,7 @@
 				761AF2DD215E0B2700F596D3 /* UIView+Frame.m in Sources */,
 				7655CC8C2150F89200D206C2 /* BaseDataRequest.m in Sources */,
 				8455A4DD21942C0D00B52A2B /* CategoryDetallCell.m in Sources */,
+				84EC1BCD21952B8E00527577 /* ShopDetailViewController.m in Sources */,
 				760211312191856800C6F622 /* CategoryCell.m in Sources */,
 				8455A4D92194064300B52A2B /* CategoryListCollectionViewCell.m in Sources */,
 				7611C4C021942FF900D6428E /* HomeViewController.m in Sources */,
