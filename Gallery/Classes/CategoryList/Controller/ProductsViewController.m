@@ -8,7 +8,7 @@
 
 #import "ProductsViewController.h"
 #import "CategoryListCollectionViewCell.h"
-#import "CategoryDetailController.h"
+#import "CategoryDetailSlideController.h"
 
 @interface ProductsViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
@@ -59,7 +59,8 @@ static NSString *cellIdentList = @"listCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   
-  CategoryDetailController * detailVC = [[CategoryDetailController alloc] init];
+  CategoryDetailSlideController * detailVC = [[CategoryDetailSlideController alloc] init];
+  detailVC.title = @"水果农特";
   [self.navigationController pushViewController:detailVC animated:YES];
 }
 
