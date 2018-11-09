@@ -38,7 +38,7 @@
         _pictureImageView = [[UIImageView alloc] init];
         [_pictureImageView setContentMode:UIViewContentModeScaleAspectFit];
         //        [_arrowImgView setImage:[UIImage imageNamed:@"arrow"]];
-        _pictureImageView.backgroundColor = [UIColor grayColor];
+        _pictureImageView.backgroundColor = BASECOLOR_BACKGROUND_GRAY;
         [self.contentView addSubview:_pictureImageView];
     }
     return _pictureImageView;
