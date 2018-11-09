@@ -44,4 +44,5 @@
   }
   return _cycleScrollView;
 }
+
 @end
