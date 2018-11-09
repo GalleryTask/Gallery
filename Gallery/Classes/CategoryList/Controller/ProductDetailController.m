@@ -6,12 +6,12 @@
 //  Copyright © 2018 安东. All rights reserved.
 //
 
-#import "ProductDetailViewController.h"
+#import "ProductDetailController.h"
 #import "SDCycleScrollView.h"
 #import "HomeShowView.h"
 #import "SceneViewController.h"
 
-@interface ProductDetailViewController () <SDCycleScrollViewDelegate>
+@interface ProductDetailController () <SDCycleScrollViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIButton *exhibitionBtn;
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation ProductDetailViewController
+@implementation ProductDetailController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -48,6 +48,7 @@
     [_exhibitionBtn setFrame:CGRectMake(0, SCREEN_HEIGHT - SafeAreaBottomHeight- 50 -NAVIGATIONBAR_HEIGHT, SCREEN_WIDTH, 50)];
     [_exhibitionBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_exhibitionBtn setTitle:@"3D展示" forState:UIControlStateNormal];
+    [[_exhibitionBtn titleLabel] setFont:FONTSIZE(16)];
     [_exhibitionBtn setBackgroundColor:BASECOLOR_BLACK_333];
     [_exhibitionBtn addTarget:self action:@selector(exhibitionButtonAction:) forControlEvents:UIControlEventTouchUpInside];
   }

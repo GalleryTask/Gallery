@@ -24,11 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"至尊服务";
-    BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
-    [nav setNavigationBarRightItemWithButtonTitle:@"上传图片"];
-    [nav showRightNavBtnWithClick:^(id sender) {
-        [self uploadImage];
-    }];
+
   
 //    [self downloadZip];
   [self createSceneView];

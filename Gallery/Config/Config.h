@@ -14,9 +14,6 @@
 #define IS_IPHONE_5  (fabs((double)[[UIScreen mainScreen]bounds].size.height - (double)568) < DBL_EPSILON)
 #define IS_IPHONE_6  (fabs((double)[[UIScreen mainScreen]bounds].size.height - (double)667) < DBL_EPSILON)
 #define IS_IPHONE_6P (fabs((double)[[UIScreen mainScreen]bounds].size.height - (double)736) < DBL_EPSILON)
-//#define IS_IPHONE_X  (fabs((double)[[UIScreen mainScreen]bounds].size.height - (double)812) < DBL_EPSILON)
-// 判断iPhoneXs Max iPHoneXr
-//#define IS_IPHONE_XSMAX_XR (fabs((double)[[UIScreen mainScreen]bounds].size.height - (double)896) < DBL_EPSILON)
 
 // iPhone X系列 （x xs xr xs_max 宽高比相同都为2.16）
 #define IS_IPHONE_X_Range ((int)((SCREEN_HEIGHT / SCREEN_WIDTH) * 100) == 216)
@@ -24,6 +21,10 @@
 #define SCREEN_WIDTH             [UIScreen mainScreen].bounds.size.width
 // 屏幕高度
 #define SCREEN_HEIGHT            [UIScreen mainScreen].bounds.size.height
+
+// 比率
+#define PERCENT_WIDTH            [UIScreen mainScreen].bounds.size.width/375
+#define PERCENT_HEIGHT           [UIScreen mainScreen].bounds.size.height/667
 // 基本高度
 #define BASE_HEIGHT              44
 // 状态栏高度
@@ -35,7 +36,7 @@
 // iPhone X 安全区
 #define SafeAreaBottomHeight     (IS_IPHONE_X_Range  ? 34 : 0)
 // 适配比例
-#define SCALE_SIZE               (SCREEN_WIDTH == 375 ? 1 : (SCREEN_WIDTH == 414 ? 1.1 : 0.9))
+#define SCALE_SIZE               (SCREEN_WIDTH == 375 ? 1.0 : (SCREEN_WIDTH == 414 ? 1.1 : 0.9))
 // 适配iOS11
 #define AdjustsScrollViewInsetNever(controller,view) if(@available(iOS 11.0, *)) {view.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever; view.contentInset = UIEdgeInsetsMake(0, 0, SafeAreaBottomHeight, 0);} else if([controller isKindOfClass:[UIViewController class]]) {controller.automaticallyAdjustsScrollViewInsets = false;}
 // root view

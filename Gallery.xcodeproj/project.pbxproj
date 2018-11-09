@@ -53,7 +53,7 @@
 		8455A4D92194064300B52A2B /* CategoryListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8455A4D82194064300B52A2B /* CategoryListCollectionViewCell.m */; };
 		8455A4DD21942C0D00B52A2B /* CategoryDetallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8455A4DC21942C0D00B52A2B /* CategoryDetallCell.m */; };
 		8455A4E021942E5A00B52A2B /* CategoryDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8455A4DF21942E5A00B52A2B /* CategoryDetailController.m */; };
-		84EC1BCD21952B8E00527577 /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC1BCC21952B8E00527577 /* ProductDetailViewController.m */; };
+		84EC1BCD21952B8E00527577 /* ProductDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC1BCC21952B8E00527577 /* ProductDetailController.m */; };
 		84EC1BD921955F4400527577 /* XLSlideSegmentedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC1BD321955F4400527577 /* XLSlideSegmentedItem.m */; };
 		84EC1BDA21955F4400527577 /* XLSlideSegmented.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC1BD521955F4400527577 /* XLSlideSegmented.m */; };
 		84EC1BDB21955F4400527577 /* XLSegmentedSlideSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC1BD621955F4400527577 /* XLSegmentedSlideSwitch.m */; };
@@ -99,7 +99,7 @@
 		7611C4B4219419A700D6428E /* 0_T_hezi_tietu_01_d.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = 0_T_hezi_tietu_01_d.tga; sourceTree = "<group>"; };
 		7611C4BE21942FF900D6428E /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		7611C4BF21942FF900D6428E /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		761278E321952D98009A5774 /* ProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewController.h; sourceTree = "<group>"; };
+		761278E321952D98009A5774 /* ProductDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailController.h; sourceTree = "<group>"; };
 		761278E421952DDA009A5774 /* yiside.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = yiside.DAE; sourceTree = "<group>"; };
 		761278E921955545009A5774 /* HomeShowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeShowView.h; sourceTree = "<group>"; };
 		761278EA21955545009A5774 /* HomeShowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeShowView.m; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 		8455A4D82194064300B52A2B /* CategoryListCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryListCollectionViewCell.m; sourceTree = "<group>"; };
 		8455A4DC21942C0D00B52A2B /* CategoryDetallCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryDetallCell.m; sourceTree = "<group>"; };
 		8455A4DF21942E5A00B52A2B /* CategoryDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryDetailController.m; sourceTree = "<group>"; };
-		84EC1BCC21952B8E00527577 /* ProductDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewController.m; sourceTree = "<group>"; };
+		84EC1BCC21952B8E00527577 /* ProductDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductDetailController.m; sourceTree = "<group>"; };
 		84EC1BD021955F4400527577 /* XLSlideSegmented.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSlideSegmented.h; sourceTree = "<group>"; };
 		84EC1BD121955F4400527577 /* XLSegmentedSlideSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSegmentedSlideSwitch.h; sourceTree = "<group>"; };
 		84EC1BD221955F4400527577 /* XLSlideSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSlideSwitch.h; sourceTree = "<group>"; };
@@ -249,8 +249,8 @@
 				84EC1BDE219564D800527577 /* CategoryDetailSlideController.m */,
 				76BE7AC621944C160062C64E /* CategoryDetailController.h */,
 				8455A4DF21942E5A00B52A2B /* CategoryDetailController.m */,
-				761278E321952D98009A5774 /* ProductDetailViewController.h */,
-				84EC1BCC21952B8E00527577 /* ProductDetailViewController.m */,
+				761278E321952D98009A5774 /* ProductDetailController.h */,
+				84EC1BCC21952B8E00527577 /* ProductDetailController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -809,7 +809,7 @@
 				84EC1BDC21955F4400527577 /* XLSlideSwitch.m in Sources */,
 				7655CC8C2150F89200D206C2 /* BaseDataRequest.m in Sources */,
 				8455A4DD21942C0D00B52A2B /* CategoryDetallCell.m in Sources */,
-				84EC1BCD21952B8E00527577 /* ProductDetailViewController.m in Sources */,
+				84EC1BCD21952B8E00527577 /* ProductDetailController.m in Sources */,
 				760211312191856800C6F622 /* CategoryCell.m in Sources */,
 				8455A4D92194064300B52A2B /* CategoryListCollectionViewCell.m in Sources */,
 				7611C4C021942FF900D6428E /* HomeViewController.m in Sources */,
