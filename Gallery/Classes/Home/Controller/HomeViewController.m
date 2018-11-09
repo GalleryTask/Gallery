@@ -51,7 +51,7 @@
     _cycleScrollView.pageControlBottomOffset = -SCALE_SIZE*30;
     _cycleScrollView.pageControlStyle = SDCycleScrollViewPageContolStyleClassic;
     _cycleScrollView.autoScrollTimeInterval = 5.0;
-    _cycleScrollView.backgroundColor = BASECOLOR_LIGHTGRAY;
+    _cycleScrollView.backgroundColor = BASECOLOR_BACKGROUND_GRAY;
     [self.view addSubview:_cycleScrollView];
   }
   return _cycleScrollView;
@@ -60,6 +60,7 @@
 -(HomeShowView *)showView {
   if (!_showView) {
     _showView = [[HomeShowView alloc] init];
+    [_showView setTitleString:@"产品展示"];
     [self.view addSubview:_showView];
   }
   return _showView;
@@ -76,7 +77,8 @@
     for (int i = 0; i < 8; i++) {
       UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
       [button setFrame:CGRectMake(SCALE_SIZE*24+SCALE_SIZE*337*i, 0, SCALE_SIZE*327, SCALE_SIZE*186)];
-      [button setBackgroundColor:BASECOLOR_LIGHTGRAY];
+      [button setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
+      [[button layer] setCornerRadius:5];
       [_showScrollView addSubview:button];
       
       UILabel *titleLabel = [[UILabel alloc] init];
