@@ -8,7 +8,7 @@
 
 #import "CategoryDetailController.h"
 #import "CategoryDetallCell.h"
-
+#import "ShopDetailViewController.h"
 @interface CategoryDetailController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
 
@@ -56,17 +56,13 @@ static NSString *cellIdentList = @"listCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   CategoryDetallCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentList forIndexPath:indexPath];
-  if (indexPath.row == 0) {
-    cell.contentView.backgroundColor = [UIColor redColor];
-  }else if (indexPath.row == 1){
-    cell.contentView.backgroundColor = [UIColor orangeColor];
-  }
   return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   
-
+  ShopDetailViewController *detailVC = [[ShopDetailViewController alloc] init];
+  [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 -(UICollectionView *)listCollection {

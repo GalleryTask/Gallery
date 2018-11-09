@@ -61,7 +61,7 @@
   if (!_pictureImageView) {
     _pictureImageView = [[UIImageView alloc] init];
     [_pictureImageView setContentMode:UIViewContentModeScaleAspectFit];
-    _pictureImageView.backgroundColor = BASECOLOR_LIGHTGRAY;
+    _pictureImageView.backgroundColor = BASECOLOR_BACKGROUND_GRAY;
     [self.contentView addSubview:_pictureImageView];
   }
   return _pictureImageView;
