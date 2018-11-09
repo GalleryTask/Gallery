@@ -24,11 +24,8 @@
                       @"鞋袜箱包",@"鞋袜箱包",@"文化体育",@"仓储物流",@"汽车用品"];
   [self.view addSubview:self.slideSwitch];
 }
-
-
 #pragma mark -
 #pragma mark SlideSwitchDelegate
-
 - (void)slideSwitchDidselectAtIndex:(NSInteger)index {
   NSLog(@"切换到了第 -- %zd -- 个视图",index);
 }
