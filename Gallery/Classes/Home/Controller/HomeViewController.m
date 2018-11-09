@@ -78,6 +78,7 @@
       UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
       [button setFrame:CGRectMake(SCALE_SIZE*24+SCALE_SIZE*337*i, 0, SCALE_SIZE*327, SCALE_SIZE*186)];
       [button setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
+      [[button layer] setCornerRadius:5];
       [_showScrollView addSubview:button];
       
       UILabel *titleLabel = [[UILabel alloc] init];
