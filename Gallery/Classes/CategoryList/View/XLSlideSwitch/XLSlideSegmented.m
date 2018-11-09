@@ -10,7 +10,7 @@
 #import "XLSlideSegmentedItem.h"
 
 //item间隔
-static const CGFloat ItemMargin = 10.0f;
+static const CGFloat ItemMargin = 22.0f;
 //button标题选中大小
 static const CGFloat ItemFontSize = 14.0f;
 //最大放大倍数
@@ -42,7 +42,7 @@ static const CGFloat ItemMaxScale = 1.0;
     [self addSubview:[UIView new]];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.sectionInset = UIEdgeInsetsMake(0, ItemMargin, 0, ItemMargin);
+    layout.sectionInset = UIEdgeInsetsMake(0, SCALE_SIZE * ItemMargin, 0, SCALE_SIZE *ItemMargin);
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
@@ -200,14 +200,14 @@ static const CGFloat ItemMaxScale = 1.0;
     if (_customTitleSpacing) {
         return _customTitleSpacing;
     }
-    return ItemMargin;
+    return ItemMargin * SCALE_SIZE;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     if (_customTitleSpacing) {
         return _customTitleSpacing;
     }
-    return ItemMargin;
+    return ItemMargin * SCALE_SIZE;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -221,7 +221,7 @@ static const CGFloat ItemMaxScale = 1.0;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     XLSlideSegmentedItem *item = [collectionView dequeueReusableCellWithReuseIdentifier:@"XLSlideSegmentedItem" forIndexPath:indexPath];
     item.textLabel.text = _titles[indexPath.row];
-    item.textLabel.font = [UIFont boldSystemFontOfSize:ItemFontSize];
+    item.textLabel.font = [UIFont boldSystemFontOfSize:ItemFontSize * SCALE_SIZE];
     
     CGFloat scale = indexPath.row == _selectedIndex ? ItemMaxScale : 1;
     item.transform = CGAffineTransformMakeScale(scale, scale);
@@ -237,7 +237,7 @@ static const CGFloat ItemMaxScale = 1.0;
     NSStringDrawingUsesFontLeading;
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     [style setLineBreakMode:NSLineBreakByTruncatingTail];
-    NSDictionary *attributes = @{ NSFontAttributeName : [UIFont boldSystemFontOfSize:ItemFontSize], NSParagraphStyleAttributeName : style };
+    NSDictionary *attributes = @{ NSFontAttributeName : [UIFont boldSystemFontOfSize:ItemFontSize * SCALE_SIZE], NSParagraphStyleAttributeName : style };
     CGSize textSize = [title boundingRectWithSize:CGSizeMake(self.bounds.size.width, self.bounds.size.height)
                                           options:opts
                                        attributes:attributes

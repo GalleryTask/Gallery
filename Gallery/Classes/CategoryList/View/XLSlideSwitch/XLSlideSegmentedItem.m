@@ -20,6 +20,7 @@
 - (void)buildUI {
     _textLabel = [[UILabel alloc] init];
     _textLabel.textAlignment = NSTextAlignmentCenter;
+    [_textLabel setFont:FONTSIZE(14)];
     [self.contentView addSubview:_textLabel];
 }
 
