@@ -7,9 +7,11 @@
 //
 
 #import "HomeViewController.h"
+#import "SDCycleScrollView.h"
 
 @interface HomeViewController ()
 
+@property (nonatomic, strong) SDCycleScrollView  *cycleScrollView; // 轮播图
 
 @end
 
@@ -19,7 +21,23 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
   self.navigationItem.title = @"首页";
+  self.cycleScrollView.imageURLStringsGroup = @[@"",@""];
 }
 
 
+#pragma marks - getters
+-(SDCycleScrollView *)cycleScrollView {
+  if (!_cycleScrollView) {
+    _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*177)
+                                                          delegate:self
+                                                  placeholderImage:nil];
+    _cycleScrollView.currentPageDotColor = BASECOLOR_BLACK_333;
+    _cycleScrollView.pageDotColor = BASECOLOR_BLACK_999;
+    _cycleScrollView.pageControlBottomOffset = -SCALE_SIZE*24;
+    _cycleScrollView.pageControlStyle = SDCycleScrollViewPageContolStyleClassic;
+    _cycleScrollView.autoScrollTimeInterval = 5.0;
+    [self.view addSubview:_cycleScrollView];
+  }
+  return _cycleScrollView;
+}
 @end
