@@ -9,7 +9,7 @@
 #import "HomeViewController.h"
 #import "SDCycleScrollView.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <SDCycleScrollViewDelegate>
 
 @property (nonatomic, strong) SDCycleScrollView  *cycleScrollView; // 轮播图
 
@@ -24,6 +24,10 @@
   self.cycleScrollView.imageURLStringsGroup = @[@"",@""];
 }
 
+// SDCycleScrollView delegate 点击图片回调
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
+  
+}
 
 #pragma marks - getters
 -(SDCycleScrollView *)cycleScrollView {
@@ -33,7 +37,7 @@
                                                   placeholderImage:nil];
     _cycleScrollView.currentPageDotColor = BASECOLOR_BLACK_333;
     _cycleScrollView.pageDotColor = BASECOLOR_BLACK_999;
-    _cycleScrollView.pageControlBottomOffset = -SCALE_SIZE*24;
+    _cycleScrollView.pageControlBottomOffset = -SCALE_SIZE*30;
     _cycleScrollView.pageControlStyle = SDCycleScrollViewPageContolStyleClassic;
     _cycleScrollView.autoScrollTimeInterval = 5.0;
     [self.view addSubview:_cycleScrollView];

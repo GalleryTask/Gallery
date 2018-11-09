@@ -89,12 +89,12 @@
     for (int i = 0; i < self.boxList.count; i++) {
         
         // 创建3D展示view
-        SceneView *sceneView = [[SceneView alloc] initWithSceneName:@"HeZiZheDie.DAE"
+        SceneView *sceneView = [[SceneView alloc] initWithSceneName:@"yiside.DAE"
                                                               frame:CGRectMake((SCREEN_WIDTH-30)*i, SCALE_SIZE*70, SCREEN_WIDTH, SCREEN_WIDTH)];
         sceneView.tag = 100;
         [self.scrollView addSubview:sceneView];
 
-      [sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"0_T_hezi_tietu_01_d.tga"]];
+//      [sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"0_T_hezi_tietu_01_d.tga"]];
 //      [sceneView sceneViewReflectiveImage:[UIImage imageNamed:@"B.tga"]];
         
         // 添加点击手势
