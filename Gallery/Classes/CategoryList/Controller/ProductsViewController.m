@@ -21,6 +21,8 @@ static NSString *cellIdentList = @"listCell";
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self.view setFrame:CGRectMake(SCREEN_WIDTH*0.24, 0, SCREEN_WIDTH*0.76, SCREEN_HEIGHT)];
+  
+  [self.listCollection registerClass:[CategoryListCollectionViewCell class] forCellWithReuseIdentifier:cellIdentList];
 }
 
 #pragma maek -UICollectionViewDelegateFlowLayout
@@ -79,7 +81,6 @@ static NSString *cellIdentList = @"listCell";
     
     _listCollection.backgroundColor = [UIColor whiteColor];
     //注意，此处的ReuseIdentifier 必须和 cellForItemAtIndexPath 方法中 一致 均为 cellId
-    [_listCollection registerClass:[CategoryListCollectionViewCell class] forCellWithReuseIdentifier:cellIdentList];
     //4.设置代理
     _listCollection.delegate = self;
     _listCollection.dataSource = self;

@@ -22,6 +22,7 @@
 		7611C4B5219419A800D6428E /* 0_T_hezi_tietu_01_d.tga in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4B4219419A700D6428E /* 0_T_hezi_tietu_01_d.tga */; };
 		7611C4C021942FF900D6428E /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7611C4BF21942FF900D6428E /* HomeViewController.m */; };
 		761278E521952DDA009A5774 /* yiside.DAE in Resources */ = {isa = PBXBuildFile; fileRef = 761278E421952DDA009A5774 /* yiside.DAE */; };
+		761278EB21955545009A5774 /* HomeShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761278EA21955545009A5774 /* HomeShowView.m */; };
 		761AF2D4215E0AB200F596D3 /* ResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 761AF2D3215E0AB200F596D3 /* ResultModel.m */; };
 		761AF2DC215E0B2700F596D3 /* YJToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 761AF2D6215E0B2700F596D3 /* YJToolBar.m */; };
 		761AF2DD215E0B2700F596D3 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 761AF2D7215E0B2700F596D3 /* UIView+Frame.m */; };
@@ -94,6 +95,8 @@
 		7611C4BF21942FF900D6428E /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		761278E321952D98009A5774 /* ShopDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDetailViewController.h; sourceTree = "<group>"; };
 		761278E421952DDA009A5774 /* yiside.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = yiside.DAE; sourceTree = "<group>"; };
+		761278E921955545009A5774 /* HomeShowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeShowView.h; sourceTree = "<group>"; };
+		761278EA21955545009A5774 /* HomeShowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeShowView.m; sourceTree = "<group>"; };
 		761AF2D2215E0AB200F596D3 /* ResultModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultModel.h; sourceTree = "<group>"; };
 		761AF2D3215E0AB200F596D3 /* ResultModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultModel.m; sourceTree = "<group>"; };
 		761AF2D6215E0B2700F596D3 /* YJToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJToolBar.m; sourceTree = "<group>"; };
@@ -289,6 +292,8 @@
 		760E94702151F0B400592929 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				761278E921955545009A5774 /* HomeShowView.h */,
+				761278EA21955545009A5774 /* HomeShowView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -752,6 +757,7 @@
 				7655CC792150F27E00D206C2 /* TabBarController.m in Sources */,
 				76605E162101B6EF00115FA6 /* main.m in Sources */,
 				76605E632101CCBA00115FA6 /* UploadImageObject.m in Sources */,
+				761278EB21955545009A5774 /* HomeShowView.m in Sources */,
 				76605E082101B6ED00115FA6 /* AppDelegate.m in Sources */,
 				761AF2DE215E0B2700F596D3 /* YJLocationPicker.m in Sources */,
 				76605E4A2101CB4400115FA6 /* UITableView+EmptyData.m in Sources */,

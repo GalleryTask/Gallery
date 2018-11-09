@@ -105,7 +105,7 @@
     [_tableView setDataSource:self];
     [_tableView setTableFooterView:[[UIView alloc] init]];
     [_tableView setShowsVerticalScrollIndicator:NO];
-    [_tableView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
+//    [_tableView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
     [_tableView setRowHeight:0];
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];

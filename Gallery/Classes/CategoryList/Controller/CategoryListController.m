@@ -35,7 +35,14 @@
     make.height.equalTo(self.view);
   }];
   [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-  [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+  [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+                              animated:NO
+                        scrollPosition:UITableViewScrollPositionTop];
+  BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
+  [nav setNavigationBarRightItemWithImageName:@"news" highlightImageName:@""];
+  [nav showRightNavBtnWithClick:^(id sender) {
+    
+  }];
 }
 
 #pragma mark - tableview delegate dataSource

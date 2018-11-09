@@ -51,11 +51,13 @@
 #define BASECOLOR_BLUE              [UIColor hexStringToColor:@"#418eff"]
 #define BASECOLOR_GREEN             [UIColor hexStringToColor:@"#77D977"]
 #define BASECOLOR_RED               [UIColor hexStringToColor:@"#FF4C4C"]
+
 #define BASECOLOR_BLACK_999         [UIColor hexStringToColor:@"#999999"]
 #define BASECOLOR_BLACK_666         [UIColor hexStringToColor:@"#666666"]
 #define BASECOLOR_BLACK_333         [UIColor hexStringToColor:@"#333333"]
 #define BASECOLOR_BLACK_030         [UIColor hexStringToColor:@"#030303"]
 #define BASECOLOR_BLACK_000         [UIColor hexStringToColor:@"#000000"]
+#define BASECOLOR_GRAY_3F           [UIColor hexStringToColor:@"#3F3F3F"]
 
 
 // 地图的appkey
