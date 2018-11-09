@@ -27,6 +27,7 @@
   [self.view addSubview:self.exhibitionBtn];
   [self.view addSubview:self.scrollView];
   self.cycleScrollView.imageURLStringsGroup = @[@"",@""];
+
 }
 
 // SDCycleScrollView delegate 点击图片回调
