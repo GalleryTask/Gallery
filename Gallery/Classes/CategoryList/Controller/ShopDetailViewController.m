@@ -18,12 +18,13 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.title = @"高档礼盒包装方案";
-  [self.view addSubview:self.scrollView];
   [self.view addSubview:self.exhibitionBtn];
+  [self.view addSubview:self.scrollView];
+  
 }
 
 -(UIButton *)exhibitionBtn {
-  if (_exhibitionBtn) {
+  if (!_exhibitionBtn) {
     _exhibitionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_exhibitionBtn setFrame:CGRectMake(0, SCREEN_HEIGHT - SafeAreaBottomHeight- 50, SCREEN_WIDTH, 50)];
     [_exhibitionBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
