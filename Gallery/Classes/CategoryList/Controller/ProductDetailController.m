@@ -98,7 +98,7 @@
     [_detailLabel setFont:FONTSIZE(14)];
     [_detailLabel setTextColor:BASECOLOR_BLACK_999];
     [_detailLabel setNumberOfLines:1];
-    //[_detailLabel setText:@"我们从来不怀疑，“有趣”可能给产品带来巨大的价值。我们试图用略带夸张与戏虐的人物表情来呈现这三个与苹果有关联的人物。引发用户快速的认知和趣味的联系"];
+    [_detailLabel setText:@"我们从来不怀疑，“有趣”可能给产品带来巨大的价值。我们试图用略带夸张与戏虐的人物表情来呈现这三个与苹果有关联的人物。引发用户快速的认知和趣味的联系"];
     [_showView addSubview:_detailLabel];
   }
   return _detailLabel;
@@ -109,7 +109,8 @@
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT -SafeAreaBottomHeight - 50)];
     AdjustsScrollViewInsetNever(self, _scrollView);
     [_scrollView setShowsVerticalScrollIndicator:NO];
-     [_scrollView setShowsHorizontalScrollIndicator:NO];
+    [_scrollView setShowsHorizontalScrollIndicator:NO];
+    [_scrollView setContentSize:CGSizeMake(0, SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT -SafeAreaBottomHeight - 50)];
   }
   return _scrollView;
 }
