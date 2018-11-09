@@ -52,6 +52,11 @@
 		8455A4DD21942C0D00B52A2B /* CategoryDetallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8455A4DC21942C0D00B52A2B /* CategoryDetallCell.m */; };
 		8455A4E021942E5A00B52A2B /* CategoryDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8455A4DF21942E5A00B52A2B /* CategoryDetailController.m */; };
 		84EC1BCD21952B8E00527577 /* ShopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC1BCC21952B8E00527577 /* ShopDetailViewController.m */; };
+		84EC1BD921955F4400527577 /* XLSlideSegmentedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC1BD321955F4400527577 /* XLSlideSegmentedItem.m */; };
+		84EC1BDA21955F4400527577 /* XLSlideSegmented.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC1BD521955F4400527577 /* XLSlideSegmented.m */; };
+		84EC1BDB21955F4400527577 /* XLSegmentedSlideSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC1BD621955F4400527577 /* XLSegmentedSlideSwitch.m */; };
+		84EC1BDC21955F4400527577 /* XLSlideSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC1BD721955F4400527577 /* XLSlideSwitch.m */; };
+		84EC1BDF219564D800527577 /* CategoryDetailSlideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC1BDE219564D800527577 /* CategoryDetailSlideController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +161,17 @@
 		8455A4DC21942C0D00B52A2B /* CategoryDetallCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryDetallCell.m; sourceTree = "<group>"; };
 		8455A4DF21942E5A00B52A2B /* CategoryDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryDetailController.m; sourceTree = "<group>"; };
 		84EC1BCC21952B8E00527577 /* ShopDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopDetailViewController.m; sourceTree = "<group>"; };
+		84EC1BD021955F4400527577 /* XLSlideSegmented.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSlideSegmented.h; sourceTree = "<group>"; };
+		84EC1BD121955F4400527577 /* XLSegmentedSlideSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSegmentedSlideSwitch.h; sourceTree = "<group>"; };
+		84EC1BD221955F4400527577 /* XLSlideSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSlideSwitch.h; sourceTree = "<group>"; };
+		84EC1BD321955F4400527577 /* XLSlideSegmentedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLSlideSegmentedItem.m; sourceTree = "<group>"; };
+		84EC1BD421955F4400527577 /* XLSlideSwitchDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSlideSwitchDelegate.h; sourceTree = "<group>"; };
+		84EC1BD521955F4400527577 /* XLSlideSegmented.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLSlideSegmented.m; sourceTree = "<group>"; };
+		84EC1BD621955F4400527577 /* XLSegmentedSlideSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLSegmentedSlideSwitch.m; sourceTree = "<group>"; };
+		84EC1BD721955F4400527577 /* XLSlideSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLSlideSwitch.m; sourceTree = "<group>"; };
+		84EC1BD821955F4400527577 /* XLSlideSegmentedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSlideSegmentedItem.h; sourceTree = "<group>"; };
+		84EC1BDD219564D800527577 /* CategoryDetailSlideController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryDetailSlideController.h; sourceTree = "<group>"; };
+		84EC1BDE219564D800527577 /* CategoryDetailSlideController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryDetailSlideController.m; sourceTree = "<group>"; };
 		A729398D12F9CD51A838399F /* Pods-Gallery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gallery.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gallery/Pods-Gallery.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,6 +221,7 @@
 		7602112721917D2D00C6F622 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84EC1BCF21955F4400527577 /* XLSlideSwitch */,
 				7602112F2191856800C6F622 /* CategoryCell.h */,
 				760211302191856800C6F622 /* CategoryCell.m */,
 				8455A4D72194064300B52A2B /* CategoryListCollectionViewCell.h */,
@@ -222,6 +239,8 @@
 				7602112A21917D5F00C6F622 /* CategoryListController.m */,
 				7602112C21917DEB00C6F622 /* ProductsViewController.h */,
 				7602112D21917DEB00C6F622 /* ProductsViewController.m */,
+				84EC1BDD219564D800527577 /* CategoryDetailSlideController.h */,
+				84EC1BDE219564D800527577 /* CategoryDetailSlideController.m */,
 				76BE7AC621944C160062C64E /* CategoryDetailController.h */,
 				8455A4DF21942E5A00B52A2B /* CategoryDetailController.m */,
 				761278E321952D98009A5774 /* ShopDetailViewController.h */,
@@ -547,6 +566,22 @@
 			path = SceneView;
 			sourceTree = "<group>";
 		};
+		84EC1BCF21955F4400527577 /* XLSlideSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				84EC1BD021955F4400527577 /* XLSlideSegmented.h */,
+				84EC1BD521955F4400527577 /* XLSlideSegmented.m */,
+				84EC1BD221955F4400527577 /* XLSlideSwitch.h */,
+				84EC1BD721955F4400527577 /* XLSlideSwitch.m */,
+				84EC1BD821955F4400527577 /* XLSlideSegmentedItem.h */,
+				84EC1BD321955F4400527577 /* XLSlideSegmentedItem.m */,
+				84EC1BD421955F4400527577 /* XLSlideSwitchDelegate.h */,
+				84EC1BD121955F4400527577 /* XLSegmentedSlideSwitch.h */,
+				84EC1BD621955F4400527577 /* XLSegmentedSlideSwitch.m */,
+			);
+			path = XLSlideSwitch;
+			sourceTree = "<group>";
+		};
 		A4A11029BD96BF87E72CB7E2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -743,7 +778,9 @@
 				76605E5C2101CC8300115FA6 /* LoginViewController.m in Sources */,
 				76605E562101CC1C00115FA6 /* UserInfoSingleton.m in Sources */,
 				761AF2D4215E0AB200F596D3 /* ResultModel.m in Sources */,
+				84EC1BDB21955F4400527577 /* XLSegmentedSlideSwitch.m in Sources */,
 				7602112B21917D5F00C6F622 /* CategoryListController.m in Sources */,
+				84EC1BD921955F4400527577 /* XLSlideSegmentedItem.m in Sources */,
 				76EE836E216B4B5000D317FF /* SceneView.m in Sources */,
 				8455A4E021942E5A00B52A2B /* CategoryDetailController.m in Sources */,
 				76605E602101CCB100115FA6 /* CommonUtil.m in Sources */,
@@ -757,6 +794,7 @@
 				76605E4A2101CB4400115FA6 /* UITableView+EmptyData.m in Sources */,
 				7655CC7A2150F27E00D206C2 /* BaseNavigationController.m in Sources */,
 				761AF2DD215E0B2700F596D3 /* UIView+Frame.m in Sources */,
+				84EC1BDC21955F4400527577 /* XLSlideSwitch.m in Sources */,
 				7655CC8C2150F89200D206C2 /* BaseDataRequest.m in Sources */,
 				8455A4DD21942C0D00B52A2B /* CategoryDetallCell.m in Sources */,
 				84EC1BCD21952B8E00527577 /* ShopDetailViewController.m in Sources */,
@@ -765,6 +803,8 @@
 				7611C4C021942FF900D6428E /* HomeViewController.m in Sources */,
 				7655CC902150F8CD00D206C2 /* DataRequest.m in Sources */,
 				7602112E21917DEB00C6F622 /* ProductsViewController.m in Sources */,
+				84EC1BDA21955F4400527577 /* XLSlideSegmented.m in Sources */,
+				84EC1BDF219564D800527577 /* CategoryDetailSlideController.m in Sources */,
 				760E94762151F0DB00592929 /* MeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
