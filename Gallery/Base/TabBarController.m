@@ -19,7 +19,6 @@
   // 设代理为自己
   [self setDelegate:self];
   [UITabBar appearance].translucent = NO;
-//  [[UITabBar appearance] setBackgroundColor:[UIColor whiteColor]];
   [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
   // 设置默认文字的颜色
   [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary
