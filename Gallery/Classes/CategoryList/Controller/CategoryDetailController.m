@@ -85,6 +85,7 @@ static NSString *cellIdentList = @"listCell";
     _listCollection.backgroundColor = [UIColor whiteColor];
     //注意，此处的ReuseIdentifier 必须和 cellForItemAtIndexPath 方法中 一致 均为 cellId
     [_listCollection registerClass:[CategoryDetallCell class] forCellWithReuseIdentifier:cellIdentList];
+     _listCollection.alwaysBounceVertical = YES;
     //4.设置代理
     _listCollection.delegate = self;
     _listCollection.dataSource = self;
