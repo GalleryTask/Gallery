@@ -24,12 +24,12 @@ static NSString *cellIdentList = @"listCell";
   [super viewDidLoad];
   [self.view setFrame:CGRectMake(SCREEN_WIDTH*0.24, 40, SCREEN_WIDTH*0.76, SCREEN_HEIGHT-40)];
   
+  NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:
+                       [[NSBundle mainBundle] pathForResource:@"DataList.plist"ofType:nil]];
+  self.dataSource = dic[@"CategoryList"];
   [self.listCollection registerClass:[CategoryListCollectionViewCell class] forCellWithReuseIdentifier:cellIdentList];
   
 
-  NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:
-                        [[NSBundle mainBundle] pathForResource:@"DataList.plist"ofType:nil]];
-  self.dataSource = dic[@"CategoryList"];
 }
 
 #pragma maek -UICollectionViewDelegateFlowLayout
@@ -77,9 +77,9 @@ static NSString *cellIdentList = @"listCell";
 - (void)scrollToSelectedIndexPath:(NSIndexPath *)indexPath {
   
   
-  [self.listCollection selectItemAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:0]
-                                    animated:YES
-                              scrollPosition:UICollectionViewScrollPositionTop];
+//  [self.listCollection selectItemAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:0]
+//                                    animated:YES
+//                              scrollPosition:UICollectionViewScrollPositionTop];
 }
 
 -(UICollectionView *)listCollection {
@@ -94,6 +94,7 @@ static NSString *cellIdentList = @"listCell";
     //4.设置代理
     _listCollection.delegate = self;
     _listCollection.dataSource = self;
+    _listCollection.alwaysBounceVertical = YES;
     
     [self.view addSubview:_listCollection];
     
