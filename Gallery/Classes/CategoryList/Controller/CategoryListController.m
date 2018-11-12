@@ -31,7 +31,7 @@
   [self.view addSubview:self.productsVC.view];
   [self.view addSubview:self.searchView];
   self.categoryArr = @[@"美妆护理",@"数码3C",@"水果农特",@"医药保健",@"服装",@"酒水饮料",@"日化家纺",
-                       @"家具",@"家用电器",@"玩具饰品",@"家装五金",@"日化家纺",@"工业防护",@"工业防护",
+                       @"家具",@"家用电器",@"玩具饰品",@"家装五金",@"工业防护",@"工业防护",
                        @"鞋袜箱包",@"鞋袜箱包",@"文化体育",@"仓储物流",@"汽车用品"];
   [self.tableView registerClass:[CategoryCell class] forCellReuseIdentifier:@"CategoryCell"];
   [self.tableView setRowHeight:SCALE_SIZE*45];

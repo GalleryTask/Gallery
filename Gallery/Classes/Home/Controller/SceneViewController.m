@@ -8,6 +8,7 @@
 
 #import "SceneViewController.h"
 #import "SceneView.h"
+#import "TopPageSlideController.h"
 
 @interface SceneViewController ()
 
@@ -27,7 +28,8 @@
 
 // 开始定制按钮点击事件
 - (void)customizedBtnClick:(id)sender {
-  
+  TopPageSlideController * vc = [[TopPageSlideController alloc] initPackagingCustomVC];
+  [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma marks - getters

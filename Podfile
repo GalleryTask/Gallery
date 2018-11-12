@@ -10,5 +10,6 @@ pod 'MBProgressHUD',      '1.1.0'
 pod 'SSZipArchive',       '2.1.3'
 pod 'MMKV',               '1.0.12'
 pod 'SDCycleScrollView',  '1.75'
+pod 'YNPageViewController','0.2.3'
 
 end

@@ -59,7 +59,7 @@
 		84EC1BDA21955F4400527577 /* XLSlideSegmented.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC1BD521955F4400527577 /* XLSlideSegmented.m */; };
 		84EC1BDB21955F4400527577 /* XLSegmentedSlideSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC1BD621955F4400527577 /* XLSegmentedSlideSwitch.m */; };
 		84EC1BDC21955F4400527577 /* XLSlideSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC1BD721955F4400527577 /* XLSlideSwitch.m */; };
-		84EC1BDF219564D800527577 /* CategoryDetailSlideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC1BDE219564D800527577 /* CategoryDetailSlideController.m */; };
+		84EC1BDF219564D800527577 /* TopPageSlideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC1BDE219564D800527577 /* TopPageSlideController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,8 +179,8 @@
 		84EC1BD621955F4400527577 /* XLSegmentedSlideSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLSegmentedSlideSwitch.m; sourceTree = "<group>"; };
 		84EC1BD721955F4400527577 /* XLSlideSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLSlideSwitch.m; sourceTree = "<group>"; };
 		84EC1BD821955F4400527577 /* XLSlideSegmentedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSlideSegmentedItem.h; sourceTree = "<group>"; };
-		84EC1BDD219564D800527577 /* CategoryDetailSlideController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryDetailSlideController.h; sourceTree = "<group>"; };
-		84EC1BDE219564D800527577 /* CategoryDetailSlideController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryDetailSlideController.m; sourceTree = "<group>"; };
+		84EC1BDD219564D800527577 /* TopPageSlideController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopPageSlideController.h; sourceTree = "<group>"; };
+		84EC1BDE219564D800527577 /* TopPageSlideController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopPageSlideController.m; sourceTree = "<group>"; };
 		A729398D12F9CD51A838399F /* Pods-Gallery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gallery.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gallery/Pods-Gallery.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -248,8 +248,8 @@
 				7602112A21917D5F00C6F622 /* CategoryListController.m */,
 				7602112C21917DEB00C6F622 /* ProductsViewController.h */,
 				7602112D21917DEB00C6F622 /* ProductsViewController.m */,
-				84EC1BDD219564D800527577 /* CategoryDetailSlideController.h */,
-				84EC1BDE219564D800527577 /* CategoryDetailSlideController.m */,
+				84EC1BDD219564D800527577 /* TopPageSlideController.h */,
+				84EC1BDE219564D800527577 /* TopPageSlideController.m */,
 				76BE7AC621944C160062C64E /* CategoryDetailController.h */,
 				8455A4DF21942E5A00B52A2B /* CategoryDetailController.m */,
 				761278E321952D98009A5774 /* ProductDetailController.h */,
@@ -822,7 +822,7 @@
 				7655CC902150F8CD00D206C2 /* DataRequest.m in Sources */,
 				7602112E21917DEB00C6F622 /* ProductsViewController.m in Sources */,
 				84EC1BDA21955F4400527577 /* XLSlideSegmented.m in Sources */,
-				84EC1BDF219564D800527577 /* CategoryDetailSlideController.m in Sources */,
+				84EC1BDF219564D800527577 /* TopPageSlideController.m in Sources */,
 				760E94762151F0DB00592929 /* MeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

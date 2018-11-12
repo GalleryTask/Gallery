@@ -12,10 +12,6 @@
 @interface CategoryDetailController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
 
-
-@property(nonatomic, strong)UICollectionView *listCollection;
-
-
 @end
 static NSString *cellIdentList = @"listCell";
 @implementation CategoryDetailController
@@ -35,6 +31,7 @@ static NSString *cellIdentList = @"listCell";
   
    [self.view addSubview:self.listCollection];
 }
+
 
 #pragma maek -UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -56,7 +53,7 @@ static NSString *cellIdentList = @"listCell";
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-  return 1;
+  return 2;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -89,8 +86,6 @@ static NSString *cellIdentList = @"listCell";
     //4.设置代理
     _listCollection.delegate = self;
     _listCollection.dataSource = self;
-    
-   
     
   }
   return _listCollection;

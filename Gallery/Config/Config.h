@@ -60,6 +60,7 @@
 #define BASECOLOR_BLACK_000         [UIColor hexStringToColor:@"#000000"]
 #define BASECOLOR_GRAY_3F           [UIColor hexStringToColor:@"#3F3F3F"]
 #define BASECOLOR_GRAY_F1           [UIColor hexStringToColor:@"#F1F1F1"]
+#define BASECOLOR_GRAY_E9           [UIColor hexStringToColor:@"#E9E9E9"]
 
 // 地图的appkey
 #define MAP_APPKEY                  @"369bfc0d3d2a8b52bfad1c8d3ed53343"
