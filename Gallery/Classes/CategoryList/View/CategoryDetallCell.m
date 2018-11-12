@@ -16,6 +16,11 @@
 @end
 @implementation CategoryDetallCell
 
+-(void)setDataDic:(NSDictionary *)dataDic {
+  [self.pictureImageView setImage:[UIImage imageNamed:dataDic[@"imageName"]]];
+  [self.titleLabel setText:dataDic[@"title"]];
+}
+
 -(void)layoutSubviews{
     [super layoutSubviews];
     
@@ -38,7 +43,7 @@
         _pictureImageView = [[UIImageView alloc] init];
         [_pictureImageView setContentMode:UIViewContentModeScaleAspectFit];
         //        [_arrowImgView setImage:[UIImage imageNamed:@"arrow"]];
-        _pictureImageView.backgroundColor = BASECOLOR_BACKGROUND_GRAY;
+//        _pictureImageView.backgroundColor = BASECOLOR_BACKGROUND_GRAY;
         [self.contentView addSubview:_pictureImageView];
     }
     return _pictureImageView;

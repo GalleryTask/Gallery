@@ -55,6 +55,7 @@
   }
   return _slideSwitch;
 }
+
 - (UIViewController *)viewControllerOfIndex:(NSInteger)index {
   UIViewController *vc;
   vc = [[CategoryDetailController alloc] init];

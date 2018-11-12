@@ -23,8 +23,17 @@ static NSString *cellIdentList = @"listCell";
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.title = @"水果农特";
-  [self.view addSubview:self.listCollection];
+ 
   
+  NSDictionary *dic = @{@"imageName":@"9",@"title":@"苹果礼盒方案一"};
+  NSDictionary *dic1 = @{@"imageName":@"2",@"title":@"苹果礼盒方案二"};
+  NSDictionary *dic2 = @{@"imageName":@"7",@"title":@"苹果礼盒方案三"};
+  
+  [self.dataSource addObject:dic];
+  [self.dataSource addObject:dic1];
+  [self.dataSource addObject:dic2];
+  
+   [self.view addSubview:self.listCollection];
 }
 
 #pragma maek -UICollectionViewDelegateFlowLayout
@@ -51,11 +60,12 @@ static NSString *cellIdentList = @"listCell";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-  return 9;
+  return self.dataSource.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   CategoryDetallCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentList forIndexPath:indexPath];
+  [cell setDataDic:self.dataSource[indexPath.row]];
   return cell;
 }
 

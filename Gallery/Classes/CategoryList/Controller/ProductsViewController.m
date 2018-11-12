@@ -15,7 +15,9 @@
 @property(nonatomic, strong)UICollectionView *listCollection;
 
 @end
+
 static NSString *cellIdentList = @"listCell";
+
 @implementation ProductsViewController
 
 - (void)viewDidLoad {
@@ -23,6 +25,11 @@ static NSString *cellIdentList = @"listCell";
   [self.view setFrame:CGRectMake(SCREEN_WIDTH*0.24, 40, SCREEN_WIDTH*0.76, SCREEN_HEIGHT-40)];
   
   [self.listCollection registerClass:[CategoryListCollectionViewCell class] forCellWithReuseIdentifier:cellIdentList];
+  
+
+  NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:
+                        [[NSBundle mainBundle] pathForResource:@"DataList.plist"ofType:nil]];
+  self.dataSource = dic[@"CategoryList"];
 }
 
 #pragma maek -UICollectionViewDelegateFlowLayout
@@ -38,22 +45,24 @@ static NSString *cellIdentList = @"listCell";
   
   return 0;
 }
-//列
+
+// 列
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
   return 0;
   
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-  return 19;
+  return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-  return 9;
+  return self.dataSource.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   CategoryListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentList forIndexPath:indexPath];
+  [cell setDataDic:self.dataSource[indexPath.row]];
   return cell;
 }
 
@@ -68,7 +77,7 @@ static NSString *cellIdentList = @"listCell";
 - (void)scrollToSelectedIndexPath:(NSIndexPath *)indexPath {
   
   
-  [self.listCollection selectItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.row]
+  [self.listCollection selectItemAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:0]
                                     animated:YES
                               scrollPosition:UICollectionViewScrollPositionTop];
 }

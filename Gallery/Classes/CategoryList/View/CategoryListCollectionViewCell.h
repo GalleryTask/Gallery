@@ -12,7 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CategoryListCollectionViewCell : UICollectionViewCell
 
-//什么鬼
+@property (nonatomic, strong) NSDictionary  *dataDic;
+
 @end
 
 NS_ASSUME_NONNULL_END

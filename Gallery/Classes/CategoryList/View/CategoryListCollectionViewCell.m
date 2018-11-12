@@ -23,6 +23,13 @@
     // Initialization code
 }
 
+-(void)setDataDic:(NSDictionary *)dataDic {
+  if (dataDic) {
+    [self.pictureImageView setImage:[UIImage imageNamed:[dataDic valueForKey:@"imageName"]]];
+    [self.titleLabel setText:[dataDic valueForKey:@"title"]];
+  }
+}
+
 -(void)layoutSubviews{
     [super layoutSubviews];
 
@@ -36,8 +43,6 @@
     [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
        
         make.left.right.equalTo(self.pictureImageView);
-//        make.left.mas_equalTo(SCALE_SIZE*5);
-//        make.right.mas_equalTo(-SCALE_SIZE*5);
         make.top.mas_equalTo(self.pictureImageView.mas_bottom).offset(SCALE_SIZE*10);
      
     }];
@@ -61,7 +66,7 @@
   if (!_pictureImageView) {
     _pictureImageView = [[UIImageView alloc] init];
     [_pictureImageView setContentMode:UIViewContentModeScaleAspectFit];
-    _pictureImageView.backgroundColor = BASECOLOR_BACKGROUND_GRAY;
+//    _pictureImageView.backgroundColor = BASECOLOR_BACKGROUND_GRAY;
     [self.contentView addSubview:_pictureImageView];
   }
   return _pictureImageView;

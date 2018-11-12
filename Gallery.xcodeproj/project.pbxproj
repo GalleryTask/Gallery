@@ -11,6 +11,7 @@
 		7602112B21917D5F00C6F622 /* CategoryListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7602112A21917D5F00C6F622 /* CategoryListController.m */; };
 		7602112E21917DEB00C6F622 /* ProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7602112D21917DEB00C6F622 /* ProductsViewController.m */; };
 		760211312191856800C6F622 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 760211302191856800C6F622 /* CategoryCell.m */; };
+		760CE63321992A2600CF2306 /* PageRoundScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760CE63221992A2600CF2306 /* PageRoundScrollView.m */; };
 		760E94692151ED9B00592929 /* DataList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 760E94682151ED9B00592929 /* DataList.plist */; };
 		760E94732151F0D100592929 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E94722151F0D100592929 /* ServiceViewController.m */; };
 		760E94762151F0DB00592929 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E94752151F0DB00592929 /* MeViewController.m */; };
@@ -87,6 +88,8 @@
 		7602112D21917DEB00C6F622 /* ProductsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductsViewController.m; sourceTree = "<group>"; };
 		7602112F2191856800C6F622 /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
 		760211302191856800C6F622 /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
+		760CE63121992A2600CF2306 /* PageRoundScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageRoundScrollView.h; sourceTree = "<group>"; };
+		760CE63221992A2600CF2306 /* PageRoundScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageRoundScrollView.m; sourceTree = "<group>"; };
 		760E94682151ED9B00592929 /* DataList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DataList.plist; sourceTree = "<group>"; };
 		760E94722151F0D100592929 /* ServiceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceViewController.m; sourceTree = "<group>"; };
 		760E94742151F0DB00592929 /* MeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
@@ -318,6 +321,8 @@
 			children = (
 				761278E921955545009A5774 /* HomeShowView.h */,
 				761278EA21955545009A5774 /* HomeShowView.m */,
+				760CE63121992A2600CF2306 /* PageRoundScrollView.h */,
+				760CE63221992A2600CF2306 /* PageRoundScrollView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -798,6 +803,7 @@
 				760E94732151F0D100592929 /* ServiceViewController.m in Sources */,
 				7655CC792150F27E00D206C2 /* TabBarController.m in Sources */,
 				76605E162101B6EF00115FA6 /* main.m in Sources */,
+				760CE63321992A2600CF2306 /* PageRoundScrollView.m in Sources */,
 				76605E632101CCBA00115FA6 /* UploadImageObject.m in Sources */,
 				761278EB21955545009A5774 /* HomeShowView.m in Sources */,
 				76605E082101B6ED00115FA6 /* AppDelegate.m in Sources */,

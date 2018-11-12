@@ -10,8 +10,9 @@
 #import "SDCycleScrollView.h"
 #import "CategoryDetailController.h"
 #import "HomeShowView.h"
+#import "PageRoundScrollView.h"
 
-@interface HomeViewController () <SDCycleScrollViewDelegate, UIScrollViewDelegate>
+@interface HomeViewController () <SDCycleScrollViewDelegate, PageRoundScrollViewDelegate>
 
 @property (nonatomic, strong) SDCycleScrollView  *cycleScrollView; // 轮播图
 @property (nonatomic, strong) HomeShowView  *showView;
@@ -25,7 +26,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
   self.navigationItem.title = @"首页";
-  self.cycleScrollView.imageURLStringsGroup = @[@"",@""];
+//  self.cycleScrollView.imageURLStringsGroup = @[@"",@""];
+  self.cycleScrollView.localizationImageNamesGroup = @[@"home_1",@"home_1"];
+  
+  PageRoundScrollView *scrollView = [[PageRoundScrollView alloc] init];
+  [scrollView setDelegate:self];
+  [self.view addSubview:scrollView];
+  
+  [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.width.bottom.equalTo(self.view);
+    make.top.equalTo(self.showView.mas_bottom);
+  }];
 }
 
 // SDCycleScrollView delegate 点击图片回调
@@ -33,10 +44,8 @@
   
 }
 
-// scrollView delegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-
-  int page = floor(self.showScrollView.contentOffset.x / (SCALE_SIZE*327)) + 1;
+// pageRoundScrolView delegate
+-(void)pageRoundScrollWithPage:(int)page {
   [self.showView setCurrentCount:page];
 }
 
@@ -66,47 +75,6 @@
   return _showView;
 }
 
--(UIScrollView *)showScrollView {
-  if (!_showScrollView) {
-    _showScrollView = [[UIScrollView alloc] init];
-    [_showScrollView setShowsHorizontalScrollIndicator:NO];
-    [_showScrollView setDelegate:self];
-    [_showScrollView setContentSize:CGSizeMake(SCALE_SIZE*327*8+SCALE_SIZE*70+SCALE_SIZE*58, 0)];
-    [self.view addSubview:_showScrollView];
-    
-    for (int i = 0; i < 8; i++) {
-      UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-      [button setFrame:CGRectMake(SCALE_SIZE*24+SCALE_SIZE*337*i, 0, SCALE_SIZE*327, SCALE_SIZE*186)];
-      [button setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
-      [[button layer] setCornerRadius:5];
-      [_showScrollView addSubview:button];
-      
-      UILabel *titleLabel = [[UILabel alloc] init];
-      [titleLabel setFont:[UIFont systemFontOfSize:SCALE_SIZE*16 weight:UIFontWeightBold]];
-      [titleLabel setTextColor:BASECOLOR_BLACK_333];
-      [titleLabel setText:@"苹果包装"];
-      [_showScrollView addSubview:titleLabel];
-      
-      [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(button);
-        make.top.equalTo(button.mas_bottom).offset(SCALE_SIZE*10);
-      }];
-      
-      UILabel *detailLabel = [[UILabel alloc] init];
-      [detailLabel setFont:FONTSIZE(14)];
-      [detailLabel setTextColor:BASECOLOR_BLACK_999];
-      [detailLabel setText:@"与生俱来的艺术品，包装本该不同"];
-      [_showScrollView addSubview:detailLabel];
-      
-      [detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(button);
-        make.top.equalTo(titleLabel.mas_bottom).offset(SCALE_SIZE*5);
-      }];
-    }
-  }
-  return _showScrollView;
-}
-
 -(void)viewDidLayoutSubviews {
   [super viewDidLayoutSubviews];
   
@@ -114,11 +82,6 @@
     make.left.width.equalTo(self.view);
     make.top.equalTo(self.cycleScrollView.mas_bottom).offset(SCALE_SIZE*30);
     make.height.mas_equalTo(SCALE_SIZE*50);
-  }];
-  
-  [self.showScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.width.bottom.equalTo(self.view);
-    make.top.equalTo(self.showView.mas_bottom);
   }];
 }
 

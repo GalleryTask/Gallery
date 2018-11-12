@@ -41,9 +41,9 @@
     make.height.equalTo(self.view).offset(-40);
   }];
   [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-  [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+  [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]
                               animated:NO
-                        scrollPosition:UITableViewScrollPositionTop];
+                        scrollPosition:UITableViewScrollPositionNone];
   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
   [nav setNavigationBarRightItemWithImageName:@"news" highlightImageName:@""];
   [nav showRightNavBtnWithClick:^(id sender) {
