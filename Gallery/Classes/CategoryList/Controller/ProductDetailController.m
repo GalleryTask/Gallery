@@ -30,20 +30,6 @@
   [self.view addSubview:self.exhibitionBtn];
   [self.view addSubview:self.scrollView];
   self.cycleScrollView.imageURLStringsGroup = @[@"",@""];
-  
-  [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//    make.left.equalTo(self.showView);
-    make.left.mas_equalTo(SCALE_SIZE * 15);
-    make.right.mas_equalTo(-SCALE_SIZE* 15);
-    make.top.equalTo(self.showView.mas_bottom).offset(SCALE_SIZE*10);
-  }];
-  [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.right.equalTo(self.titleLabel);
-    make.top.equalTo(self.titleLabel.mas_bottom).offset(SCALE_SIZE*5);
-  }];
-
-
-
 }
 
 // SDCycleScrollView delegate 点击图片回调
@@ -97,7 +83,7 @@
     _detailLabel  = [[UILabel alloc] init];
     [_detailLabel setFont:FONTSIZE(14)];
     [_detailLabel setTextColor:BASECOLOR_BLACK_999];
-    [_detailLabel setNumberOfLines:1];
+    [_detailLabel setNumberOfLines:0];
     [_detailLabel setText:@"我们从来不怀疑，“有趣”可能给产品带来巨大的价值。我们试图用略带夸张与戏虐的人物表情来呈现这三个与苹果有关联的人物。引发用户快速的认知和趣味的联系"];
     [_showView addSubview:_detailLabel];
   }
@@ -135,6 +121,18 @@
     make.left.width.equalTo(self.view);
     make.top.equalTo(self.cycleScrollView.mas_bottom);
     make.height.mas_equalTo(SCALE_SIZE*50);
+  }];
+  
+  [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    //    make.left.equalTo(self.showView);
+    make.left.mas_equalTo(SCALE_SIZE * 15);
+    make.right.mas_equalTo(-SCALE_SIZE* 15);
+    make.top.equalTo(self.showView.mas_bottom).offset(SCALE_SIZE*10);
+  }];
+  [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.right.equalTo(self.titleLabel);
+    make.width.equalTo(self.view).offset(-SCALE_SIZE*30);
+    make.top.equalTo(self.titleLabel.mas_bottom).offset(SCALE_SIZE*5);
   }];
 }
 

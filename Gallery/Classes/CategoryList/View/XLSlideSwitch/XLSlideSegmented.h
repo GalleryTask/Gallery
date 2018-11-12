@@ -45,4 +45,6 @@
  */
 @property (nonatomic, strong) UIButton *moreButton;
 
+- (instancetype)initWithMargin:(CGFloat)margin;
+
 @end

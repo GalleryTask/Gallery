@@ -17,13 +17,16 @@ static const CGFloat SegmentHeight = 50.0f;
     XLSlideSegmented *_segment;
     
     UIPageViewController *_pageVC;
+  
+  CGFloat itemMargin;
 }
 @end
 
 @implementation XLSlideSwitch
 
-- (instancetype)initWithFrame:(CGRect)frame Titles:(NSArray <NSString *>*)titles viewControllers:(NSArray <UIViewController *>*)viewControllers{
+- (instancetype)initWithFrame:(CGRect)frame Titles:(NSArray <NSString *>*)titles viewControllers:(NSArray <UIViewController *>*)viewControllers margin:(CGFloat)margin {
     if (self = [super initWithFrame:frame]) {
+      itemMargin = margin;
         [self buildUI];
         self.titles = titles;
         self.viewControllers = viewControllers;
@@ -35,7 +38,7 @@ static const CGFloat SegmentHeight = 50.0f;
 - (void)buildUI {
     [self addSubview:[UIView new]];
     //添加分段选择器
-    _segment = [[XLSlideSegmented alloc] init];
+    _segment = [[XLSlideSegmented alloc] initWithMargin:itemMargin];
     _segment.frame = CGRectMake(0, 0, self.bounds.size.width, SegmentHeight);
     _segment.delegate = self;
     [self addSubview:_segment];

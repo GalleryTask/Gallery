@@ -56,7 +56,10 @@
 /**
  * 初始化方法
  */
--(instancetype)initWithFrame:(CGRect)frame Titles:(NSArray <NSString *>*)titles viewControllers:(NSArray <UIViewController *>*)viewControllers;
+-(instancetype)initWithFrame:(CGRect)frame
+                      Titles:(NSArray <NSString *>*)titles
+             viewControllers:(NSArray <UIViewController *>*)viewControllers
+                      margin:(CGFloat)margin;
 /**
  * 标题显示在ViewController中
  */

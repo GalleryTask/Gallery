@@ -48,9 +48,6 @@
   [nav setNavigationBarRightItemWithImageName:@"news" highlightImageName:@""];
   [nav showRightNavBtnWithClick:^(id sender) {
   }];
-  
-//  UISearchBar *searchBar = [[UISearchBar alloc] init];
-  
 }
 
 #pragma mark - tableview delegate dataSource
@@ -90,6 +87,16 @@
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 39.5, SCREEN_WIDTH, 0.5)];
     [lineView setBackgroundColor:[UIColor hexStringToColor:@"#E6E6E6"]];
     [_searchView addSubview:lineView];
+    
+    UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [searchBtn setBackgroundColor:BASECOLOR_GRAY_F1];
+    [_searchView addSubview:searchBtn];
+    
+    [searchBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.left.mas_equalTo(SCALE_SIZE*16);
+      make.right.mas_equalTo(-SCALE_SIZE*16);
+      make.centerY.equalTo(_searchView);
+    }];
   }
   return _searchView;
 }

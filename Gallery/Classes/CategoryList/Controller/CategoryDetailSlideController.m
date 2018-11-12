@@ -37,7 +37,10 @@
       UIViewController *vc = [self viewControllerOfIndex:i];
       [viewControllers addObject:vc];
     }
-    _slideSwitch = [[XLSlideSwitch alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-NAVIGATIONBAR_HEIGHT) Titles:self.titleArray viewControllers:viewControllers];
+    _slideSwitch = [[XLSlideSwitch alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-NAVIGATIONBAR_HEIGHT)
+                                                 Titles:self.titleArray
+                                        viewControllers:viewControllers
+                                                 margin:20];
     //设置代理
     _slideSwitch.delegate = self;
     //设置按钮选中和未选中状态的标题颜色
