@@ -8,6 +8,8 @@
 
 #import "TopPageSlideController.h"
 #import "CategoryDetailController.h"
+#import "PackagingPalletController.h"
+#import "PackagingLiningController.h"
 
 @interface TopPageSlideController ()<YNPageViewControllerDelegate, YNPageViewControllerDataSource>
 
@@ -45,7 +47,7 @@
 - (instancetype)initPackagingCustomVC {
   
   self.configration.pageStyle = YNPageStyleSuspensionCenter;
-  self.configration.lineLeftAndRightAddWidth = 3;
+  self.configration.lineLeftAndRightAddWidth = 5;
   self.configration.itemLeftAndRightMargin = SCALE_SIZE*21;
   self.configration.itemMargin = SCALE_SIZE*55;
   
@@ -75,7 +77,28 @@
     return [(CategoryDetailController *)vc listCollection];
   } else {
     UIViewController *vc = pageViewController.controllersM[index];
-    return [(CategoryDetailController *)vc listCollection];
+    switch (index) {
+      case 0:
+        return [(CategoryDetailController *)vc listCollection];
+        break;
+      case 1:
+        return [(PackagingLiningController *)vc scrollView];
+        break;
+      case 2:
+        return [(CategoryDetailController *)vc listCollection];
+        break;
+      case 3:
+        return [(PackagingPalletController *)vc scrollView];
+        break;
+      case 4:
+        return [(CategoryDetailController *)vc listCollection];
+        break;
+        
+      default:
+        return nil;
+        break;
+    }
+    
   }
 }
 
@@ -151,14 +174,38 @@
 }
 
 - (NSArray *)getPackagingCustomControllers {
-  @autoreleasepool {
-    NSMutableArray *array = [NSMutableArray array];
-    for (int i = 0; i < self.packagingCustomArray.count; i++) {
-      CategoryDetailController *vc = [[CategoryDetailController alloc] init];
-      [array addObject:vc];
-    }
-    return array;
-  }
+  NSMutableArray *array = [NSMutableArray array];
+//  @autoreleasepool {
+//    for (int i = 0; i < self.packagingCustomArray.count; i++) {
+//      if (i == 3) {
+//        PackagingPalletController *vc = [[PackagingPalletController alloc] init];
+//        [array addObject:vc];
+//      } else {
+//        CategoryDetailController *vc = [[CategoryDetailController alloc] init];
+//        [array addObject:vc];
+//
+//      }
+//    }
+//    return array;
+//  }
+  
+  CategoryDetailController *vc = [[CategoryDetailController alloc] init];
+  [array addObject:vc];
+  
+  PackagingLiningController *liningVC = [[PackagingLiningController alloc] init];
+  [array addObject:liningVC];
+  
+  CategoryDetailController *vc1 = [[CategoryDetailController alloc] init];
+  [array addObject:vc1];
+  
+  PackagingPalletController *palletVC = [[PackagingPalletController alloc] init];
+  [array addObject:palletVC];
+  
+  CategoryDetailController *vc2 = [[CategoryDetailController alloc] init];
+  [array addObject:vc2];
+  
+  
+  return array;
 }
 
 

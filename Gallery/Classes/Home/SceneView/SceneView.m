@@ -129,7 +129,7 @@
     // 设置场景
     _scnView.scene = self.scene;
     // 设置背景颜色
-//    _scnView.backgroundColor = [UIColor hexStringToColor:@"#F5F5F5"];
+    _scnView.backgroundColor = [UIColor hexStringToColor:@"#F5F5F5"];
     // 允许控制摄像机位置
     _scnView.allowsCameraControl = YES;
     // 不显示数据控制台

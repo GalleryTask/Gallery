@@ -107,6 +107,16 @@
 + (CGSize)adaptionWithLabel:(UILabel *)label LineSpace:(CGFloat)spaceHight size:(CGSize)size;
 
 /**
+ 自动计算文字宽度
+ 
+ @param string 字符串
+ @param fontSize 字号
+ @param height 字符串高度
+ @return 字符串宽度
+ */
++ (float)adaptionWidthWithString:(NSString *)string fontSize:(float)fontSize andHeight:(float)height;
+
+/**
  颜色转化为图片
 
  @param color 传入颜色

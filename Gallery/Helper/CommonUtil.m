@@ -152,6 +152,23 @@ static NSDateFormatter *cachedDateFormatter = nil;
   return labelSize;
 }
 
+
+
+/**
+ 自动计算文字宽度
+
+ @param string 字符串
+ @param fontSize 字号
+ @param height 字符串高度
+ @return 字符串宽度
+ */
++ (float)adaptionWidthWithString:(NSString *)string fontSize:(float)fontSize andHeight:(float)height {
+
+  NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]};
+  CGSize sizeToFit = [string boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, height) options:NSStringDrawingTruncatesLastVisibleLine  attributes:attributes context:nil].size;
+  return sizeToFit.width;
+}
+
 /**
  将时间戳转化为时间
  
