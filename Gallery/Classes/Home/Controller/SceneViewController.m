@@ -29,6 +29,7 @@
 // 开始定制按钮点击事件
 - (void)customizedBtnClick:(id)sender {
   TopPageSlideController * vc = [[TopPageSlideController alloc] initPackagingCustomVC];
+  [vc setTitle:@"3D包装方案"];
   [self.navigationController pushViewController:vc animated:YES];
 }
 

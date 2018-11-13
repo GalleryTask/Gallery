@@ -131,7 +131,7 @@
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [backBtn setFrame:CGRectMake(0, 0, BASE_HEIGHT*2, BASE_HEIGHT)];
     [backBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
-    [backBtn setTitleColor:BASECOLOR_BLACK forState:UIControlStateNormal];
+    [backBtn setTitleColor:BASECOLOR_BLACK_333 forState:UIControlStateNormal];
     [[backBtn titleLabel] setFont:FONTSIZE(14)];
     [backBtn setImage:[UIImage imageNamed:@"nav_button_left_back_default"] forState:UIControlStateNormal];
     [backBtn setImage:[UIImage imageNamed:@"nav_button_left_back_pressed"] forState:UIControlStateHighlighted];
@@ -151,7 +151,7 @@
     [_rightNavigationBtn addTarget:self
                             action:@selector(rightNavigationBtnClick:)
                   forControlEvents:UIControlEventTouchUpInside];
-    [_rightNavigationBtn setTitleColor:BASECOLOR_BLACK forState:UIControlStateNormal];
+    [_rightNavigationBtn setTitleColor:BASECOLOR_BLACK_333 forState:UIControlStateNormal];
     [[_rightNavigationBtn titleLabel] setFont:FONTSIZE(14)];
   }
   if (!self.myController) {

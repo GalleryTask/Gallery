@@ -12,6 +12,8 @@
 @interface TopPageSlideController ()<YNPageViewControllerDelegate, YNPageViewControllerDataSource>
 
 @property (nonatomic, strong) NSArray  *titleArray;  // 商品列表数据源
+@property (nonatomic, strong) NSArray  *packagingCustomArray;  // 自定义包装数据源
+@property (nonatomic, strong) UIBarButtonItem  *rightBtnItem;
 @property (nonatomic, strong) YNPageConfigration  *configration;
 
 @end
@@ -35,6 +37,7 @@
   vc.dataSource = vc;
   vc.delegate = vc;
 
+
   return vc;
 }
 
@@ -43,10 +46,11 @@
   
   self.configration.pageStyle = YNPageStyleSuspensionCenter;
   self.configration.lineLeftAndRightAddWidth = 3;
-  self.configration.pageScrollEnabled = YES;
+  self.configration.itemLeftAndRightMargin = SCALE_SIZE*21;
+  self.configration.itemMargin = SCALE_SIZE*55;
   
-  TopPageSlideController *vc = [TopPageSlideController pageViewControllerWithControllers:[self getControllers]
-                                                                                  titles:self.titleArray
+  TopPageSlideController *vc = [TopPageSlideController pageViewControllerWithControllers:[self getPackagingCustomControllers]
+                                                                                  titles:self.packagingCustomArray
                                                                                   config:self.configration];
   vc.dataSource = vc;
   vc.delegate = vc;
@@ -55,6 +59,8 @@
   [headerView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
   vc.headerView = headerView;
   
+  vc.navigationItem.rightBarButtonItem = self.rightBtnItem;
+  
   return vc;
 }
 
@@ -62,6 +68,7 @@
 
 #pragma mark - YNPageViewControllerDataSource
 - (UIScrollView *)pageViewController:(YNPageViewController *)pageViewController pageForIndex:(NSInteger)index {
+  
   if ([pageViewController.controllersM[index] isKindOfClass:[CategoryDetailController class]]) {
     
     UIViewController *vc = pageViewController.controllersM[index];
@@ -70,15 +77,28 @@
     UIViewController *vc = pageViewController.controllersM[index];
     return [(CategoryDetailController *)vc listCollection];
   }
+}
+
+- (void)rightNavigationBtnClick:(id)sender {
   
 }
 
-#pragma mark - YNPageViewControllerDelegate
-//- (void)pageViewController:(YNPageViewController *)pageViewController
-//            contentOffsetY:(CGFloat)contentOffset
-//                  progress:(CGFloat)progress {
-//  NSLog(@"--- contentOffset = %f,    progress = %f", contentOffset, progress);
-//}
+#pragma marks - getters
+-(UIBarButtonItem *)rightBtnItem {
+  if (!_rightBtnItem) {
+    UIButton  *rightNavigationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightNavigationBtn setFrame:CGRectMake(0, 0, BASE_HEIGHT*2, BASE_HEIGHT)];
+    [rightNavigationBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
+    [rightNavigationBtn addTarget:self
+                            action:@selector(rightNavigationBtnClick:)
+                  forControlEvents:UIControlEventTouchUpInside];
+    [rightNavigationBtn setTitleColor:BASECOLOR_BLACK_333 forState:UIControlStateNormal];
+    [[rightNavigationBtn titleLabel] setFont:FONTSIZE(14)];
+    [rightNavigationBtn setTitle:@"保存" forState:UIControlStateNormal];
+    _rightBtnItem = [[UIBarButtonItem alloc] initWithCustomView:rightNavigationBtn];
+  }
+  return _rightBtnItem;
+}
 
 -(YNPageConfigration *)configration {
   if (!_configration) {
@@ -101,6 +121,8 @@
   return _configration;
 }
 
+
+
 -(NSArray *)titleArray {
   if (!_titleArray) {
     _titleArray = @[@"高档礼盒",@"普通礼盒",@"物流周转",@"快递包装",@"服装",@"酒水饮料",@"日化家纺",
@@ -108,6 +130,7 @@
   }
   return _titleArray;
 }
+
 
 - (NSArray *)getControllers {
   @autoreleasepool {
@@ -120,11 +143,17 @@
   }
 }
 
+-(NSArray *)packagingCustomArray {
+  if (!_packagingCustomArray) {
+    _packagingCustomArray = @[@"规格",@"内衬",@"标签",@"托盘",@"平面设计"];
+  }
+  return _packagingCustomArray;
+}
 
-- (NSArray *)getPageCustomControllers {
+- (NSArray *)getPackagingCustomControllers {
   @autoreleasepool {
     NSMutableArray *array = [NSMutableArray array];
-    for (int i = 0; i < self.titleArray.count; i++) {
+    for (int i = 0; i < self.packagingCustomArray.count; i++) {
       CategoryDetailController *vc = [[CategoryDetailController alloc] init];
       [array addObject:vc];
     }
