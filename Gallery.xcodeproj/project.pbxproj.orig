@@ -825,8 +825,11 @@
 				7611C4C021942FF900D6428E /* HomeViewController.m in Sources */,
 				7655CC902150F8CD00D206C2 /* DataRequest.m in Sources */,
 				7602112E21917DEB00C6F622 /* ProductsViewController.m in Sources */,
+<<<<<<< HEAD
+=======
 				84270210219AA5E30025696F /* LoginView.m in Sources */,
 				84EC1BDA21955F4400527577 /* XLSlideSegmented.m in Sources */,
+>>>>>>> c9275257ed1e7e433323a50fa263fcf175fe84d2
 				84EC1BDF219564D800527577 /* TopPageSlideController.m in Sources */,
 				760E94762151F0DB00592929 /* MeViewController.m in Sources */,
 			);

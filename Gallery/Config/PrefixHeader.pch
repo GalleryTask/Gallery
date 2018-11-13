@@ -13,7 +13,6 @@
 #import "WeakStrongMacro.h"
 #import "UIColor+UIColor_StringToRGB.h"
 
-
 #import "Masonry.h"
 #import <MMKV/MMKV.h>
 #import "UIImageView+WebCache.h"
@@ -27,7 +26,7 @@
 #import "UITableView+EmptyData.h"
 #import "CommonUtil.h"
 #import "ResultModel.h"
-
+#import "NextButton.h"
 
 
 #endif /* PrefixHeader_pch */

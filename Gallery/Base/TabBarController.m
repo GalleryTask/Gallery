@@ -7,7 +7,8 @@
 //
 
 #import "TabBarController.h"
-
+#import "LoginViewController.h"
+#import "MeViewController.h"
 @interface TabBarController () <UITabBarControllerDelegate>
 
 @end
@@ -63,10 +64,15 @@
     [self addChildViewController:nav];
   }
 }
-
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-  
-  return YES;
+  if (viewController == tabBarController.viewControllers[4]) {
+    LoginViewController *vc = [[LoginViewController alloc] init];
+    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
+    [tabBarController presentViewController:nav animated:YES completion:nil];
+    return NO;
+  }else{
+    return YES;
+  }
 }
 
 - (void)didReceiveMemoryWarning {

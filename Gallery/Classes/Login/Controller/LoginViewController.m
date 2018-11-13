@@ -7,16 +7,25 @@
 //
 
 #import "LoginViewController.h"
-
+#import "LoginView.h"
 @interface LoginViewController ()
-
+@property (strong, nonatomic) LoginView        *loginView;
 @end
 
 @implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.title = @"登录";
+    [self.view addSubview:self.loginView];
+}
+#pragma mark - getters
+- (LoginView *)loginView {
+  if (!_loginView) {
+    _loginView = [[LoginView alloc] initWithFrame:self.view.frame];
+    //[_loginView setDelegate:self];
+  }
+  return _loginView;
 }
 
 - (void)didReceiveMemoryWarning {
