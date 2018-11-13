@@ -74,11 +74,11 @@
 }
 
 #pragma mark - YNPageViewControllerDelegate
-- (void)pageViewController:(YNPageViewController *)pageViewController
-            contentOffsetY:(CGFloat)contentOffset
-                  progress:(CGFloat)progress {
-  NSLog(@"--- contentOffset = %f,    progress = %f", contentOffset, progress);
-}
+//- (void)pageViewController:(YNPageViewController *)pageViewController
+//            contentOffsetY:(CGFloat)contentOffset
+//                  progress:(CGFloat)progress {
+//  NSLog(@"--- contentOffset = %f,    progress = %f", contentOffset, progress);
+//}
 
 -(YNPageConfigration *)configration {
   if (!_configration) {

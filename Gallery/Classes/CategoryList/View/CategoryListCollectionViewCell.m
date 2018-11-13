@@ -27,6 +27,7 @@
   if (dataDic) {
     [self.pictureImageView setImage:[UIImage imageNamed:[dataDic valueForKey:@"imageName"]]];
     [self.titleLabel setText:[dataDic valueForKey:@"title"]];
+    
   }
 }
 
