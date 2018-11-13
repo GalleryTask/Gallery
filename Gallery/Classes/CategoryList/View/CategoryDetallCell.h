@@ -8,11 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+  ProductsType,
+  CategoryDetailType,
+} CellType;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CategoryDetallCell : UICollectionViewCell
 
 @property (nonatomic, strong) NSDictionary  *dataDic;
+
+@property (nonatomic, assign) CellType type;
 
 @end
 

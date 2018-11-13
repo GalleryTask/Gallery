@@ -62,6 +62,7 @@ static NSString *cellIdentList = @"listCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   CategoryDetallCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentList forIndexPath:indexPath];
+  [cell setType:CategoryDetailType];
   [cell setDataDic:self.dataSource[indexPath.row]];
   return cell;
 }

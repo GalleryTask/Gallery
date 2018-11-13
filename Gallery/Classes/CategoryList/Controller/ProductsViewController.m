@@ -7,7 +7,7 @@
 //
 
 #import "ProductsViewController.h"
-#import "CategoryListCollectionViewCell.h"
+#import "CategoryDetallCell.h"
 #import "TopPageSlideController.h"
 
 @interface ProductsViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
@@ -27,7 +27,7 @@ static NSString *cellIdentList = @"listCell";
   NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:
                        [[NSBundle mainBundle] pathForResource:@"DataList.plist"ofType:nil]];
   self.dataSource = dic[@"CategoryList"];
-  [self.listCollection registerClass:[CategoryListCollectionViewCell class] forCellWithReuseIdentifier:cellIdentList];
+  [self.listCollection registerClass:[CategoryDetallCell class] forCellWithReuseIdentifier:cellIdentList];
   
 
 }
@@ -61,7 +61,8 @@ static NSString *cellIdentList = @"listCell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-  CategoryListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentList forIndexPath:indexPath];
+  CategoryDetallCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentList forIndexPath:indexPath];
+  [cell setType:ProductsType];
   [cell setDataDic:self.dataSource[indexPath.row]];
   return cell;
 }
