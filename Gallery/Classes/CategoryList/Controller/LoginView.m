@@ -186,7 +186,7 @@
     _countryBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_countryBtn setTitle:@"+86" forState:UIControlStateNormal];
     [_countryBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [_countryBtn addTarget:self action:@selector(countryBtnClick) forControlEvents:UIControlEventTouchUpInside];
+   // [_countryBtn addTarget:self action:@selector(countryBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [[_countryBtn titleLabel] setFont:FONTSIZE(14)];
     [self addSubview:_countryBtn];
   }
@@ -203,7 +203,7 @@
     [_verifyCodeBtn.layer setCornerRadius:3];
     [_verifyCodeBtn.layer setBorderWidth:1];
     [_verifyCodeBtn.layer setBorderColor:BASECOLOR_BLACK_999.CGColor];
-    [_verifyCodeBtn addTarget:self action:@selector(verifyCodeBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    //[_verifyCodeBtn addTarget:self action:@selector(verifyCodeBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_verifyCodeBtn];
   }
   return _verifyCodeBtn;
@@ -225,7 +225,7 @@
     [_serviceBtn setTitle:@"《用户协议》" forState:UIControlStateNormal];
     [[_serviceBtn titleLabel] setFont:FONTSIZE(14)];
     [_serviceBtn setTitleColor:BASECOLOR_BLUE forState:UIControlStateNormal];
-    [_serviceBtn addTarget:self action:@selector(serviceBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    //[_serviceBtn addTarget:self action:@selector(serviceBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_serviceBtn];
   }
   return _serviceBtn;
@@ -257,7 +257,6 @@
     [_passwordLabel setTextColor:BASECOLOR_BLACK_333];
     [_passwordLabel setFont:FONTSIZE(14)];
     [_passwordLabel setTextAlignment:(NSTextAlignmentCenter)];
-    [_passwordLabel setText:@"密码"];
     [self addSubview:_passwordLabel];
   }
   return _passwordLabel;
@@ -273,7 +272,8 @@
     [_forgetPasswordBtn.layer setBorderWidth:1];
     [_forgetPasswordBtn.layer setBorderColor:BASECOLOR_BLACK_999.CGColor];
     [[_forgetPasswordBtn titleLabel] setFont:FONTSIZE(14)];
-    [_forgetPasswordBtn addTarget:self action:@selector(forgetPasswordBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+   // [_forgetPasswordBtn addTarget:self action:@selector(forgetPasswordBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [_forgetPasswordBtn setHidden:YES];
     [self addSubview:_forgetPasswordBtn];
   }
   return _forgetPasswordBtn;
@@ -292,7 +292,7 @@
     [_registerBtn setTitle:@"账号注册" forState:UIControlStateNormal];
     [_registerBtn setTitleColor:BASECOLOR_BLUE forState:UIControlStateNormal];
     [[_registerBtn titleLabel] setFont:FONTSIZE(14)];
-    [_registerBtn addTarget:self action:@selector(registerBtnBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+   // [_registerBtn addTarget:self action:@selector(registerBtnBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_registerBtn];
   }
   return _registerBtn;
@@ -327,6 +327,40 @@
   }
   return _logoImageView;
 }
+#pragma mark =========密码登录点击事件
+-(void)passwordLoginBtnClick:(UIButton *)sender{
+  [self endEditing:YES];
+  if (sender.isSelected) {
+    [self.passwordLoginBtn setSelected:NO];
+    [self.passwordLoginBtn setTitle:@"密码登录" forState:(UIControlStateNormal)];
+    [self.forgetPasswordBtn setHidden:YES];
+    [self.verifyCodeBtn setHidden:NO];
+    [self.countryBtn setTitle:@"+86" forState:(UIControlStateNormal)];
+    [self.passwordLabel setText:@""];
+    [self.accountField setPlaceholder:@"请输入手机号"];
+    [self.passwordField setPlaceholder:@"请输入验证码"];
+    [self.accountField setKeyboardType:UIKeyboardTypeNumberPad];
+    [self.passwordField setKeyboardType:UIKeyboardTypeNumberPad];
+  }else{
+    [self.passwordLoginBtn setSelected:YES];
+    [self.passwordLoginBtn setTitle:@"免密码登录" forState:(UIControlStateNormal)];
+    [self.forgetPasswordBtn setHidden:NO];
+    [self.verifyCodeBtn setHidden:YES];
+    [self.countryBtn setTitle:@"账号" forState:(UIControlStateNormal)];
+    [self.passwordLabel setText:@"密码"];
+    [self.accountField setPlaceholder:@"请输入账号"];
+    [self.passwordField setPlaceholder:@"请输入密码"];
+    [self.accountField setKeyboardType:UIKeyboardTypeDefault];
+    [self.passwordField setKeyboardType:UIKeyboardTypeDefault];
+  }
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+  
+  [textField resignFirstResponder];//取消第一响应者
+  
+  return YES;
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
