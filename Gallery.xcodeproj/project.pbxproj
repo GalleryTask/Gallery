@@ -51,6 +51,8 @@
 		76605E602101CCB100115FA6 /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E5F2101CCB000115FA6 /* CommonUtil.m */; };
 		76605E632101CCBA00115FA6 /* UploadImageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E612101CCBA00115FA6 /* UploadImageObject.m */; };
 		76EE836E216B4B5000D317FF /* SceneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE836C216B4B5000D317FF /* SceneView.m */; };
+		84270210219AA5E30025696F /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8427020F219AA5E30025696F /* LoginView.m */; };
+		84270213219AAD390025696F /* NextButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84270212219AAD390025696F /* NextButton.m */; };
 		8455A4DD21942C0D00B52A2B /* CategoryDetallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8455A4DC21942C0D00B52A2B /* CategoryDetallCell.m */; };
 		8455A4E021942E5A00B52A2B /* CategoryDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8455A4DF21942E5A00B52A2B /* CategoryDetailController.m */; };
 		84EC1BCD21952B8E00527577 /* ProductDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC1BCC21952B8E00527577 /* ProductDetailController.m */; };
@@ -164,6 +166,10 @@
 		76BE7AC721944C5B0062C64E /* ServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceViewController.h; sourceTree = "<group>"; };
 		76EE836B216B4B5000D317FF /* SceneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneView.h; sourceTree = "<group>"; };
 		76EE836C216B4B5000D317FF /* SceneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneView.m; sourceTree = "<group>"; };
+		8427020E219AA5E30025696F /* LoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoginView.h; path = Gallery/Classes/CategoryList/Controller/LoginView.h; sourceTree = SOURCE_ROOT; };
+		8427020F219AA5E30025696F /* LoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LoginView.m; path = Gallery/Classes/CategoryList/Controller/LoginView.m; sourceTree = SOURCE_ROOT; };
+		84270211219AAD390025696F /* NextButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextButton.h; sourceTree = "<group>"; };
+		84270212219AAD390025696F /* NextButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextButton.m; sourceTree = "<group>"; };
 		8455A4DC21942C0D00B52A2B /* CategoryDetallCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryDetallCell.m; sourceTree = "<group>"; };
 		8455A4DF21942E5A00B52A2B /* CategoryDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryDetailController.m; sourceTree = "<group>"; };
 		84EC1BCC21952B8E00527577 /* ProductDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductDetailController.m; sourceTree = "<group>"; };
@@ -544,6 +550,8 @@
 		76605E592101CC7200115FA6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8427020E219AA5E30025696F /* LoginView.h */,
+				8427020F219AA5E30025696F /* LoginView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -551,6 +559,8 @@
 		76605E5D2101CCA600115FA6 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				84270211219AAD390025696F /* NextButton.h */,
+				84270212219AAD390025696F /* NextButton.m */,
 				76605E5E2101CCB000115FA6 /* CommonUtil.h */,
 				76605E5F2101CCB000115FA6 /* CommonUtil.m */,
 				76605E622101CCBA00115FA6 /* UploadImageObject.h */,
@@ -786,6 +796,7 @@
 				761AF2DC215E0B2700F596D3 /* YJToolBar.m in Sources */,
 				76605E492101CB4400115FA6 /* UIColor+UIColor_StringToRGB.m in Sources */,
 				76605E5C2101CC8300115FA6 /* LoginViewController.m in Sources */,
+				84270213219AAD390025696F /* NextButton.m in Sources */,
 				76605E562101CC1C00115FA6 /* UserInfoSingleton.m in Sources */,
 				761AF2D4215E0AB200F596D3 /* ResultModel.m in Sources */,
 				84EC1BDB21955F4400527577 /* XLSegmentedSlideSwitch.m in Sources */,
@@ -815,6 +826,7 @@
 				7611C4C021942FF900D6428E /* HomeViewController.m in Sources */,
 				7655CC902150F8CD00D206C2 /* DataRequest.m in Sources */,
 				7602112E21917DEB00C6F622 /* ProductsViewController.m in Sources */,
+				84270210219AA5E30025696F /* LoginView.m in Sources */,
 				84EC1BDA21955F4400527577 /* XLSlideSegmented.m in Sources */,
 				84EC1BDF219564D800527577 /* TopPageSlideController.m in Sources */,
 				760E94762151F0DB00592929 /* MeViewController.m in Sources */,
