@@ -25,6 +25,32 @@
   [self.view addSubview:self.loginView];
   
 }
+
+#pragma mark - loginView delegate
+#pragma mark - 登录按钮代理
+-(void)loginViewloginBtnClick {
+  
+}
+#pragma mark - 选择国家代码的代理
+- (void)loignViewCountryBtnClick {
+  
+}
+#pragma mark - 用户协议代理
+- (void)loginViewServiceBtnClick {
+  
+}
+#pragma mark - 验证码点击
+- (void)loginViewSendCodeClick {
+  
+}
+#pragma mark - 忘记密码代理
+- (void)loginViewForgetPasswordClick {
+  
+}
+#pragma mark - 注册按钮代理
+- (void)loginViewRegisterClick {
+  
+}
 #pragma mark - getters
 - (LoginView *)loginView {
   if (!_loginView) {
