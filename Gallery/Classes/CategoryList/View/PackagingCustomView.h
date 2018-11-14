@@ -14,10 +14,10 @@ typedef void (^PackagingSelectedItemBlock)(id sender);
 
 @interface PackagingCustomView : UIView
 
-- (instancetype)initWithFrame:(CGRect)frame
-                        title:(NSString *)title
-                   itemsArray:(NSArray *)items
-            selectedItemBlock:(PackagingSelectedItemBlock)block;
+-(NSInteger)packagingCustomWithTitle:(NSString *)title
+                          itemsArray:(NSArray *)items
+                        selectedItem:(int)index
+                   selectedItemBlock:(nonnull PackagingSelectedItemBlock)block;
 
 @end
 

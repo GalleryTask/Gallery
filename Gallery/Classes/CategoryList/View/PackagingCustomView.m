@@ -8,75 +8,117 @@
 
 #import "PackagingCustomView.h"
 
+static const CGFloat itemHorizontalSpace = 12.0f;  // items左右间距
+static const CGFloat itemVerticalSpace = 12.f; // items上下间距
+static const CGFloat itemHeight = 32.f; // item的高度
+
 @interface PackagingCustomView ()
 
 @property (nonatomic, copy)   PackagingSelectedItemBlock  selectedItemBlock;
 @property (nonatomic, strong) UILabel  *titleLabel;
-@property (nonatomic, strong) UIView  *lineView;
-@property (nonatomic, copy) NSArray  *items;
+@property (nonatomic, strong) UIView   *lineView;
+@property (nonatomic, copy)   NSArray  *items;
+@property (nonatomic, assign) NSInteger  selectedTag;
 
 @end
 
 @implementation PackagingCustomView
 
-- (instancetype)initWithFrame:(CGRect)frame
-                        title:(NSString *)title
-                   itemsArray:(NSArray *)items
-            selectedItemBlock:(PackagingSelectedItemBlock)block {
-  if (self = [super initWithFrame:frame]) {
-    self.selectedItemBlock = block;
-    self.items = items;
-    [self.titleLabel setText:title];
-    [self createBtnWithItems:items];
-  }
-  return self;
+-(NSInteger)packagingCustomWithTitle:(NSString *)title
+                          itemsArray:(NSArray *)items
+                        selectedItem:(int)index
+                   selectedItemBlock:(nonnull PackagingSelectedItemBlock)block {
+  self.selectedItemBlock = block;
+  self.items = items;
+  [self.titleLabel setText:title];
+  NSInteger countRow =  [self createBtnWithItems:items selectedItem:index];
+  return countRow;
 }
 
 
-- (void)createBtnWithItems:(NSArray *)items {
-  for (int i = 0; i < items.count; i++) {
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitleColor:BASECOLOR_BLACK_333 forState:UIControlStateSelected];
-    [button setTitleColor:BASECOLOR_GRAY_CC  forState:UIControlStateNormal];
-    [button setBackgroundImage:[CommonUtil imageWithColor:BASECOLOR_BACKGROUND_GRAY] forState:UIControlStateNormal];
-    [button setBackgroundImage:[CommonUtil imageWithColor:[UIColor whiteColor]] forState:UIControlStateSelected];
-    [[button layer] setCornerRadius:5];
-    [[button layer] setMasksToBounds:YES];
-    [[button titleLabel] setFont:FONTSIZE(12)];
-    [button setTitle:items[i] forState:UIControlStateNormal];
-    [button setTag:(100+i)];
-    [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:button];
+- (NSInteger)createBtnWithItems:(NSArray *)items selectedItem:(int)index {
+  CGFloat margin = SCALE_SIZE*10.0f;  // 两边的间距
+  CGFloat currentX = margin; // X
+  CGFloat currentY = 0; // Y
+  NSInteger countRow = 0; // 第几行数
+  CGFloat lastLabelWidth = 0; // 记录上一个宽度
+  
+  @autoreleasepool {
     
-    float width = [CommonUtil adaptionWidthWithString:items[i] fontSize:SCALE_SIZE*12 andHeight:32] + SCALE_SIZE*20;
+    for (int i = 0; i < items.count; i++) {
+      // 最多显示十项
+      if (i > 9) {
+        break;
+      }
+      
+      // 当前button的宽度
+      float width = [CommonUtil adaptionWidthWithString:items[i] fontSize:SCALE_SIZE*12 andHeight:itemHeight] + SCALE_SIZE*20;
+      
+      if (i == 0) {
+        currentX = currentX + lastLabelWidth;
+      } else {
+        currentX = currentX + itemHorizontalSpace + lastLabelWidth;
+      }
+      
+      currentY = countRow * itemHeight + (countRow + 1) * itemVerticalSpace;
+      
+      // 换行
+      if (currentX + itemHorizontalSpace + margin + width >= SCREEN_WIDTH) {
+        countRow++;
+        currentY = currentY + itemHeight + itemVerticalSpace;
+        currentX = margin;
+      }
+      
+      lastLabelWidth = width;
+      
+      UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+      [button setTitleColor:BASECOLOR_BLACK_333 forState:UIControlStateSelected];
+      [button setTitleColor:BASECOLOR_GRAY_CC  forState:UIControlStateNormal];
+      [button setBackgroundImage:[CommonUtil imageWithColor:BASECOLOR_BACKGROUND_GRAY] forState:UIControlStateNormal];
+      [button setBackgroundImage:[CommonUtil imageWithColor:[UIColor whiteColor]] forState:UIControlStateSelected];
+      [[button layer] setCornerRadius:5];
+      [[button layer] setMasksToBounds:YES];
+      [[button titleLabel] setFont:FONTSIZE(12)];
+      [button setTitle:items[i] forState:UIControlStateNormal];
+      [button setTag:(100+i)];
+      [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+      [self addSubview:button];
+      
+      [button mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(currentX);
+        make.top.equalTo(self.titleLabel.mas_bottom).offset(SCALE_SIZE*10 + currentY);
+        make.width.mas_equalTo(width);
+        make.height.mas_equalTo(itemHeight);
+      }];
+      
+      if (i == index) {
+        _selectedTag = 100 + i;
+        [button setSelected:YES];
+        [[button layer] setBorderColor:BASECOLOR_BLACK_000.CGColor];
+        [[button layer] setBorderWidth:0.5];
+      }
+    }
+  }
+  return countRow;
+}
+
+- (void)buttonClick:(UIButton *)button {
+  // 判断点击的是否是选中转态 如果是则不变
+  if (_selectedTag != button.tag) {
     
-    [button mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.left.mas_equalTo(SCALE_SIZE*10+(SCALE_SIZE*12+width)*i);
-      make.top.equalTo(self.titleLabel.mas_bottom).offset(SCALE_SIZE*10);
-      make.width.mas_equalTo(width);
-      make.height.mas_equalTo(32);
-    }];
-    
-    if (i == 0) {
+    for (int i = 0; i < self.items.count; i++) {
+      UIButton *btn = [self viewWithTag:100+i];
+      [btn setSelected:NO];
+      [[btn layer] setBorderWidth:0];
+    }
+    if (!button.selected) {
       [button setSelected:YES];
       [[button layer] setBorderColor:BASECOLOR_BLACK_000.CGColor];
       [[button layer] setBorderWidth:0.5];
     }
+    self.selectedItemBlock(button.currentTitle);
   }
-}
-
-- (void)buttonClick:(UIButton *)button {
-  for (int i = 0; i < self.items.count; i++) {
-    UIButton *btn = [self viewWithTag:100+i];
-    [btn setSelected:NO];
-    [[btn layer] setBorderWidth:0];
-  }
-  if (!button.selected) {
-    [button setSelected:YES];
-    [[button layer] setBorderColor:BASECOLOR_BLACK_000.CGColor];
-    [[button layer] setBorderWidth:0.5];
-  }
-  self.selectedItemBlock(button.currentTitle);
+  _selectedTag = button.tag;
 }
 
 #pragma marks - getters

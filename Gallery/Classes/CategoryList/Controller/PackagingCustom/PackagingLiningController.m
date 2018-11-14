@@ -19,31 +19,57 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  [self.scrollView setContentSize:CGSizeMake(0, SCALE_SIZE*330)];
-  
-  PackagingCustomView *customOne = [[PackagingCustomView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*94)
-                                                                        title:@"EPE结构（不需要EPE网套）"
-                                                                   itemsArray:@[@"结构一 / 规格18g/L",@"结构二 / 规格18g/L"]
-                                                            selectedItemBlock:^(id  _Nonnull sender) {
-                                                              NSLog(@"%@",sender);
-                                                            }];
+  PackagingCustomView *customOne = [[PackagingCustomView alloc] init];
+  NSInteger countRow = [customOne packagingCustomWithTitle:@"EPE结构（不需要EPE网套）"
+                                                itemsArray:@[@"结构一 / 规格18g/L",@"结构二 / 规格18g/L"]
+                                              selectedItem:0
+                                         selectedItemBlock:^(id  _Nonnull sender) {
+                                           
+                                         }];
   [self.scrollView addSubview:customOne];
   
-  PackagingCustomView *customTwo = [[PackagingCustomView alloc] initWithFrame:CGRectMake(0, SCALE_SIZE*94, SCREEN_WIDTH, SCALE_SIZE*94)
-                                                                        title:@"瓦楞卡纸"
-                                                                   itemsArray:@[@"B楞",@"E楞"]
-                                                            selectedItemBlock:^(id  _Nonnull sender) {
-                                                              NSLog(@"%@",sender);
-                                                            }];
+  
+  
+  PackagingCustomView *customTwo = [[PackagingCustomView alloc] init];
+  NSInteger countRowTwo = [customTwo packagingCustomWithTitle:@"瓦楞卡纸"
+                                                   itemsArray:@[@"B楞",@"E楞"]
+                                                 selectedItem:0
+                                            selectedItemBlock:^(id  _Nonnull sender) {
+                                              
+                                            }];
   [self.scrollView addSubview:customTwo];
   
-  PackagingCustomView *customThree = [[PackagingCustomView alloc] initWithFrame:CGRectMake(0, SCALE_SIZE*188, SCREEN_WIDTH, SCALE_SIZE*94)
-                                                                        title:@"吸塑托"
-                                                                   itemsArray:@[@"PET",@"PP"]
-                                                            selectedItemBlock:^(id  _Nonnull sender) {
-                                                              NSLog(@"%@",sender);
-                                                            }];
+  
+  
+  PackagingCustomView *customThree = [[PackagingCustomView alloc] init];
+  NSInteger countRowThree = [customThree packagingCustomWithTitle:@"吸塑托"
+                                                       itemsArray:@[@"PET",@"PP"]
+                                                     selectedItem:-1
+                                                selectedItemBlock:^(id  _Nonnull sender) {
+                                                  
+                                                }];
   [self.scrollView addSubview:customThree];
+  
+  [customOne mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.width.top.equalTo(self.scrollView);
+    make.height.mas_equalTo(SCALE_SIZE*94+(SCALE_SIZE*44)*countRow);
+  }];
+  
+  [customTwo mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.width.equalTo(self.scrollView);
+    make.top.equalTo(customOne.mas_bottom);
+    make.height.mas_equalTo(SCALE_SIZE*94+(SCALE_SIZE*44)*countRowTwo);
+  }];
+  
+  [customThree mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.width.equalTo(self.scrollView);
+    make.top.equalTo(customTwo.mas_bottom);
+    make.height.mas_equalTo(SCALE_SIZE*94+(SCALE_SIZE*44)*countRowThree);
+  }];
+  [self.view layoutIfNeeded];
+  [self.scrollView setContentSize:CGSizeMake(0, customThree.frame.origin.y+customThree.frame.size.height+SCALE_SIZE*60)];
+  
+
 }
 
 
