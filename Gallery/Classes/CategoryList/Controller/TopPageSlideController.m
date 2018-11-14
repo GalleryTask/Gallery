@@ -10,6 +10,7 @@
 #import "CategoryDetailController.h"
 #import "PackagingPalletController.h"
 #import "PackagingLiningController.h"
+#import "SceneView.h"
 
 @interface TopPageSlideController ()<YNPageViewControllerDelegate, YNPageViewControllerDataSource>
 
@@ -17,6 +18,7 @@
 @property (nonatomic, strong) NSArray  *packagingCustomArray;  // 自定义包装数据源
 @property (nonatomic, strong) UIBarButtonItem  *rightBtnItem;
 @property (nonatomic, strong) YNPageConfigration  *configration;
+@property (nonatomic, strong) SceneView  *sceneView;
 
 @end
 
@@ -57,8 +59,10 @@
   vc.dataSource = vc;
   vc.delegate = vc;
   
-  UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*300)];
+  
+  UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*310)];
   [headerView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
+  [headerView addSubview:self.sceneView];
   vc.headerView = headerView;
   
   vc.navigationItem.rightBarButtonItem = self.rightBtnItem;
@@ -102,6 +106,34 @@
   }
 }
 
+#pragma mark - YNPageViewControllerDelegate
+- (void)pageViewController:(YNPageViewController *)pageViewController
+         didScrollMenuItem:(UIButton *)itemButton
+                     index:(NSInteger)index {
+  
+  switch (index) {
+    case 0:
+      [self.sceneView addNode];
+      break;
+    case 1:
+      [self.sceneView removeNode];
+      break;
+    case 2:
+      [self.sceneView addNode];
+      [self.sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"home_2"]];
+      break;
+    case 3:
+      [self.sceneView addNode];
+      break;
+    case 4:
+      [self.sceneView addNode];
+      break;
+      
+    default:
+      break;
+  }
+}
+
 - (void)rightNavigationBtnClick:(id)sender {
   
 }
@@ -121,6 +153,14 @@
     _rightBtnItem = [[UIBarButtonItem alloc] initWithCustomView:rightNavigationBtn];
   }
   return _rightBtnItem;
+}
+
+-(SceneView *)sceneView {
+  if (!_sceneView) {
+    _sceneView = [[SceneView alloc] initWithSceneName:@"nbox3gai" frame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*300)];
+    [_sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"home_1"]];
+  }
+  return _sceneView;
 }
 
 -(YNPageConfigration *)configration {
@@ -175,19 +215,6 @@
 
 - (NSArray *)getPackagingCustomControllers {
   NSMutableArray *array = [NSMutableArray array];
-//  @autoreleasepool {
-//    for (int i = 0; i < self.packagingCustomArray.count; i++) {
-//      if (i == 3) {
-//        PackagingPalletController *vc = [[PackagingPalletController alloc] init];
-//        [array addObject:vc];
-//      } else {
-//        CategoryDetailController *vc = [[CategoryDetailController alloc] init];
-//        [array addObject:vc];
-//
-//      }
-//    }
-//    return array;
-//  }
   
   CategoryDetailController *vc = [[CategoryDetailController alloc] init];
   [array addObject:vc];

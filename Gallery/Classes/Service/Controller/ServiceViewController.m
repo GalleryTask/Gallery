@@ -27,27 +27,28 @@
 
   
 //    [self downloadZip];
-//  [self createSceneView];
-//    UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [addBtn setFrame:CGRectMake(50, 500*SCALE_SIZE, 100, 50)];
-//    [addBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    [addBtn setTitle:@"加" forState:UIControlStateNormal];
-//    [addBtn addTarget:self action:@selector(addBtn) forControlEvents:UIControlEventTouchUpInside];
-//    [self.scrollView addSubview:addBtn];
-//  
-//    
-//    UIButton *deleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [deleBtn setFrame:CGRectMake(250, 500*SCALE_SIZE, 100, 50)];
-//    [deleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    [deleBtn setTitle:@"减" forState:UIControlStateNormal];
-//    [deleBtn addTarget:self action:@selector(deleBtn) forControlEvents:UIControlEventTouchUpInside];
-//    [self.scrollView addSubview:deleBtn];
+  [self createSceneView];
+    UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [addBtn setFrame:CGRectMake(50, 500*SCALE_SIZE, 100, 50)];
+    [addBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [addBtn setTitle:@"加" forState:UIControlStateNormal];
+    [addBtn addTarget:self action:@selector(addBtn) forControlEvents:UIControlEventTouchUpInside];
+    [self.scrollView addSubview:addBtn];
+  
+  
+    UIButton *deleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [deleBtn setFrame:CGRectMake(250, 500*SCALE_SIZE, 100, 50)];
+    [deleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [deleBtn setTitle:@"减" forState:UIControlStateNormal];
+    [deleBtn addTarget:self action:@selector(deleBtn) forControlEvents:UIControlEventTouchUpInside];
+    [self.scrollView addSubview:deleBtn];
 }
 
 - (void)addBtn {
   SceneView *sceneView = [self.scrollView viewWithTag:100];
   [sceneView addNode];
   
+  [sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"home_1"]];
   MMKV *mv = [MMKV defaultMMKV];
   [mv setObject:@"sssssssssssssssssss" forKey:@"string"];
   [mv setObject:@"123" forKey:@"string"];
@@ -85,7 +86,7 @@
     for (int i = 0; i < self.boxList.count; i++) {
         
         // 创建3D展示view
-        SceneView *sceneView = [[SceneView alloc] initWithSceneName:@"yiside.DAE"
+        SceneView *sceneView = [[SceneView alloc] initWithSceneName:@"nbox3gai.dae"
                                                               frame:CGRectMake((SCREEN_WIDTH-30)*i, SCALE_SIZE*70, SCREEN_WIDTH, SCREEN_WIDTH)];
         sceneView.tag = 100;
         [self.scrollView addSubview:sceneView];
