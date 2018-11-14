@@ -46,7 +46,8 @@
   [super viewDidLayoutSubviews];
   
   [self.createBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.bottom.width.equalTo(self.view);
+    make.left.width.equalTo(self.view);
+    make.bottom.equalTo(self.view).offset(-SafeAreaBottomHeight);
     make.height.mas_equalTo(SCALE_SIZE*50);
   }];
 }

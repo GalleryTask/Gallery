@@ -15,9 +15,15 @@
 @implementation LoginViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    self.title = @"登录";
-    [self.view addSubview:self.loginView];
+  [super viewDidLoad];
+  self.title = @"登录";
+  
+  BaseNavigationController *navigation = (BaseNavigationController *)self.navigationController;
+  [navigation showLeftNavBtnWithClick:^(id sender) {
+    [self dismissViewControllerAnimated:YES completion:nil];
+  }];
+  [self.view addSubview:self.loginView];
+  
 }
 #pragma mark - getters
 - (LoginView *)loginView {

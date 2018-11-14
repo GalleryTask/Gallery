@@ -88,6 +88,7 @@
 #pragma mark - navigationBar button click
 - (void)showLeftNavBtnWithClick:(leftNavigationClickBlock)leftClickBlock {
 
+  self.myController.navigationItem.leftBarButtonItem = self.leftBtnItem;
   self.leftNavBlock = leftClickBlock;
 }
 
@@ -140,6 +141,7 @@
       forControlEvents:UIControlEventTouchUpInside];
     _leftBtnItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
   }
+  
   return _leftBtnItem;
 }
 
@@ -154,12 +156,17 @@
     [_rightNavigationBtn setTitleColor:BASECOLOR_BLACK_333 forState:UIControlStateNormal];
     [[_rightNavigationBtn titleLabel] setFont:FONTSIZE(14)];
   }
-  if (!self.myController) {
-    self.myController = [CommonUtil getCurrentVC];
-  }
+
   UIBarButtonItem *rightBtnItem = [[UIBarButtonItem alloc] initWithCustomView:_rightNavigationBtn];
   self.myController.navigationItem.rightBarButtonItem = rightBtnItem;
   return _rightNavigationBtn;
+}
+
+-(UIViewController *)myController {
+  if (!_myController) {
+    _myController = [CommonUtil getCurrentVC];
+  }
+  return _myController;
 }
 
 - (void)didReceiveMemoryWarning {

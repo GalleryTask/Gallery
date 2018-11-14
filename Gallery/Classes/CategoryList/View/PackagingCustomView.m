@@ -51,7 +51,7 @@
     float width = [CommonUtil adaptionWidthWithString:items[i] fontSize:SCALE_SIZE*12 andHeight:32] + SCALE_SIZE*20;
     
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.left.mas_equalTo(SCALE_SIZE*10+(SCALE_SIZE*(12+width))*i);
+      make.left.mas_equalTo(SCALE_SIZE*10+(SCALE_SIZE*12+width)*i);
       make.top.equalTo(self.titleLabel.mas_bottom).offset(SCALE_SIZE*10);
       make.width.mas_equalTo(width);
       make.height.mas_equalTo(32);
