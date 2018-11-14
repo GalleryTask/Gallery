@@ -19,6 +19,7 @@
 @property (nonatomic, strong) UIBarButtonItem  *rightBtnItem;
 @property (nonatomic, strong) YNPageConfigration  *configration;
 @property (nonatomic, strong) SceneView  *sceneView;
+@property (nonatomic, strong) UIView *packagingHeaderView;
 
 @end
 
@@ -58,51 +59,46 @@
                                                                                   config:self.configration];
   vc.dataSource = vc;
   vc.delegate = vc;
-  
-  
-  UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*310)];
-  [headerView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
-  [headerView addSubview:self.sceneView];
-  vc.headerView = headerView;
-  
+  vc.headerView = self.packagingHeaderView;
   vc.navigationItem.rightBarButtonItem = self.rightBtnItem;
   
   return vc;
 }
 
+-(UIView *)packagingHeaderView {
+  if (!_packagingHeaderView) {
+    _packagingHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*310)];
+    [_packagingHeaderView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
+    [_packagingHeaderView addSubview:self.sceneView];
+  }
+  return _packagingHeaderView;
+}
 
 
 #pragma mark - YNPageViewControllerDataSource
 - (UIScrollView *)pageViewController:(YNPageViewController *)pageViewController pageForIndex:(NSInteger)index {
   
-  if ([pageViewController.controllersM[index] isKindOfClass:[CategoryDetailController class]]) {
-    
-    UIViewController *vc = pageViewController.controllersM[index];
-    return [(CategoryDetailController *)vc listCollection];
-  } else {
-    UIViewController *vc = pageViewController.controllersM[index];
-    switch (index) {
-      case 0:
-        return [(CategoryDetailController *)vc listCollection];
-        break;
-      case 1:
-        return [(PackagingLiningController *)vc scrollView];
-        break;
-      case 2:
-        return [(CategoryDetailController *)vc listCollection];
-        break;
-      case 3:
-        return [(PackagingPalletController *)vc scrollView];
-        break;
-      case 4:
-        return [(CategoryDetailController *)vc listCollection];
-        break;
-        
-      default:
-        return nil;
-        break;
-    }
-    
+  UIViewController *vc = pageViewController.controllersM[index];
+  switch (index) {
+    case 0:
+      return [(CategoryDetailController *)vc listCollection];
+      break;
+    case 1:
+      return [(PackagingLiningController *)vc scrollView];
+      break;
+    case 2:
+      return [(CategoryDetailController *)vc listCollection];
+      break;
+    case 3:
+      return [(PackagingPalletController *)vc scrollView];
+      break;
+    case 4:
+      return [(CategoryDetailController *)vc listCollection];
+      break;
+      
+    default:
+      return nil;
+      break;
   }
 }
 
@@ -120,7 +116,6 @@
       break;
     case 2:
       [self.sceneView addNode];
-      [self.sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"home_2"]];
       break;
     case 3:
       [self.sceneView addNode];
@@ -132,6 +127,8 @@
     default:
       break;
   }
+  [pageViewController setHeaderView:self.packagingHeaderView];
+  [pageViewController reloadData];
 }
 
 - (void)rightNavigationBtnClick:(id)sender {
@@ -158,7 +155,7 @@
 -(SceneView *)sceneView {
   if (!_sceneView) {
     _sceneView = [[SceneView alloc] initWithSceneName:@"nbox3gai" frame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*300)];
-    [_sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"home_1"]];
+//    [_sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"home_1"]];
   }
   return _sceneView;
 }
@@ -183,7 +180,6 @@
   }
   return _configration;
 }
-
 
 
 -(NSArray *)titleArray {
