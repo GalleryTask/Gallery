@@ -19,6 +19,7 @@
 
 @property (nonatomic, strong) SCNNode   *ggNode;  // 
 
+@property (nonatomic, strong) SCNNode   *ggNode;  //
 @end
 
 @implementation SceneView
@@ -81,6 +82,7 @@
   SCNAnimationEvent *event = [SCNAnimationEvent animationEventWithKeyTime:0.5 block:^(id<SCNAnimation>  _Nonnull animation, id  _Nonnull animatedObject, BOOL playingBackward) {
   }];
   
+
   CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.y"];
   animation.duration = 0.5;
   animation.fromValue = @"100";
@@ -88,9 +90,40 @@
   animation.animationEvents = @[event];
   animation.repeatCount = 0;
   
+
   [self.scene.rootNode addChildNode:self.ggNode];
   [self.ggNode addAnimation:animation forKey:nil];
   }
+
+
+  
+ // self.scnView.pointOfView.position = SCNVector3Make(0, 30, 30);
+  
+  
+//[self.cameraNode runAction:[SCNAction repeatActionForever:[SCNAction rotateByX:0 y:-0.1 z:0 duration:1]]];
+//  SCNAction *action = [SCNAction rotateToX:0 y:0 z:0 duration:0.5];
+//
+//  SCNAction *action1 = [SCNAction rotateToX:-0.357878 y:-0.926290 z:-0.117941 duration:0.5];
+//  SCNAction *sequence =[SCNAction sequence:@[action,action1]];
+//  [self.cameraNode runAction:sequence];
+  //SCNAction *group = [SCNAction group:@[sequence]];
+//
+//  //永久执行
+//  [self.cameraNode runAction:[SCNAction repeatActionForever:group]];
+  
+
+  // 绕 y轴 一直旋转
+//  SCNAction *action = [SCNAction repeatActionForever:[SCNAction rotateByX:0 y:1 z:0 duration:1]];
+  SCNAction *action = [SCNAction repeatAction:[SCNAction rotateByX:0 y:1 z:0 duration:1] count:4];
+  [self.ggNode runAction:action];
+  
+  SCNNode *gnode =  [self.scene.rootNode childNodeWithName:@"___2" recursively:YES];
+  [gnode runAction:action];
+  // 素材放大5倍（由于我们素材的尺寸太小了）
+  //node.transform = SCNMatrix4MakeScale(5, 5, 5);
+  
+
+  
 }
 
 -(SCNNode *)ggNode {
@@ -135,6 +168,7 @@
     _scnView.allowsCameraControl = YES;
     // 不显示数据控制台
     _scnView.showsStatistics = NO;
+    
   }
   return _scnView;
 }
