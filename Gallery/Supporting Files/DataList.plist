@@ -9,7 +9,7 @@
 			<string>HomeViewController</string>
 			<string>CategoryListController</string>
 			<string>ServiceViewController</string>
-			<string>UIViewController</string>
+			<string>OrderViewController</string>
 			<string>MeViewController</string>
 		</array>
 		<key>titles</key>

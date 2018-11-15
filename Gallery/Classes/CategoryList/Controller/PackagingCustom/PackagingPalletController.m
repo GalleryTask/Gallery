@@ -32,7 +32,7 @@
   
   PackagingCustomView *customTwo = [[PackagingCustomView alloc] init];
   NSInteger countRowTwo = [customTwo packagingCustomWithTitle:@"托盘"
-                                                   itemsArray:@[@"塑料托盘",@"金属托盘",@"吸塑托盘",@"泡沫托盘",@"盘",@"泡沫托盘"]
+                                                   itemsArray:@[@"塑料托盘",@"金属托盘",@"吸塑托盘",@"泡沫托盘"]
                                                  selectedItem:0
                                             selectedItemBlock:^(id  _Nonnull sender) {
                                               
