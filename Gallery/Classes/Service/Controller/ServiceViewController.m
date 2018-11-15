@@ -48,7 +48,7 @@
   SceneView *sceneView = [self.scrollView viewWithTag:100];
   [sceneView addNode];
   
-  //[sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"home_1"]];
+  [sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"home_1"]];
   MMKV *mv = [MMKV defaultMMKV];
   [mv setObject:@"sssssssssssssssssss" forKey:@"string"];
   [mv setObject:@"123" forKey:@"string"];
