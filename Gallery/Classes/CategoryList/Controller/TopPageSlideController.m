@@ -8,9 +8,12 @@
 
 #import "TopPageSlideController.h"
 #import "CategoryDetailController.h"
-#import "PackagingPalletController.h"
-#import "PackagingLiningController.h"
 #import "SceneView.h"
+#import "PackagingStandardController.h"
+#import "PackagingLiningController.h"
+#import "PackagingTagController.h"
+#import "PackagingPalletController.h"
+#import "PackagingDesignerController.h"
 
 @interface TopPageSlideController ()<YNPageViewControllerDelegate, YNPageViewControllerDataSource>
 
@@ -53,6 +56,7 @@
   self.configration.lineLeftAndRightAddWidth = 5;
   self.configration.itemLeftAndRightMargin = SCALE_SIZE*21;
   self.configration.itemMargin = SCALE_SIZE*55;
+  self.configration.pageScrollEnabled = NO;
   
   TopPageSlideController *vc = [TopPageSlideController pageViewControllerWithControllers:[self getPackagingCustomControllers]
                                                                                   titles:self.packagingCustomArray
@@ -65,14 +69,6 @@
   return vc;
 }
 
--(UIView *)packagingHeaderView {
-  if (!_packagingHeaderView) {
-    _packagingHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*310)];
-    [_packagingHeaderView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
-    [_packagingHeaderView addSubview:self.sceneView];
-  }
-  return _packagingHeaderView;
-}
 
 
 #pragma mark - YNPageViewControllerDataSource
@@ -81,29 +77,8 @@
     UIViewController *vc = pageViewController.controllersM[index];
     return [(CategoryDetailController *)vc listCollection];
   } else {
-    
-    UIViewController *vc = pageViewController.controllersM[index];
-    switch (index) {
-      case 0:
-        return [(CategoryDetailController *)vc listCollection];
-        break;
-      case 1:
-        return [(PackagingLiningController *)vc scrollView];
-        break;
-      case 2:
-        return [(CategoryDetailController *)vc listCollection];
-        break;
-      case 3:
-        return [(PackagingPalletController *)vc scrollView];
-        break;
-      case 4:
-        return [(CategoryDetailController *)vc listCollection];
-        break;
-        
-      default:
-        return nil;
-        break;
-    }
+    PackagingBaseController *vc = pageViewController.controllersM[index];
+    return [vc scrollView];
   }
 }
 
@@ -112,29 +87,28 @@
          didScrollMenuItem:(UIButton *)itemButton
                      index:(NSInteger)index {
   
-  switch (index) {
-    case 0:
-      [self.sceneView addNode];
-      break;
-    case 1:
-      [self.sceneView removeNode];
-      break;
-    case 2:
-      [self.sceneView addNode];
-      break;
-    case 3:
-      [self.sceneView addNode];
-      break;
-    case 4:
-      [self.sceneView addNode];
-      break;
-      
-    default:
-      break;
-  }
-  [[pageViewController.headerView.subviews objectAtIndex:0] removeFromSuperview];
-  [pageViewController.headerView addSubview:self.sceneView];
-//  [pageViewController reloadData];
+//  switch (index) {
+//    case 0:
+//      [self.sceneView addNode];
+//      break;
+//    case 1:
+//      [self.sceneView removeNode];
+//      break;
+//    case 2:
+//      [self.sceneView addNode];
+//      break;
+//    case 3:
+//      [self.sceneView addNode];
+//      break;
+//    case 4:
+//      [self.sceneView addNode];
+//      break;
+//
+//    default:
+//      break;
+//  }
+//  [[pageViewController.headerView.subviews objectAtIndex:0] removeFromSuperview];
+//  [pageViewController.headerView addSubview:self.sceneView];
 }
 
 - (void)rightNavigationBtnClick:(id)sender {
@@ -164,6 +138,16 @@
 //    [_sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"home_1"]];
   }
   return _sceneView;
+}
+
+
+-(UIView *)packagingHeaderView {
+  if (!_packagingHeaderView) {
+    _packagingHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*310)];
+    [_packagingHeaderView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
+    [_packagingHeaderView addSubview:self.sceneView];
+  }
+  return _packagingHeaderView;
 }
 
 -(YNPageConfigration *)configration {
@@ -217,23 +201,18 @@
 
 - (NSArray *)getPackagingCustomControllers {
   NSMutableArray *array = [NSMutableArray array];
-  
-  CategoryDetailController *vc = [[CategoryDetailController alloc] init];
-  [array addObject:vc];
-  
-  PackagingLiningController *liningVC = [[PackagingLiningController alloc] init];
-  [array addObject:liningVC];
-  
-  CategoryDetailController *vc1 = [[CategoryDetailController alloc] init];
-  [array addObject:vc1];
-  
-  PackagingPalletController *palletVC = [[PackagingPalletController alloc] init];
-  [array addObject:palletVC];
-  
-  CategoryDetailController *vc2 = [[CategoryDetailController alloc] init];
-  [array addObject:vc2];
-  
-  
+  NSArray *controllers = @[@"PackagingStandardController",@"PackagingLiningController",
+                           @"PackagingTagController",@"PackagingPalletController",@"PackagingDesignerController"];
+  @autoreleasepool {
+    
+    for (NSString *className in controllers) {
+      Class class = NSClassFromString(className);
+      if (class) {
+        UIViewController *vc = [[class alloc] init];
+        [array addObject:vc];
+      }
+    }
+  }
   return array;
 }
 

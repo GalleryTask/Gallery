@@ -54,7 +54,7 @@
   
   UIButton *scanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
   [scanBtn setImage:[UIImage imageNamed:@"home_scan"] forState:UIControlStateNormal];
-  [scanBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
+//  [scanBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
   [scanBtn setFrame:CGRectMake(0, 0, 30, BASE_HEIGHT)];
   
   UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];

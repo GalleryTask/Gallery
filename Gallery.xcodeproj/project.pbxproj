@@ -16,6 +16,10 @@
 		7609C776219D453000689D07 /* tianmaojingling.DAE in Resources */ = {isa = PBXBuildFile; fileRef = 7609C775219D453000689D07 /* tianmaojingling.DAE */; };
 		7609C778219D454A00689D07 /* 2_timg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7609C777219D454A00689D07 /* 2_timg.jpg */; };
 		7609C77B219D49CE00689D07 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C77A219D49CE00689D07 /* ServiceViewController.m */; };
+		7609C77E219D4ADA00689D07 /* PackagingStandardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C77D219D4ADA00689D07 /* PackagingStandardController.m */; };
+		7609C781219D4B1900689D07 /* PackagingTagController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C780219D4B1900689D07 /* PackagingTagController.m */; };
+		7609C784219D4B4000689D07 /* PackagingDesignerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C783219D4B4000689D07 /* PackagingDesignerController.m */; };
+		7609C787219D56B000689D07 /* SamplePrepareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C786219D56B000689D07 /* SamplePrepareController.m */; };
 		760CE63321992A2600CF2306 /* PageRoundScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760CE63221992A2600CF2306 /* PageRoundScrollView.m */; };
 		760E94692151ED9B00592929 /* DataList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 760E94682151ED9B00592929 /* DataList.plist */; };
 		760E94762151F0DB00592929 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E94752151F0DB00592929 /* MeViewController.m */; };
@@ -97,6 +101,14 @@
 		7609C777219D454A00689D07 /* 2_timg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2_timg.jpg; sourceTree = "<group>"; };
 		7609C779219D49C700689D07 /* ServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceViewController.h; sourceTree = "<group>"; };
 		7609C77A219D49CE00689D07 /* ServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceViewController.m; sourceTree = "<group>"; };
+		7609C77C219D4ADA00689D07 /* PackagingStandardController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackagingStandardController.h; sourceTree = "<group>"; };
+		7609C77D219D4ADA00689D07 /* PackagingStandardController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackagingStandardController.m; sourceTree = "<group>"; };
+		7609C77F219D4B1900689D07 /* PackagingTagController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackagingTagController.h; sourceTree = "<group>"; };
+		7609C780219D4B1900689D07 /* PackagingTagController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackagingTagController.m; sourceTree = "<group>"; };
+		7609C782219D4B4000689D07 /* PackagingDesignerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackagingDesignerController.h; sourceTree = "<group>"; };
+		7609C783219D4B4000689D07 /* PackagingDesignerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackagingDesignerController.m; sourceTree = "<group>"; };
+		7609C785219D56B000689D07 /* SamplePrepareController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SamplePrepareController.h; sourceTree = "<group>"; };
+		7609C786219D56B000689D07 /* SamplePrepareController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SamplePrepareController.m; sourceTree = "<group>"; };
 		760CE63121992A2600CF2306 /* PageRoundScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageRoundScrollView.h; sourceTree = "<group>"; };
 		760CE63221992A2600CF2306 /* PageRoundScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageRoundScrollView.m; sourceTree = "<group>"; };
 		760E94682151ED9B00592929 /* DataList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DataList.plist; sourceTree = "<group>"; };
@@ -259,6 +271,8 @@
 				8455A4DF21942E5A00B52A2B /* CategoryDetailController.m */,
 				761278E321952D98009A5774 /* ProductDetailController.h */,
 				84EC1BCC21952B8E00527577 /* ProductDetailController.m */,
+				7609C785219D56B000689D07 /* SamplePrepareController.h */,
+				7609C786219D56B000689D07 /* SamplePrepareController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -394,10 +408,16 @@
 			children = (
 				7619A5FD219AB7E9005ADEEB /* PackagingBaseController.h */,
 				7619A5FE219AB7E9005ADEEB /* PackagingBaseController.m */,
+				7609C77C219D4ADA00689D07 /* PackagingStandardController.h */,
+				7609C77D219D4ADA00689D07 /* PackagingStandardController.m */,
 				76B612C1219ADB2D003657B0 /* PackagingLiningController.h */,
 				76B612C2219ADB2D003657B0 /* PackagingLiningController.m */,
+				7609C77F219D4B1900689D07 /* PackagingTagController.h */,
+				7609C780219D4B1900689D07 /* PackagingTagController.m */,
 				7619A5F0219AA4F9005ADEEB /* PackagingPalletController.h */,
 				7619A5F1219AA4F9005ADEEB /* PackagingPalletController.m */,
+				7609C782219D4B4000689D07 /* PackagingDesignerController.h */,
+				7609C783219D4B4000689D07 /* PackagingDesignerController.m */,
 			);
 			path = PackagingCustom;
 			sourceTree = "<group>";
@@ -816,11 +836,13 @@
 				7655CC872150F81600D206C2 /* BaseViewController.m in Sources */,
 				761AF2DC215E0B2700F596D3 /* YJToolBar.m in Sources */,
 				76605E492101CB4400115FA6 /* UIColor+UIColor_StringToRGB.m in Sources */,
+				7609C781219D4B1900689D07 /* PackagingTagController.m in Sources */,
 				76605E5C2101CC8300115FA6 /* LoginViewController.m in Sources */,
 				84270213219AAD390025696F /* NextButton.m in Sources */,
 				76605E562101CC1C00115FA6 /* UserInfoSingleton.m in Sources */,
 				761AF2D4215E0AB200F596D3 /* ResultModel.m in Sources */,
 				7602112B21917D5F00C6F622 /* CategoryListController.m in Sources */,
+				7609C77E219D4ADA00689D07 /* PackagingStandardController.m in Sources */,
 				7609C76E219D159D00689D07 /* OrderViewController.m in Sources */,
 				76EE836E216B4B5000D317FF /* SceneView.m in Sources */,
 				8455A4E021942E5A00B52A2B /* CategoryDetailController.m in Sources */,
@@ -842,12 +864,14 @@
 				761AF2DD215E0B2700F596D3 /* UIView+Frame.m in Sources */,
 				7655CC8C2150F89200D206C2 /* BaseDataRequest.m in Sources */,
 				8455A4DD21942C0D00B52A2B /* CategoryDetallCell.m in Sources */,
+				7609C784219D4B4000689D07 /* PackagingDesignerController.m in Sources */,
 				84EC1BCD21952B8E00527577 /* ProductDetailController.m in Sources */,
 				760211312191856800C6F622 /* CategoryCell.m in Sources */,
 				7611C4C021942FF900D6428E /* HomeViewController.m in Sources */,
 				7655CC902150F8CD00D206C2 /* DataRequest.m in Sources */,
 				7602112E21917DEB00C6F622 /* ProductsViewController.m in Sources */,
 				84270210219AA5E30025696F /* LoginView.m in Sources */,
+				7609C787219D56B000689D07 /* SamplePrepareController.m in Sources */,
 				84EC1BDF219564D800527577 /* TopPageSlideController.m in Sources */,
 				760E94762151F0DB00592929 /* MeViewController.m in Sources */,
 			);

@@ -7,6 +7,7 @@
 //
 
 #import "PackagingBaseController.h"
+#import "SamplePrepareController.h"
 
 @interface PackagingBaseController ()
 
@@ -21,6 +22,12 @@
   
 }
 
+- (void)samplePrepareBtnClick {
+  SamplePrepareController *vc = [[SamplePrepareController alloc] init];
+  [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma marks - getters
 -(UIScrollView *)scrollView {
   if (!_scrollView) {
     _scrollView = [[UIScrollView alloc] init];
@@ -37,6 +44,7 @@
     _createBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_createBtn setTitle:@"样品制作" forState:UIControlStateNormal];
     [_createBtn setBackgroundColor:BASECOLOR_BLACK_333];
+    [_createBtn addTarget:self action:@selector(samplePrepareBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:_createBtn];
   }
   return _createBtn;
