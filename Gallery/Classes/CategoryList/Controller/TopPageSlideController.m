@@ -77,28 +77,33 @@
 
 #pragma mark - YNPageViewControllerDataSource
 - (UIScrollView *)pageViewController:(YNPageViewController *)pageViewController pageForIndex:(NSInteger)index {
-  
-  UIViewController *vc = pageViewController.controllersM[index];
-  switch (index) {
-    case 0:
-      return [(CategoryDetailController *)vc listCollection];
-      break;
-    case 1:
-      return [(PackagingLiningController *)vc scrollView];
-      break;
-    case 2:
-      return [(CategoryDetailController *)vc listCollection];
-      break;
-    case 3:
-      return [(PackagingPalletController *)vc scrollView];
-      break;
-    case 4:
-      return [(CategoryDetailController *)vc listCollection];
-      break;
-      
-    default:
-      return nil;
-      break;
+  if ([pageViewController.controllersM[index] isKindOfClass:[CategoryDetailController class]]) {
+    UIViewController *vc = pageViewController.controllersM[index];
+    return [(CategoryDetailController *)vc listCollection];
+  } else {
+    
+    UIViewController *vc = pageViewController.controllersM[index];
+    switch (index) {
+      case 0:
+        return [(CategoryDetailController *)vc listCollection];
+        break;
+      case 1:
+        return [(PackagingLiningController *)vc scrollView];
+        break;
+      case 2:
+        return [(CategoryDetailController *)vc listCollection];
+        break;
+      case 3:
+        return [(PackagingPalletController *)vc scrollView];
+        break;
+      case 4:
+        return [(CategoryDetailController *)vc listCollection];
+        break;
+        
+      default:
+        return nil;
+        break;
+    }
   }
 }
 
@@ -127,8 +132,9 @@
     default:
       break;
   }
-  [pageViewController setHeaderView:self.packagingHeaderView];
-  [pageViewController reloadData];
+  [[pageViewController.headerView.subviews objectAtIndex:0] removeFromSuperview];
+  [pageViewController.headerView addSubview:self.sceneView];
+//  [pageViewController reloadData];
 }
 
 - (void)rightNavigationBtnClick:(id)sender {
