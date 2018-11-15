@@ -17,7 +17,6 @@
 		7609C778219D454A00689D07 /* 2_timg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7609C777219D454A00689D07 /* 2_timg.jpg */; };
 		760CE63321992A2600CF2306 /* PageRoundScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760CE63221992A2600CF2306 /* PageRoundScrollView.m */; };
 		760E94692151ED9B00592929 /* DataList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 760E94682151ED9B00592929 /* DataList.plist */; };
-		760E94732151F0D100592929 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E94722151F0D100592929 /* ServiceViewController.m */; };
 		760E94762151F0DB00592929 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E94752151F0DB00592929 /* MeViewController.m */; };
 		7611C4A62193D56E00D6428E /* R.tga in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4A22193D56D00D6428E /* R.tga */; };
 		7611C4A82193D56E00D6428E /* moxing.DAE in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4A42193D56E00D6428E /* moxing.DAE */; };
@@ -98,7 +97,6 @@
 		760CE63121992A2600CF2306 /* PageRoundScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageRoundScrollView.h; sourceTree = "<group>"; };
 		760CE63221992A2600CF2306 /* PageRoundScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageRoundScrollView.m; sourceTree = "<group>"; };
 		760E94682151ED9B00592929 /* DataList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DataList.plist; sourceTree = "<group>"; };
-		760E94722151F0D100592929 /* ServiceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceViewController.m; sourceTree = "<group>"; };
 		760E94742151F0DB00592929 /* MeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		760E94752151F0DB00592929 /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		7611C4A22193D56D00D6428E /* R.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = R.tga; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 		76B612C2219ADB2D003657B0 /* PackagingLiningController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackagingLiningController.m; sourceTree = "<group>"; };
 		76BE7AC521944C0B0062C64E /* CategoryDetallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryDetallCell.h; sourceTree = "<group>"; };
 		76BE7AC621944C160062C64E /* CategoryDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryDetailController.h; sourceTree = "<group>"; };
-		76BE7AC721944C5B0062C64E /* ServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceViewController.h; sourceTree = "<group>"; };
 		76EE836B216B4B5000D317FF /* SceneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneView.h; sourceTree = "<group>"; };
 		76EE836C216B4B5000D317FF /* SceneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneView.m; sourceTree = "<group>"; };
 		8427020E219AA5E30025696F /* LoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoginView.h; path = Gallery/Classes/CategoryList/Controller/LoginView.h; sourceTree = SOURCE_ROOT; };
@@ -368,8 +365,6 @@
 		7611C4B921942EA700D6428E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				76BE7AC721944C5B0062C64E /* ServiceViewController.h */,
-				760E94722151F0D100592929 /* ServiceViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -827,7 +822,6 @@
 				7619A5FC219AB431005ADEEB /* PackagingCustomView.m in Sources */,
 				76605E602101CCB100115FA6 /* CommonUtil.m in Sources */,
 				7655CC8D2150F89200D206C2 /* NetRequestClass.m in Sources */,
-				760E94732151F0D100592929 /* ServiceViewController.m in Sources */,
 				7655CC792150F27E00D206C2 /* TabBarController.m in Sources */,
 				76605E162101B6EF00115FA6 /* main.m in Sources */,
 				7619A5F2219AA4F9005ADEEB /* PackagingPalletController.m in Sources */,
