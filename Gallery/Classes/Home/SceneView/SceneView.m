@@ -17,8 +17,6 @@
 @property (nonatomic, strong) SCNScene    *scene;
 @property (nonatomic, strong) SCNMaterial *material;
 
-@property (nonatomic, strong) SCNNode   *ggNode;  // 
-
 @property (nonatomic, strong) SCNNode   *ggNode;  //
 @end
 
