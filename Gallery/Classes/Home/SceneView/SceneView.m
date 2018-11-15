@@ -135,10 +135,35 @@
 }
 
 -(void)changeCameraNodePosition {
-//  self.cameraNode.position = SCNVector3Make(0, 10, 30);
-//  [self.cameraNode runAction:[SCNAction repeatAction:[SCNAction scaleTo:1 duration:1] count:1]];
+//  self.cameraNode.position = SCNVector3Make(0, 10, 50);
+  
+  CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
+  animation.duration = 1.0;
+//  animation.fromValue = [NSValue valueWithSCNVector4:SCNVector4Make(0, 0, 0, 0)];
+//  animation.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0, 1, 0, M_PI * 2)];
 
+  animation.repeatCount = 1;
+  [self.cameraNode addAnimation:animation forKey:@"earth rotation around sun"];
 
+//  SCNAction *customAction = [SCNAction rotateByX:0 y:1 z:0 duration:1];//沿y轴旋转
+//  SCNAction *repeatAction = [SCNAction repeatActionForever:customAction];
+//  [self.cameraNode runAction:repeatAction];
+//
+  
+//  CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"contentsTransform"];
+//  animation.duration = 1.0;
+//  animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DConcat(CATransform3DMakeTranslation(0, 0, 0), CATransform3DMakeScale(3, 3, 3))];
+//  animation.toValue = [NSValue valueWithCATransform3D:CATransform3DConcat(CATransform3DMakeTranslation(1, 0, 0), CATransform3DMakeScale(3, 3, 3))];
+//  animation.repeatCount = FLT_MAX;
+//  [self.scene.rootNode.geometry.firstMaterial.diffuse addAnimation:animation forKey:@"sun-texture"];
+//
+//  animation = [CABasicAnimation animationWithKeyPath:@"contentsTransform"];
+//  animation.duration = 1.0;
+//  animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DConcat(CATransform3DMakeTranslation(0, 0, 0), CATransform3DMakeScale(5, 5, 5))];
+//  animation.toValue = [NSValue valueWithCATransform3D:CATransform3DConcat(CATransform3DMakeTranslation(1, 0, 0), CATransform3DMakeScale(5, 5, 5))];
+//  animation.repeatCount = FLT_MAX;
+//  [self.scene.rootNode.geometry.firstMaterial.multiply addAnimation:animation forKey:@"sun-texture2"];
+ 
 }
 
 #pragma mark - 创建3D模型场景
