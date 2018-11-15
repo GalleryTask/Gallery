@@ -48,30 +48,20 @@
   SceneView *sceneView = [self.scrollView viewWithTag:100];
   [sceneView addNode];
   
-<<<<<<< HEAD
-//  [sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"home_1"]];
+  //[sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"home_1"]];
 //  MMKV *mv = [MMKV defaultMMKV];
 //  [mv setObject:@"sssssssssssssssssss" forKey:@"string"];
 //  [mv setObject:@"123" forKey:@"string"];
 //  NSLog(@"%@",[mv getObjectOfClass:NSString.class forKey:@"string"]) ;
 //  [mv removeValueForKey:@"string"];
 //  NSLog(@"%@",[mv getObjectOfClass:NSString.class forKey:@"string"]) ;
-=======
-  //[sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"home_1"]];
-  MMKV *mv = [MMKV defaultMMKV];
-  [mv setObject:@"sssssssssssssssssss" forKey:@"string"];
-  [mv setObject:@"123" forKey:@"string"];
-  NSLog(@"%@",[mv getObjectOfClass:NSString.class forKey:@"string"]) ;
-  [mv removeValueForKey:@"string"];
-  NSLog(@"%@",[mv getObjectOfClass:NSString.class forKey:@"string"]) ;
->>>>>>> 1cd38744777dca01422f833a0d9c9454394d7f60
 }
 
 - (void)deleBtn {
   SceneView *sceneView = [self.scrollView viewWithTag:100];
   [sceneView removeNode];
   
-//  [sceneView changeCameraNodePosition];
+  [sceneView changeCameraNodePosition];
 }
 
 - (void)downloadZip {
@@ -96,12 +86,12 @@
     for (int i = 0; i < self.boxList.count; i++) {
         
         // 创建3D展示view
-        SceneView *sceneView = [[SceneView alloc] initWithSceneName:@"tianmaojingling.DAE"
+        SceneView *sceneView = [[SceneView alloc] initWithSceneName:@"moxing.DAE"
                                                               frame:CGRectMake((SCREEN_WIDTH-30)*i, SCALE_SIZE*70, SCREEN_WIDTH, SCREEN_WIDTH)];
         sceneView.tag = 100;
         [self.scrollView addSubview:sceneView];
 
-      [sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"2_timg.jpg"]];
+      [sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"B.tga"]];
 //      [sceneView sceneViewReflectiveImage:[UIImage imageNamed:@"B.tga"]];
         
         // 添加点击手势
