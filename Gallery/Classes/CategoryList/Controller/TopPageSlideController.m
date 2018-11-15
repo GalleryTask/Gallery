@@ -53,7 +53,7 @@
 - (instancetype)initPackagingCustomVC {
   
   self.configration.pageStyle = YNPageStyleSuspensionCenter;
-  self.configration.lineLeftAndRightAddWidth = 5;
+  self.configration.lineLeftAndRightAddWidth = 10;
   self.configration.itemLeftAndRightMargin = SCALE_SIZE*21;
   self.configration.itemMargin = SCALE_SIZE*55;
   self.configration.pageScrollEnabled = NO;
@@ -161,7 +161,7 @@
     _configration.bottomLineBgColor = BASECOLOR_GRAY_E9;
     _configration.bottomLineHeight = 0.5;
     _configration.lineColor = BASECOLOR_BLACK_333;
-    _configration.lineHeight = 3;
+    _configration.lineHeight = 2;
     _configration.itemLeftAndRightMargin = SCALE_SIZE*16;
     _configration.itemMargin = SCALE_SIZE*20;
     _configration.itemFont = [UIFont systemFontOfSize:SCALE_SIZE*14 weight:UIFontWeightBold];

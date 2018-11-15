@@ -61,7 +61,7 @@
   SceneView *sceneView = [self.scrollView viewWithTag:100];
   [sceneView removeNode];
   
-  [sceneView changeCameraNodePosition];
+  [sceneView changeRange];
 }
 
 - (void)downloadZip {

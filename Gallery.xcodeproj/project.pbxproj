@@ -46,9 +46,6 @@
 		7655CC902150F8CD00D206C2 /* DataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7655CC8E2150F8CD00D206C2 /* DataRequest.m */; };
 		7655CC922150F92A00D206C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7655CC912150F92A00D206C2 /* Assets.xcassets */; };
 		76605E082101B6ED00115FA6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E072101B6ED00115FA6 /* AppDelegate.m */; };
-		76605E0B2101B6ED00115FA6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E0A2101B6ED00115FA6 /* ViewController.m */; };
-		76605E0E2101B6ED00115FA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76605E0C2101B6ED00115FA6 /* Main.storyboard */; };
-		76605E132101B6EE00115FA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76605E112101B6EE00115FA6 /* LaunchScreen.storyboard */; };
 		76605E162101B6EF00115FA6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E152101B6EF00115FA6 /* main.m */; };
 		76605E202101B6EF00115FA6 /* GalleryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E1F2101B6EF00115FA6 /* GalleryTests.m */; };
 		76605E2B2101B6EF00115FA6 /* GalleryUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E2A2101B6EF00115FA6 /* GalleryUITests.m */; };
@@ -60,6 +57,9 @@
 		76605E632101CCBA00115FA6 /* UploadImageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E612101CCBA00115FA6 /* UploadImageObject.m */; };
 		76B612C3219ADB2D003657B0 /* PackagingLiningController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B612C2219ADB2D003657B0 /* PackagingLiningController.m */; };
 		76EE836E216B4B5000D317FF /* SceneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE836C216B4B5000D317FF /* SceneView.m */; };
+		76F6AC2C219D6D4500EB0325 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76F6AC2B219D6D4500EB0325 /* Main.storyboard */; };
+		76F6AC2E219D6DBF00EB0325 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76F6AC2D219D6DBF00EB0325 /* LaunchScreen.storyboard */; };
+		76F6AC31219D855300EB0325 /* PackagingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F6AC30219D855300EB0325 /* PackagingImageView.m */; };
 		84270210219AA5E30025696F /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8427020F219AA5E30025696F /* LoginView.m */; };
 		84270213219AAD390025696F /* NextButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84270212219AAD390025696F /* NextButton.m */; };
 		8455A4DD21942C0D00B52A2B /* CategoryDetallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8455A4DC21942C0D00B52A2B /* CategoryDetallCell.m */; };
@@ -156,10 +156,6 @@
 		76605E032101B6ED00115FA6 /* Gallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76605E062101B6ED00115FA6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		76605E072101B6ED00115FA6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		76605E092101B6ED00115FA6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		76605E0A2101B6ED00115FA6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		76605E0D2101B6ED00115FA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		76605E122101B6EE00115FA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		76605E142101B6EE00115FA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76605E152101B6EF00115FA6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		76605E1B2101B6EF00115FA6 /* GalleryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GalleryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +185,10 @@
 		76BE7AC621944C160062C64E /* CategoryDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryDetailController.h; sourceTree = "<group>"; };
 		76EE836B216B4B5000D317FF /* SceneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneView.h; sourceTree = "<group>"; };
 		76EE836C216B4B5000D317FF /* SceneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneView.m; sourceTree = "<group>"; };
+		76F6AC2B219D6D4500EB0325 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		76F6AC2D219D6DBF00EB0325 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		76F6AC2F219D855300EB0325 /* PackagingImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackagingImageView.h; sourceTree = "<group>"; };
+		76F6AC30219D855300EB0325 /* PackagingImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackagingImageView.m; sourceTree = "<group>"; };
 		8427020E219AA5E30025696F /* LoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoginView.h; path = Gallery/Classes/CategoryList/Controller/LoginView.h; sourceTree = SOURCE_ROOT; };
 		8427020F219AA5E30025696F /* LoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LoginView.m; path = Gallery/Classes/CategoryList/Controller/LoginView.m; sourceTree = SOURCE_ROOT; };
 		84270211219AAD390025696F /* NextButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextButton.h; sourceTree = "<group>"; };
@@ -253,6 +253,8 @@
 				8455A4DC21942C0D00B52A2B /* CategoryDetallCell.m */,
 				7619A5FA219AB431005ADEEB /* PackagingCustomView.h */,
 				7619A5FB219AB431005ADEEB /* PackagingCustomView.m */,
+				76F6AC2F219D855300EB0325 /* PackagingImageView.h */,
+				76F6AC30219D855300EB0325 /* PackagingImageView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -296,6 +298,8 @@
 		760E94672151ED6200592929 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				76F6AC2D219D6DBF00EB0325 /* LaunchScreen.storyboard */,
+				76F6AC2B219D6D4500EB0325 /* Main.storyboard */,
 				760E94682151ED9B00592929 /* DataList.plist */,
 				76605E142101B6EE00115FA6 /* Info.plist */,
 				76605E152101B6EF00115FA6 /* main.m */,
@@ -479,11 +483,7 @@
 				76605E3A2101C5EE00115FA6 /* Config */,
 				76605E392101C0B500115FA6 /* Classes */,
 				76605E382101B70800115FA6 /* AppDelegate */,
-				76605E092101B6ED00115FA6 /* ViewController.h */,
-				76605E0A2101B6ED00115FA6 /* ViewController.m */,
 				760E94672151ED6200592929 /* Supporting Files */,
-				76605E0C2101B6ED00115FA6 /* Main.storyboard */,
-				76605E112101B6EE00115FA6 /* LaunchScreen.storyboard */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -757,15 +757,15 @@
 			files = (
 				7609C776219D453000689D07 /* tianmaojingling.DAE in Resources */,
 				7609C774219D3B4400689D07 /* 0_T_hezi_tietu_01_d.tga in Resources */,
-				76605E132101B6EE00115FA6 /* LaunchScreen.storyboard in Resources */,
 				7609C778219D454A00689D07 /* 2_timg.jpg in Resources */,
 				7611C4A62193D56E00D6428E /* R.tga in Resources */,
 				7655CC922150F92A00D206C2 /* Assets.xcassets in Resources */,
+				76F6AC2C219D6D4500EB0325 /* Main.storyboard in Resources */,
 				7611C4A92193D56E00D6428E /* B.tga in Resources */,
 				7627E55921898D9E00C7A5A3 /* nbox3gai.dae in Resources */,
 				7611C4B32194196200D6428E /* HeZiZheDie.DAE in Resources */,
+				76F6AC2E219D6DBF00EB0325 /* LaunchScreen.storyboard in Resources */,
 				760E94692151ED9B00592929 /* DataList.plist in Resources */,
-				76605E0E2101B6ED00115FA6 /* Main.storyboard in Resources */,
 				7611C4A82193D56E00D6428E /* moxing.DAE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -832,7 +832,6 @@
 			files = (
 				76B612C3219ADB2D003657B0 /* PackagingLiningController.m in Sources */,
 				7619A5FF219AB7E9005ADEEB /* PackagingBaseController.m in Sources */,
-				76605E0B2101B6ED00115FA6 /* ViewController.m in Sources */,
 				7655CC872150F81600D206C2 /* BaseViewController.m in Sources */,
 				761AF2DC215E0B2700F596D3 /* YJToolBar.m in Sources */,
 				76605E492101CB4400115FA6 /* UIColor+UIColor_StringToRGB.m in Sources */,
@@ -845,6 +844,7 @@
 				7609C77E219D4ADA00689D07 /* PackagingStandardController.m in Sources */,
 				7609C76E219D159D00689D07 /* OrderViewController.m in Sources */,
 				76EE836E216B4B5000D317FF /* SceneView.m in Sources */,
+				76F6AC31219D855300EB0325 /* PackagingImageView.m in Sources */,
 				8455A4E021942E5A00B52A2B /* CategoryDetailController.m in Sources */,
 				7619A5FC219AB431005ADEEB /* PackagingCustomView.m in Sources */,
 				76605E602101CCB100115FA6 /* CommonUtil.m in Sources */,
@@ -907,25 +907,6 @@
 			targetProxy = 76605E272101B6EF00115FA6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		76605E0C2101B6ED00115FA6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				76605E0D2101B6ED00115FA6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		76605E112101B6EE00115FA6 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				76605E122101B6EE00115FA6 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		76605E2D2101B6EF00115FA6 /* Debug */ = {

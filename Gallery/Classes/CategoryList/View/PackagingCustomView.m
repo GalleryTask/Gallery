@@ -102,9 +102,10 @@ static const CGFloat itemVerticalSpace = 12.f; // items上下间距
   return countRow;
 }
 
+#pragma mark - button的点击事件
 - (void)buttonClick:(UIButton *)button {
   // 判断点击的是否是选中转态 如果是则不变
-  if (_selectedTag != button.tag) {
+  if (_selectedTag != button.tag || [self.items[button.tag-100] isEqualToString:@"自定义"]) {
     
     for (int i = 0; i < self.items.count; i++) {
       UIButton *btn = [self viewWithTag:100+i];
@@ -116,10 +117,41 @@ static const CGFloat itemVerticalSpace = 12.f; // items上下间距
       [[button layer] setBorderColor:BASECOLOR_BLACK_000.CGColor];
       [[button layer] setBorderWidth:0.5];
     }
-    self.selectedItemBlock(button.currentTitle);
+    if ([self.items[button.tag-100] isEqualToString:@"自定义"]) {
+      [self pushAlertViewWithCurrentBtn:button];
+    }
+    
+    NSDictionary *dic = @{@"title":button.currentTitle,@"index":[NSNumber numberWithInteger:button.tag-100]};
+    self.selectedItemBlock(dic);
   }
+  
   _selectedTag = button.tag;
 }
+
+#pragma mark - 当为自定义时弹出框
+- (void)pushAlertViewWithCurrentBtn:(UIButton *)button {
+  
+  NSString *title = self.titleLabel.text;
+
+  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
+  //增加取消按钮；
+  [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+  //定义第一个输入框；
+  [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+    textField.placeholder = [NSString stringWithFormat:@"输入%@(mm)",title];
+    [textField setKeyboardType:UIKeyboardTypeNumberPad];
+    //    [textField setText:weakSelf.products.productCount];
+  }];
+  //增加确定按钮；
+  [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    //获取第1个输入框；
+    UITextField *textField = alertController.textFields.firstObject;
+    [button setTitle:textField.text forState:UIControlStateNormal];
+  
+  }]];
+  [[CommonUtil getCurrentVC] presentViewController:alertController animated:true completion:nil];
+}
+
 
 #pragma marks - getters
 -(UILabel *)titleLabel {

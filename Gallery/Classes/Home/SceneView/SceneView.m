@@ -111,6 +111,15 @@
   [node runAction:repeatAction];
 }
 
+- (void)changeRange {
+  
+  SCNAction *repeatAction = [SCNAction repeatAction:[SCNAction rotateByX:0 y:0.5 z:0 duration:0.3] count:1];
+  
+  self.cameraNode.position = SCNVector3Make(0, 20, 50);
+  SCNNode *node =  [self.scene.rootNode childNodeWithName:@"Object002" recursively:YES];
+  [node runAction:repeatAction];
+}
+
 #pragma mark - 创建3D模型场景
 - (void)createSceneViewWithSceneName:(NSString *)sceneName {
   

@@ -45,5 +45,7 @@
 	<string>需要您的同意才能打开相机</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>需要您的同意才能读取媒体资料库</string>
+	<key>UIRequiresFullScreen</key>
+	<string>YES</string>
 </dict>
 </plist>
