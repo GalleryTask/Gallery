@@ -24,6 +24,7 @@
   self.navigationItem.title = @"3D苹果包装方案";
   [self.view addSubview:self.sceneView];
   [self.view addSubview:self.customizedBtn];
+  [self.sceneView changeCameraNodePosition];
 }
 
 // 开始定制按钮点击事件

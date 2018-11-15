@@ -26,7 +26,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
   self.navigationItem.title = @"首页";
-//  self.cycleScrollView.imageURLStringsGroup = @[@"",@""];
+  [self setupNavigationBarButton];
   self.cycleScrollView.localizationImageNamesGroup = @[@"home_1",@"home_1"];
   
   PageRoundScrollView *scrollView = [[PageRoundScrollView alloc] init];
@@ -37,6 +37,7 @@
     make.left.width.bottom.equalTo(self.view);
     make.top.equalTo(self.showView.mas_bottom);
   }];
+  
 }
 
 // SDCycleScrollView delegate 点击图片回调
@@ -47,6 +48,25 @@
 // pageRoundScrolView delegate
 -(void)pageRoundScrollWithPage:(int)page {
   [self.showView setCurrentCount:page];
+}
+
+- (void)setupNavigationBarButton {
+  
+  UIButton *scanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+  [scanBtn setImage:[UIImage imageNamed:@"home_scan"] forState:UIControlStateNormal];
+  [scanBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
+  [scanBtn setFrame:CGRectMake(0, 0, 30, BASE_HEIGHT)];
+  
+  UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+  [searchBtn setImage:[UIImage imageNamed:@"home_search"] forState:UIControlStateNormal];
+//  [searchBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+  [searchBtn setFrame:CGRectMake(0, 0, 30, BASE_HEIGHT)];
+  
+  UIBarButtonItem *scanItem = [[UIBarButtonItem alloc] initWithCustomView:scanBtn];
+  UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithCustomView:searchBtn];
+  
+
+  [self.navigationItem setRightBarButtonItems:@[searchItem,scanItem]];
 }
 
 #pragma marks - getters

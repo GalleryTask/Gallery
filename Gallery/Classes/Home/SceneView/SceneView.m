@@ -77,7 +77,8 @@
 - (void)addNode {
 
   if (![self.scene.rootNode.childNodes containsObject:self.ggNode]) {
-  SCNAnimationEvent *event = [SCNAnimationEvent animationEventWithKeyTime:0.5 block:^(id<SCNAnimation>  _Nonnull animation, id  _Nonnull animatedObject, BOOL playingBackward) {
+  SCNAnimationEvent *event = [SCNAnimationEvent animationEventWithKeyTime:0.5
+                                                                    block:^(id<SCNAnimation>  _Nonnull animation, id  _Nonnull animatedObject, BOOL playingBackward) {
   }];
   
 
@@ -92,36 +93,6 @@
   [self.scene.rootNode addChildNode:self.ggNode];
   [self.ggNode addAnimation:animation forKey:nil];
   }
-
-
-  
- // self.scnView.pointOfView.position = SCNVector3Make(0, 30, 30);
-  
-  
-//[self.cameraNode runAction:[SCNAction repeatActionForever:[SCNAction rotateByX:0 y:-0.1 z:0 duration:1]]];
-//  SCNAction *action = [SCNAction rotateToX:0 y:0 z:0 duration:0.5];
-//
-//  SCNAction *action1 = [SCNAction rotateToX:-0.357878 y:-0.926290 z:-0.117941 duration:0.5];
-//  SCNAction *sequence =[SCNAction sequence:@[action,action1]];
-//  [self.cameraNode runAction:sequence];
-  //SCNAction *group = [SCNAction group:@[sequence]];
-//
-//  //永久执行
-//  [self.cameraNode runAction:[SCNAction repeatActionForever:group]];
-  
-
-  // 绕 y轴 一直旋转
-//  SCNAction *action = [SCNAction repeatActionForever:[SCNAction rotateByX:0 y:1 z:0 duration:1]];
-  SCNAction *action = [SCNAction repeatAction:[SCNAction rotateByX:0 y:1 z:0 duration:1] count:4];
-  [self.ggNode runAction:action];
-  
-  SCNNode *gnode =  [self.scene.rootNode childNodeWithName:@"___2" recursively:YES];
-  [gnode runAction:action];
-  // 素材放大5倍（由于我们素材的尺寸太小了）
-  //node.transform = SCNMatrix4MakeScale(5, 5, 5);
-  
-
-  
 }
 
 -(SCNNode *)ggNode {
@@ -133,35 +104,11 @@
 }
 
 -(void)changeCameraNodePosition {
-//  self.cameraNode.position = SCNVector3Make(0, 10, 50);
-  
-  CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
-  animation.duration = 1.0;
-//  animation.fromValue = [NSValue valueWithSCNVector4:SCNVector4Make(0, 0, 0, 0)];
-//  animation.toValue = [NSValue valueWithSCNVector4:SCNVector4Make(0, 1, 0, M_PI * 2)];
 
-  animation.repeatCount = 1;
-  [self.cameraNode addAnimation:animation forKey:@"earth rotation around sun"];
-
-//  SCNAction *customAction = [SCNAction rotateByX:0 y:1 z:0 duration:1];//沿y轴旋转
-//  SCNAction *repeatAction = [SCNAction repeatActionForever:customAction];
-//  [self.cameraNode runAction:repeatAction];
-//
+  SCNAction *repeatAction = [SCNAction repeatAction:[SCNAction rotateByX:0 y:1 z:0 duration:0.5] count:6];
   
-//  CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"contentsTransform"];
-//  animation.duration = 1.0;
-//  animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DConcat(CATransform3DMakeTranslation(0, 0, 0), CATransform3DMakeScale(3, 3, 3))];
-//  animation.toValue = [NSValue valueWithCATransform3D:CATransform3DConcat(CATransform3DMakeTranslation(1, 0, 0), CATransform3DMakeScale(3, 3, 3))];
-//  animation.repeatCount = FLT_MAX;
-//  [self.scene.rootNode.geometry.firstMaterial.diffuse addAnimation:animation forKey:@"sun-texture"];
-//
-//  animation = [CABasicAnimation animationWithKeyPath:@"contentsTransform"];
-//  animation.duration = 1.0;
-//  animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DConcat(CATransform3DMakeTranslation(0, 0, 0), CATransform3DMakeScale(5, 5, 5))];
-//  animation.toValue = [NSValue valueWithCATransform3D:CATransform3DConcat(CATransform3DMakeTranslation(1, 0, 0), CATransform3DMakeScale(5, 5, 5))];
-//  animation.repeatCount = FLT_MAX;
-//  [self.scene.rootNode.geometry.firstMaterial.multiply addAnimation:animation forKey:@"sun-texture2"];
- 
+  SCNNode *node =  [self.scene.rootNode childNodeWithName:@"Object002" recursively:YES];
+  [node runAction:repeatAction];
 }
 
 #pragma mark - 创建3D模型场景
