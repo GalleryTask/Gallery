@@ -10,7 +10,6 @@
 
 static const CGFloat itemHorizontalSpace = 12.0f;  // items左右间距
 static const CGFloat itemVerticalSpace = 12.f; // items上下间距
-static const CGFloat itemHeight = 32.f; // item的高度
 
 @interface PackagingCustomView ()
 
@@ -38,6 +37,7 @@ static const CGFloat itemHeight = 32.f; // item的高度
 
 - (NSInteger)createBtnWithItems:(NSArray *)items selectedItem:(int)index {
   CGFloat margin = SCALE_SIZE*10.0f;  // 两边的间距
+  CGFloat itemHeight = SCALE_SIZE*32.f;
   CGFloat currentX = margin; // X
   CGFloat currentY = 0; // Y
   NSInteger countRow = 0; // 第几行数
@@ -86,7 +86,7 @@ static const CGFloat itemHeight = 32.f; // item的高度
       
       [button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(currentX);
-        make.top.equalTo(self.titleLabel.mas_bottom).offset(SCALE_SIZE*10 + currentY);
+        make.top.equalTo(self.titleLabel.mas_bottom).offset(currentY);
         make.width.mas_equalTo(width);
         make.height.mas_equalTo(itemHeight);
       }];

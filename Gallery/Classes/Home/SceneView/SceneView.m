@@ -105,7 +105,7 @@
 
 -(void)changeCameraNodePosition {
 
-  SCNAction *repeatAction = [SCNAction repeatAction:[SCNAction rotateByX:0 y:1 z:0 duration:0.3] count:6];
+  SCNAction *repeatAction = [SCNAction repeatAction:[SCNAction rotateByX:0 y:1 z:0 duration:0.3] count:6.5];
   
   SCNNode *node =  [self.scene.rootNode childNodeWithName:@"Object002" recursively:YES];
   [node runAction:repeatAction];
