@@ -49,6 +49,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
   AddressCell *addressCell = [tableView dequeueReusableCellWithIdentifier:@"AddressCell" forIndexPath:indexPath];
+  addressCell.selectionStyle = UITableViewCellSelectionStyleNone;
   [addressCell setDelegate:self];
   return addressCell;
 }
