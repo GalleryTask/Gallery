@@ -62,6 +62,8 @@
 		76F6AC31219D855300EB0325 /* PackagingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F6AC30219D855300EB0325 /* PackagingImageView.m */; };
 		84270210219AA5E30025696F /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8427020F219AA5E30025696F /* LoginView.m */; };
 		84270213219AAD390025696F /* NextButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84270212219AAD390025696F /* NextButton.m */; };
+		842B3BED219E61F4007B43FC /* AddressEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B3BEC219E61F4007B43FC /* AddressEditController.m */; };
+		842B3BF0219E6224007B43FC /* AddressEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B3BEF219E6224007B43FC /* AddressEditView.m */; };
 		8455A4DD21942C0D00B52A2B /* CategoryDetallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8455A4DC21942C0D00B52A2B /* CategoryDetallCell.m */; };
 		8455A4E021942E5A00B52A2B /* CategoryDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8455A4DF21942E5A00B52A2B /* CategoryDetailController.m */; };
 		84675B37219D7B45002B9731 /* AddressListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84675B36219D7B45002B9731 /* AddressListController.m */; };
@@ -195,6 +197,10 @@
 		8427020F219AA5E30025696F /* LoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LoginView.m; path = Gallery/Classes/CategoryList/Controller/LoginView.m; sourceTree = SOURCE_ROOT; };
 		84270211219AAD390025696F /* NextButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextButton.h; sourceTree = "<group>"; };
 		84270212219AAD390025696F /* NextButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextButton.m; sourceTree = "<group>"; };
+		842B3BEB219E61F4007B43FC /* AddressEditController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressEditController.h; sourceTree = "<group>"; };
+		842B3BEC219E61F4007B43FC /* AddressEditController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressEditController.m; sourceTree = "<group>"; };
+		842B3BEE219E6224007B43FC /* AddressEditView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AddressEditView.h; path = Gallery/Classes/Me/Controller/AddressEditView.h; sourceTree = SOURCE_ROOT; };
+		842B3BEF219E6224007B43FC /* AddressEditView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AddressEditView.m; path = Gallery/Classes/Me/Controller/AddressEditView.m; sourceTree = SOURCE_ROOT; };
 		8455A4DC21942C0D00B52A2B /* CategoryDetallCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryDetallCell.m; sourceTree = "<group>"; };
 		8455A4DF21942E5A00B52A2B /* CategoryDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryDetailController.m; sourceTree = "<group>"; };
 		84675B35219D7B45002B9731 /* AddressListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressListController.h; sourceTree = "<group>"; };
@@ -351,6 +357,8 @@
 				760E94752151F0DB00592929 /* MeViewController.m */,
 				84675B35219D7B45002B9731 /* AddressListController.h */,
 				84675B36219D7B45002B9731 /* AddressListController.m */,
+				842B3BEB219E61F4007B43FC /* AddressEditController.h */,
+				842B3BEC219E61F4007B43FC /* AddressEditController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -360,6 +368,8 @@
 			children = (
 				84675B38219D7C58002B9731 /* AddressCell.h */,
 				84675B39219D7C58002B9731 /* AddressCell.m */,
+				842B3BEE219E6224007B43FC /* AddressEditView.h */,
+				842B3BEF219E6224007B43FC /* AddressEditView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -859,6 +869,7 @@
 				8455A4E021942E5A00B52A2B /* CategoryDetailController.m in Sources */,
 				7619A5FC219AB431005ADEEB /* PackagingCustomView.m in Sources */,
 				76605E602101CCB100115FA6 /* CommonUtil.m in Sources */,
+				842B3BF0219E6224007B43FC /* AddressEditView.m in Sources */,
 				7655CC8D2150F89200D206C2 /* NetRequestClass.m in Sources */,
 				7655CC792150F27E00D206C2 /* TabBarController.m in Sources */,
 				7609C77B219D49CE00689D07 /* ServiceViewController.m in Sources */,
@@ -886,6 +897,7 @@
 				7609C787219D56B000689D07 /* SamplePrepareController.m in Sources */,
 				84EC1BDF219564D800527577 /* TopPageSlideController.m in Sources */,
 				760E94762151F0DB00592929 /* MeViewController.m in Sources */,
+				842B3BED219E61F4007B43FC /* AddressEditController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -57,14 +57,14 @@
   [self.addressLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
     make.top.equalTo(self.nameLabel.mas_bottom).offset(SCALE_SIZE * 8);
     make.left.equalTo(self.nameLabel);
-    make.right.mas_equalTo(SCALE_SIZE * 90);
+    make.right.mas_equalTo(-90);
   }];
   
   [self.lineView mas_remakeConstraints:^(MASConstraintMaker *make) {
     make.width.mas_equalTo(1);
     make.height.mas_equalTo(SCALE_SIZE * 26);
     make.centerY.equalTo(self);
-    make.right.mas_equalTo(SCALE_SIZE * 48);
+    make.right.mas_equalTo(-SCALE_SIZE * 48);
   }];
   
   [self.editBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -99,6 +99,7 @@
     [_addressLabel setTextColor:BASECOLOR_BLACK_666];
     [_addressLabel setFont:[UIFont systemFontOfSize:SCALE_SIZE*14.f]];
     [_addressLabel setText:@"你是傻子吗你是傻子吗你是傻子吗你是傻子吗你是傻子吗你是傻子吗你是傻子吗你是傻子吗"];
+    [_addressLabel setNumberOfLines:2];
     [self.contentView addSubview:_addressLabel];
   }
   return _addressLabel;
@@ -107,6 +108,7 @@
   if (!_titleLabel) {
     _titleLabel = [[UILabel alloc] init];
     [_titleLabel setBackgroundColor:[UIColor hexStringToColor:@"#B0B2B4"]];
+    [_titleLabel setTextColor:[UIColor whiteColor]];
     [_titleLabel.layer setMasksToBounds:YES];
     [_titleLabel.layer setCornerRadius:SCALE_SIZE*16];
     [_titleLabel setFont:[UIFont systemFontOfSize:SCALE_SIZE*16.f]];
@@ -119,10 +121,10 @@
 -(UILabel *)addressTypeLabel {
   if (!_addressTypeLabel) {
     _addressTypeLabel = [[UILabel alloc] init];
-    [_addressTypeLabel setBackgroundColor:BASECOLOR_BLUE];
+    [_addressTypeLabel setTextColor:BASECOLOR_BLUE];
     [_addressTypeLabel.layer setMasksToBounds:YES];
     [_addressTypeLabel.layer setCornerRadius:3];
-    [_addressTypeLabel.layer setBorderWidth:SCALE_SIZE*2.f];
+    [_addressTypeLabel.layer setBorderWidth:SCALE_SIZE*1.f];
     [_addressTypeLabel.layer setBorderColor:BASECOLOR_BLUE.CGColor];
     [_addressTypeLabel setFont:[UIFont systemFontOfSize:SCALE_SIZE*10.f]];
     [_addressTypeLabel setText:@"学校"];
@@ -143,6 +145,8 @@
   if (!_editBtn) {
     _editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_editBtn setTitle:@"编辑" forState:(UIControlStateNormal)];
+    [_editBtn.titleLabel setFont:[UIFont systemFontOfSize:SCALE_SIZE*12.f] ];
+    [_editBtn setTitleColor:BASECOLOR_BLACK_999 forState:(UIControlStateNormal)];
     [_editBtn addTarget:self action:@selector(editBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_editBtn];
   }

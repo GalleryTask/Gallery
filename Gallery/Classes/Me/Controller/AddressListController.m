@@ -8,6 +8,7 @@
 
 #import "AddressListController.h"
 #import "AddressCell.h"
+#import "AddressEditController.h"
 @interface AddressListController ()
 
 @end
@@ -16,19 +17,29 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  self.title = @"我的收获地址";
   [self createInterfaceBuilder];
 }
+-(void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [self settingNavigationRightButton];
+}
 -(void)createInterfaceBuilder {
-//  [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//    make.top.with.left.height.equalTo(self);
-//  }];
-  
+  [self.tableView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
   [self.tableView registerClass:[AddressCell class] forCellReuseIdentifier:@"AddressCell"];
   [self.tableView setRowHeight:SCALE_SIZE*100];
   [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-//  [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]
-//                              animated:NO
-//                        scrollPosition:UITableViewScrollPositionNone];
+}
+-(void)settingNavigationRightButton{
+  BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
+  [nav setNavigationBarRightItemWithButtonTitle:@"增加新地址"];
+  [nav setNavigationBarRightItemWithImageName:@"" highlightImageName:@""];
+  @weakify(self);
+  [nav showRightNavBtnWithClick:^(id sender) {
+    @strongify(self);
+    AddressEditController *editVC = [[AddressEditController alloc] init];
+    [self.navigationController pushViewController:editVC animated:YES];
+  }];
 }
 #pragma mark - tableview delegate dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
