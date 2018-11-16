@@ -14,7 +14,8 @@
 @property (nonatomic,   copy) rightNavigationClickBlock rightNavBlock;       // 右边标题栏block
 @property (nonatomic, strong) UIViewController  *myController;
 @property (nonatomic, strong) UIBarButtonItem   *leftBtnItem;
-@property (nonatomic, strong) UIButton          *rightNavigationBtn;
+//@property (nonatomic, strong) UIBarButtonItem   *rightBtnItem;
+
 
 @end
 
@@ -117,6 +118,7 @@
 -(void)setNavigationBarRightItemWithImageName:(NSString *)imageName
                            highlightImageName:(NSString *)highlightImageName {
   
+ 
   [self.rightNavigationBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
   [self.rightNavigationBtn setImage:[UIImage imageNamed:highlightImageName] forState:UIControlStateHighlighted];
 }
@@ -156,9 +158,10 @@
     [_rightNavigationBtn setTitleColor:BASECOLOR_BLACK_333 forState:UIControlStateNormal];
     [[_rightNavigationBtn titleLabel] setFont:FONTSIZE(14)];
   }
-
+  
   UIBarButtonItem *rightBtnItem = [[UIBarButtonItem alloc] initWithCustomView:_rightNavigationBtn];
   self.myController.navigationItem.rightBarButtonItem = rightBtnItem;
+
   return _rightNavigationBtn;
 }
 

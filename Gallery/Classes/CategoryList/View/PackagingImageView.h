@@ -12,6 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PackagingImageView : UIView
 
+- (instancetype)initWithFrame:(CGRect)frame
+                       images:(NSArray *)images
+                       titles:(NSArray *)titles
+                isUploadImage:(BOOL)isUpload;
+
 @end
 
 NS_ASSUME_NONNULL_END

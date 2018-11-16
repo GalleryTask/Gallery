@@ -24,9 +24,21 @@
     [super viewDidLoad];
   
   self.navigationItem.title = @"全部行业";
+  BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
+  [nav.rightNavigationBtn setImage:[UIImage imageNamed:@"news"] forState:UIControlStateNormal];
   [self createInterfaceBuilder];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  
+//  BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
+//  [nav.rightNavigationBtn setImage:[UIImage imageNamed:@"news"] forState:UIControlStateNormal];
+//  [nav setNavigationBarRightItemWithImageName:@"news" highlightImageName:@""];
+//  [nav setNavigationBarRightItemWithButtonTitle:@""];
+//  [nav showRightNavBtnWithClick:^(id sender) {
+//  }];
+}
 - (void)createInterfaceBuilder {
   [self.view addSubview:self.productsVC.view];
   [self.view addSubview:self.searchView];
@@ -44,10 +56,7 @@
   [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]
                               animated:NO
                         scrollPosition:UITableViewScrollPositionNone];
-  BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
-  [nav setNavigationBarRightItemWithImageName:@"news" highlightImageName:@""];
-  [nav showRightNavBtnWithClick:^(id sender) {
-  }];
+  
 }
 
 #pragma mark - tableview delegate dataSource

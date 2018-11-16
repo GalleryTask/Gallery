@@ -13,8 +13,6 @@
 		760211312191856800C6F622 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 760211302191856800C6F622 /* CategoryCell.m */; };
 		7609C76E219D159D00689D07 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C76D219D159D00689D07 /* OrderViewController.m */; };
 		7609C774219D3B4400689D07 /* 0_T_hezi_tietu_01_d.tga in Resources */ = {isa = PBXBuildFile; fileRef = 7609C773219D3B4300689D07 /* 0_T_hezi_tietu_01_d.tga */; };
-		7609C776219D453000689D07 /* tianmaojingling.DAE in Resources */ = {isa = PBXBuildFile; fileRef = 7609C775219D453000689D07 /* tianmaojingling.DAE */; };
-		7609C778219D454A00689D07 /* 2_timg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7609C777219D454A00689D07 /* 2_timg.jpg */; };
 		7609C77B219D49CE00689D07 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C77A219D49CE00689D07 /* ServiceViewController.m */; };
 		7609C77E219D4ADA00689D07 /* PackagingStandardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C77D219D4ADA00689D07 /* PackagingStandardController.m */; };
 		7609C781219D4B1900689D07 /* PackagingTagController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C780219D4B1900689D07 /* PackagingTagController.m */; };
@@ -23,6 +21,9 @@
 		760CE63321992A2600CF2306 /* PageRoundScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760CE63221992A2600CF2306 /* PageRoundScrollView.m */; };
 		760E94692151ED9B00592929 /* DataList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 760E94682151ED9B00592929 /* DataList.plist */; };
 		760E94762151F0DB00592929 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E94752151F0DB00592929 /* MeViewController.m */; };
+		760F20FB219E674E00905234 /* tianmaojingling.DAE in Resources */ = {isa = PBXBuildFile; fileRef = 760F20FA219E674E00905234 /* tianmaojingling.DAE */; };
+		760F20FD219E676D00905234 /* 2_timg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 760F20FC219E676D00905234 /* 2_timg.jpg */; };
+		760F20FF219E905100905234 /* 1_2.tga in Resources */ = {isa = PBXBuildFile; fileRef = 760F20FE219E905100905234 /* 1_2.tga */; };
 		7611C4A62193D56E00D6428E /* R.tga in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4A22193D56D00D6428E /* R.tga */; };
 		7611C4A82193D56E00D6428E /* moxing.DAE in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4A42193D56E00D6428E /* moxing.DAE */; };
 		7611C4A92193D56E00D6428E /* B.tga in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4A52193D56E00D6428E /* B.tga */; };
@@ -101,8 +102,6 @@
 		7609C76C219D159D00689D07 /* OrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
 		7609C76D219D159D00689D07 /* OrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
 		7609C773219D3B4300689D07 /* 0_T_hezi_tietu_01_d.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = 0_T_hezi_tietu_01_d.tga; sourceTree = "<group>"; };
-		7609C775219D453000689D07 /* tianmaojingling.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = tianmaojingling.DAE; sourceTree = "<group>"; };
-		7609C777219D454A00689D07 /* 2_timg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2_timg.jpg; sourceTree = "<group>"; };
 		7609C779219D49C700689D07 /* ServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceViewController.h; sourceTree = "<group>"; };
 		7609C77A219D49CE00689D07 /* ServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceViewController.m; sourceTree = "<group>"; };
 		7609C77C219D4ADA00689D07 /* PackagingStandardController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackagingStandardController.h; sourceTree = "<group>"; };
@@ -118,6 +117,9 @@
 		760E94682151ED9B00592929 /* DataList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DataList.plist; sourceTree = "<group>"; };
 		760E94742151F0DB00592929 /* MeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		760E94752151F0DB00592929 /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
+		760F20FA219E674E00905234 /* tianmaojingling.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = tianmaojingling.DAE; sourceTree = "<group>"; };
+		760F20FC219E676D00905234 /* 2_timg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2_timg.jpg; sourceTree = "<group>"; };
+		760F20FE219E905100905234 /* 1_2.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1_2.tga; sourceTree = "<group>"; };
 		7611C4A22193D56D00D6428E /* R.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = R.tga; sourceTree = "<group>"; };
 		7611C4A42193D56E00D6428E /* moxing.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = moxing.DAE; sourceTree = "<group>"; };
 		7611C4A52193D56E00D6428E /* B.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = B.tga; sourceTree = "<group>"; };
@@ -649,14 +651,15 @@
 			children = (
 				76EE836B216B4B5000D317FF /* SceneView.h */,
 				76EE836C216B4B5000D317FF /* SceneView.m */,
-				7609C777219D454A00689D07 /* 2_timg.jpg */,
-				7609C775219D453000689D07 /* tianmaojingling.DAE */,
 				7611C4B22194196200D6428E /* HeZiZheDie.DAE */,
 				7609C773219D3B4300689D07 /* 0_T_hezi_tietu_01_d.tga */,
 				7611C4A52193D56E00D6428E /* B.tga */,
 				7611C4A42193D56E00D6428E /* moxing.DAE */,
 				7611C4A22193D56D00D6428E /* R.tga */,
 				7627E55821898D9E00C7A5A3 /* nbox3gai.dae */,
+				760F20FA219E674E00905234 /* tianmaojingling.DAE */,
+				760F20FE219E905100905234 /* 1_2.tga */,
+				760F20FC219E676D00905234 /* 2_timg.jpg */,
 			);
 			path = SceneView;
 			sourceTree = "<group>";
@@ -775,16 +778,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7609C776219D453000689D07 /* tianmaojingling.DAE in Resources */,
 				7609C774219D3B4400689D07 /* 0_T_hezi_tietu_01_d.tga in Resources */,
-				7609C778219D454A00689D07 /* 2_timg.jpg in Resources */,
 				7611C4A62193D56E00D6428E /* R.tga in Resources */,
 				7655CC922150F92A00D206C2 /* Assets.xcassets in Resources */,
+				760F20FD219E676D00905234 /* 2_timg.jpg in Resources */,
 				76F6AC2C219D6D4500EB0325 /* Main.storyboard in Resources */,
 				7611C4A92193D56E00D6428E /* B.tga in Resources */,
+				760F20FB219E674E00905234 /* tianmaojingling.DAE in Resources */,
 				7627E55921898D9E00C7A5A3 /* nbox3gai.dae in Resources */,
 				7611C4B32194196200D6428E /* HeZiZheDie.DAE in Resources */,
 				76F6AC2E219D6DBF00EB0325 /* LaunchScreen.storyboard in Resources */,
+				760F20FF219E905100905234 /* 1_2.tga in Resources */,
 				760E94692151ED9B00592929 /* DataList.plist in Resources */,
 				7611C4A82193D56E00D6428E /* moxing.DAE in Resources */,
 			);
