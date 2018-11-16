@@ -8,7 +8,7 @@
 
 #import "LoginViewController.h"
 #import "LoginView.h"
-@interface LoginViewController ()
+@interface LoginViewController ()<LoginViewDelegate>
 @property (strong, nonatomic) LoginView        *loginView;
 @end
 
@@ -55,7 +55,7 @@
 - (LoginView *)loginView {
   if (!_loginView) {
     _loginView = [[LoginView alloc] initWithFrame:self.view.frame];
-    //[_loginView setDelegate:self];
+    [_loginView setDelegate:self];
   }
   return _loginView;
 }
