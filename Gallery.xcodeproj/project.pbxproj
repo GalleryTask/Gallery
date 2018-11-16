@@ -65,6 +65,8 @@
 		76F6AC31219D855300EB0325 /* PackagingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F6AC30219D855300EB0325 /* PackagingImageView.m */; };
 		84270213219AAD390025696F /* NextButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84270212219AAD390025696F /* NextButton.m */; };
 		842B3BED219E61F4007B43FC /* AddressEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B3BEC219E61F4007B43FC /* AddressEditController.m */; };
+		842B3BF3219EB6BF007B43FC /* ServiceDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B3BF2219EB6BF007B43FC /* ServiceDetailController.m */; };
+		842B3BF8219EB832007B43FC /* ServiceDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B3BF7219EB832007B43FC /* ServiceDetailCell.m */; };
 		8455A4DD21942C0D00B52A2B /* CategoryDetallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8455A4DC21942C0D00B52A2B /* CategoryDetallCell.m */; };
 		8455A4E021942E5A00B52A2B /* CategoryDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8455A4DF21942E5A00B52A2B /* CategoryDetailController.m */; };
 		84675B37219D7B45002B9731 /* AddressListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84675B36219D7B45002B9731 /* AddressListController.m */; };
@@ -203,6 +205,10 @@
 		84270212219AAD390025696F /* NextButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextButton.m; sourceTree = "<group>"; };
 		842B3BEB219E61F4007B43FC /* AddressEditController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressEditController.h; sourceTree = "<group>"; };
 		842B3BEC219E61F4007B43FC /* AddressEditController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressEditController.m; sourceTree = "<group>"; };
+		842B3BF1219EB6BF007B43FC /* ServiceDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceDetailController.h; sourceTree = "<group>"; };
+		842B3BF2219EB6BF007B43FC /* ServiceDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceDetailController.m; sourceTree = "<group>"; };
+		842B3BF6219EB832007B43FC /* ServiceDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ServiceDetailCell.h; path = ../../../../../Documents/ServiceDetailCell.h; sourceTree = "<group>"; };
+		842B3BF7219EB832007B43FC /* ServiceDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ServiceDetailCell.m; path = ../../../../../Documents/ServiceDetailCell.m; sourceTree = "<group>"; };
 		8455A4DC21942C0D00B52A2B /* CategoryDetallCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryDetallCell.m; sourceTree = "<group>"; };
 		8455A4DF21942E5A00B52A2B /* CategoryDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryDetailController.m; sourceTree = "<group>"; };
 		84675B35219D7B45002B9731 /* AddressListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressListController.h; sourceTree = "<group>"; };
@@ -388,8 +394,8 @@
 		7611C4B721942E6A00D6428E /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				842B3BF5219EB813007B43FC /* View */,
 				7611C4B921942EA700D6428E /* Controller */,
-				7611C4BA21942EB400D6428E /* View */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -408,15 +414,10 @@
 			children = (
 				7609C779219D49C700689D07 /* ServiceViewController.h */,
 				7609C77A219D49CE00689D07 /* ServiceViewController.m */,
+				842B3BF1219EB6BF007B43FC /* ServiceDetailController.h */,
+				842B3BF2219EB6BF007B43FC /* ServiceDetailController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		7611C4BA21942EB400D6428E /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		7611C4C1219432D700D6428E /* Vender */ = {
@@ -661,6 +662,15 @@
 			path = SceneView;
 			sourceTree = "<group>";
 		};
+		842B3BF5219EB813007B43FC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				842B3BF6219EB832007B43FC /* ServiceDetailCell.h */,
+				842B3BF7219EB832007B43FC /* ServiceDetailCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A4A11029BD96BF87E72CB7E2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -850,6 +860,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842B3BF3219EB6BF007B43FC /* ServiceDetailController.m in Sources */,
 				76B612C3219ADB2D003657B0 /* PackagingLiningController.m in Sources */,
 				7619A5FF219AB7E9005ADEEB /* PackagingBaseController.m in Sources */,
 				7655CC872150F81600D206C2 /* BaseViewController.m in Sources */,
@@ -871,6 +882,7 @@
 				76605E602101CCB100115FA6 /* CommonUtil.m in Sources */,
 				760F210C219EA46500905234 /* AddressEditView.m in Sources */,
 				7655CC8D2150F89200D206C2 /* NetRequestClass.m in Sources */,
+				842B3BF8219EB832007B43FC /* ServiceDetailCell.m in Sources */,
 				7655CC792150F27E00D206C2 /* TabBarController.m in Sources */,
 				7609C77B219D49CE00689D07 /* ServiceViewController.m in Sources */,
 				76605E162101B6EF00115FA6 /* main.m in Sources */,

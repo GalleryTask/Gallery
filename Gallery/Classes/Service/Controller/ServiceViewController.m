@@ -12,7 +12,9 @@
 #import "AFNetworking.h"
 #import "SSZipArchive.h"
 
+#import "ServiceDetailController.h"
 @interface ServiceViewController ()
+@property (nonatomic, strong) UIButton *startBtn;
 
 @property (nonatomic, strong) UIScrollView  *scrollView;
 @property (nonatomic, strong) NSArray  *boxList;
@@ -42,7 +44,27 @@
     [deleBtn setTitle:@"减" forState:UIControlStateNormal];
     [deleBtn addTarget:self action:@selector(deleBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:deleBtn];
+  
+  [self.view addSubview:self.startBtn];
 }
+-(void)startBtnAction:(UIButton *)sender{
+  ServiceDetailController *detailVC = [[ServiceDetailController alloc] init];
+  [self.navigationController pushViewController:detailVC animated:YES];
+}
+#pragma marks - getters
+-(UIButton *)startBtn {
+  if (!_startBtn) {
+    _startBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_startBtn setFrame:CGRectMake(0, SCREEN_HEIGHT - SafeAreaBottomHeight- 50 -NAVIGATIONBAR_HEIGHT-49, SCREEN_WIDTH, 50)];
+    [_startBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_startBtn setTitle:@"开始定制" forState:UIControlStateNormal];
+    [[_startBtn titleLabel] setFont:FONTSIZE(16)];
+    [_startBtn setBackgroundColor:BASECOLOR_BLACK_333];
+    [_startBtn addTarget:self action:@selector(startBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+  }
+  return _startBtn;
+}
+
 
 - (void)addBtn {
   SceneView *sceneView = [self.scrollView viewWithTag:100];
