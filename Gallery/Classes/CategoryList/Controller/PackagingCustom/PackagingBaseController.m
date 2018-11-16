@@ -7,7 +7,7 @@
 //
 
 #import "PackagingBaseController.h"
-#import "SamplePrepareController.h"
+#import "OrderPreviewController.h"
 
 @interface PackagingBaseController ()
 
@@ -26,7 +26,7 @@
 
 // 提交打样
 - (void)samplePrepareBtnClick {
-  SamplePrepareController *vc = [[SamplePrepareController alloc] init];
+  OrderPreviewController *vc = [[OrderPreviewController alloc] init];
   [self.navigationController pushViewController:vc animated:YES];
 }
 

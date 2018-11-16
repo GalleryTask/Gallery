@@ -24,21 +24,17 @@
     [super viewDidLoad];
   
   self.navigationItem.title = @"全部行业";
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  
   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
-  [nav.rightNavigationBtn setImage:[UIImage imageNamed:@"news"] forState:UIControlStateNormal];
+  [nav setNavigationBarRightItemWithButtonTitle:@""];
+  [nav setNavigationBarRightItemWithImageName:@"news" highlightImageName:@"news"];
   [self createInterfaceBuilder];
 }
 
--(void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
-  
-//  BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
-//  [nav.rightNavigationBtn setImage:[UIImage imageNamed:@"news"] forState:UIControlStateNormal];
-//  [nav setNavigationBarRightItemWithImageName:@"news" highlightImageName:@""];
-//  [nav setNavigationBarRightItemWithButtonTitle:@""];
-//  [nav showRightNavBtnWithClick:^(id sender) {
-//  }];
-}
 - (void)createInterfaceBuilder {
   [self.view addSubview:self.productsVC.view];
   [self.view addSubview:self.searchView];

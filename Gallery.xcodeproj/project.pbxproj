@@ -17,13 +17,12 @@
 		7609C77E219D4ADA00689D07 /* PackagingStandardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C77D219D4ADA00689D07 /* PackagingStandardController.m */; };
 		7609C781219D4B1900689D07 /* PackagingTagController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C780219D4B1900689D07 /* PackagingTagController.m */; };
 		7609C784219D4B4000689D07 /* PackagingDesignerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C783219D4B4000689D07 /* PackagingDesignerController.m */; };
-		7609C787219D56B000689D07 /* SamplePrepareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C786219D56B000689D07 /* SamplePrepareController.m */; };
 		760CE63321992A2600CF2306 /* PageRoundScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760CE63221992A2600CF2306 /* PageRoundScrollView.m */; };
 		760E94692151ED9B00592929 /* DataList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 760E94682151ED9B00592929 /* DataList.plist */; };
 		760E94762151F0DB00592929 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E94752151F0DB00592929 /* MeViewController.m */; };
-		760F20FB219E674E00905234 /* tianmaojingling.DAE in Resources */ = {isa = PBXBuildFile; fileRef = 760F20FA219E674E00905234 /* tianmaojingling.DAE */; };
-		760F20FD219E676D00905234 /* 2_timg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 760F20FC219E676D00905234 /* 2_timg.jpg */; };
-		760F20FF219E905100905234 /* 1_2.tga in Resources */ = {isa = PBXBuildFile; fileRef = 760F20FE219E905100905234 /* 1_2.tga */; };
+		760F2102219E9E2200905234 /* OrderPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760F2101219E9E2200905234 /* OrderPreviewController.m */; };
+		760F2104219EA36000905234 /* 03.DAE in Resources */ = {isa = PBXBuildFile; fileRef = 760F2103219EA36000905234 /* 03.DAE */; };
+		760F2106219EA36E00905234 /* 0_3.tga in Resources */ = {isa = PBXBuildFile; fileRef = 760F2105219EA36E00905234 /* 0_3.tga */; };
 		7611C4A62193D56E00D6428E /* R.tga in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4A22193D56D00D6428E /* R.tga */; };
 		7611C4A82193D56E00D6428E /* moxing.DAE in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4A42193D56E00D6428E /* moxing.DAE */; };
 		7611C4A92193D56E00D6428E /* B.tga in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4A52193D56E00D6428E /* B.tga */; };
@@ -108,16 +107,15 @@
 		7609C780219D4B1900689D07 /* PackagingTagController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackagingTagController.m; sourceTree = "<group>"; };
 		7609C782219D4B4000689D07 /* PackagingDesignerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackagingDesignerController.h; sourceTree = "<group>"; };
 		7609C783219D4B4000689D07 /* PackagingDesignerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackagingDesignerController.m; sourceTree = "<group>"; };
-		7609C785219D56B000689D07 /* SamplePrepareController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SamplePrepareController.h; sourceTree = "<group>"; };
-		7609C786219D56B000689D07 /* SamplePrepareController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SamplePrepareController.m; sourceTree = "<group>"; };
 		760CE63121992A2600CF2306 /* PageRoundScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageRoundScrollView.h; sourceTree = "<group>"; };
 		760CE63221992A2600CF2306 /* PageRoundScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageRoundScrollView.m; sourceTree = "<group>"; };
 		760E94682151ED9B00592929 /* DataList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DataList.plist; sourceTree = "<group>"; };
 		760E94742151F0DB00592929 /* MeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		760E94752151F0DB00592929 /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
-		760F20FA219E674E00905234 /* tianmaojingling.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = tianmaojingling.DAE; sourceTree = "<group>"; };
-		760F20FC219E676D00905234 /* 2_timg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2_timg.jpg; sourceTree = "<group>"; };
-		760F20FE219E905100905234 /* 1_2.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1_2.tga; sourceTree = "<group>"; };
+		760F2100219E9E2200905234 /* OrderPreviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderPreviewController.h; sourceTree = "<group>"; };
+		760F2101219E9E2200905234 /* OrderPreviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderPreviewController.m; sourceTree = "<group>"; };
+		760F2103219EA36000905234 /* 03.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = 03.DAE; sourceTree = "<group>"; };
+		760F2105219EA36E00905234 /* 0_3.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = 0_3.tga; sourceTree = "<group>"; };
 		7611C4A22193D56D00D6428E /* R.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = R.tga; sourceTree = "<group>"; };
 		7611C4A42193D56E00D6428E /* moxing.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = moxing.DAE; sourceTree = "<group>"; };
 		7611C4A52193D56E00D6428E /* B.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = B.tga; sourceTree = "<group>"; };
@@ -281,8 +279,6 @@
 				8455A4DF21942E5A00B52A2B /* CategoryDetailController.m */,
 				761278E321952D98009A5774 /* ProductDetailController.h */,
 				84EC1BCC21952B8E00527577 /* ProductDetailController.m */,
-				7609C785219D56B000689D07 /* SamplePrepareController.h */,
-				7609C786219D56B000689D07 /* SamplePrepareController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -292,6 +288,8 @@
 			children = (
 				7609C76C219D159D00689D07 /* OrderViewController.h */,
 				7609C76D219D159D00689D07 /* OrderViewController.m */,
+				760F2100219E9E2200905234 /* OrderPreviewController.h */,
+				760F2101219E9E2200905234 /* OrderPreviewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -647,9 +645,8 @@
 				7611C4A42193D56E00D6428E /* moxing.DAE */,
 				7611C4A22193D56D00D6428E /* R.tga */,
 				7627E55821898D9E00C7A5A3 /* nbox3gai.dae */,
-				760F20FA219E674E00905234 /* tianmaojingling.DAE */,
-				760F20FE219E905100905234 /* 1_2.tga */,
-				760F20FC219E676D00905234 /* 2_timg.jpg */,
+				760F2103219EA36000905234 /* 03.DAE */,
+				760F2105219EA36E00905234 /* 0_3.tga */,
 			);
 			path = SceneView;
 			sourceTree = "<group>";
@@ -768,17 +765,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				760F2104219EA36000905234 /* 03.DAE in Resources */,
 				7609C774219D3B4400689D07 /* 0_T_hezi_tietu_01_d.tga in Resources */,
 				7611C4A62193D56E00D6428E /* R.tga in Resources */,
+				760F2106219EA36E00905234 /* 0_3.tga in Resources */,
 				7655CC922150F92A00D206C2 /* Assets.xcassets in Resources */,
-				760F20FD219E676D00905234 /* 2_timg.jpg in Resources */,
 				76F6AC2C219D6D4500EB0325 /* Main.storyboard in Resources */,
 				7611C4A92193D56E00D6428E /* B.tga in Resources */,
-				760F20FB219E674E00905234 /* tianmaojingling.DAE in Resources */,
 				7627E55921898D9E00C7A5A3 /* nbox3gai.dae in Resources */,
 				7611C4B32194196200D6428E /* HeZiZheDie.DAE in Resources */,
 				76F6AC2E219D6DBF00EB0325 /* LaunchScreen.storyboard in Resources */,
-				760F20FF219E905100905234 /* 1_2.tga in Resources */,
 				760E94692151ED9B00592929 /* DataList.plist in Resources */,
 				7611C4A82193D56E00D6428E /* moxing.DAE in Resources */,
 			);
@@ -887,9 +883,9 @@
 				7655CC902150F8CD00D206C2 /* DataRequest.m in Sources */,
 				7602112E21917DEB00C6F622 /* ProductsViewController.m in Sources */,
 				84270210219AA5E30025696F /* LoginView.m in Sources */,
-				7609C787219D56B000689D07 /* SamplePrepareController.m in Sources */,
 				84EC1BDF219564D800527577 /* TopPageSlideController.m in Sources */,
 				760E94762151F0DB00592929 /* MeViewController.m in Sources */,
+				760F2102219E9E2200905234 /* OrderPreviewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

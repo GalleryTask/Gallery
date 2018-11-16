@@ -30,24 +30,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
-//  [aa setNavigationBarRightItemWithImageName:nil highlightImageName:nil];
-//  BaseNavigationController *aa = (BaseNavigationController *)self.navigationController;
-  UIButton *aa = [UIButton buttonWithType:UIButtonTypeCustom];
-  [aa setFrame:CGRectMake(0, 0, 44, 44)];
-   [aa setTitleColor:BASECOLOR_BLACK_333 forState:UIControlStateNormal];
-  [aa setTitle:@"保存" forState:UIControlStateNormal];
-  
-  UIBarButtonItem *rightBtnItem = [[UIBarButtonItem alloc] initWithCustomView:aa];
-  self.navigationController.navigationItem.rightBarButtonItem = rightBtnItem;
-}
-
--(void)viewDidAppear:(BOOL)animated {
-  [super viewDidAppear:animated];
-  
-//  BaseNavigationController *aa = (BaseNavigationController *)self.navigationController;
-//  [aa setNavigationBarRightItemWithButtonTitle:@"保存"];
-//  [aa setNavigationBarRightItemWithImageName:@"" highlightImageName:@""];
 }
 
 // 初始化分类详情
