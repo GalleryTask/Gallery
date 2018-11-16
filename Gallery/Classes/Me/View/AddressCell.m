@@ -23,6 +23,16 @@
     [super awakeFromNib];
   
 }
+
+#pragma mark - 重写cell的frame
+-(void)setFrame:(CGRect)frame {
+  
+  self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.frame] ;
+  self.selectedBackgroundView.backgroundColor = BASECOLOR_BACKGROUND_GRAY;
+  
+  [super setFrame:frame];
+}
+
 #pragma mark =====编辑按钮点击事件
 -(void)editBtnClick:(UIButton *)sender {
   

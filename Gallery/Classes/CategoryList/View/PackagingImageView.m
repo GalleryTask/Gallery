@@ -7,6 +7,7 @@
 //
 
 #import "PackagingImageView.h"
+#import "uploadImageObject.h"
 
 @interface PackagingImageView ()
 
@@ -35,6 +36,7 @@
       UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
       [button setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
       [button setBackgroundImage:[UIImage imageNamed:@"category_uploadImage"] forState:UIControlStateNormal];
+      [button addTarget:self action:@selector(uploadImageBtnClick:) forControlEvents:UIControlEventTouchUpInside];
       [self addSubview:button];
       if (titles.count == 1) {
         margin = SCALE_SIZE*14;
@@ -86,5 +88,15 @@
     }
   }
 }
+
+
+- (void)uploadImageBtnClick:(UIButton *)button {
+  
+  UploadImageObject *upload = [[UploadImageObject alloc] init];
+  [upload uploadImageWithController:[CommonUtil getCurrentVC] Block:^(UIImage *image) {
+    [button setImage:image forState:UIControlStateNormal];
+  }];
+}
+
 
 @end

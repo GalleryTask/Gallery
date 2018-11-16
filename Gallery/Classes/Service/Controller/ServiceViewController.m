@@ -111,14 +111,7 @@
     }
 }
 
-- (void)uploadImage {
-    UploadImageObject *upload = [[UploadImageObject alloc] init];
-    [upload uploadImageWithController:self Block:^(UIImage *image) {
-        SceneView *sceneView = [self.scrollView viewWithTag:100];
-        [sceneView sceneViewDiffuseImage:image];
-        [sceneView sceneViewReflectiveImage:image];
-    }];
-}
+
 
 - (void)btnClick:(id)sender {
     

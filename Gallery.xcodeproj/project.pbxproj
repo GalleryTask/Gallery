@@ -26,6 +26,11 @@
 		760F210B219EA46500905234 /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 760F2108219EA46500905234 /* AddressCell.m */; };
 		760F210C219EA46500905234 /* AddressEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760F210A219EA46500905234 /* AddressEditView.m */; };
 		760F2112219EA51A00905234 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760F2111219EA51A00905234 /* LoginView.m */; };
+		760F2118219EABFE00905234 /* SchemeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 760F2117219EABFE00905234 /* SchemeCell.m */; };
+		760F211B219EB4E600905234 /* PreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 760F211A219EB4E600905234 /* PreviewCell.m */; };
+		760F2121219EB9DA00905234 /* DeliveryDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 760F2120219EB9DA00905234 /* DeliveryDateCell.m */; };
+		760F2124219EC4FA00905234 /* SelectCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 760F2123219EC4FA00905234 /* SelectCountCell.m */; };
+		760F2127219ECC2400905234 /* BottomSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 760F2126219ECC2400905234 /* BottomSelectBar.m */; };
 		7611C4A62193D56E00D6428E /* R.tga in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4A22193D56D00D6428E /* R.tga */; };
 		7611C4A82193D56E00D6428E /* moxing.DAE in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4A42193D56E00D6428E /* moxing.DAE */; };
 		7611C4A92193D56E00D6428E /* B.tga in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4A52193D56E00D6428E /* B.tga */; };
@@ -124,6 +129,16 @@
 		760F210A219EA46500905234 /* AddressEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressEditView.m; sourceTree = "<group>"; };
 		760F2110219EA51300905234 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		760F2111219EA51A00905234 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		760F2116219EABFE00905234 /* SchemeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchemeCell.h; sourceTree = "<group>"; };
+		760F2117219EABFE00905234 /* SchemeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeCell.m; sourceTree = "<group>"; };
+		760F2119219EB4E600905234 /* PreviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreviewCell.h; sourceTree = "<group>"; };
+		760F211A219EB4E600905234 /* PreviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreviewCell.m; sourceTree = "<group>"; };
+		760F211F219EB9DA00905234 /* DeliveryDateCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeliveryDateCell.h; sourceTree = "<group>"; };
+		760F2120219EB9DA00905234 /* DeliveryDateCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeliveryDateCell.m; sourceTree = "<group>"; };
+		760F2122219EC4FA00905234 /* SelectCountCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectCountCell.h; sourceTree = "<group>"; };
+		760F2123219EC4FA00905234 /* SelectCountCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectCountCell.m; sourceTree = "<group>"; };
+		760F2125219ECC2400905234 /* BottomSelectBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomSelectBar.h; sourceTree = "<group>"; };
+		760F2126219ECC2400905234 /* BottomSelectBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomSelectBar.m; sourceTree = "<group>"; };
 		7611C4A22193D56D00D6428E /* R.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = R.tga; sourceTree = "<group>"; };
 		7611C4A42193D56E00D6428E /* moxing.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = moxing.DAE; sourceTree = "<group>"; };
 		7611C4A52193D56E00D6428E /* B.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = B.tga; sourceTree = "<group>"; };
@@ -303,6 +318,14 @@
 		7609C76B219D0FD800689D07 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				760F2116219EABFE00905234 /* SchemeCell.h */,
+				760F2117219EABFE00905234 /* SchemeCell.m */,
+				760F2119219EB4E600905234 /* PreviewCell.h */,
+				760F211A219EB4E600905234 /* PreviewCell.m */,
+				760F211F219EB9DA00905234 /* DeliveryDateCell.h */,
+				760F2120219EB9DA00905234 /* DeliveryDateCell.m */,
+				760F2122219EC4FA00905234 /* SelectCountCell.h */,
+				760F2123219EC4FA00905234 /* SelectCountCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -640,6 +663,8 @@
 				76605E5F2101CCB000115FA6 /* CommonUtil.m */,
 				76605E622101CCBA00115FA6 /* UploadImageObject.h */,
 				76605E612101CCBA00115FA6 /* UploadImageObject.m */,
+				760F2125219ECC2400905234 /* BottomSelectBar.h */,
+				760F2126219ECC2400905234 /* BottomSelectBar.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -871,7 +896,9 @@
 				76605E602101CCB100115FA6 /* CommonUtil.m in Sources */,
 				760F210C219EA46500905234 /* AddressEditView.m in Sources */,
 				7655CC8D2150F89200D206C2 /* NetRequestClass.m in Sources */,
+				760F2124219EC4FA00905234 /* SelectCountCell.m in Sources */,
 				7655CC792150F27E00D206C2 /* TabBarController.m in Sources */,
+				760F2121219EB9DA00905234 /* DeliveryDateCell.m in Sources */,
 				7609C77B219D49CE00689D07 /* ServiceViewController.m in Sources */,
 				76605E162101B6EF00115FA6 /* main.m in Sources */,
 				7619A5F2219AA4F9005ADEEB /* PackagingPalletController.m in Sources */,
@@ -881,6 +908,7 @@
 				76605E082101B6ED00115FA6 /* AppDelegate.m in Sources */,
 				761AF2DE215E0B2700F596D3 /* YJLocationPicker.m in Sources */,
 				76605E4A2101CB4400115FA6 /* UITableView+EmptyData.m in Sources */,
+				760F2127219ECC2400905234 /* BottomSelectBar.m in Sources */,
 				761278EE219584A9009A5774 /* SceneViewController.m in Sources */,
 				7655CC7A2150F27E00D206C2 /* BaseNavigationController.m in Sources */,
 				761AF2DD215E0B2700F596D3 /* UIView+Frame.m in Sources */,
@@ -890,9 +918,11 @@
 				84EC1BCD21952B8E00527577 /* ProductDetailController.m in Sources */,
 				760F210B219EA46500905234 /* AddressCell.m in Sources */,
 				760211312191856800C6F622 /* CategoryCell.m in Sources */,
+				760F211B219EB4E600905234 /* PreviewCell.m in Sources */,
 				7611C4C021942FF900D6428E /* HomeViewController.m in Sources */,
 				7655CC902150F8CD00D206C2 /* DataRequest.m in Sources */,
 				760F2112219EA51A00905234 /* LoginView.m in Sources */,
+				760F2118219EABFE00905234 /* SchemeCell.m in Sources */,
 				7602112E21917DEB00C6F622 /* ProductsViewController.m in Sources */,
 				84EC1BDF219564D800527577 /* TopPageSlideController.m in Sources */,
 				760E94762151F0DB00592929 /* MeViewController.m in Sources */,
