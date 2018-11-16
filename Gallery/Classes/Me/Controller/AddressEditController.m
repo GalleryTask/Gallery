@@ -8,7 +8,7 @@
 
 #import "AddressEditController.h"
 #import "AddressEditView.h"
-@interface AddressEditController ()
+@interface AddressEditController ()<AddressEditDelegate>
 @property (strong, nonatomic) AddressEditView *editView;
 @end
 
@@ -30,14 +30,51 @@
   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
   [nav setNavigationBarRightItemWithButtonTitle:@"保存"];
   [nav setNavigationBarRightItemWithImageName:@"" highlightImageName:@""];
+  @weakify(self);
   [nav showRightNavBtnWithClick:^(id sender) {
+    @strongify(self);
+    [self saveButtonClick];
   }];
+}
+-(void)saveButtonClick{
+  if ([self.editView.nameTextField.text isEqualToString:@""]) {
+    [CommonUtil promptViewWithText:@"请输入收货人姓名" view:self.editView hidden:YES];
+    return;
+  }
+  if ([self.editView.phoneTextField.text isEqualToString:@""]) {
+    [CommonUtil promptViewWithText:@"请输入配送员联系您的电话" view:self.editView hidden:YES];
+    return;
+  }
+  if ([self.editView.cityBtn.titleLabel.text isEqualToString:@"选择您所在的城市"]) {
+    [CommonUtil promptViewWithText:@"选择您所在的城市" view:self.editView hidden:YES];
+    return;
+  }
+  if ([self.editView.addressTextField.text isEqualToString:@""]) {
+    [CommonUtil promptViewWithText:@"请输入收货地址" view:self.editView hidden:YES];
+    return;
+  }
+  if ([self.editView.addressTextField.text isEqualToString:@""]) {
+    [CommonUtil promptViewWithText:@"请输入楼号门牌" view:self.editView hidden:YES];
+    return;
+  }
+}
+
+#pragma mark -------AddressEditDelegate
+
+#pragma mark -------地址类型的代理
+-(void)addressEditType:(NSString *)typeString{
+  
+}
+#pragma mark -------是否设置默认地址
+-(void)addressEditDefaultSwitch:(BOOL)isOn{
+  
 }
 
 #pragma mark - getters
 - (AddressEditView *)editView {
   if (!_editView) {
     _editView = [[AddressEditView alloc] initWithFrame:self.view.frame];
+    _editView.delegate = self;
   }
   return _editView;
 }
