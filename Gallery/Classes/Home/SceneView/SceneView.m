@@ -142,7 +142,7 @@
     // 设置场景
     _scnView.scene = self.scene;
     // 设置背景颜色
-//    _scnView.backgroundColor = [UIColor hexStringToColor:@"#F5F5F5"];
+    _scnView.backgroundColor = [UIColor hexStringToColor:@"#F5F5F5"];
     // 允许控制摄像机位置
     _scnView.allowsCameraControl = YES;
     // 不显示数据控制台
@@ -164,18 +164,19 @@
 // 创建灯光
 - (SCNNode *)spotNode{
   if (!_spotNode) {
-    SCNLight *spotLight = [SCNLight light];// 创建光对象
-    spotLight.type = SCNLightTypeAmbient;// 设置类型
-    spotLight.color = [UIColor whiteColor]; // 设置光的颜色
-    spotLight.castsShadow = TRUE;// 捕捉阴影
-    spotLight.attenuationStartDistance = 0;
-    spotLight.attenuationEndDistance = 100;
-    spotLight.attenuationFalloffExponent = 2;
-    spotLight.spotInnerAngle = 0;
-    spotLight.spotOuterAngle = 30;
-    _spotNode = [SCNNode node];
-    _spotNode.position = SCNVector3Make(0, 2, 10); //设置光源节点的位置
-    _spotNode.light  = spotLight;
+    _spotNode = [self.scene.rootNode childNodeWithName:@"EnvironmentAmbientLight" recursively:YES];
+//    SCNLight *spotLight = [SCNLight light];// 创建光对象
+//    spotLight.type = SCNLightTypeAmbient;// 设置类型
+//    spotLight.color = [UIColor whiteColor]; // 设置光的颜色
+//    spotLight.castsShadow = TRUE;// 捕捉阴影
+//    spotLight.attenuationStartDistance = 0;
+//    spotLight.attenuationEndDistance = 100;
+//    spotLight.attenuationFalloffExponent = 2;
+//    spotLight.spotInnerAngle = 0;
+//    spotLight.spotOuterAngle = 30;
+//    _spotNode = [SCNNode node];
+//    _spotNode.position = SCNVector3Make(0, 2, 10); //设置光源节点的位置
+//    _spotNode.light  = spotLight;
   }
   
   return _spotNode;
@@ -183,6 +184,7 @@
 
 -(SCNNode *)cameraNode {
   if (!_cameraNode) {
+    
     _cameraNode = [SCNNode node];
     _cameraNode.camera = [SCNCamera camera];
     _cameraNode.camera.automaticallyAdjustsZRange = true;
