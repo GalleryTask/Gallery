@@ -64,6 +64,7 @@
 		76605E602101CCB100115FA6 /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E5F2101CCB000115FA6 /* CommonUtil.m */; };
 		76605E632101CCBA00115FA6 /* UploadImageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E612101CCBA00115FA6 /* UploadImageObject.m */; };
 		76B612C3219ADB2D003657B0 /* PackagingLiningController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B612C2219ADB2D003657B0 /* PackagingLiningController.m */; };
+		76B901F8219ED7EF0019C481 /* OrderSubmitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B901F7219ED7EF0019C481 /* OrderSubmitController.m */; };
 		76EE836E216B4B5000D317FF /* SceneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE836C216B4B5000D317FF /* SceneView.m */; };
 		76F6AC2C219D6D4500EB0325 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76F6AC2B219D6D4500EB0325 /* Main.storyboard */; };
 		76F6AC2E219D6DBF00EB0325 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76F6AC2D219D6DBF00EB0325 /* LaunchScreen.storyboard */; };
@@ -206,6 +207,8 @@
 		76605E622101CCBA00115FA6 /* UploadImageObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImageObject.h; sourceTree = "<group>"; };
 		76B612C1219ADB2D003657B0 /* PackagingLiningController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackagingLiningController.h; sourceTree = "<group>"; };
 		76B612C2219ADB2D003657B0 /* PackagingLiningController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackagingLiningController.m; sourceTree = "<group>"; };
+		76B901F6219ED7EF0019C481 /* OrderSubmitController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderSubmitController.h; sourceTree = "<group>"; };
+		76B901F7219ED7EF0019C481 /* OrderSubmitController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderSubmitController.m; sourceTree = "<group>"; };
 		76BE7AC521944C0B0062C64E /* CategoryDetallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryDetallCell.h; sourceTree = "<group>"; };
 		76BE7AC621944C160062C64E /* CategoryDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryDetailController.h; sourceTree = "<group>"; };
 		76EE836B216B4B5000D317FF /* SceneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneView.h; sourceTree = "<group>"; };
@@ -311,6 +314,8 @@
 				7609C76D219D159D00689D07 /* OrderViewController.m */,
 				760F2100219E9E2200905234 /* OrderPreviewController.h */,
 				760F2101219E9E2200905234 /* OrderPreviewController.m */,
+				76B901F6219ED7EF0019C481 /* OrderSubmitController.h */,
+				76B901F7219ED7EF0019C481 /* OrderSubmitController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -911,6 +916,7 @@
 				760F2127219ECC2400905234 /* BottomSelectBar.m in Sources */,
 				761278EE219584A9009A5774 /* SceneViewController.m in Sources */,
 				7655CC7A2150F27E00D206C2 /* BaseNavigationController.m in Sources */,
+				76B901F8219ED7EF0019C481 /* OrderSubmitController.m in Sources */,
 				761AF2DD215E0B2700F596D3 /* UIView+Frame.m in Sources */,
 				7655CC8C2150F89200D206C2 /* BaseDataRequest.m in Sources */,
 				8455A4DD21942C0D00B52A2B /* CategoryDetallCell.m in Sources */,
