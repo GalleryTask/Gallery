@@ -7,6 +7,7 @@
 //
 
 #import "PackagingTagController.h"
+#import "PackagingImageView.h"
 // 方案定制标签
 @interface PackagingTagController ()
 
@@ -48,8 +49,12 @@
     make.top.equalTo(customOne.mas_bottom);
     make.height.mas_equalTo(SCALE_SIZE*94+(SCALE_SIZE*44)*countRowTwo);
   }];
+  
   [self.view layoutIfNeeded];
-  [self.scrollView setContentSize:CGSizeMake(0, customTwo.frame.origin.y+customTwo.frame.size.height+SCALE_SIZE*60)];
+  PackagingImageView *uploadImgView = [[PackagingImageView alloc] initWithFrame:CGRectMake(0, customTwo.frame.origin.y+customTwo.frame.size.height, SCREEN_WIDTH, SCALE_SIZE*130) images:@[] titles:@[@"标签设计/内容"] isUploadImage:YES];
+  [self.scrollView addSubview:uploadImgView];
+  
+  [self.scrollView setContentSize:CGSizeMake(0, uploadImgView.frame.origin.y+uploadImgView.frame.size.height+SCALE_SIZE*60)];
 }
 
 /*
