@@ -9,12 +9,6 @@
 #import "AddressEditView.h"
 @interface AddressEditView ()<UITextFieldDelegate>
 
-@property (strong, nonatomic) UITextField        *nameTextField;//收货人
-@property (strong, nonatomic) UITextField        *phoneTextField;//手机账号
-@property (strong, nonatomic) UIButton           *cityBtn;//所造城市
-@property (strong, nonatomic) UITextField        *addressTextField;//收货地址
-@property (strong, nonatomic) UITextField        *detailAddressField;//门牌号
-
 @property (strong, nonatomic) UIView             *backView;          // 背景
 @property (strong, nonatomic) UIView             *switchView;        // 默认选中背景
 @property (strong, nonatomic) UILabel            *switchLabel;
@@ -66,19 +60,46 @@
 }
 #pragma mark =====默认选择事件
 -(void)defaultSwitchAction:(UISwitch *)sender {
-  
+  if (_delegate && [_delegate respondsToSelector:@selector(addressEditDefaultSwitch:)]) {
+    [_delegate addressEditDefaultSwitch:sender.isOn];
+  }
 }
 #pragma mark =====公司按钮点击事件
 -(void)companyButtonClick:(UIButton *)sender {
-  
+  [self addressEditType:1];
 }
 #pragma mark =====办公室按钮点击事件
 -(void)officeButtonClick:(UIButton *)sender {
-  
+  [self addressEditType:2];
 }
 #pragma mark =====仓库按钮点击事件
 -(void)warehouseButtonClick:(UIButton *)sender {
-  
+  [self addressEditType:3];
+}
+-(void)addressEditType:(NSInteger)index{
+  NSString *typeStr;
+  [self.companyButton setTitleColor:BASECOLOR_GRAY_CC forState:UIControlStateNormal];
+  [self.companyButton.layer setBorderColor:BASECOLOR_GRAY_CC.CGColor];
+  [self.officeButton setTitleColor:BASECOLOR_GRAY_CC forState:UIControlStateNormal];
+  [self.officeButton.layer setBorderColor:BASECOLOR_GRAY_CC.CGColor];
+  [self.warehouseButton setTitleColor:BASECOLOR_GRAY_CC forState:UIControlStateNormal];
+  [self.warehouseButton.layer setBorderColor:BASECOLOR_GRAY_CC.CGColor];
+  if (index == 1) {
+    typeStr = self.companyButton.titleLabel.text;
+    [self.companyButton setTitleColor:BASECOLOR_BLUE forState:UIControlStateNormal];
+    [self.companyButton.layer setBorderColor:BASECOLOR_BLUE.CGColor];
+  }else if (index == 2){
+    typeStr = self.officeButton.titleLabel.text;
+    [self.officeButton setTitleColor:[UIColor hexStringToColor:@"#15BC83"] forState:UIControlStateNormal];
+    [self.officeButton.layer setBorderColor:[UIColor hexStringToColor:@"#15BC83"].CGColor];
+  }else{
+    typeStr = self.warehouseButton.titleLabel.text;
+    [self.warehouseButton setTitleColor:[UIColor hexStringToColor:@"#FF943E"] forState:UIControlStateNormal];
+    [self.warehouseButton.layer setBorderColor:[UIColor hexStringToColor:@"#FF943E"].CGColor];
+  }
+  if (_delegate && [_delegate respondsToSelector:@selector(addressEditType:)]) {
+    [_delegate addressEditType:typeStr];
+  }
 }
 -(void)layoutSubviews {
   [super layoutSubviews];
@@ -245,12 +266,12 @@
   if (!_companyButton) {
     _companyButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_companyButton setTitle:@"公司" forState:UIControlStateNormal];
-    [_companyButton setTitleColor:BASECOLOR_BLUE forState:UIControlStateNormal];
     [_companyButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
     [_companyButton.layer setMasksToBounds:YES];
     [_companyButton.layer setCornerRadius:3];
     [_companyButton.layer setBorderWidth:1];
-    [_companyButton.layer setBorderColor:BASECOLOR_BLUE.CGColor];
+    [_companyButton setTitleColor:BASECOLOR_GRAY_CC forState:UIControlStateNormal];
+    [_companyButton.layer setBorderColor:BASECOLOR_GRAY_CC.CGColor];
     [[_companyButton titleLabel] setFont:FONTSIZE(10)];
     [_companyButton addTarget:self action:@selector(companyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.backView addSubview:_companyButton];
@@ -261,12 +282,12 @@
   if (!_officeButton) {
     _officeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_officeButton setTitle:@"办公室" forState:UIControlStateNormal];
-    [_officeButton setTitleColor:[UIColor hexStringToColor:@"#15BC83"] forState:UIControlStateNormal];
     [_officeButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
     [_officeButton.layer setMasksToBounds:YES];
     [_officeButton.layer setCornerRadius:3];
     [_officeButton.layer setBorderWidth:1];
-    [_officeButton.layer setBorderColor:[UIColor hexStringToColor:@"#15BC83"].CGColor];
+    [_officeButton setTitleColor:BASECOLOR_GRAY_CC forState:UIControlStateNormal];
+    [_officeButton.layer setBorderColor:BASECOLOR_GRAY_CC.CGColor];
     [[_officeButton titleLabel] setFont:FONTSIZE(10)];
     [_officeButton addTarget:self action:@selector(officeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.backView addSubview:_officeButton];
@@ -277,12 +298,12 @@
   if (!_warehouseButton) {
     _warehouseButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_warehouseButton setTitle:@"仓库" forState:UIControlStateNormal];
-    [_warehouseButton setTitleColor:[UIColor hexStringToColor:@"#FF943E"] forState:UIControlStateNormal];
     [_warehouseButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
     [_warehouseButton.layer setMasksToBounds:YES];
     [_warehouseButton.layer setCornerRadius:3];
     [_warehouseButton.layer setBorderWidth:1];
-    [_warehouseButton.layer setBorderColor:[UIColor hexStringToColor:@"#FF943E"].CGColor];
+    [_warehouseButton setTitleColor:BASECOLOR_GRAY_CC forState:UIControlStateNormal];
+    [_warehouseButton.layer setBorderColor:BASECOLOR_GRAY_CC.CGColor];
     [[_warehouseButton titleLabel] setFont:FONTSIZE(10)];
     [_warehouseButton addTarget:self action:@selector(warehouseButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.backView addSubview:_warehouseButton];

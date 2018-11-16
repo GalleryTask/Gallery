@@ -10,8 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol AddressCellDelegate <NSObject>
+
+-(void)addressCelleditBtnClick;
+
+@end
 @interface AddressCell : UITableViewCell
 
+@property (nonatomic, weak)   id <AddressCellDelegate> delegate;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -35,6 +35,9 @@
 
 #pragma mark =====编辑按钮点击事件
 -(void)editBtnClick:(UIButton *)sender {
+  if (_delegate && [_delegate respondsToSelector:@selector(addressCelleditBtnClick)]) {
+    [_delegate addressCelleditBtnClick];
+  }
   
 }
 -(void)layoutSubviews {
@@ -88,7 +91,7 @@
     _nameLabel = [[UILabel alloc] init];
     [_nameLabel setTextColor:BASECOLOR_BLACK_333];
     [_nameLabel setFont:[UIFont systemFontOfSize:SCALE_SIZE*14.f]];
-    [_nameLabel setText:@"安狗东"];
+    [_nameLabel setText:@"林坤宝"];
     [self.contentView addSubview:_nameLabel];
   }
   return _nameLabel;
@@ -108,7 +111,7 @@
     _addressLabel = [[UILabel alloc] init];
     [_addressLabel setTextColor:BASECOLOR_BLACK_666];
     [_addressLabel setFont:[UIFont systemFontOfSize:SCALE_SIZE*14.f]];
-    [_addressLabel setText:@"你是傻子吗你是傻子吗你是傻子吗你是傻子吗你是傻子吗你是傻子吗你是傻子吗你是傻子吗"];
+    [_addressLabel setText:@"北京市丰台区火星街道写字公园B座5068"];
     [_addressLabel setNumberOfLines:2];
     [self.contentView addSubview:_addressLabel];
   }
@@ -122,7 +125,7 @@
     [_titleLabel.layer setMasksToBounds:YES];
     [_titleLabel.layer setCornerRadius:SCALE_SIZE*16];
     [_titleLabel setFont:[UIFont systemFontOfSize:SCALE_SIZE*16.f]];
-    [_titleLabel setText:@"安"];
+    [_titleLabel setText:@"林"];
     [_titleLabel setTextAlignment:(NSTextAlignmentCenter)];
     [self.contentView addSubview:_titleLabel];
   }

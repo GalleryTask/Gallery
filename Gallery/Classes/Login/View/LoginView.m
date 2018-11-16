@@ -30,12 +30,16 @@
 
 #pragma mark - 选择国家代码的点击事件
 - (void)countryBtnClick {
-  [_delegate loignViewCountryBtnClick];
+  if (_delegate && [_delegate respondsToSelector:@selector(loignViewCountryBtnClick)]) {
+    [_delegate loignViewCountryBtnClick];
+  }
 }
 
 #pragma mark - 用户协议点击
 - (void)serviceBtnClick {
-  [_delegate loginViewServiceBtnClick];
+  if (_delegate && [_delegate respondsToSelector:@selector(loginViewServiceBtnClick)]) {
+    [_delegate loginViewServiceBtnClick];
+  }
 }
 
 #pragma mark =========密码登录点击事件
@@ -79,16 +83,22 @@
   } else {
     [CommonUtil promptViewWithText:@"验证码已发送" view:self hidden:YES];
     [self startTime];
-    [_delegate loginViewSendCodeClick];
+    if (_delegate && [_delegate respondsToSelector:@selector(loginViewSendCodeClick)]) {
+      [_delegate loginViewSendCodeClick];
+    }
   }
 }
 #pragma mark - 忘记密码点击事件
 - (void)forgetPasswordBtnClick:(UIButton *)sender {
-  [_delegate loginViewForgetPasswordClick];
+  if (_delegate && [_delegate respondsToSelector:@selector(loginViewForgetPasswordClick)]) {
+    [_delegate loginViewForgetPasswordClick];
+  }
 }
 #pragma mark - 注册按钮点击事件
 - (void)registerBtnClick:(UIButton *)sender {
-  [_delegate loginViewRegisterClick];
+  if (_delegate && [_delegate respondsToSelector:@selector(loginViewRegisterClick)]) {
+    [_delegate loginViewRegisterClick];
+  }
 }
 
 -(void)layoutSubviews {
@@ -304,7 +314,9 @@
         [CommonUtil promptViewWithText:@"手机号或者验证码为空" view:self hidden:YES];
       } else {
         if ([CommonUtil isValidateMobile:self.accountField.text]) {
-          [self.delegate loginViewloginBtnClick];
+          if (_delegate && [_delegate respondsToSelector:@selector(loginViewloginBtnClick)]) {
+            [_delegate loginViewloginBtnClick];
+          }
         } else {
           [CommonUtil promptViewWithText:@"请输入正确的手机号" view:self hidden:YES];
         }

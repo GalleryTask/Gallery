@@ -9,7 +9,7 @@
 #import "AddressListController.h"
 #import "AddressCell.h"
 #import "AddressEditController.h"
-@interface AddressListController ()
+@interface AddressListController ()<AddressCellDelegate>
 
 @end
 
@@ -37,25 +37,31 @@
   @weakify(self);
   [nav showRightNavBtnWithClick:^(id sender) {
     @strongify(self);
-    AddressEditController *editVC = [[AddressEditController alloc] init];
-    [self.navigationController pushViewController:editVC animated:YES];
+    [self pushController];
   }];
 }
 #pragma mark - tableview delegate dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   
-  return 10;
+  return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
   AddressCell *addressCell = [tableView dequeueReusableCellWithIdentifier:@"AddressCell" forIndexPath:indexPath];
-  
+  [addressCell setDelegate:self];
   return addressCell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   
+}
+-(void)addressCelleditBtnClick{
+  [self pushController];
+}
+-(void)pushController {
+  AddressEditController *editVC = [[AddressEditController alloc] init];
+  [self.navigationController pushViewController:editVC animated:YES];
 }
 
 /*
@@ -67,5 +73,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end
