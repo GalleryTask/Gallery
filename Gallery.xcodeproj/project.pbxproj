@@ -70,6 +70,7 @@
 		76B901F8219ED7EF0019C481 /* OrderSubmitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B901F7219ED7EF0019C481 /* OrderSubmitController.m */; };
 		76B901FB219EDC1E0019C481 /* ServiceDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B901FA219EDC1E0019C481 /* ServiceDetailCell.m */; };
 		76EE836E216B4B5000D317FF /* SceneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EE836C216B4B5000D317FF /* SceneView.m */; };
+		76F2B24A21A28E2B00AE5BD6 /* ServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F2B24921A28E2B00AE5BD6 /* ServiceCell.m */; };
 		76F6AC2C219D6D4500EB0325 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76F6AC2B219D6D4500EB0325 /* Main.storyboard */; };
 		76F6AC2E219D6DBF00EB0325 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76F6AC2D219D6DBF00EB0325 /* LaunchScreen.storyboard */; };
 		76F6AC31219D855300EB0325 /* PackagingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F6AC30219D855300EB0325 /* PackagingImageView.m */; };
@@ -227,6 +228,8 @@
 		76BE7AC621944C160062C64E /* CategoryDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryDetailController.h; sourceTree = "<group>"; };
 		76EE836B216B4B5000D317FF /* SceneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneView.h; sourceTree = "<group>"; };
 		76EE836C216B4B5000D317FF /* SceneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneView.m; sourceTree = "<group>"; };
+		76F2B24821A28E2B00AE5BD6 /* ServiceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceCell.h; sourceTree = "<group>"; };
+		76F2B24921A28E2B00AE5BD6 /* ServiceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceCell.m; sourceTree = "<group>"; };
 		76F6AC2B219D6D4500EB0325 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		76F6AC2D219D6DBF00EB0325 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		76F6AC2F219D855300EB0325 /* PackagingImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackagingImageView.h; sourceTree = "<group>"; };
@@ -447,8 +450,8 @@
 		7611C4B721942E6A00D6428E /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				842B3BF5219EB813007B43FC /* View */,
 				7611C4B921942EA700D6428E /* Controller */,
+				842B3BF5219EB813007B43FC /* View */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -721,6 +724,8 @@
 		842B3BF5219EB813007B43FC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				76F2B24821A28E2B00AE5BD6 /* ServiceCell.h */,
+				76F2B24921A28E2B00AE5BD6 /* ServiceCell.m */,
 				76B901F9219EDC190019C481 /* ServiceDetailCell.h */,
 				76B901FA219EDC1E0019C481 /* ServiceDetailCell.m */,
 				840B6DAF21A25A5800201C1A /* ServiceDetailFooterView.h */,
@@ -929,6 +934,7 @@
 				84270213219AAD390025696F /* NextButton.m in Sources */,
 				76605E562101CC1C00115FA6 /* UserInfoSingleton.m in Sources */,
 				761AF2D4215E0AB200F596D3 /* ResultModel.m in Sources */,
+				76F2B24A21A28E2B00AE5BD6 /* ServiceCell.m in Sources */,
 				7602112B21917D5F00C6F622 /* CategoryListController.m in Sources */,
 				84675B37219D7B45002B9731 /* AddressListController.m in Sources */,
 				7609C77E219D4ADA00689D07 /* PackagingStandardController.m in Sources */,

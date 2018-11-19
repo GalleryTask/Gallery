@@ -24,6 +24,7 @@
 @property (nonatomic, copy)   NSString       *selectedTitle;
 @property (nonatomic, copy)   NSString       *selectedId;
 @property (nonatomic, strong) UIView         *backView;
+@property (nonatomic, strong) UIView         *tableViewFooterView;
 
 @end
 
@@ -79,6 +80,7 @@
   height = SCALE_SIZE*160;
   
   [self.backView addSubview:self.tableView];
+  [self.tableView setTableFooterView:self.tableViewFooterView];
   [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
     make.width.left.equalTo(self);
     make.top.equalTo(self.topView.mas_bottom);
@@ -91,6 +93,17 @@
   [self.titleLabel setText:title];
   [self.overlayBtn setAlpha:1];
   [self updateView];
+  
+  [self.doneBtn setHidden:YES];
+  [self.cancelBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+    make.right.top.height.equalTo(self.topView);
+    make.width.mas_equalTo(SCALE_SIZE*50);
+  }];
+  
+  [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+    make.left.mas_equalTo(SCALE_SIZE*15);
+    make.centerY.equalTo(self.topView);
+  }];
 }
 
 
@@ -106,17 +119,7 @@
   
   //  点击确定button时
   if (button.tag == 200) {
-    if ([self.selectedTitle isEqualToString:@""]) {
-      
-      for (NSIndexPath *indexPath in self.tableView.indexPathsForSelectedRows) {
-        NSString *str = self.dataArray[indexPath.row][@"name"];
-        self.selectedTitle = [self.selectedTitle stringByAppendingString:[NSString stringWithFormat:@"%@、",str]];
-      }
-      if (self.selectedTitle.length > 1) {
-        
-        self.selectedTitle = [self.selectedTitle stringByReplacingCharactersInRange:NSMakeRange(self.selectedTitle.length-1, 1) withString:@""];
-      }
-    }
+
     if (_delegate && [_delegate respondsToSelector:@selector(pickerViewWithSelectedRow:selectedTitle:selectedId:)]) {
       [_delegate pickerViewWithSelectedRow:self.row selectedTitle:self.selectedTitle selectedId:self.selectedId];
     }
@@ -193,10 +196,13 @@
   SelectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SelectTableViewCell" forIndexPath:indexPath];
   cell.titleString = [NSString stringWithFormat:@"%@",self.dataArray[indexPath.row][@"name"]];
   cell.imgString = [NSString stringWithFormat:@"%@",self.dataArray[indexPath.row][@"image"]];
-  for (NSIndexPath *index in self.tableView.indexPathsForSelectedRows) {
-    if (indexPath.row == index.row) {
-      [tableView selectRowAtIndexPath:index animated:NO scrollPosition:UITableViewScrollPositionNone];
-    }
+//  for (NSIndexPath *index in self.tableView.indexPathsForSelectedRows) {
+//    if (indexPath.row == index.row) {
+//      [tableView selectRowAtIndexPath:index animated:NO scrollPosition:UITableViewScrollPositionNone];
+//    }
+//  }
+  if (indexPath.row == 0) {
+     [tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
   }
   return cell;
 }
@@ -207,6 +213,12 @@
   [cell setSelected:YES];
   
 //  NSLog(@"%@",self.tableView.indexPathsForSelectedRows);
+}
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+  
+  SelectTableViewCell *cell = (SelectTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+  [cell setSelected:NO];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -299,11 +311,24 @@
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
     [_tableView registerClass:[SelectTableViewCell class] forCellReuseIdentifier:@"SelectTableViewCell"];
-    _tableView.allowsMultipleSelection = YES;
+//    _tableView.allowsMultipleSelection = YES;
   }
   return _tableView;
 }
 
+-(UIView *)tableViewFooterView {
+  if (!_tableViewFooterView) {
+    _tableViewFooterView = [[UIView alloc] init];
+    [_tableViewFooterView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*50)];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*50)];
+    [button setBackgroundColor:BASECOLOR_BLACK_333];
+    [button setTitle:@"去支付" forState:UIControlStateNormal];
+    [_tableViewFooterView addSubview:button];
+  }
+  return _tableViewFooterView;
+}
 -(void)updateConstraints {
   [super updateConstraints];
   

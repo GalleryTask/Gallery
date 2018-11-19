@@ -47,6 +47,16 @@
   [self.tableView setTableHeaderView:self.addressView];
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  
+  BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
+  [nav setNavigationBarRightItemWithButtonTitle:@"关闭"];
+  [nav setNavigationBarRightItemWithImageName:@"" highlightImageName:@""];
+  [nav showRightNavBtnWithClick:^(id sender) {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+  }];
+}
 #pragma mark tableview delegate
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   if (indexPath.row == 0) {

@@ -117,7 +117,7 @@
   
   [self.lineImgView mas_remakeConstraints:^(MASConstraintMaker *make) {
     make.left.width.equalTo(self);
-    make.bottom.equalTo(self).offset(-SCALE_SIZE*10);
+    make.bottom.equalTo(self.backBtn);
     make.height.mas_equalTo(SCALE_SIZE*6);
   }];
   

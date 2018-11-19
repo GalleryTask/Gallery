@@ -54,6 +54,10 @@ static const CGFloat itemVerticalSpace = 12.f; // items上下间距
       // 当前button的宽度
       float width = [CommonUtil adaptionWidthWithString:items[i] fontSize:SCALE_SIZE*12 andHeight:itemHeight] + SCALE_SIZE*20;
       
+      if (width < 52) {
+        width = 52;
+      }
+      
       if (i == 0) {
         currentX = currentX + lastLabelWidth;
       } else {

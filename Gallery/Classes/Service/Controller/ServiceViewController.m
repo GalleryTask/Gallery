@@ -7,17 +7,16 @@
 //
 
 #import "ServiceViewController.h"
-#import "SceneView.h"
-#import "UploadImageObject.h"
-#import "AFNetworking.h"
-#import "SSZipArchive.h"
-
 #import "ServiceDetailController.h"
-@interface ServiceViewController ()
-@property (nonatomic, strong) UIButton *startBtn;
+#import "ServiceCell.h"
+#import "PackagingCustomView.h"
 
+@interface ServiceViewController ()
+
+@property (nonatomic, strong) UIButton *startBtn;
 @property (nonatomic, strong) UIScrollView  *scrollView;
-@property (nonatomic, strong) NSArray  *boxList;
+@property (nonatomic, copy) NSArray  *titleArr;
+@property (nonatomic, strong) UIView  *footerView;
 
 @end
 
@@ -25,142 +24,159 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"至尊服务";
-
+  self.navigationItem.title = @"至尊服务";
   
-//    [self downloadZip];
-  [self createSceneView];
-    UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [addBtn setFrame:CGRectMake(50, 500*SCALE_SIZE, 100, 50)];
-    [addBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [addBtn setTitle:@"加" forState:UIControlStateNormal];
-    [addBtn addTarget:self action:@selector(addBtn) forControlEvents:UIControlEventTouchUpInside];
-    [self.scrollView addSubview:addBtn];
-  
-  
-    UIButton *deleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [deleBtn setFrame:CGRectMake(250, 500*SCALE_SIZE, 100, 50)];
-    [deleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [deleBtn setTitle:@"减" forState:UIControlStateNormal];
-    [deleBtn addTarget:self action:@selector(deleBtn) forControlEvents:UIControlEventTouchUpInside];
-    [self.scrollView addSubview:deleBtn];
-  
-  [self.view addSubview:self.startBtn];
+  [self.tableView registerClass:[ServiceCell class] forCellReuseIdentifier:@"ServiceCell"];
+  [self.tableView setRowHeight:SCALE_SIZE*50];
+  self.titleArr = @[@"所需行业",@"内容物",@"期望包装价格"];
+  UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*10)];
+  [headerView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
+  [self.tableView setTableHeaderView:headerView];
+  [self.tableView setTableFooterView:self.footerView];
 }
+
+
+
+#pragma mark tableview delegate
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  
+  ServiceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ServiceCell" forIndexPath:indexPath];
+  [cell setTitleString:self.titleArr[indexPath.row]];
+  return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+  
+  return 3;
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  
+  [tableView deselectRowAtIndexPath:indexPath animated:YES];
+  
+  
+}
+
 -(void)startBtnAction:(UIButton *)sender{
   ServiceDetailController *detailVC = [[ServiceDetailController alloc] init];
   [self.navigationController pushViewController:detailVC animated:YES];
 }
+-(void)viewDidLayoutSubviews {
+  [super viewDidLayoutSubviews];
+  
+  [self.startBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.width.bottom.equalTo(self.view);
+    make.height.mas_equalTo(SCALE_SIZE*50);
+  }];
+}
+
 #pragma marks - getters
 -(UIButton *)startBtn {
   if (!_startBtn) {
     _startBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_startBtn setFrame:CGRectMake(0, SCREEN_HEIGHT - SafeAreaBottomHeight- 50 -NAVIGATIONBAR_HEIGHT-49, SCREEN_WIDTH, 50)];
+//    [_startBtn setFrame:CGRectMake(0, SCREEN_HEIGHT - SafeAreaBottomHeight- 50 -NAVIGATIONBAR_HEIGHT-49, SCREEN_WIDTH, 50)];
     [_startBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_startBtn setTitle:@"开始定制" forState:UIControlStateNormal];
     [[_startBtn titleLabel] setFont:FONTSIZE(16)];
     [_startBtn setBackgroundColor:BASECOLOR_BLACK_333];
     [_startBtn addTarget:self action:@selector(startBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_startBtn];
   }
   return _startBtn;
 }
 
 
-- (void)addBtn {
-  SceneView *sceneView = [self.scrollView viewWithTag:100];
-  [sceneView addNode];
-  
-  //[sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"home_1"]];
-//  MMKV *mv = [MMKV defaultMMKV];
-//  [mv setObject:@"sssssssssssssssssss" forKey:@"string"];
-//  [mv setObject:@"123" forKey:@"string"];
-//  NSLog(@"%@",[mv getObjectOfClass:NSString.class forKey:@"string"]) ;
-//  [mv removeValueForKey:@"string"];
-//  NSLog(@"%@",[mv getObjectOfClass:NSString.class forKey:@"string"]) ;
-}
-
-- (void)deleBtn {
-  SceneView *sceneView = [self.scrollView viewWithTag:100];
-  [sceneView removeNode];
-  
-  [sceneView changeRange];
-}
-
-- (void)downloadZip {
-  
-  [self.dataRequest downloadFile];
-  @weakify(self);
-  [self.dataRequest setBlockWithReturnBlock:^(id returnValue) {
-    @strongify(self);
-    [self createSceneView];
-  } WithErrorBlock:^(id errorCode) {
-
-  } WithFailureBlock:^{
-
-  }];
-}
-
-- (void)createSceneView {
-    
-    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-    // 这里的dae文件名字是我们导出时定义的文件名，下面一段代码中加载的SCNNode是我们之前在面板中改过的模型名
-    documentsDirectoryURL = [documentsDirectoryURL URLByAppendingPathComponent:@"model.scnassets/nbox3gai.dae"];
-    for (int i = 0; i < self.boxList.count; i++) {
-        
-        // 创建3D展示view
-        SceneView *sceneView = [[SceneView alloc] initWithSceneName:@"03.DAE"
-                                                              frame:CGRectMake((SCREEN_WIDTH-30)*i, SCALE_SIZE*70, SCREEN_WIDTH, SCREEN_WIDTH)];
-        sceneView.tag = 100;
-        [self.scrollView addSubview:sceneView];
-
-      [sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"0_3.tga"]];
-//      [sceneView sceneViewReflectiveImage:[UIImage imageNamed:@"B.tga"]];
-        
-        // 添加点击手势
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(btnClick:)];
-        [sceneView addGestureRecognizer:tap];
-        
-        UIView *tapView = [tap view];
-        [tapView setTag:(100 + i)];
-        
-        UILabel *titleLabel = [[UILabel alloc] init];
-        [titleLabel setText:self.boxList[i][@"boxTitle"]];
-        [_scrollView addSubview:titleLabel];
-        [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(sceneView);
-            make.top.mas_equalTo(sceneView.mas_bottom).offset(SCALE_SIZE*20);
-        }];
-    }
-}
-
-
-
-- (void)btnClick:(id)sender {
-    
-    //  UITapGestureRecognizer *tap = (UITapGestureRecognizer *)sender;
-    //  QuoteViewController *vc = [[QuoteViewController alloc] init];
-    //  [vc setValue:self.boxList[[tap view].tag-100][@"boxTitle"] forKey:@"titleString"];
-    //  [vc setValue:self.boxList[[tap view].tag-100][@"boxId"] forKey:@"boxId"];
-    //  [self.navigationController pushViewController:vc animated:YES];
-}
-
 #pragma marks - getters
 -(UIScrollView *)scrollView {
-    if (!_scrollView) {
-        _scrollView = [[UIScrollView alloc] init];
-        [_scrollView setFrame:self.view.frame];
-        [self.view addSubview:_scrollView];
-        
-    }
-    return _scrollView;
+  if (!_scrollView) {
+    _scrollView = [[UIScrollView alloc] init];
+    [_scrollView setFrame:self.view.frame];
+    [self.view addSubview:_scrollView];
+    
+  }
+  return _scrollView;
 }
 
--(NSArray *)boxList {
-    if (!_boxList) {
-      _boxList = @[@{@"boxTitle":@"",@"boxId":@""}];
-    }
-    return _boxList;
+-(UIView *)footerView {
+  if (!_footerView) {
+    _footerView = [[UIView alloc] init];
+    
+    UIView *spitView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*10)];
+    [spitView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
+    [_footerView addSubview:spitView];
+    
+    PackagingCustomView *customOne = [[PackagingCustomView alloc] init];
+    NSInteger countRow = [customOne packagingCustomWithTitle:@"内容物规格"
+                                                  itemsArray:@[@"5斤装",@"10斤装",@"20斤装"]
+                                                selectedItem:0
+                                           selectedItemBlock:^(id  _Nonnull sender) {
+                                             
+                                           }];
+    [_footerView addSubview:customOne];
+    
+    
+    
+    PackagingCustomView *customTwo = [[PackagingCustomView alloc] init];
+    NSInteger countRowTwo = [customTwo packagingCustomWithTitle:@"包装使用方向"
+                                                     itemsArray:@[@"物流周转包装",@"产品售卖包装",@"礼品包装",@"快递包装"]
+                                                   selectedItem:0
+                                              selectedItemBlock:^(id  _Nonnull sender) {
+                                                
+                                              }];
+    [_footerView addSubview:customTwo];
+    
+    
+    
+    PackagingCustomView *customThree = [[PackagingCustomView alloc] init];
+    NSInteger countRowThree = [customThree packagingCustomWithTitle:@"是否需要标签"
+                                                         itemsArray:@[@"是",@"否"]
+                                                       selectedItem:0
+                                                  selectedItemBlock:^(id  _Nonnull sender) {
+                                                    
+                                                    
+                                                  }];
+    [_footerView addSubview:customThree];
+    
+    PackagingCustomView *customFour = [[PackagingCustomView alloc] init];
+    NSInteger countFour = [customFour packagingCustomWithTitle:@"是否需要托盘"
+                                                     itemsArray:@[@"是",@"否"]
+                                                   selectedItem:0
+                                              selectedItemBlock:^(id  _Nonnull sender) {
+                                                
+                                              }];
+    [_footerView addSubview:customFour];
+    
+    [customOne mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.top.equalTo(spitView.mas_bottom);
+      make.left.width.equalTo(_footerView);
+      make.height.mas_equalTo(SCALE_SIZE*94+(SCALE_SIZE*44)*countRow);
+    }];
+    
+    [customTwo mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.left.width.equalTo(_footerView);
+      make.top.equalTo(customOne.mas_bottom);
+      make.height.mas_equalTo(SCALE_SIZE*94+(SCALE_SIZE*44)*countRowTwo);
+    }];
+    
+    [customThree mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.left.width.equalTo(_footerView);
+      make.top.equalTo(customTwo.mas_bottom);
+      make.height.mas_equalTo(SCALE_SIZE*94+(SCALE_SIZE*44)*countRowThree);
+    }];
+    
+    [customFour mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.left.width.equalTo(_footerView);
+      make.top.equalTo(customThree.mas_bottom);
+      make.height.mas_equalTo(SCALE_SIZE*94+(SCALE_SIZE*44)*countFour);
+    }];
+    
+    [self.view layoutIfNeeded];
+    [_footerView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*500)];
+    
+  }
+  
+  return _footerView;
 }
-
 @end
 

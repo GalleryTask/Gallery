@@ -50,10 +50,7 @@
                                                        itemsArray:@[@"小果(果径<75MM)",@"中果(75MM>果径>75MM)",@"大果(果径>85MM)",@"自定义"]
                                                      selectedItem:0
                                                 selectedItemBlock:^(id  _Nonnull sender) {
-//                                                  NSDictionary *dic = sender;
-//                                                  if ([dic[@"index"] integerValue] == 3) {
-//                                                    
-//                                                  }
+
                                                   
                                                 }];
   [self.scrollView addSubview:customThree];
