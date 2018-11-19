@@ -9,6 +9,7 @@
 #import "AddressListController.h"
 #import "AddressCell.h"
 #import "AddressEditController.h"
+
 @interface AddressListController ()<AddressCellDelegate>
 
 @end
@@ -27,7 +28,7 @@
 -(void)createInterfaceBuilder {
   [self.tableView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
   [self.tableView registerClass:[AddressCell class] forCellReuseIdentifier:@"AddressCell"];
-  [self.tableView setRowHeight:SCALE_SIZE*100];
+  [self.tableView setRowHeight:SCALE_SIZE*88];
   [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
 -(void)settingNavigationRightButton{
@@ -49,17 +50,23 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
   AddressCell *addressCell = [tableView dequeueReusableCellWithIdentifier:@"AddressCell" forIndexPath:indexPath];
-  addressCell.selectionStyle = UITableViewCellSelectionStyleNone;
+//  addressCell.selectionStyle = UITableViewCellSelectionStyleNone;
   [addressCell setDelegate:self];
   return addressCell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  
+  [tableView deselectRowAtIndexPath:indexPath animated:YES];
+  if (_delegate && [_delegate respondsToSelector:@selector(addressListSelectedWithAddress:)]) {
+    [_delegate addressListSelectedWithAddress:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+  }
 }
--(void)addressCelleditBtnClick{
+
+-(void)addressCelleditBtnClick {
   [self pushController];
 }
+
 -(void)pushController {
   AddressEditController *editVC = [[AddressEditController alloc] init];
   [self.navigationController pushViewController:editVC animated:YES];

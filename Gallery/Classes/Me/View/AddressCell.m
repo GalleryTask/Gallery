@@ -165,10 +165,18 @@
   }
   return _editBtn;
 }
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+  UIColor *lineColor = self.titleLabel.backgroundColor;
+  [super setSelected:selected animated:animated];
+  self.titleLabel.backgroundColor = lineColor;
+}
+
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+  
+  UIColor *lineColor = self.titleLabel.backgroundColor;
+  [super setHighlighted:highlighted animated:animated];
+  self.titleLabel.backgroundColor = lineColor;
 }
 
 @end

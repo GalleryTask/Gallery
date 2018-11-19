@@ -12,11 +12,16 @@
 #import "DeliveryDateCell.h"
 #import "SelectCountCell.h"
 #import "BottomSelectBar.h"
+#import "SelectedAddressView.h"
+#import "AddressListController.h"
+#import "PickerView.h"
 
-@interface OrderSubmitController () <BottomSelectBarDelegate>
+@interface OrderSubmitController () <BottomSelectBarDelegate, SelectedAddressViewDelegate, AddressListControllerDelegate>
 
 @property (nonatomic, strong) BottomSelectBar  *bottomBar;
 @property (nonatomic, strong) UIView  *headerView;
+@property (nonatomic, strong) SelectedAddressView  *addressView;
+@property (nonatomic, strong) PickerView  *pickerView;
 
 @end
 
@@ -39,7 +44,7 @@
                      @{@"title":@"印刷工艺",@"detail":@"胶印亚膜",@"count":@""}, nil];
   self.tableView.contentInset = UIEdgeInsetsMake(0, 0, SCALE_SIZE*50, 0);
   
-  [self.tableView setTableHeaderView:self.headerView];
+  [self.tableView setTableHeaderView:self.addressView];
 }
 
 #pragma mark tableview delegate
@@ -80,9 +85,24 @@
 }
 
 -(void)bottomBarWithRightBtnClick:(id)sender {
+  [self.pickerView tableViewWithDelegate:self
+                              dataSource:@[@{@"name":@"支付宝",@"iamge":@""},@{@"name":@"微信",@"iamge":@""}]
+                                   title:@"请选择支付方式"];
+}
+
+#pragma marks - selectedAddressView delegate
+-(void)addressViewClick {
+  AddressListController *vc = [[AddressListController alloc] init];
+  [vc setDelegate:self];
+  [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma marks - addressListController delegate
+-(void)addressListSelectedWithAddress:(NSDictionary *)address {
   
 }
 
+#pragma marks - getters
 -(BottomSelectBar *)bottomBar {
   if (!_bottomBar) {
     _bottomBar = [[BottomSelectBar alloc] initWithLeftTitle:@"总金额：￥30.00" rightTitle:@"付款" delegate:self];
@@ -93,13 +113,29 @@
 
 -(UIView *)headerView {
   if (!_headerView) {
-    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*102)];
+    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*106)];
     [_headerView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
     
   }
   return _headerView;
 }
 
+
+-(SelectedAddressView *)addressView {
+  if (!_addressView) {
+    _addressView = [[SelectedAddressView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*106)];
+    [_addressView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
+    [_addressView setDelegate:self];
+  }
+  return _addressView;
+}
+
+-(PickerView *)pickerView {
+  if (!_pickerView) {
+    _pickerView = [[PickerView alloc] init];
+  }
+  return _pickerView;
+}
 
 -(void)viewDidLayoutSubviews {
   [super viewDidLayoutSubviews];

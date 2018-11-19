@@ -8,9 +8,16 @@
 
 #import "BaseViewController.h"
 
-NS_ASSUME_NONNULL_BEGIN
-@interface AddressListController : BaseViewController
+@protocol  AddressListControllerDelegate  <NSObject>
+
+- (void)addressListSelectedWithAddress:(NSDictionary *)address;
 
 @end
 
-NS_ASSUME_NONNULL_END
+@interface AddressListController : BaseViewController
+
+@property (nonatomic, weak) id <AddressListControllerDelegate> delegate;
+
+@end
+
+

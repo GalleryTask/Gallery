@@ -32,7 +32,7 @@
     [self.backView setBackgroundColor:[UIColor whiteColor]];
     [self addSubview:self.backView];
     
-    NSArray *array = @[@"收货人",@"手机账号",@"所在城市",@"收货地址",@"楼号门牌",@"地址类型"];
+    NSArray *array = @[@"收  货  人",@"手机账号",@"所在城市",@"收货地址",@"楼号门牌",@"地址类型"];
     for (int i = 0; i < array.count; i ++) {
       UILabel *promptLabel = [[UILabel alloc] init];
       [promptLabel setFrame:CGRectMake(SCALE_SIZE*20, SCALE_SIZE*18+SCALE_SIZE*50*i, SCALE_SIZE*70, SCALE_SIZE*14)];
