@@ -23,7 +23,7 @@
   [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
     make.left.mas_equalTo(SCALE_SIZE*15);
     if ([self.lastString isEqualToString:@"1"]) {
-      make.top.mas_equalTo(self);
+      make.top.mas_equalTo(SCALE_SIZE*6);
     }else if ([self.lastString isEqualToString:@"0"]){
       make.bottom.equalTo(self);
     }else{
