@@ -10,13 +10,16 @@
 #import "ServiceDetailCell.h"
 #import "BottomSelectBar.h"
 #import "ServiceDetailFooterView.h"
-@interface ServiceDetailController ()<BottomSelectBarDelegate>
+#import "SelectedAddressView.h"
+#import "AddressListController.h"
+@interface ServiceDetailController ()<BottomSelectBarDelegate,ServiceDetailFooterDelegate,SelectedAddressViewDelegate,AddressListControllerDelegate>
 
 @property (nonatomic, strong) BottomSelectBar  *bottomBar;
 @property(nonatomic, strong)UIView *headderView;
 @property(nonatomic, strong)NSArray *titleArray;
 @property(nonatomic, strong)NSArray *detailArray;
 @property(nonatomic, strong)ServiceDetailFooterView *footerView;
+@property (nonatomic, strong) SelectedAddressView  *addressView;
 @end
 
 @implementation ServiceDetailController
@@ -32,29 +35,28 @@
   self.detailArray = @[@"苹果",@"礼盒包装",@"2～5元",@"直径100mm",@"5个装",@"是",@"是"];
   [self.tableView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
   [self.tableView registerClass:[ServiceDetailCell class] forCellReuseIdentifier:@"ServiceDetailCell"];
-  [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-  self.tableView.separatorStyle =UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle =UITableViewCellSeparatorStyleNone;
+  self.tableView.contentInset = UIEdgeInsetsMake(0, 0, SCALE_SIZE*50, 0);
+  [self.tableView setTableHeaderView:self.addressView];
   [self.tableView setTableFooterView:self.footerView];
 }
 
 #pragma mark - tableview delegate dataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-  return 3;
+  return 2;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  if (section == 1) {
+  if (section == 0) {
     return self.titleArray.count;
-  }else if (section == 2){
-    return 3;
   }else{
-    return 10;
+    return 3;
   }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   ServiceDetailCell *serviceCell = [tableView dequeueReusableCellWithIdentifier:@"ServiceDetailCell" forIndexPath:indexPath];
   serviceCell.selectionStyle = UITableViewCellSelectionStyleNone;
   
-  if (indexPath.section == 1) {
+  if (indexPath.section == 0) {
     [serviceCell setTitleString:self.titleArray[indexPath.row]];
     [serviceCell setDetailString:self.detailArray[indexPath.row]];
     if (indexPath.row == 6) {
@@ -62,7 +64,7 @@
     }else{
       [serviceCell setLastString:@"0"];
     }
-  }else if(indexPath.section == 2){
+  }else if(indexPath.section == 1){
     if (indexPath.row == 0) {
       [serviceCell setLastString:@"0"];
       [serviceCell setTitleString:@"产品包装方案样品"];
@@ -84,22 +86,17 @@
   
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-  if (indexPath.section == 0) {
-    return 35;
+  if (indexPath.row == 0) {
+    return SCALE_SIZE * 28;
+  }else if (indexPath.section == 1 && indexPath.row == 2) {
+    return SCALE_SIZE * 44;
+  }else if (indexPath.section == 0 && indexPath.row == 6) {
+    return SCALE_SIZE * 34;
+  }else if (indexPath.section == 1 && indexPath.row == 1) {
+    return SCALE_SIZE * 34;
   }else{
-    if (indexPath.row == 0) {
-      return SCALE_SIZE * 28;
-    }else if (indexPath.section == 2 && indexPath.row == 2) {
-      return SCALE_SIZE * 44;
-    }else if (indexPath.section == 1 && indexPath.row == 6) {
-      return SCALE_SIZE * 34;
-    }else if (indexPath.section == 2 && indexPath.row == 1) {
-      return SCALE_SIZE * 34;
-    }else{
-      return SCALE_SIZE * 22;
-    }
+    return SCALE_SIZE * 22;
   }
-  
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -119,20 +116,31 @@
   titleLabel.font = [UIFont systemFontOfSize:SCALE_SIZE * 16];
   titleLabel.textColor = BASECOLOR_BLACK_333;
   [view1 addSubview:titleLabel];
-  if (section == 1) {
+  if (section == 0) {
     titleLabel.text = @"所需信息";
-  }else if (section == 2){
+  }else if (section == 1){
     titleLabel.text = @"服务内容";
   }
   return headerView;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-  if (section ==0) {
-    return 0;
-  }else{
-    return SCALE_SIZE * 56;
-  }
+  return SCALE_SIZE * 56;
 }
+#pragma marks - selectedAddressView delegate
+-(void)addressViewClick {
+  AddressListController *vc = [[AddressListController alloc] init];
+  [vc setDelegate:self];
+  [self.navigationController pushViewController:vc animated:YES];
+}
+#pragma marks - addressListController delegate
+-(void)addressListSelectedWithAddress:(NSDictionary *)address {
+  
+}
+#pragma mark - ServiceDetailFooterDelegate delegate
+-(void)ServiceDetailFooterSelect:(BOOL)isOn{
+  
+}
+
 #pragma marks - BottomSelectBar delegate
 -(void)bottomBarWithLeftBtnClick:(id)sender {
   
@@ -150,10 +158,10 @@
 }
 -(void)viewDidLayoutSubviews {
   [super viewDidLayoutSubviews];
-  [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
-    make.top.width.left.equalTo(self.view);
-    make.height.mas_equalTo(SCREEN_HEIGHT - SCALE_SIZE*50 - SafeAreaBottomHeight - NAVIGATIONBAR_HEIGHT);
-  }];
+//  [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//    make.top.width.left.equalTo(self.view);
+//    make.height.mas_equalTo(SCREEN_HEIGHT - SCALE_SIZE*50 - SafeAreaBottomHeight - NAVIGATIONBAR_HEIGHT);
+//  }];
   [self.bottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
     make.left.width.equalTo(self.view);
     make.bottom.equalTo(self.view).offset(-SafeAreaBottomHeight);
@@ -163,10 +171,19 @@
 -(ServiceDetailFooterView *)footerView{
   if (!_footerView) {
     _footerView = [[ServiceDetailFooterView alloc] init];
-    [_footerView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE * 80)];
+    [_footerView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE * 150)];
     [_footerView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
+    [_footerView setDelegate:self];
   }
   return _footerView;
+}
+-(SelectedAddressView *)addressView {
+  if (!_addressView) {
+    _addressView = [[SelectedAddressView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*96)];
+    [_addressView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
+    [_addressView setDelegate:self];
+  }
+  return _addressView;
 }
 /*
 #pragma mark - Navigation
