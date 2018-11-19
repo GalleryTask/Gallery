@@ -40,23 +40,23 @@
     make.centerY.equalTo(self);
   }];
   
-  [self.sliderTitleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-    make.left.mas_equalTo(SCALE_SIZE*16);
-    make.top.mas_equalTo(SCALE_SIZE*20);
-    make.width.mas_equalTo(SCALE_SIZE*30);
-  }];
+//  [self.sliderTitleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+//    make.left.mas_equalTo(SCALE_SIZE*16);
+//    make.top.mas_equalTo(SCALE_SIZE*20);
+//    make.width.mas_equalTo(SCALE_SIZE*30);
+//  }];
+//
+//  [self.slider mas_remakeConstraints:^(MASConstraintMaker *make) {
+//    make.top.equalTo(self.sliderTitleLabel);
+//    make.left.equalTo(self.sliderTitleLabel.mas_right).offset(SCALE_SIZE*10);
+//    make.right.equalTo(self.mas_right).offset(-15);
+//  }];
   
-  [self.slider mas_remakeConstraints:^(MASConstraintMaker *make) {
-    make.top.equalTo(self.sliderTitleLabel);
-    make.left.equalTo(self.sliderTitleLabel.mas_right).offset(SCALE_SIZE*10);
-    make.right.equalTo(self.mas_right).offset(-15);
-  }];
-  
-  [self.numberLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-    make.width.mas_equalTo(SCALE_SIZE*65);
-    make.top.equalTo(self);
-    make.left.mas_equalTo((SCREEN_WIDTH-SCALE_SIZE*(56+50+15))/300*self.valueFloat+SCALE_SIZE*50);
-  }];
+//  [self.numberLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+//    make.width.mas_equalTo(SCALE_SIZE*65);
+//    make.top.equalTo(self);
+//    make.left.mas_equalTo((SCREEN_WIDTH-SCALE_SIZE*(56+50+15))/300*self.valueFloat+SCALE_SIZE*50);
+//  }];
 }
 
 -(void)serviceButtonClick:(UIButton *)sender {

@@ -48,6 +48,12 @@
   }
 }
 
+-(void)setDetailString:(NSString *)detailString {
+  if (detailString) {
+    [self.detailLabel setText:detailString];
+  }
+}
+
 #pragma marks - getters
 -(UILabel *)titleLabel {
   if (!_titleLabel) {

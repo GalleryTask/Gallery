@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ServiceCell : UITableViewCell
 
 @property (nonatomic, copy) NSString  *titleString;
+@property (nonatomic, copy) NSString  *detailString;
 
 @end
 

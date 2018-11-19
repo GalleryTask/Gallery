@@ -158,10 +158,7 @@
 }
 -(void)viewDidLayoutSubviews {
   [super viewDidLayoutSubviews];
-//  [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//    make.top.width.left.equalTo(self.view);
-//    make.height.mas_equalTo(SCREEN_HEIGHT - SCALE_SIZE*50 - SafeAreaBottomHeight - NAVIGATIONBAR_HEIGHT);
-//  }];
+
   [self.bottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
     make.left.width.equalTo(self.view);
     make.bottom.equalTo(self.view).offset(-SafeAreaBottomHeight);
@@ -171,7 +168,7 @@
 -(ServiceDetailFooterView *)footerView{
   if (!_footerView) {
     _footerView = [[ServiceDetailFooterView alloc] init];
-    [_footerView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE * 150)];
+    [_footerView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE * 80)];
     [_footerView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
     [_footerView setDelegate:self];
   }
