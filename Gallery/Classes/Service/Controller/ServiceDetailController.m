@@ -8,11 +8,15 @@
 
 #import "ServiceDetailController.h"
 #import "ServiceDetailCell.h"
-@interface ServiceDetailController ()
+#import "BottomSelectBar.h"
+#import "ServiceDetailFooterView.h"
+@interface ServiceDetailController ()<BottomSelectBarDelegate>
 
+@property (nonatomic, strong) BottomSelectBar  *bottomBar;
 @property(nonatomic, strong)UIView *headderView;
 @property(nonatomic, strong)NSArray *titleArray;
 @property(nonatomic, strong)NSArray *detailArray;
+@property(nonatomic, strong)ServiceDetailFooterView *footerView;
 @end
 
 @implementation ServiceDetailController
@@ -26,12 +30,13 @@
   
   self.titleArray = @[@"内容物",@"包装使用方向",@"期望包装价格范围",@"内容物尺寸",@"内容物规格",@"是否需要标签",@"是否需要托盘"];
   self.detailArray = @[@"苹果",@"礼盒包装",@"2～5元",@"直径100mm",@"5个装",@"是",@"是"];
-  
   [self.tableView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
   [self.tableView registerClass:[ServiceDetailCell class] forCellReuseIdentifier:@"ServiceDetailCell"];
   [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
   self.tableView.separatorStyle =UITableViewCellSeparatorStyleNone;
+  [self.tableView setTableFooterView:self.footerView];
 }
+
 #pragma mark - tableview delegate dataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
   return 3;
@@ -42,7 +47,7 @@
   }else if (section == 2){
     return 3;
   }else{
-    return 1;
+    return 10;
   }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -83,15 +88,15 @@
     return 35;
   }else{
     if (indexPath.row == 0) {
-      return SCALE_SIZE *32;
+      return SCALE_SIZE * 28;
     }else if (indexPath.section == 2 && indexPath.row == 2) {
       return SCALE_SIZE * 44;
     }else if (indexPath.section == 1 && indexPath.row == 6) {
-      return SCALE_SIZE * 32;
+      return SCALE_SIZE * 34;
     }else if (indexPath.section == 2 && indexPath.row == 1) {
-      return SCALE_SIZE * 32;
+      return SCALE_SIZE * 34;
     }else{
-      return SCALE_SIZE * 28;
+      return SCALE_SIZE * 22;
     }
   }
   
@@ -128,8 +133,41 @@
     return SCALE_SIZE * 56;
   }
 }
+#pragma marks - BottomSelectBar delegate
+-(void)bottomBarWithLeftBtnClick:(id)sender {
+  
+}
 
-
+-(void)bottomBarWithRightBtnClick:(id)sender {
+  
+}
+-(BottomSelectBar *)bottomBar {
+  if (!_bottomBar) {
+    _bottomBar = [[BottomSelectBar alloc] initWithLeftTitle:@"总金额：¥2000.00" rightTitle:@"付款" delegate:self];
+    [self.view addSubview:_bottomBar];
+  }
+  return _bottomBar;
+}
+-(void)viewDidLayoutSubviews {
+  [super viewDidLayoutSubviews];
+  [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
+    make.top.width.left.equalTo(self.view);
+    make.height.mas_equalTo(SCREEN_HEIGHT - SCALE_SIZE*50 - SafeAreaBottomHeight - NAVIGATIONBAR_HEIGHT);
+  }];
+  [self.bottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.width.equalTo(self.view);
+    make.bottom.equalTo(self.view).offset(-SafeAreaBottomHeight);
+    make.height.mas_equalTo(SCALE_SIZE*50);
+  }];
+}
+-(ServiceDetailFooterView *)footerView{
+  if (!_footerView) {
+    _footerView = [[ServiceDetailFooterView alloc] init];
+    [_footerView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE * 80)];
+    [_footerView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
+  }
+  return _footerView;
+}
 /*
 #pragma mark - Navigation
 

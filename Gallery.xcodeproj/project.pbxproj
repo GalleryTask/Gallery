@@ -70,6 +70,7 @@
 		76F6AC2C219D6D4500EB0325 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76F6AC2B219D6D4500EB0325 /* Main.storyboard */; };
 		76F6AC2E219D6DBF00EB0325 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76F6AC2D219D6DBF00EB0325 /* LaunchScreen.storyboard */; };
 		76F6AC31219D855300EB0325 /* PackagingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F6AC30219D855300EB0325 /* PackagingImageView.m */; };
+		840B6DB121A25A5800201C1A /* ServiceDetailFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B6DB021A25A5800201C1A /* ServiceDetailFooterView.m */; };
 		84270213219AAD390025696F /* NextButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84270212219AAD390025696F /* NextButton.m */; };
 		842B3BED219E61F4007B43FC /* AddressEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B3BEC219E61F4007B43FC /* AddressEditController.m */; };
 		842B3BF3219EB6BF007B43FC /* ServiceDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B3BF2219EB6BF007B43FC /* ServiceDetailController.m */; };
@@ -221,6 +222,8 @@
 		76F6AC2D219D6DBF00EB0325 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		76F6AC2F219D855300EB0325 /* PackagingImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackagingImageView.h; sourceTree = "<group>"; };
 		76F6AC30219D855300EB0325 /* PackagingImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackagingImageView.m; sourceTree = "<group>"; };
+		840B6DAF21A25A5800201C1A /* ServiceDetailFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceDetailFooterView.h; sourceTree = "<group>"; };
+		840B6DB021A25A5800201C1A /* ServiceDetailFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceDetailFooterView.m; sourceTree = "<group>"; };
 		84270211219AAD390025696F /* NextButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextButton.h; sourceTree = "<group>"; };
 		84270212219AAD390025696F /* NextButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextButton.m; sourceTree = "<group>"; };
 		842B3BEB219E61F4007B43FC /* AddressEditController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressEditController.h; sourceTree = "<group>"; };
@@ -697,6 +700,8 @@
 			children = (
 				76B901F9219EDC190019C481 /* ServiceDetailCell.h */,
 				76B901FA219EDC1E0019C481 /* ServiceDetailCell.m */,
+				840B6DAF21A25A5800201C1A /* ServiceDetailFooterView.h */,
+				840B6DB021A25A5800201C1A /* ServiceDetailFooterView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -916,6 +921,7 @@
 				760F2124219EC4FA00905234 /* SelectCountCell.m in Sources */,
 				7655CC792150F27E00D206C2 /* TabBarController.m in Sources */,
 				760F2121219EB9DA00905234 /* DeliveryDateCell.m in Sources */,
+				840B6DB121A25A5800201C1A /* ServiceDetailFooterView.m in Sources */,
 				7609C77B219D49CE00689D07 /* ServiceViewController.m in Sources */,
 				76605E162101B6EF00115FA6 /* main.m in Sources */,
 				7619A5F2219AA4F9005ADEEB /* PackagingPalletController.m in Sources */,
