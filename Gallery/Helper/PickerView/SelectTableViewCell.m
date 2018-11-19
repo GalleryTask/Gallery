@@ -12,6 +12,7 @@
 @property (nonatomic, strong) UILabel  *titleLabel;
 @property (nonatomic, strong) UIView   *lineView;
 @property (nonatomic, strong) UIImageView *selectImageView;
+@property (nonatomic, strong) UIImageView  *imgView;
 
 @end
 @implementation SelectTableViewCell
@@ -26,11 +27,18 @@
     return self;
 }
 
--(void)setTitleString:(NSString *)titleString{
+-(void)setTitleString:(NSString *)titleString {
     if (titleString) {
-        [self.titleLabel setText:titleString];
+      [self.titleLabel setText:titleString];
     }
 }
+
+-(void)setImgString:(NSString *)imgString {
+  if (imgString) {
+    [self.imgView setImage:[UIImage imageNamed:imgString]];
+  }
+}
+
 #pragma marks - getters
 -(UILabel *)titleLabel {
     if (!_titleLabel) {
@@ -49,6 +57,7 @@
     }
     return _lineView;
 }
+
 -(UIImageView *)selectImageView{
     if (!_selectImageView) {
         _selectImageView = [[UIImageView alloc] init];
@@ -58,26 +67,39 @@
     return _selectImageView;
 }
 
+-(UIImageView *)imgView {
+  if (!_imgView) {
+    _imgView = [[UIImageView alloc] init];
+    [self.contentView addSubview:_imgView];
+  }
+  return _imgView;
+}
+
 -(void)layoutSubviews {
     [super layoutSubviews];
-    
-    [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset(SCALE_SIZE*20);
-        make.centerY.equalTo(self);
-    }];
-    
-
-    [self.lineView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.bottom.width.equalTo(self);
-        make.height.mas_equalTo(1);
-    }];
-    
-    [self.selectImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self).offset(-SCALE_SIZE*20);
-        make.centerY.equalTo(self);
-        make.height.mas_equalTo(22);
-        make.width.mas_equalTo(22);
-    }];
+  
+  [self.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.mas_equalTo(SCALE_SIZE*15);
+    make.centerY.equalTo(self);
+    make.width.height.mas_equalTo(SCALE_SIZE*24);
+  }];
+  
+  [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+    make.left.equalTo(self.imgView.mas_right).offset(SCALE_SIZE*12);
+    make.centerY.equalTo(self);
+  }];
+  
+//  [self.lineView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//    make.left.bottom.width.equalTo(self);
+//    make.height.mas_equalTo(1);
+//  }];
+  
+  [self.selectImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+    make.right.equalTo(self).offset(-SCALE_SIZE*20);
+    make.centerY.equalTo(self);
+    make.height.mas_equalTo(22);
+    make.width.mas_equalTo(22);
+  }];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

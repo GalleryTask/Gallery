@@ -99,7 +99,7 @@
   
   [self.backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
     make.left.width.top.equalTo(self);
-    make.height.equalTo(self).offset(-SCALE_SIZE*10);
+    make.height.mas_equalTo(SCALE_SIZE*96);
   }];
   
   [self.userLabel mas_remakeConstraints:^(MASConstraintMaker *make) {

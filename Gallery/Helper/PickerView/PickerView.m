@@ -76,13 +76,13 @@
   UIViewController *vc = [CommonUtil getCurrentVC];
   [vc.view addSubview:self];
   self.selectedTitle = @"";
-  height = SCALE_SIZE*110;
+  height = SCALE_SIZE*160;
   
   [self.backView addSubview:self.tableView];
   [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
     make.width.left.equalTo(self);
     make.top.equalTo(self.topView.mas_bottom);
-    make.height.mas_equalTo(SCALE_SIZE*110);
+    make.height.mas_equalTo(height);
   }];
   
   self.isPop = true;
@@ -191,7 +191,8 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
   SelectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SelectTableViewCell" forIndexPath:indexPath];
-    cell.titleString = [NSString stringWithFormat:@"%@",self.dataArray[indexPath.row][@"name"]];
+  cell.titleString = [NSString stringWithFormat:@"%@",self.dataArray[indexPath.row][@"name"]];
+  cell.imgString = [NSString stringWithFormat:@"%@",self.dataArray[indexPath.row][@"image"]];
   for (NSIndexPath *index in self.tableView.indexPathsForSelectedRows) {
     if (indexPath.row == index.row) {
       [tableView selectRowAtIndexPath:index animated:NO scrollPosition:UITableViewScrollPositionNone];

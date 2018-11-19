@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SelectTableViewCell : UITableViewCell
+
 @property (nonatomic, copy) NSString  *titleString;
+@property (nonatomic, copy) NSString  *imgString;
 
 @end

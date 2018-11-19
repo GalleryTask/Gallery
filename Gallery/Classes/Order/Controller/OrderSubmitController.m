@@ -86,7 +86,7 @@
 
 -(void)bottomBarWithRightBtnClick:(id)sender {
   [self.pickerView tableViewWithDelegate:self
-                              dataSource:@[@{@"name":@"支付宝",@"iamge":@""},@{@"name":@"微信",@"iamge":@""}]
+                              dataSource:@[@{@"name":@"支付宝",@"image":@"alipay"},@{@"name":@"微信",@"image":@"wechat_pay"}]
                                    title:@"请选择支付方式"];
 }
 
