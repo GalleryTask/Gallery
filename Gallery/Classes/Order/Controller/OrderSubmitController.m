@@ -45,10 +45,10 @@
   self.tableView.contentInset = UIEdgeInsetsMake(0, 0, SCALE_SIZE*50, 0);
   
   [self.tableView setTableHeaderView:self.addressView];
-  
+  @weakify(self);
   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
-  [nav setNavigationBarRightItemWithButtonTitle:@"关闭"];
-  [nav showRightNavBtnWithClick:^(id sender) {
+  [nav setNavigationBarRightItemWithButtonTitle:@"关闭" clickBlock:^(id sender) {
+    @strongify(self);
     [self.navigationController popToRootViewControllerAnimated:YES];
   }];
 }

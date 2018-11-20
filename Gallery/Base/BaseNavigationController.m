@@ -99,22 +99,16 @@
   self.leftNavBlock = leftClickBlock;
 }
 
-- (void)showRightNavBtnWithClick:(rightNavigationClickBlock)rightClickBlock {
-//  [self rightNavigationBtn];
-  self.rightNavBlock = rightClickBlock;
-}
-
-
 - (void)backBtnClick:(UIButton *)backBtn {
   if (self.leftNavBlock) {
     self.leftNavBlock(backBtn);
     self.leftNavBlock = nil;
   } else {
-    
     if (self.viewControllers.count > 1 && self.topViewController == [CommonUtil getCurrentVC]) {
+      // push
       [self popViewControllerAnimated:YES];
     } else {
-      //present方式
+      // present方式
       [[CommonUtil getCurrentVC] dismissViewControllerAnimated:YES completion:nil];
     }
   }
@@ -128,24 +122,22 @@
 
 #pragma mark - navigation right button 展示样式
 -(void)setNavigationBarRightItemWithImageName:(NSString *)imageName
-                           highlightImageName:(NSString *)highlightImageName {
-  
-  
+                           highlightImageName:(NSString *)highlightImageName
+                                   clickBlock:(rightNavigationClickBlock)block {
+  self.rightNavBlock = block;
   UIButton *button = [self rightBtn];
   [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
   [button setImage:[UIImage imageNamed:highlightImageName] forState:UIControlStateHighlighted];
   UIBarButtonItem *rightBtnItem = [[UIBarButtonItem alloc] initWithCustomView:button];
   [CommonUtil getCurrentVC].navigationItem.rightBarButtonItem = rightBtnItem;
-  
 }
 
--(void)setNavigationBarRightItemWithButtonTitle:(NSString *)title {
-  
+-(void)setNavigationBarRightItemWithButtonTitle:(NSString *)title clickBlock:(rightNavigationClickBlock)block {
+  self.rightNavBlock = block;
   UIButton *button = [self rightBtn];
   [button setTitle:title forState:UIControlStateNormal];
   UIBarButtonItem *rightBtnItem = [[UIBarButtonItem alloc] initWithCustomView:button];
   [CommonUtil getCurrentVC].navigationItem.rightBarButtonItem = rightBtnItem;
-  
 }
 
 - (UIButton *)rightBtn {

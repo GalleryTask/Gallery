@@ -25,7 +25,9 @@
   
   self.navigationItem.title = @"全部行业";
   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
-  [nav setNavigationBarRightItemWithImageName:@"news" highlightImageName:@"news"];
+  [nav setNavigationBarRightItemWithImageName:@"news" highlightImageName:@"news" clickBlock:^(id sender) {
+    
+  }];
   [self createInterfaceBuilder];
 }
 

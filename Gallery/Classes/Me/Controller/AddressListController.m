@@ -30,10 +30,9 @@
   [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
 -(void)settingNavigationRightButton{
-  BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
-  [nav setNavigationBarRightItemWithButtonTitle:@"增加新地址"];
   @weakify(self);
-  [nav showRightNavBtnWithClick:^(id sender) {
+  BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
+  [nav setNavigationBarRightItemWithButtonTitle:@"增加新地址" clickBlock:^(id sender) {
     @strongify(self);
     [self pushController];
   }];

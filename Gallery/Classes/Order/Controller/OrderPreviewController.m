@@ -44,7 +44,9 @@
   [self.tableView setTableHeaderView:headerView];
   
   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
-  [nav setNavigationBarRightItemWithButtonTitle:@"保存"];
+  [nav setNavigationBarRightItemWithButtonTitle:@"保存" clickBlock:^(id sender) {
+    
+  }];
 }
 
 

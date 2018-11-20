@@ -211,8 +211,6 @@
 
   SelectTableViewCell *cell = (SelectTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
   [cell setSelected:YES];
-  
-//  NSLog(@"%@",self.tableView.indexPathsForSelectedRows);
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -230,7 +228,7 @@
   if (!_overlayBtn) {
     _overlayBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_overlayBtn setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.4]];
-    [_overlayBtn setFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0)];
+    [_overlayBtn setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     [_overlayBtn setAlpha:0];
     [_overlayBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_overlayBtn];
@@ -253,7 +251,6 @@
     [_pickerView setBackgroundColor:[UIColor whiteColor]];
     [_pickerView setDelegate:self];
     [_pickerView setDataSource:self];
-//    [self.backView addSubview:_pickerView];
   }
   return _pickerView;
 }

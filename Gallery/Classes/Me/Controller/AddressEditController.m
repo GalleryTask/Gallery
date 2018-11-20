@@ -29,12 +29,12 @@
 
 -(void)settingNavigationRightButton {
   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
-  [nav setNavigationBarRightItemWithButtonTitle:@"保存"];
   @weakify(self);
-  [nav showRightNavBtnWithClick:^(id sender) {
+  [nav setNavigationBarRightItemWithButtonTitle:@"保存" clickBlock:^(id sender) {
     @strongify(self);
     [self saveButtonClick];
   }];
+
 }
 -(void)saveButtonClick{
   if ([self.editView.nameTextField.text isEqualToString:@""]) {
