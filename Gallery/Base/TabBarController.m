@@ -7,8 +7,7 @@
 //
 
 #import "TabBarController.h"
-#import "LoginViewController.h"
-#import "MeViewController.h"
+
 @interface TabBarController () <UITabBarControllerDelegate>
 
 @end
@@ -65,12 +64,23 @@
   }
 }
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-  if (viewController == tabBarController.viewControllers[4]) {
-    LoginViewController *vc = [[LoginViewController alloc] init];
-    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
-    [tabBarController presentViewController:nav animated:YES completion:nil];
+  if (viewController == tabBarController.viewControllers[2]) {
+    Class class = NSClassFromString(@"ServiceViewController");
+    if (class) {
+      UIViewController *controller = class.new;
+      BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:controller];
+      [self presentViewController:nav animated:YES completion:nil];
+    }
     return NO;
-  }else{
+  } else if (viewController == tabBarController.viewControllers[4]) {
+    Class class = NSClassFromString(@"LoginViewController");
+    if (class) {
+      UIViewController *controller = class.new;
+      BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:controller];
+      [self presentViewController:nav animated:YES completion:nil];
+    }
+    return NO;
+  } else {
     return YES;
   }
 }

@@ -66,7 +66,7 @@
     make.height.mas_equalTo(SCALE_SIZE*94+(SCALE_SIZE*44)*countRowThree);
   }];
   [self.view layoutIfNeeded];
-  [self.scrollView setContentSize:CGSizeMake(0, customThree.frame.origin.y+customThree.frame.size.height+SCALE_SIZE*60)];
+  [self.scrollView setContentSize:CGSizeMake(0, customThree.frame.origin.y+customThree.frame.size.height+SCALE_SIZE*60+SafeAreaBottomHeight)];
   
 
 }

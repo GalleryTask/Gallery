@@ -54,7 +54,7 @@
   PackagingImageView *uploadImgView = [[PackagingImageView alloc] initWithFrame:CGRectMake(0, customTwo.frame.origin.y+customTwo.frame.size.height, SCREEN_WIDTH, SCALE_SIZE*130) images:@[] titles:@[@"标签设计/内容"] isUploadImage:YES];
   [self.scrollView addSubview:uploadImgView];
   
-  [self.scrollView setContentSize:CGSizeMake(0, uploadImgView.frame.origin.y+uploadImgView.frame.size.height+SCALE_SIZE*60)];
+  [self.scrollView setContentSize:CGSizeMake(0, uploadImgView.frame.origin.y+uploadImgView.frame.size.height+SCALE_SIZE*60+SafeAreaBottomHeight)];
 }
 
 /*

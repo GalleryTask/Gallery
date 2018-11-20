@@ -50,7 +50,7 @@
     make.height.mas_equalTo(SCALE_SIZE*94+(SCALE_SIZE*44)*countRowTwo);
   }];
   [self.view layoutIfNeeded];
-  [self.scrollView setContentSize:CGSizeMake(0, customTwo.frame.origin.y+customTwo.frame.size.height+SCALE_SIZE*60)];
+  [self.scrollView setContentSize:CGSizeMake(0, customTwo.frame.origin.y+customTwo.frame.size.height+SCALE_SIZE*60+SafeAreaBottomHeight)];
 
 }
 

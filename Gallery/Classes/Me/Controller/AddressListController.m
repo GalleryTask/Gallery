@@ -20,11 +20,9 @@
   [super viewDidLoad];
   self.title = @"我的收获地址";
   [self createInterfaceBuilder];
-}
--(void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
   [self settingNavigationRightButton];
 }
+
 -(void)createInterfaceBuilder {
   [self.tableView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
   [self.tableView registerClass:[AddressCell class] forCellReuseIdentifier:@"AddressCell"];
@@ -34,7 +32,6 @@
 -(void)settingNavigationRightButton{
   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
   [nav setNavigationBarRightItemWithButtonTitle:@"增加新地址"];
-  [nav setNavigationBarRightItemWithImageName:@"" highlightImageName:@""];
   @weakify(self);
   [nav showRightNavBtnWithClick:^(id sender) {
     @strongify(self);

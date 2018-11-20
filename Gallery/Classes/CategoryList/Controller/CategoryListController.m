@@ -24,13 +24,7 @@
     [super viewDidLoad];
   
   self.navigationItem.title = @"全部行业";
-}
-
--(void)viewDidAppear:(BOOL)animated {
-  [super viewDidAppear:animated];
-  
   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
-  [nav setNavigationBarRightItemWithButtonTitle:@""];
   [nav setNavigationBarRightItemWithImageName:@"news" highlightImageName:@"news"];
   [self createInterfaceBuilder];
 }

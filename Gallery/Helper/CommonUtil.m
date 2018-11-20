@@ -256,7 +256,7 @@ static NSDateFormatter *cachedDateFormatter = nil;
  
  @return 当前controller
  */
-+(UIViewController *)getCurrentVC {
++ (UIViewController *)getCurrentVC {
   UIViewController *result = nil;
   UIWindow * window = [[UIApplication sharedApplication] keyWindow];
   //app默认windowLevel是UIWindowLevelNormal，如果不是，找到UIWindowLevelNormal的

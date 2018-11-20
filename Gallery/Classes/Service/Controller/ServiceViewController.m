@@ -41,9 +41,18 @@
   [headerView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
   [self.tableView setTableHeaderView:headerView];
   [self.tableView setTableFooterView:self.footerView];
+  
+  BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
+  [nav showLeftNavBtnWithClick:nil];
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  
+  
+//  [nav setNavigationBarRightItemWithImageName:@"news" highlightImageName:@"news"];
 
+}
 
 #pragma mark tableview delegate
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -90,7 +99,8 @@
   [super viewDidLayoutSubviews];
   
   [self.startBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.left.width.bottom.equalTo(self.view);
+    make.left.width.equalTo(self.view);
+    make.bottom.equalTo(self.view).offset(-SafeAreaBottomHeight);
     make.height.mas_equalTo(SCALE_SIZE*50);
   }];
 }

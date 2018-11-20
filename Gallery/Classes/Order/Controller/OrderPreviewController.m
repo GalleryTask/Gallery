@@ -42,15 +42,12 @@
   UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*10)];
   [headerView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
   [self.tableView setTableHeaderView:headerView];
-}
-
--(void)viewDidAppear:(BOOL)animated {
-  [super viewDidAppear:animated];
   
   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
   [nav setNavigationBarRightItemWithButtonTitle:@"保存"];
-  [nav setNavigationBarRightItemWithImageName:@"" highlightImageName:@""];
 }
+
+
 
 
 #pragma mark tableview delegate

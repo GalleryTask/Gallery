@@ -19,9 +19,7 @@
   self.title = @"登录";
   
   BaseNavigationController *navigation = (BaseNavigationController *)self.navigationController;
-  [navigation showLeftNavBtnWithClick:^(id sender) {
-    [self dismissViewControllerAnimated:YES completion:nil];
-  }];
+  [navigation showLeftNavBtnWithClick:nil];
   [self.view addSubview:self.loginView];
   
 }

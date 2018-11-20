@@ -12,18 +12,15 @@
 
 @property (nonatomic,   copy) leftNavigationClickBlock  leftNavBlock;        // 左边标题栏block
 @property (nonatomic,   copy) rightNavigationClickBlock rightNavBlock;       // 右边标题栏block
-@property (nonatomic, strong) UIViewController  *myController;
 @property (nonatomic, strong) UIBarButtonItem   *leftBtnItem;
-//@property (nonatomic, strong) UIBarButtonItem   *rightBtnItem;
-
 
 @end
 
 @implementation BaseNavigationController
 
 
-+ (void)load {
-  [super load];
+//APP生命周期中 只会执行一次
++ (void)initialize {
   // appearance方法返回一个导航栏的外观对象
   UINavigationBar *navigationBar = [UINavigationBar appearance];
   
@@ -65,7 +62,10 @@
 #pragma mark - UIGestureRecognizerDelegate
 // 这个方法是在手势将要激活前调用：返回YES允许右滑手势的激活，返回NO不允许右滑手势的激活
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-  
+  // 根视图禁用右滑
+  if (self.childViewControllers.count == 1) {
+    return NO;
+  }
   if (gestureRecognizer == self.interactivePopGestureRecognizer) {
     // 屏蔽调用rootViewController的滑动返回手势，避免右滑返回手势引起死机问题
     if (self.viewControllers.count < 2 ||
@@ -76,25 +76,31 @@
   return YES;
 }
 
+// push时隐藏tabbar
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
   if (self.viewControllers.count > 0) {
     viewController.hidesBottomBarWhenPushed = YES;
     viewController.navigationItem.leftBarButtonItem = self.leftBtnItem;
-    self.myController = viewController;
   }
   [super pushViewController:viewController animated:animated];
 }
 
 
+#pragma mark 导航控制器的子控制器被pop[移除]的时候会调用
+-(UIViewController *)popViewControllerAnimated:(BOOL)animated {
+
+  return [super popViewControllerAnimated:animated];
+}
+
 #pragma mark - navigationBar button click
 - (void)showLeftNavBtnWithClick:(leftNavigationClickBlock)leftClickBlock {
 
-  self.myController.navigationItem.leftBarButtonItem = self.leftBtnItem;
+  [CommonUtil getCurrentVC].navigationItem.leftBarButtonItem = self.leftBtnItem;
   self.leftNavBlock = leftClickBlock;
 }
 
 - (void)showRightNavBtnWithClick:(rightNavigationClickBlock)rightClickBlock {
-  [self rightNavigationBtn];
+//  [self rightNavigationBtn];
   self.rightNavBlock = rightClickBlock;
 }
 
@@ -104,7 +110,13 @@
     self.leftNavBlock(backBtn);
     self.leftNavBlock = nil;
   } else {
-    [self popViewControllerAnimated:YES];
+    
+    if (self.viewControllers.count > 1 && self.topViewController == [CommonUtil getCurrentVC]) {
+      [self popViewControllerAnimated:YES];
+    } else {
+      //present方式
+      [[CommonUtil getCurrentVC] dismissViewControllerAnimated:YES completion:nil];
+    }
   }
 }
 
@@ -118,14 +130,35 @@
 -(void)setNavigationBarRightItemWithImageName:(NSString *)imageName
                            highlightImageName:(NSString *)highlightImageName {
   
- 
-  [self.rightNavigationBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-  [self.rightNavigationBtn setImage:[UIImage imageNamed:highlightImageName] forState:UIControlStateHighlighted];
+  
+  UIButton *button = [self rightBtn];
+  [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+  [button setImage:[UIImage imageNamed:highlightImageName] forState:UIControlStateHighlighted];
+  UIBarButtonItem *rightBtnItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+  [CommonUtil getCurrentVC].navigationItem.rightBarButtonItem = rightBtnItem;
+  
 }
 
 -(void)setNavigationBarRightItemWithButtonTitle:(NSString *)title {
   
-  [self.rightNavigationBtn setTitle:title forState:UIControlStateNormal];
+  UIButton *button = [self rightBtn];
+  [button setTitle:title forState:UIControlStateNormal];
+  UIBarButtonItem *rightBtnItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+  [CommonUtil getCurrentVC].navigationItem.rightBarButtonItem = rightBtnItem;
+  
+}
+
+- (UIButton *)rightBtn {
+  UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+  [button setFrame:CGRectMake(0, 0, BASE_HEIGHT*2, BASE_HEIGHT)];
+  [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
+  [button addTarget:self
+                          action:@selector(rightNavigationBtnClick:)
+                forControlEvents:UIControlEventTouchUpInside];
+  [button setTitleColor:BASECOLOR_BLACK_333 forState:UIControlStateNormal];
+  [[button titleLabel] setFont:FONTSIZE(14)];
+  
+  return button;
 }
 
 #pragma mark - getters
@@ -145,31 +178,6 @@
   }
   
   return _leftBtnItem;
-}
-
--(UIButton *)rightNavigationBtn {
-  if (!_rightNavigationBtn) {
-    _rightNavigationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_rightNavigationBtn setFrame:CGRectMake(0, 0, BASE_HEIGHT*2, BASE_HEIGHT)];
-    [_rightNavigationBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
-    [_rightNavigationBtn addTarget:self
-                            action:@selector(rightNavigationBtnClick:)
-                  forControlEvents:UIControlEventTouchUpInside];
-    [_rightNavigationBtn setTitleColor:BASECOLOR_BLACK_333 forState:UIControlStateNormal];
-    [[_rightNavigationBtn titleLabel] setFont:FONTSIZE(14)];
-  }
-  
-  UIBarButtonItem *rightBtnItem = [[UIBarButtonItem alloc] initWithCustomView:_rightNavigationBtn];
-  self.myController.navigationItem.rightBarButtonItem = rightBtnItem;
-
-  return _rightNavigationBtn;
-}
-
--(UIViewController *)myController {
-  if (!_myController) {
-    _myController = [CommonUtil getCurrentVC];
-  }
-  return _myController;
 }
 
 - (void)didReceiveMemoryWarning {

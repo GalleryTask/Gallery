@@ -18,18 +18,18 @@
   [super viewDidLoad];
   self.title = @"添加收获地址";
   [self createInterfaceBuilder];
-}
--(void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
   [self settingNavigationRightButton];
 }
+
+
+
 -(void)createInterfaceBuilder {
   [self.view addSubview:self.editView];
 }
+
 -(void)settingNavigationRightButton {
   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
   [nav setNavigationBarRightItemWithButtonTitle:@"保存"];
-  [nav setNavigationBarRightItemWithImageName:@"" highlightImageName:@""];
   @weakify(self);
   [nav showRightNavBtnWithClick:^(id sender) {
     @strongify(self);

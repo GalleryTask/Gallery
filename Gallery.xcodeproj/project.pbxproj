@@ -557,7 +557,7 @@
 				76605E4C2101CBAE00115FA6 /* Request */,
 				76605E422101CB4400115FA6 /* Category */,
 				76605E3E2101CACA00115FA6 /* Base */,
-				76605E3A2101C5EE00115FA6 /* Config */,
+				76605E3A2101C5EE00115FA6 /* Define */,
 				76605E392101C0B500115FA6 /* Classes */,
 				76605E382101B70800115FA6 /* AppDelegate */,
 				760E94672151ED6200592929 /* Supporting Files */,
@@ -605,14 +605,14 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		76605E3A2101C5EE00115FA6 /* Config */ = {
+		76605E3A2101C5EE00115FA6 /* Define */ = {
 			isa = PBXGroup;
 			children = (
 				76605E3B2101C61200115FA6 /* PrefixHeader.pch */,
 				76605E3C2101C77D00115FA6 /* Config.h */,
 				76605E3D2101C79400115FA6 /* WeakStrongMacro.h */,
 			);
-			path = Config;
+			path = Define;
 			sourceTree = "<group>";
 		};
 		76605E3E2101CACA00115FA6 /* Base */ = {
@@ -1138,7 +1138,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 339DUDKSZG;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Gallery/Config/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = Gallery/Define/PrefixHeader.pch;
 				INFOPLIST_FILE = "Gallery/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1160,7 +1160,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 339DUDKSZG;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Gallery/Config/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = Gallery/Define/PrefixHeader.pch;
 				INFOPLIST_FILE = "Gallery/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

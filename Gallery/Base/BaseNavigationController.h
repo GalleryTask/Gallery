@@ -10,7 +10,7 @@
 
 @interface BaseNavigationController : UINavigationController
 
-@property (nonatomic, strong) UIButton          *rightNavigationBtn;
+//@property (nonatomic, strong) UIButton          *rightNavigationBtn;
 /**
  显示navigation left button
  
