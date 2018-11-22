@@ -47,5 +47,7 @@
 	<string>需要您的同意才能读取媒体资料库</string>
 	<key>UIRequiresFullScreen</key>
 	<string>YES</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

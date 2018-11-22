@@ -23,11 +23,7 @@
 #pragma mark - setters
 -(void)setAddress:(NSDictionary *)address {
   if (address) {
-//    [self.userLabel setText:[NSString stringWithFormat:@"%@  %@",address.contact,address.mobile]];
-//    [self.addressLabel setText:[NSString stringWithFormat:@"%@ %@",address.areaMergerName,address.address]];
-//
-//    CGSize size = [CommonUtil adaptionWithLabel:self.addressLabel LineSpace:SCALE_SIZE*4 size:CGSizeMake(SCREEN_WIDTH-SCALE_SIZE*48, 0)];
-//    [self.addressLabel setFrame:CGRectMake(SCALE_SIZE*15, SCALE_SIZE*32, SCREEN_WIDTH-SCALE_SIZE*48, size.height)];
+
   }
 }
 

@@ -63,6 +63,7 @@
     [self addChildViewController:nav];
   }
 }
+
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
   if (viewController == tabBarController.viewControllers[2]) {
     Class class = NSClassFromString(@"ServiceViewController");
