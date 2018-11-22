@@ -145,8 +145,8 @@
   [button setFrame:CGRectMake(0, 0, BASE_HEIGHT*2, BASE_HEIGHT)];
   [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
   [button addTarget:self
-                          action:@selector(rightNavigationBtnClick:)
-                forControlEvents:UIControlEventTouchUpInside];
+             action:@selector(rightNavigationBtnClick:)
+   forControlEvents:UIControlEventTouchUpInside];
   [button setTitleColor:BASECOLOR_BLACK_333 forState:UIControlStateNormal];
   [[button titleLabel] setFont:FONTSIZE(14)];
   

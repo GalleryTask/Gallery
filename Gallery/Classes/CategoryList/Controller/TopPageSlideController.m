@@ -14,15 +14,18 @@
 #import "PackagingTagController.h"
 #import "PackagingPalletController.h"
 #import "PackagingDesignerController.h"
+#import "MyOrderListController.h"
 
 @interface TopPageSlideController ()<YNPageViewControllerDelegate, YNPageViewControllerDataSource>
 
-@property (nonatomic, strong) NSArray  *titleArray;  // 商品列表数据源
-@property (nonatomic, strong) NSArray  *packagingCustomArray;  // 自定义包装数据源
+@property (nonatomic, copy)   NSArray  *titleArray;  // 商品列表数据源
+@property (nonatomic, copy)   NSArray  *packagingCustomArray;  // 自定义包装数据源
+@property (nonatomic, copy)   NSArray  *orderList;
 @property (nonatomic, strong) UIBarButtonItem  *rightBtnItem;
 @property (nonatomic, strong) YNPageConfigration  *configration;
 @property (nonatomic, strong) SceneView  *sceneView;
 @property (nonatomic, strong) UIView *packagingHeaderView;
+
 
 @end
 
@@ -69,6 +72,30 @@
   return vc;
 }
 
+// 初始化我的订单页面
+- (instancetype)initMyOrderListVC {
+  
+  self.configration.pageStyle = YNPageStyleTop;
+  
+  self.configration.lineWidthEqualFontWidth = YES;
+  
+  self.configration.lineLeftAndRightAddWidth = 5;
+  self.configration.itemLeftAndRightMargin = SCALE_SIZE*10;
+  self.configration.itemMargin = SCALE_SIZE*38;
+  
+  self.configration.scrollMenu = NO;
+//  self.configration.aligmentModeCenter = YES;
+  
+  TopPageSlideController *vc = [TopPageSlideController pageViewControllerWithControllers:[self getOrderListControllers]
+                                                                                  titles:self.orderList
+                                                                                  config:self.configration];
+  vc.dataSource = vc;
+  vc.delegate = vc;
+  
+  
+  return vc;
+}
+
 
 
 #pragma mark - YNPageViewControllerDataSource
@@ -76,9 +103,12 @@
   if ([pageViewController.controllersM[index] isKindOfClass:[CategoryDetailController class]]) {
     UIViewController *vc = pageViewController.controllersM[index];
     return [(CategoryDetailController *)vc listCollection];
-  } else {
+  } else if ([pageViewController.controllersM[index] isKindOfClass:[PackagingBaseController class]]) {
     PackagingBaseController *vc = pageViewController.controllersM[index];
     return [vc scrollView];
+  } else {
+    MyOrderListController *vc = pageViewController.controllersM[index];
+    return [vc tableView];
   }
 }
 
@@ -86,29 +116,7 @@
 - (void)pageViewController:(YNPageViewController *)pageViewController
          didScrollMenuItem:(UIButton *)itemButton
                      index:(NSInteger)index {
-  
-//  switch (index) {
-//    case 0:
-//      [self.sceneView addNode];
-//      break;
-//    case 1:
-//      [self.sceneView removeNode];
-//      break;
-//    case 2:
-//      [self.sceneView addNode];
-//      break;
-//    case 3:
-//      [self.sceneView addNode];
-//      break;
-//    case 4:
-//      [self.sceneView addNode];
-//      break;
-//
-//    default:
-//      break;
-//  }
-//  [[pageViewController.headerView.subviews objectAtIndex:0] removeFromSuperview];
-//  [pageViewController.headerView addSubview:self.sceneView];
+
 }
 
 - (void)rightNavigationBtnClick:(id)sender {
@@ -216,5 +224,22 @@
   return array;
 }
 
+-(NSArray *)orderList {
+  if (!_orderList) {
+    
+    _orderList = @[@"待付款",@"处理中",@"待收货",@"已完成",@"售后"];
+  }
+  return _orderList;
+}
 
+- (NSArray *)getOrderListControllers {
+  @autoreleasepool {
+    NSMutableArray *array = [NSMutableArray array];
+    for (int i = 0; i < self.orderList.count; i++) {
+      MyOrderListController *vc = [[MyOrderListController alloc] init];
+      [array addObject:vc];
+    }
+    return array;
+  }
+}
 @end

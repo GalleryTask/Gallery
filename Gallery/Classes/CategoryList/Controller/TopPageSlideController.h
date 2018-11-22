@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 // 初始化包装定制
 - (instancetype)initPackagingCustomVC;
 
+// 初始化我的订单页面
+- (instancetype)initMyOrderListVC;
 @end
 
 NS_ASSUME_NONNULL_END

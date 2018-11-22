@@ -95,6 +95,8 @@
   [self updateView];
   
   [self.doneBtn setHidden:YES];
+  [self.cancelBtn setTitle:@"" forState:UIControlStateNormal];
+  [self.cancelBtn setImage:[UIImage imageNamed:@"closed"] forState:UIControlStateNormal];
   [self.cancelBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
     make.right.top.height.equalTo(self.topView);
     make.width.mas_equalTo(SCALE_SIZE*50);

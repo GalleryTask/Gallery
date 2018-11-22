@@ -61,7 +61,7 @@
 -(UIImageView *)selectImageView{
     if (!_selectImageView) {
         _selectImageView = [[UIImageView alloc] init];
-        _selectImageView.image = [UIImage imageNamed:@"btn-weixuanzhong"];
+        _selectImageView.image = [UIImage imageNamed:@"btn_default"];
         [self.contentView addSubview:_selectImageView];
     }
     return _selectImageView;
@@ -97,8 +97,8 @@
   [self.selectImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
     make.right.equalTo(self).offset(-SCALE_SIZE*20);
     make.centerY.equalTo(self);
-    make.height.mas_equalTo(22);
-    make.width.mas_equalTo(22);
+    make.height.mas_equalTo(18);
+    make.width.mas_equalTo(18);
   }];
 }
 
@@ -108,9 +108,9 @@
   self.lineView.backgroundColor = lineColor;
   
   if (selected) {
-    self.selectImageView.image = [UIImage imageNamed:@"btn-xuanzhong"];
+    self.selectImageView.image = [UIImage imageNamed:@"btn_selected"];
   } else{
-    self.selectImageView.image = [UIImage imageNamed:@"btn-weixuanzhong"];
+    self.selectImageView.image = [UIImage imageNamed:@"btn_default"];
   }
 }
 

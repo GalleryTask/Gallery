@@ -11,6 +11,10 @@
 		7602112B21917D5F00C6F622 /* CategoryListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7602112A21917D5F00C6F622 /* CategoryListController.m */; };
 		7602112E21917DEB00C6F622 /* ProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7602112D21917DEB00C6F622 /* ProductsViewController.m */; };
 		760211312191856800C6F622 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 760211302191856800C6F622 /* CategoryCell.m */; };
+		7604300621A66CD100884733 /* OrderHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7604300521A66CD000884733 /* OrderHeaderCell.m */; };
+		7604300921A6902800884733 /* OrderTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7604300821A6902800884733 /* OrderTextCell.m */; };
+		7604300C21A6A9EB00884733 /* OrderFooterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7604300B21A6A9EB00884733 /* OrderFooterCell.m */; };
+		7604300F21A6AA2C00884733 /* MyOrderListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7604300E21A6AA2C00884733 /* MyOrderListController.m */; };
 		7605652521A2568E0096F322 /* SelectedAddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7605652421A2568E0096F322 /* SelectedAddressView.m */; };
 		7605652B21A2629A0096F322 /* SelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7605652721A262990096F322 /* SelectTableViewCell.m */; };
 		7605652C21A2629A0096F322 /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7605652A21A2629A0096F322 /* PickerView.m */; };
@@ -111,6 +115,14 @@
 		7602112D21917DEB00C6F622 /* ProductsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductsViewController.m; sourceTree = "<group>"; };
 		7602112F2191856800C6F622 /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
 		760211302191856800C6F622 /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
+		7604300421A66CD000884733 /* OrderHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderHeaderCell.h; sourceTree = "<group>"; };
+		7604300521A66CD000884733 /* OrderHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderHeaderCell.m; sourceTree = "<group>"; };
+		7604300721A6902800884733 /* OrderTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderTextCell.h; sourceTree = "<group>"; };
+		7604300821A6902800884733 /* OrderTextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderTextCell.m; sourceTree = "<group>"; };
+		7604300A21A6A9EB00884733 /* OrderFooterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderFooterCell.h; sourceTree = "<group>"; };
+		7604300B21A6A9EB00884733 /* OrderFooterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderFooterCell.m; sourceTree = "<group>"; };
+		7604300D21A6AA2C00884733 /* MyOrderListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyOrderListController.h; sourceTree = "<group>"; };
+		7604300E21A6AA2C00884733 /* MyOrderListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyOrderListController.m; sourceTree = "<group>"; };
 		7605652321A2568E0096F322 /* SelectedAddressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectedAddressView.h; sourceTree = "<group>"; };
 		7605652421A2568E0096F322 /* SelectedAddressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectedAddressView.m; sourceTree = "<group>"; };
 		7605652721A262990096F322 /* SelectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectTableViewCell.m; sourceTree = "<group>"; };
@@ -348,6 +360,8 @@
 				760F2101219E9E2200905234 /* OrderPreviewController.m */,
 				76B901F6219ED7EF0019C481 /* OrderSubmitController.h */,
 				76B901F7219ED7EF0019C481 /* OrderSubmitController.m */,
+				7604300D21A6AA2C00884733 /* MyOrderListController.h */,
+				7604300E21A6AA2C00884733 /* MyOrderListController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -365,6 +379,12 @@
 				760F2123219EC4FA00905234 /* SelectCountCell.m */,
 				7605652321A2568E0096F322 /* SelectedAddressView.h */,
 				7605652421A2568E0096F322 /* SelectedAddressView.m */,
+				7604300421A66CD000884733 /* OrderHeaderCell.h */,
+				7604300521A66CD000884733 /* OrderHeaderCell.m */,
+				7604300721A6902800884733 /* OrderTextCell.h */,
+				7604300821A6902800884733 /* OrderTextCell.m */,
+				7604300A21A6A9EB00884733 /* OrderFooterCell.h */,
+				7604300B21A6A9EB00884733 /* OrderFooterCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -946,6 +966,7 @@
 				7619A5FC219AB431005ADEEB /* PackagingCustomView.m in Sources */,
 				76605E602101CCB100115FA6 /* CommonUtil.m in Sources */,
 				760F210C219EA46500905234 /* AddressEditView.m in Sources */,
+				7604300C21A6A9EB00884733 /* OrderFooterCell.m in Sources */,
 				7655CC8D2150F89200D206C2 /* NetRequestClass.m in Sources */,
 				760F2124219EC4FA00905234 /* SelectCountCell.m in Sources */,
 				7655CC792150F27E00D206C2 /* TabBarController.m in Sources */,
@@ -955,13 +976,16 @@
 				76605E162101B6EF00115FA6 /* main.m in Sources */,
 				7619A5F2219AA4F9005ADEEB /* PackagingPalletController.m in Sources */,
 				7605652521A2568E0096F322 /* SelectedAddressView.m in Sources */,
+				7604300621A66CD100884733 /* OrderHeaderCell.m in Sources */,
 				760CE63321992A2600CF2306 /* PageRoundScrollView.m in Sources */,
 				76605E632101CCBA00115FA6 /* UploadImageObject.m in Sources */,
 				761278EB21955545009A5774 /* HomeShowView.m in Sources */,
+				7604300F21A6AA2C00884733 /* MyOrderListController.m in Sources */,
 				76605E082101B6ED00115FA6 /* AppDelegate.m in Sources */,
 				761AF2DE215E0B2700F596D3 /* YJLocationPicker.m in Sources */,
 				7605652B21A2629A0096F322 /* SelectTableViewCell.m in Sources */,
 				76605E4A2101CB4400115FA6 /* UITableView+EmptyData.m in Sources */,
+				7604300921A6902800884733 /* OrderTextCell.m in Sources */,
 				760F2127219ECC2400905234 /* BottomSelectBar.m in Sources */,
 				761278EE219584A9009A5774 /* SceneViewController.m in Sources */,
 				7655CC7A2150F27E00D206C2 /* BaseNavigationController.m in Sources */,
