@@ -9,7 +9,6 @@
 #import "OrderViewController.h"
 #import "OrderHeaderCell.h"
 #import "OrderTextCell.h"
-#import "TopPageSlideController.h"
 
 @interface OrderViewController ()
 
@@ -98,9 +97,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
-  TopPageSlideController *vc = [[TopPageSlideController alloc] initMyOrderListVC];
-  [vc setTitle:@"我的订单"];
-  [self.navigationController pushViewController:vc animated:YES];
+ 
 }
 
 - (void)rightNavigationBtnClick:(id)sender {

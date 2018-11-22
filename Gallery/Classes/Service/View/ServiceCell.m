@@ -59,7 +59,7 @@
   if (!_titleLabel) {
     _titleLabel = [[UILabel alloc] init];
     [_titleLabel setTextColor:BASECOLOR_BLACK_333];
-    [_titleLabel setFont:FONTSIZE(16)];
+    [_titleLabel setFont:FONTSIZE(15)];
     [self.contentView addSubview:_titleLabel];
   }
   return _titleLabel;
@@ -78,7 +78,7 @@
   if (!_detailLabel) {
     _detailLabel = [[UILabel alloc] init];
     [_detailLabel setTextColor:BASECOLOR_BLACK_333];
-    [_detailLabel setFont: FONTSIZE(16)];
+    [_detailLabel setFont: FONTSIZE(15)];
     [self.contentView addSubview:_detailLabel];
   }
   return _detailLabel;

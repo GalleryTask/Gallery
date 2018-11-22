@@ -65,7 +65,7 @@
     but.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     [but setTitleEdgeInsets:UIEdgeInsetsMake(SCALE_SIZE*80-SCALE_SIZE*28, -but.imageView.frame.size.width, 0, 0)];
     [but setImageEdgeInsets:UIEdgeInsetsMake(0,0, 0, -but.titleLabel.bounds.size.width)];
-    [but setTag:1000+i+1];
+    [but setTag:1000+i];
     [self addSubview:but];
   }
 }

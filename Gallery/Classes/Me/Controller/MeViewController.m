@@ -10,6 +10,8 @@
 #import "MeOrderTableViewCell.h"
 #import "MeTableViewCell.h"
 #import "MeView.h"
+#import "TopPageSlideController.h"
+
 @interface MeViewController ()<MeOrderTableViewCellDelegate,MeTableViewCellDelegate>
 @property(nonatomic, strong)MeView *meView;
 @end
@@ -23,8 +25,14 @@
 }
 -(void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
-  [nav setNavigationBarHidden:YES animated:NO];
+//   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
+  [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+  [super viewWillDisappear:animated];
+  
+  [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 -(void)createInterfaceBuilder {
   [self.view addSubview:self.meView];
@@ -46,7 +54,7 @@
 }
 
 #pragma mark - tableview delegate dataSource
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -80,6 +88,10 @@
 
 -(void)orderButtonIndex:(NSInteger)index {
   //0是全部订单，1是待付款，依次类推
+  TopPageSlideController *vc = [[TopPageSlideController alloc] initMyOrderListVC];
+  vc.pageIndex = index;
+  [vc setTitle:@"我的订单"];
+  [self.navigationController pushViewController:vc animated:YES];
 }
 #pragma mark =====物流点击事件
 -(void)meLogisticsClick {
