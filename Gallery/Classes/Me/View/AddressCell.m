@@ -38,7 +38,6 @@
   if (_delegate && [_delegate respondsToSelector:@selector(addressCelleditBtnClick)]) {
     [_delegate addressCelleditBtnClick];
   }
-  
 }
 -(void)layoutSubviews {
   [super layoutSubviews];

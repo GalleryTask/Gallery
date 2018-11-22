@@ -57,6 +57,7 @@
 #define BASECOLOR_BLACK_666         [UIColor hexStringToColor:@"#666666"]
 #define BASECOLOR_BLACK_333         [UIColor hexStringToColor:@"#333333"]
 #define BASECOLOR_BLACK_030         [UIColor hexStringToColor:@"#030303"]
+#define BASECOLOR_BLACK_050         [UIColor hexStringToColor:@"#050505"]
 #define BASECOLOR_BLACK_000         [UIColor hexStringToColor:@"#000000"]
 #define BASECOLOR_GRAY_3F           [UIColor hexStringToColor:@"#3F3F3F"]
 #define BASECOLOR_GRAY_F1           [UIColor hexStringToColor:@"#F1F1F1"]

@@ -72,15 +72,17 @@
       [self presentViewController:nav animated:YES completion:nil];
     }
     return NO;
-  } else if (viewController == tabBarController.viewControllers[4]) {
-    Class class = NSClassFromString(@"LoginViewController");
-    if (class) {
-      UIViewController *controller = class.new;
-      BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:controller];
-      [self presentViewController:nav animated:YES completion:nil];
-    }
-    return NO;
-  } else {
+  }
+//  else if (viewController == tabBarController.viewControllers[4]) {
+//    Class class = NSClassFromString(@"LoginViewController");
+//    if (class) {
+//      UIViewController *controller = class.new;
+//      BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:controller];
+//      [self presentViewController:nav animated:YES completion:nil];
+//    }
+//    return NO;
+//  }
+  else {
     return YES;
   }
 }
