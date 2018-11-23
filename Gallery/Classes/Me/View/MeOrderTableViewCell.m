@@ -7,6 +7,7 @@
 //
 
 #import "MeOrderTableViewCell.h"
+#import "ImageTitleButton.h"
 @interface MeOrderTableViewCell ()
 
 @property (strong, nonatomic) UILabel             *titleLabel;
@@ -59,20 +60,22 @@
                      @{@"name":@"已完成",@"img":@"me_completed"},
                      @{@"name":@"售后",@"img":@"me_after_sale"}];
   for (int i = 0; i < array.count; i++) {
-    UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
+//    ImageTitleButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
+    ImageTitleButton *but = [ImageTitleButton buttonWithType:UIButtonTypeCustom];
     but.frame = CGRectMake((SCREEN_WIDTH - SCALE_SIZE*20)/5 * i, SCALE_SIZE*31, (SCREEN_WIDTH - SCALE_SIZE*20)/5, SCALE_SIZE*80);
     [but setTitle:array[i][@"name"] forState:UIControlStateNormal];
     [but setTitleColor:BASECOLOR_BLACK_333 forState:UIControlStateNormal];
     [[but titleLabel] setFont:FONTSIZE(12)];
     [but addTarget:self action:@selector(orderButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [but setImage:[UIImage imageNamed:array[i][@"img"]] forState:(UIControlStateNormal)];
-    but.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-    [but setTitleEdgeInsets:UIEdgeInsetsMake(SCALE_SIZE*80-SCALE_SIZE*28, -but.imageView.frame.size.width, 0, 0)];
-    [but setImageEdgeInsets:UIEdgeInsetsMake(0,0, 0, -but.titleLabel.bounds.size.width)];
+//    but.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+//    [but setTitleEdgeInsets:UIEdgeInsetsMake(but.imageView.frame.size.height+15, -but.imageView.frame.size.width, 0, 0)];
+//    [but setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -but.titleLabel.bounds.size.width/2)];
     [but setTag:1000+i];
     [self addSubview:but];
   }
 }
+
 
 -(void)orderButtonClick:(UIButton *)sender {
   if (_delegate && [_delegate respondsToSelector:@selector(orderButtonIndex:)]) {

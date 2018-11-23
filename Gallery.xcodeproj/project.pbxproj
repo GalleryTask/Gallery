@@ -71,6 +71,7 @@
 		76605E5C2101CC8300115FA6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E5B2101CC8300115FA6 /* LoginViewController.m */; };
 		76605E602101CCB100115FA6 /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E5F2101CCB000115FA6 /* CommonUtil.m */; };
 		76605E632101CCBA00115FA6 /* UploadImageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 76605E612101CCBA00115FA6 /* UploadImageObject.m */; };
+		76A961DF21A7EBA6000FB540 /* ImageTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A961DE21A7EBA6000FB540 /* ImageTitleButton.m */; };
 		76B612C3219ADB2D003657B0 /* PackagingLiningController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B612C2219ADB2D003657B0 /* PackagingLiningController.m */; };
 		76B901F8219ED7EF0019C481 /* OrderSubmitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B901F7219ED7EF0019C481 /* OrderSubmitController.m */; };
 		76B901FB219EDC1E0019C481 /* ServiceDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B901FA219EDC1E0019C481 /* ServiceDetailCell.m */; };
@@ -236,6 +237,8 @@
 		76605E5F2101CCB000115FA6 /* CommonUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtil.m; sourceTree = "<group>"; };
 		76605E612101CCBA00115FA6 /* UploadImageObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImageObject.m; sourceTree = "<group>"; };
 		76605E622101CCBA00115FA6 /* UploadImageObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImageObject.h; sourceTree = "<group>"; };
+		76A961DD21A7EBA6000FB540 /* ImageTitleButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageTitleButton.h; sourceTree = "<group>"; };
+		76A961DE21A7EBA6000FB540 /* ImageTitleButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageTitleButton.m; sourceTree = "<group>"; };
 		76B612C1219ADB2D003657B0 /* PackagingLiningController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackagingLiningController.h; sourceTree = "<group>"; };
 		76B612C2219ADB2D003657B0 /* PackagingLiningController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackagingLiningController.m; sourceTree = "<group>"; };
 		76B901F6219ED7EF0019C481 /* OrderSubmitController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderSubmitController.h; sourceTree = "<group>"; };
@@ -740,6 +743,8 @@
 				76605E612101CCBA00115FA6 /* UploadImageObject.m */,
 				760F2125219ECC2400905234 /* BottomSelectBar.h */,
 				760F2126219ECC2400905234 /* BottomSelectBar.m */,
+				76A961DD21A7EBA6000FB540 /* ImageTitleButton.h */,
+				76A961DE21A7EBA6000FB540 /* ImageTitleButton.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1019,6 +1024,7 @@
 				8441385021A6B24200EA97FC /* MeView.m in Sources */,
 				84EC1BCD21952B8E00527577 /* ProductDetailController.m in Sources */,
 				760F210B219EA46500905234 /* AddressCell.m in Sources */,
+				76A961DF21A7EBA6000FB540 /* ImageTitleButton.m in Sources */,
 				760211312191856800C6F622 /* CategoryCell.m in Sources */,
 				760F211B219EB4E600905234 /* PreviewCell.m in Sources */,
 				7611C4C021942FF900D6428E /* HomeViewController.m in Sources */,
