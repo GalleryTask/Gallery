@@ -10,7 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol  SettleViewDelegate  <NSObject>
+
+- (void)settleViewAllSelectedBtnClickWithSelected:(BOOL)selected;
+
+@end
+
 @interface SettleView : UIView
+
+@property (nonatomic, weak) id <SettleViewDelegate> delegate;
+
+- (void)settleViewWithSettleCount:(int)count;
 
 @end
 

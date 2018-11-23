@@ -53,4 +53,23 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@protocol PlaceOrderArr <NSObject>
+@end
+@interface PlaceOrderArr : JSONModel
+
+@property (nonatomic, copy) NSString  *title;
+@property (nonatomic, copy) NSString  *price;
+@property (nonatomic, copy) NSString  *count;
+
+@end
+
+@interface PlaceOrderResult : JSONModel
+
+@property (nonatomic, strong) NSArray <Optional,PlaceOrderArr>  *list;
+@property (nonatomic, copy)   NSString  *title;
+@property (nonatomic, copy)   NSString  *tag;   // 0没有标签 1打样订单 2 生产订单
+@property (nonatomic, assign) BOOL  isSelected;
+
+@end
+
 NS_ASSUME_NONNULL_END

@@ -52,7 +52,7 @@
   return self;
 }
 
--(id)initWithTitle:(NSString *)title tag:(nonnull NSString *)tagTitle isEdit:(BOOL)isEdit {
+-(id)initWithData:(PlaceOrderResult *)data isEdit:(BOOL)isEdit {
 
   UIRectCorner corner = UIRectCornerTopLeft | UIRectCornerTopRight;
   UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
@@ -63,26 +63,62 @@
   maskLayer.path = maskPath.CGPath;
   self.layer.mask = maskLayer;
   
-  [self.titleLabel setText:title];
+  [self.titleLabel setText:data.title];
   
   self.isEdit = isEdit;
   
   if (!self.isEdit) {
     [self.selectedBtn setHidden:YES];
   }
-  
-  if (![tagTitle isEqualToString:@""]) {
-    [self.tagLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-      make.width.mas_equalTo(SCALE_SIZE*49);
-    }];
-    [self.tagLabel setText:tagTitle];
-  } else {
-    [self.tagLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-      make.width.mas_equalTo(0);
-    }];
+  switch ([data.tag intValue]) {
+    case 0:
+    {
+      [self.tagLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(0);
+      }];
+    }
+      break;
+    case 1:
+    {
+      [self.tagLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(SCALE_SIZE*49);
+      }];
+      [self.tagLabel setText:@"打样订单"];
+      [[self.tagLabel layer] setBorderColor:[UIColor hexStringToColor:@"#15BC83"].CGColor];
+      [self.tagLabel setTextColor:[UIColor hexStringToColor:@"#15BC83"]];
+    }
+      break;
+    case 2:
+    {
+      [self.tagLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(SCALE_SIZE*49);
+      }];
+      [self.tagLabel setText:@"生产订单"];
+      [[self.tagLabel layer] setBorderColor:[UIColor hexStringToColor:@"#3296FA"].CGColor];
+      [self.tagLabel setTextColor:[UIColor hexStringToColor:@"#3296FA"]];
+    }
+      break;
+      
+    default:
+      break;
   }
   
+  [self.selectedBtn setSelected:data.isSelected];
+  
+  
   return self;
+}
+
+-(void)setIndexPath:(NSIndexPath *)indexPath {
+  _indexPath = indexPath;
+}
+#pragma mark -
+- (void)selectedBtnClick {
+
+  self.selectedBtn.selected = !self.selectedBtn.isSelected;
+  if (_delegate && [_delegate respondsToSelector:@selector(orderHeaderCellWithSelected:index:)]) {
+    [_delegate orderHeaderCellWithSelected:self.selectedBtn.selected index:_indexPath.section];
+  }
 }
 
 #pragma marks - getters
@@ -90,6 +126,8 @@
   if (!_selectedBtn) {
     _selectedBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_selectedBtn setImage:[UIImage imageNamed:@"btn_default"] forState:UIControlStateNormal];
+    [_selectedBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateSelected];
+    [_selectedBtn addTarget:self action:@selector(selectedBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_selectedBtn];
   }
   return _selectedBtn;

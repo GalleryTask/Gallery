@@ -10,18 +10,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OrderTextCell : UITableViewCell
 
+@interface OrderTextCell : UITableViewCell
 
 /**
  初始化cell
 
- @param dic 数据源
+ @param data 数据源
  @param isCorner cell是否圆角显示
  @param isEdit cell的编辑状态
  @return cell
  */
-- (id)initWithDic:(NSDictionary *)dic bottomCorner:(BOOL)isCorner isEdit:(BOOL)isEdit;
+-(id)initWithData:(PlaceOrderArr *)data bottomCorner:(BOOL)isCorner isEdit:(BOOL)isEdit;
 
 @end
 

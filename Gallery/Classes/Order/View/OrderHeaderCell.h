@@ -10,9 +10,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol  OrderHeaderCellDelegate  <NSObject>
+
+- (void)orderHeaderCellWithSelected:(BOOL)selected index:(NSInteger)index;
+
+@end
+
 @interface OrderHeaderCell : UITableViewCell
 
-- (id)initWithTitle:(NSString *)title tag:(NSString *)tagTitle isEdit:(BOOL)isEdit;
+@property (nonatomic, weak) id <OrderHeaderCellDelegate> delegate;
+@property (nonatomic, strong) NSIndexPath  *indexPath;
+
+- (id)initWithData:(PlaceOrderResult *)data isEdit:(BOOL)isEdit;
 @end
 
 NS_ASSUME_NONNULL_END

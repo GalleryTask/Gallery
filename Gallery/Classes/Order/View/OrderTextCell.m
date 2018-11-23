@@ -52,7 +52,7 @@
   return self;
 }
 
--(id)initWithDic:(NSDictionary *)dic bottomCorner:(BOOL)isCorner isEdit:(BOOL)isEdit {
+-(id)initWithData:(PlaceOrderArr *)data bottomCorner:(BOOL)isCorner isEdit:(BOOL)isEdit {
  
   CGSize size;
   if (isCorner) {
@@ -70,9 +70,9 @@
   maskLayer.path = maskPath.CGPath;
   self.layer.mask = maskLayer;
   
-  [self.titleLabel setText:dic[@"title"]];
-  [self.detailLabel setText:dic[@"price"]];
-  [self.countLabel setText:dic[@"count"]];
+  [self.titleLabel setText:data.title];
+  [self.detailLabel setText:data.price];
+  [self.countLabel setText:data.count];
   
   self.isEdit = isEdit;
   

@@ -32,3 +32,11 @@
 @implementation AreaTreeResult
 
 @end
+
+@implementation PlaceOrderArr
+
+@end
+
+@implementation PlaceOrderResult
+
+@end
