@@ -69,16 +69,19 @@
     [self addSubview:but];
   }
 }
+
 -(void)orderButtonClick:(UIButton *)sender {
   if (_delegate && [_delegate respondsToSelector:@selector(orderButtonIndex:)]) {
     [_delegate orderButtonIndex:sender.tag-1000];
   }
 }
+
 -(void)logisticsButtonClick:(UIButton *)sender {
   if (_delegate && [_delegate respondsToSelector:@selector(meLogisticsClick)]) {
     [_delegate meLogisticsClick];
   }
 }
+
 -(void)layoutSubviews {
   [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
     make.left.mas_equalTo(SCALE_SIZE*10);
@@ -129,6 +132,7 @@
     make.top.left.height.with.equalTo(self.backView);
   }];
 }
+
 -(UILabel *)titleLabel {
   if (!_titleLabel) {
     _titleLabel = [[UILabel alloc] init];
@@ -139,6 +143,7 @@
   }
   return _titleLabel;
 }
+
 -(UIButton *)orderButton {
   if (!_orderButton) {
     _orderButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -154,6 +159,7 @@
   }
   return _orderButton;
 }
+
 -(UIView *)lineView {
   if (!_lineView) {
     _lineView = [[UIView alloc] init];
@@ -162,6 +168,7 @@
   }
   return _lineView;
 }
+
 -(UIView *)backView {
   if (!_backView) {
     _backView = [[UIView alloc] init];
@@ -170,6 +177,7 @@
   }
   return _backView;
 }
+
 -(UILabel *)timeLabel {
   if (!_timeLabel) {
     _timeLabel = [[UILabel alloc] init];
@@ -180,6 +188,7 @@
   }
   return _timeLabel;
 }
+
 -(UILabel *)orderTitleLabel {
   if (!_orderTitleLabel) {
     _orderTitleLabel = [[UILabel alloc] init];
@@ -190,6 +199,7 @@
   }
   return _orderTitleLabel;
 }
+
 -(UILabel *)logisticsLabel {
   if (!_logisticsLabel) {
     _logisticsLabel = [[UILabel alloc] init];
@@ -200,6 +210,7 @@
   }
   return _logisticsLabel;
 }
+
 -(UILabel *)detailLabel {
   if (!_detailLabel) {
     _detailLabel = [[UILabel alloc] init];
@@ -210,6 +221,7 @@
   }
   return _detailLabel;
 }
+
 -(UIButton *)logisticsButton {
   if (!_logisticsButton) {
     _logisticsButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -218,6 +230,7 @@
   }
   return _logisticsButton;
 }
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
