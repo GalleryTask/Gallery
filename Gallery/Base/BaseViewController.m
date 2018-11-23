@@ -26,7 +26,10 @@
   // 设置默认的背景颜色为白色
   [self.view setBackgroundColor:[UIColor whiteColor]];
 }
-
+-(void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+}
 
 #pragma mark tableview delegate
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

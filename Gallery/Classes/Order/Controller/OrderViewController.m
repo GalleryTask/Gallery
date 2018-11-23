@@ -31,16 +31,13 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  
   self.navigationController.navigationBar.barTintColor = BASECOLOR_BLACK_333;
   [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
-
   self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-  [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 #pragma mark tableview delegate
