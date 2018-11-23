@@ -16,7 +16,7 @@
   
   // image center
   CGPoint center;
-  float topSpace = (self.frame.size.height-self.imageView.frame.size.height-self.titleLabel.frame.size.height)/2;
+  float topSpace = (self.frame.size.height-self.imageView.frame.size.height-self.titleLabel.frame.size.height-5)/2;
   center.x = self.frame.size.width/2;
   center.y = self.imageView.frame.size.height/2 + topSpace;
   self.imageView.center = center;
