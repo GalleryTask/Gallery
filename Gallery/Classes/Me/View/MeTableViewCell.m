@@ -7,6 +7,7 @@
 //
 
 #import "MeTableViewCell.h"
+#import "ImageTitleButton.h"
 @interface MeTableViewCell ()
 
 @end
@@ -51,7 +52,7 @@
                      @{@"name":@"发票",@"img":@"me_invoice"},
                      @{@"name":@"质检",@"img":@"me_quality_testing"}];
   for (int i = 0; i < array.count; i++) {
-    UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
+    ImageTitleButton *but = [ImageTitleButton buttonWithType:UIButtonTypeCustom];
     int j = i / 4;
     but.frame = CGRectMake((SCREEN_WIDTH - SCALE_SIZE*20)/4 * (i % 4), j * (SCALE_SIZE * 63), (SCREEN_WIDTH - SCALE_SIZE*20)/4, SCALE_SIZE*63);
     [but setTitle:array[i][@"name"] forState:UIControlStateNormal];
@@ -59,9 +60,6 @@
     [[but titleLabel] setFont:FONTSIZE(12)];
     [but addTarget:self action:@selector(orderButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [but setImage:[UIImage imageNamed:array[i][@"img"]] forState:(UIControlStateNormal)];
-    but.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-    [but setTitleEdgeInsets:UIEdgeInsetsMake(SCALE_SIZE*80-SCALE_SIZE*28, -but.imageView.frame.size.width, 0, 0)];
-    [but setImageEdgeInsets:UIEdgeInsetsMake(0,0, 0, -but.titleLabel.bounds.size.width)];
     [but setTag:2000+i];
     [self addSubview:but];
   }
