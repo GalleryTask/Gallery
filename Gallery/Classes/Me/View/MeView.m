@@ -63,7 +63,8 @@
 -(UIButton *)messageButton {
   if (!_messageButton) {
     _messageButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_messageButton setImage:[UIImage imageNamed:@"service_check"] forState:(UIControlStateNormal)];
+    //[_messageButton setImage:[UIImage imageNamed:@"service_check"] forState:(UIControlStateNormal)];
+    [_messageButton setBackgroundColor:BASECOLOR_BLACK_999];
     [_messageButton addTarget:self action:@selector(messageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_messageButton];
   }
@@ -72,7 +73,8 @@
 -(UIButton *)settingButton {
   if (!_settingButton) {
     _settingButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_settingButton setImage:[UIImage imageNamed:@"service_check"] forState:(UIControlStateNormal)];
+    //[_settingButton setImage:[UIImage imageNamed:@"service_check"] forState:(UIControlStateNormal)];
+    [_settingButton setBackgroundColor:BASECOLOR_BLACK_999];
     [_settingButton addTarget:self action:@selector(settingButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_settingButton];
   }
@@ -81,7 +83,8 @@
 -(UIButton *)headButton {
   if (!_headButton) {
     _headButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_headButton setImage:[UIImage imageNamed:@"service_check"] forState:(UIControlStateNormal)];
+   // [_headButton setImage:[UIImage imageNamed:@"service_check"] forState:(UIControlStateNormal)];
+    [_headButton setBackgroundColor:BASECOLOR_BLACK_999];
     [_headButton addTarget:self action:@selector(headButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [_headButton.layer setMasksToBounds:YES];
     [_headButton.layer setCornerRadius:SCALE_SIZE*57/2];
