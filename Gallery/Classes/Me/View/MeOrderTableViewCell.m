@@ -57,7 +57,7 @@
                      @{@"name":@"待处理",@"img":@"me_pending_disposal"},
                      @{@"name":@"待收货",@"img":@"me_pending_received"},
                      @{@"name":@"已完成",@"img":@"me_completed"},
-                     @{@"name":@" 售后",@"img":@"me_after_sale"}];
+                     @{@"name":@"售后",@"img":@"me_after_sale"}];
   for (int i = 0; i < array.count; i++) {
     UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
     but.frame = CGRectMake((SCREEN_WIDTH - SCALE_SIZE*20)/5 * i, SCALE_SIZE*31, (SCREEN_WIDTH - SCALE_SIZE*20)/5, SCALE_SIZE*80);

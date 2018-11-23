@@ -44,7 +44,7 @@
 }
 -(void)addButton {
   
-  NSArray *array = @[@{@"name":@"定制",@"img":@"me_save"},
+  NSArray *array = @[@{@"name":@"定制",@"img":@"me_customized"},
                      @{@"name":@"保存",@"img":@"me_save"},
                      @{@"name":@"地址",@"img":@"me_address"},
                      @{@"name":@"客服",@"img":@"me_customer_service"},

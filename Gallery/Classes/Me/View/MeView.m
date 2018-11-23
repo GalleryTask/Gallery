@@ -29,7 +29,7 @@
   
   [self.headButton mas_remakeConstraints:^(MASConstraintMaker *make) {
     make.left.mas_equalTo(SCALE_SIZE * 25);
-    make.top.mas_equalTo(SCALE_SIZE * 36);
+    make.top.mas_equalTo(SCALE_SIZE * 36 + STATUSBAR_HRIGHT - 20);
     make.height.width.mas_equalTo(SCALE_SIZE * 57);
   }];
   
@@ -41,7 +41,7 @@
   [self.messageButton mas_remakeConstraints:^(MASConstraintMaker *make) {
     make.right.equalTo(self.mas_right);
     make.width.height.mas_equalTo(SCALE_SIZE*40);
-    make.top.mas_equalTo(SCALE_SIZE*23);
+    make.top.mas_equalTo(SCALE_SIZE*23 + STATUSBAR_HRIGHT - 20);
   }];
   
   [self.settingButton mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -63,8 +63,7 @@
 -(UIButton *)messageButton {
   if (!_messageButton) {
     _messageButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    //[_messageButton setImage:[UIImage imageNamed:@"service_check"] forState:(UIControlStateNormal)];
-    [_messageButton setBackgroundColor:BASECOLOR_BLACK_999];
+    [_messageButton setImage:[UIImage imageNamed:@"me_message"] forState:(UIControlStateNormal)];
     [_messageButton addTarget:self action:@selector(messageButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_messageButton];
   }
@@ -73,8 +72,8 @@
 -(UIButton *)settingButton {
   if (!_settingButton) {
     _settingButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    //[_settingButton setImage:[UIImage imageNamed:@"service_check"] forState:(UIControlStateNormal)];
-    [_settingButton setBackgroundColor:BASECOLOR_BLACK_999];
+    [_settingButton setImage:[UIImage imageNamed:@"me_setting"] forState:(UIControlStateNormal)];
+    [_settingButton setImageEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 0)];
     [_settingButton addTarget:self action:@selector(settingButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_settingButton];
   }
