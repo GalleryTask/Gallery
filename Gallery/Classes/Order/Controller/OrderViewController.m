@@ -15,7 +15,6 @@
 
 @property (nonatomic, strong) NSArray  *rowArray;
 @property (nonatomic, assign) BOOL  isEdit;
-@property (nonatomic, strong) UIView  *bottomView;
 @property (nonatomic, strong) SettleView  *settleView; // 底部结算
 
 @end
@@ -155,36 +154,6 @@
   self.rowArray = @[@{@"title":@"精品卡盒方案一",@"price":@" ¥ 5.00",@"count":@"1"},@{@"title":@"EPE",@"price":@" ¥ 5.00",@"count":@"1"},@{@"title":@"精A款标签",@"price":@" ¥ 5.00",@"count":@"1"},@{@"title":@"塑料托盘",@"price":@" ¥ 5.00",@"count":@"1"}];
   // 初始化cell的编辑状态
   self.isEdit = YES;
-}
-
--(UIView *)bottomView {
-  if (!_bottomView) {
-    _bottomView = [[UIView alloc] init];
-    [_bottomView setBackgroundColor:[UIColor whiteColor]];
-    [self.tableView addSubview:_bottomView];
-    
-    UIView *lineView = [[UIView alloc] init];
-    [lineView setBackgroundColor:BASECOLOR_LINE];
-    [_bottomView addSubview:lineView];
-    
-    UIButton *selectedBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [selectedBtn setImage:[UIImage imageNamed:@"btn_default"] forState:UIControlStateNormal];
-    [selectedBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateSelected];
-    [_bottomView addSubview:selectedBtn];
-    
-    [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.left.top.width.equalTo(_bottomView);
-      make.height.mas_equalTo(0.5);
-    }];
-    
-    [selectedBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.left.mas_equalTo(SCALE_SIZE*12);
-      make.centerY.equalTo(_bottomView);
-      make.width.height.mas_equalTo(SCALE_SIZE*30);
-    }];
-    
-  }
-  return _bottomView;
 }
 
 -(SettleView *)settleView {
