@@ -9,11 +9,14 @@
 #import "OrderViewController.h"
 #import "OrderHeaderCell.h"
 #import "OrderTextCell.h"
+#import "SettleView.h"
 
 @interface OrderViewController ()
 
 @property (nonatomic, strong) NSArray  *rowArray;
 @property (nonatomic, assign) BOOL  isEdit;
+@property (nonatomic, strong) UIView  *bottomView;
+@property (nonatomic, strong) SettleView  *settleView; // 底部结算
 
 @end
 
@@ -24,33 +27,19 @@
   
   [self.view setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
   [self createNavigationbar];
-  [self.tableView setRowHeight:SCALE_SIZE*251];
-  [self.tableView registerClass:[OrderHeaderCell class] forCellReuseIdentifier:@"OrderHeaderCell"];
-  [self.tableView registerClass:[OrderTextCell class] forCellReuseIdentifier:@"OrderTextCell"];
-  [self.tableView setBackgroundColor:[UIColor clearColor]];
-  
-  [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
-    make.top.mas_equalTo(SCALE_SIZE*30);
-    make.height.equalTo(self.view).offset(-SCALE_SIZE*30);
-    make.width.left.equalTo(self.view);
-  }];
-  self.rowArray = @[@{@"title":@"精品卡盒方案一",@"price":@" ¥ 5.00",@"count":@"1"},@{@"title":@"EPE",@"price":@" ¥ 5.00",@"count":@"1"},@{@"title":@"精A款标签",@"price":@" ¥ 5.00",@"count":@"1"},@{@"title":@"塑料托盘",@"price":@" ¥ 5.00",@"count":@"1"}];
-  // 初始化cell的编辑状态
-  self.isEdit = YES;
+  [self registerTableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   
-//  [self.navigationController setNavigationBarHidden:YES animated:animated];
   self.navigationController.navigationBar.barTintColor = BASECOLOR_BLACK_333;
   [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
-  
-//  [self.navigationController setNavigationBarHidden:NO animated:animated];
+
   self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
   [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
@@ -100,10 +89,13 @@
  
 }
 
+#pragma mark - 右侧item点击事件
 - (void)rightNavigationBtnClick:(id)sender {
   
 }
 
+
+#pragma marks - 创建navigationbar
 - (void)createNavigationbar {
 
   UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -145,6 +137,70 @@
   [textLabel mas_makeConstraints:^(MASConstraintMaker *make) {
     make.left.equalTo(self.view).offset(SCALE_SIZE*15);
     make.top.equalTo(self.view);
+  }];
+}
+
+- (void)registerTableView {
+  [self.tableView registerClass:[OrderHeaderCell class] forCellReuseIdentifier:@"OrderHeaderCell"];
+  [self.tableView registerClass:[OrderTextCell class] forCellReuseIdentifier:@"OrderTextCell"];
+  [self.tableView setBackgroundColor:[UIColor clearColor]];
+  [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, SCALE_SIZE*56, 0)];
+  
+  [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
+    make.top.mas_equalTo(SCALE_SIZE*30);
+    make.height.equalTo(self.view).offset(-SCALE_SIZE*30);
+    make.width.left.equalTo(self.view);
+  }];
+  
+  self.rowArray = @[@{@"title":@"精品卡盒方案一",@"price":@" ¥ 5.00",@"count":@"1"},@{@"title":@"EPE",@"price":@" ¥ 5.00",@"count":@"1"},@{@"title":@"精A款标签",@"price":@" ¥ 5.00",@"count":@"1"},@{@"title":@"塑料托盘",@"price":@" ¥ 5.00",@"count":@"1"}];
+  // 初始化cell的编辑状态
+  self.isEdit = YES;
+}
+
+-(UIView *)bottomView {
+  if (!_bottomView) {
+    _bottomView = [[UIView alloc] init];
+    [_bottomView setBackgroundColor:[UIColor whiteColor]];
+    [self.tableView addSubview:_bottomView];
+    
+    UIView *lineView = [[UIView alloc] init];
+    [lineView setBackgroundColor:BASECOLOR_LINE];
+    [_bottomView addSubview:lineView];
+    
+    UIButton *selectedBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [selectedBtn setImage:[UIImage imageNamed:@"btn_default"] forState:UIControlStateNormal];
+    [selectedBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateSelected];
+    [_bottomView addSubview:selectedBtn];
+    
+    [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.left.top.width.equalTo(_bottomView);
+      make.height.mas_equalTo(0.5);
+    }];
+    
+    [selectedBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.left.mas_equalTo(SCALE_SIZE*12);
+      make.centerY.equalTo(_bottomView);
+      make.width.height.mas_equalTo(SCALE_SIZE*30);
+    }];
+    
+  }
+  return _bottomView;
+}
+
+-(SettleView *)settleView {
+  if (!_settleView) {
+    _settleView = [[SettleView alloc] init];
+    [self.tableView addSubview:_settleView];
+  }
+  return _settleView;
+}
+
+-(void)viewDidLayoutSubviews {
+  [super viewDidLayoutSubviews];
+  
+  [self.settleView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.bottom.width.equalTo(self.view);
+    make.height.mas_equalTo(SCALE_SIZE*56);
   }];
 }
 @end

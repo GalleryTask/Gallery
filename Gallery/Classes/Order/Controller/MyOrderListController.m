@@ -22,8 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-  [self.tableView setRowHeight:SCALE_SIZE*251];
+
   [self.tableView registerClass:[OrderHeaderCell class] forCellReuseIdentifier:@"OrderHeaderCell"];
   [self.tableView registerClass:[OrderTextCell class] forCellReuseIdentifier:@"OrderTextCell"];
    [self.tableView registerClass:[OrderFooterCell class] forCellReuseIdentifier:@"OrderFooterCell"];

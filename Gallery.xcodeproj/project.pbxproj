@@ -24,6 +24,7 @@
 		7609C77E219D4ADA00689D07 /* PackagingStandardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C77D219D4ADA00689D07 /* PackagingStandardController.m */; };
 		7609C781219D4B1900689D07 /* PackagingTagController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C780219D4B1900689D07 /* PackagingTagController.m */; };
 		7609C784219D4B4000689D07 /* PackagingDesignerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C783219D4B4000689D07 /* PackagingDesignerController.m */; };
+		760C419521A7A5900047CBA0 /* SettleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760C419421A7A5900047CBA0 /* SettleView.m */; };
 		760CE63321992A2600CF2306 /* PageRoundScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760CE63221992A2600CF2306 /* PageRoundScrollView.m */; };
 		760E94692151ED9B00592929 /* DataList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 760E94682151ED9B00592929 /* DataList.plist */; };
 		760E94762151F0DB00592929 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E94752151F0DB00592929 /* MeViewController.m */; };
@@ -143,6 +144,8 @@
 		7609C780219D4B1900689D07 /* PackagingTagController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackagingTagController.m; sourceTree = "<group>"; };
 		7609C782219D4B4000689D07 /* PackagingDesignerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackagingDesignerController.h; sourceTree = "<group>"; };
 		7609C783219D4B4000689D07 /* PackagingDesignerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackagingDesignerController.m; sourceTree = "<group>"; };
+		760C419321A7A5900047CBA0 /* SettleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettleView.h; sourceTree = "<group>"; };
+		760C419421A7A5900047CBA0 /* SettleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettleView.m; sourceTree = "<group>"; };
 		760CE63121992A2600CF2306 /* PageRoundScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageRoundScrollView.h; sourceTree = "<group>"; };
 		760CE63221992A2600CF2306 /* PageRoundScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageRoundScrollView.m; sourceTree = "<group>"; };
 		760E94682151ED9B00592929 /* DataList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DataList.plist; sourceTree = "<group>"; };
@@ -394,6 +397,8 @@
 				7604300821A6902800884733 /* OrderTextCell.m */,
 				7604300A21A6A9EB00884733 /* OrderFooterCell.h */,
 				7604300B21A6A9EB00884733 /* OrderFooterCell.m */,
+				760C419321A7A5900047CBA0 /* SettleView.h */,
+				760C419421A7A5900047CBA0 /* SettleView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -961,6 +966,7 @@
 				842B3BF3219EB6BF007B43FC /* ServiceDetailController.m in Sources */,
 				76B612C3219ADB2D003657B0 /* PackagingLiningController.m in Sources */,
 				7619A5FF219AB7E9005ADEEB /* PackagingBaseController.m in Sources */,
+				760C419521A7A5900047CBA0 /* SettleView.m in Sources */,
 				7655CC872150F81600D206C2 /* BaseViewController.m in Sources */,
 				761AF2DC215E0B2700F596D3 /* YJToolBar.m in Sources */,
 				76605E492101CB4400115FA6 /* UIColor+UIColor_StringToRGB.m in Sources */,
