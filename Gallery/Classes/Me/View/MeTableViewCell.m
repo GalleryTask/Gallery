@@ -54,7 +54,7 @@
   for (int i = 0; i < array.count; i++) {
     ImageTitleButton *but = [ImageTitleButton buttonWithType:UIButtonTypeCustom];
     int j = i / 4;
-    but.frame = CGRectMake((SCREEN_WIDTH - SCALE_SIZE*20)/4 * (i % 4), j * (SCALE_SIZE * 63), (SCREEN_WIDTH - SCALE_SIZE*20)/4, SCALE_SIZE*63);
+    but.frame = CGRectMake((SCREEN_WIDTH - SCALE_SIZE*20)/4 * (i % 4), j * (SCALE_SIZE * 69), (SCREEN_WIDTH - SCALE_SIZE*20)/4, SCALE_SIZE*69);
     [but setTitle:array[i][@"name"] forState:UIControlStateNormal];
     [but setTitleColor:BASECOLOR_BLACK_333 forState:UIControlStateNormal];
     [[but titleLabel] setFont:FONTSIZE(12)];
