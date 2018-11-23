@@ -48,7 +48,7 @@
   [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
     make.top.equalTo(self.meView.mas_bottom);
     make.width.equalTo(self.view);
-    make.height.equalTo(self.view).offset(-SCALE_SIZE*113);
+    make.height.equalTo(self.view).offset(-(SCALE_SIZE*113+STATUSBAR_HRIGHT-20));
   }];
   [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
@@ -103,7 +103,7 @@
 }
 -(MeView *)meView {
   if (!_meView) {
-    _meView = [[MeView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*113)];
+    _meView = [[MeView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*113+STATUSBAR_HRIGHT-20)];
     [_meView setBackgroundColor:BASECOLOR_BLACK_333];
   }
   return _meView;
