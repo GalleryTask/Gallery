@@ -60,7 +60,6 @@
                      @{@"name":@"已完成",@"img":@"me_completed"},
                      @{@"name":@"售后",@"img":@"me_after_sale"}];
   for (int i = 0; i < array.count; i++) {
-//    ImageTitleButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
     ImageTitleButton *but = [ImageTitleButton buttonWithType:UIButtonTypeCustom];
     but.frame = CGRectMake((SCREEN_WIDTH - SCALE_SIZE*20)/5 * i, SCALE_SIZE*31, (SCREEN_WIDTH - SCALE_SIZE*20)/5, SCALE_SIZE*80);
     [but setTitle:array[i][@"name"] forState:UIControlStateNormal];
@@ -68,9 +67,6 @@
     [[but titleLabel] setFont:FONTSIZE(12)];
     [but addTarget:self action:@selector(orderButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [but setImage:[UIImage imageNamed:array[i][@"img"]] forState:(UIControlStateNormal)];
-//    but.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-//    [but setTitleEdgeInsets:UIEdgeInsetsMake(but.imageView.frame.size.height+15, -but.imageView.frame.size.width, 0, 0)];
-//    [but setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -but.titleLabel.bounds.size.width/2)];
     [but setTag:1000+i];
     [self addSubview:but];
   }
