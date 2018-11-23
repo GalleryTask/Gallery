@@ -53,15 +53,19 @@
   return self;
 }
 -(void)addButton {
-  NSArray *array = @[@"待付款",@"待处理",@"待收货",@"已完成",@"售后"];
+  NSArray *array = @[@{@"name":@"待付款",@"img":@"me_pending_payment"},
+                     @{@"name":@"待处理",@"img":@"me_pending_disposal"},
+                     @{@"name":@"待收货",@"img":@"me_pending_received"},
+                     @{@"name":@"已完成",@"img":@"me_completed"},
+                     @{@"name":@" 售后",@"img":@"me_after_sale"}];
   for (int i = 0; i < array.count; i++) {
     UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
     but.frame = CGRectMake((SCREEN_WIDTH - SCALE_SIZE*20)/5 * i, SCALE_SIZE*31, (SCREEN_WIDTH - SCALE_SIZE*20)/5, SCALE_SIZE*80);
-    [but setTitle:array[i] forState:UIControlStateNormal];
+    [but setTitle:array[i][@"name"] forState:UIControlStateNormal];
     [but setTitleColor:BASECOLOR_BLACK_333 forState:UIControlStateNormal];
     [[but titleLabel] setFont:FONTSIZE(12)];
     [but addTarget:self action:@selector(orderButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [but setImage:[UIImage imageNamed:@"tool_button_home_selected"] forState:(UIControlStateNormal)];
+    [but setImage:[UIImage imageNamed:array[i][@"img"]] forState:(UIControlStateNormal)];
     but.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     [but setTitleEdgeInsets:UIEdgeInsetsMake(SCALE_SIZE*80-SCALE_SIZE*28, -but.imageView.frame.size.width, 0, 0)];
     [but setImageEdgeInsets:UIEdgeInsetsMake(0,0, 0, -but.titleLabel.bounds.size.width)];
