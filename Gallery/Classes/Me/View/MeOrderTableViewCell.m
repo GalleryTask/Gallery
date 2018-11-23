@@ -94,7 +94,7 @@
     make.right.equalTo(self.mas_right).offset(-SCALE_SIZE*10);
     make.top.equalTo(self);
     make.height.mas_equalTo(SCALE_SIZE*32);
-    make.width.mas_equalTo(SCALE_SIZE*75);
+    make.width.mas_equalTo(SCALE_SIZE*80);
   }];
   
   [self.backView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -147,8 +147,8 @@
     [[_orderButton titleLabel] setFont:FONTSIZE(12)];
     [_orderButton addTarget:self action:@selector(orderButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [_orderButton setImage:[UIImage imageNamed:@"arrow"] forState:(UIControlStateNormal)];
-    [_orderButton setImageEdgeInsets:UIEdgeInsetsMake(0, SCALE_SIZE*75-SCALE_SIZE*8, 0, 0)];
-    [_orderButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, SCALE_SIZE*8)];
+    [_orderButton setImageEdgeInsets:UIEdgeInsetsMake(0, SCALE_SIZE*65, 0, 0)];
+    [_orderButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, SCALE_SIZE*13)];
     [_orderButton setTag:1000];
     [self addSubview:_orderButton];
   }
