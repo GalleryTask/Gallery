@@ -43,6 +43,11 @@
 #define ROOTVIEW                 UIApplication.sharedApplication.delegate.window.rootViewController.view
 // 字体大小
 #define FONTSIZE(value)          [UIFont systemFontOfSize:value * SCALE_SIZE]
+
+#define FONTSIZE_LIGHT(value)    [UIFont systemFontOfSize:SCALE_SIZE*value weight:UIFontWeightLight]
+#define FONTSIZE_BLOD(value)     [UIFont systemFontOfSize:SCALE_SIZE*value weight:UIFontWeightBold]
+#define FONTSIZE_REGULAR(value)  [UIFont systemFontOfSize:SCALE_SIZE*value weight:UIFontWeightRegular]
+
 // 系统基本颜色
 #define BASECOLOR_BACKGROUND_GRAY   [UIColor hexStringToColor:@"#F5F5F5"]
 #define BASECOLOR_LINE              [UIColor hexStringToColor:@"#EBEBEB"]
@@ -62,6 +67,7 @@
 #define BASECOLOR_GRAY_3F           [UIColor hexStringToColor:@"#3F3F3F"]
 #define BASECOLOR_GRAY_F1           [UIColor hexStringToColor:@"#F1F1F1"]
 #define BASECOLOR_GRAY_E9           [UIColor hexStringToColor:@"#E9E9E9"]
+#define BASECOLOR_GRAY_E6           [UIColor hexStringToColor:@"#E6E6E6"]
 #define BASECOLOR_GRAY_CC           [UIColor hexStringToColor:@"#CCCCCC"]
 
 // 地图的appkey

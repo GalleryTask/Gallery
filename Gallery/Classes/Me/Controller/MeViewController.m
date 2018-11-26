@@ -23,6 +23,7 @@
   self.title = @"我的";
   [self createInterfaceBuilder];
 }
+
 -(void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
@@ -33,6 +34,7 @@
   [super viewWillDisappear:animated];
   [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
+
 -(void)createInterfaceBuilder {
   [self.view addSubview:self.meView];
 
@@ -56,9 +58,11 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   return 1;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   return 2;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   if (indexPath.row == 0) {
     MeOrderTableViewCell *orderCell = [tableView dequeueReusableCellWithIdentifier:@"MeOrderTableViewCell" forIndexPath:indexPath];
@@ -72,9 +76,11 @@
     return meCell;
   }
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
   if (indexPath.row == 0) {
     return SCALE_SIZE * 218;
@@ -84,7 +90,6 @@
 }
 
 #pragma mark - MeOrderTableViewCellDelegate
-
 -(void)orderButtonIndex:(NSInteger)index {
   //0是全部订单，1是待付款，依次类推
   TopPageSlideController *vc = [[TopPageSlideController alloc] initMyOrderListVC];
@@ -92,13 +97,21 @@
   [vc setTitle:@"我的订单"];
   [self.navigationController pushViewController:vc animated:YES];
 }
+
 #pragma mark =====物流点击事件
 -(void)meLogisticsClick {
   
 }
+
 #pragma mark - MeTableViewCellDelegate
 -(void)meCellButtonIndex:(NSInteger)index {
   //0时定制，依次类推
+  NSArray *classArr = @[@"",@"",@"AddressListController",@"",@"",@""];
+  Class class = NSClassFromString(classArr[index]);
+  if (class) {
+    UIViewController *controller = class.new;
+    [self.navigationController pushViewController:controller animated:YES];
+  }
 }
 -(MeView *)meView {
   if (!_meView) {
