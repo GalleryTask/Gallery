@@ -67,11 +67,24 @@ static NSDateFormatter *cachedDateFormatter = nil;
   if (text) {
     hud.mode = MBProgressHUDModeText;
     hud.label.text = text;
+    hud.label.textColor = BASECOLOR_BLACK_333;
+    hud.label.font = FONTSIZE_LIGHT(14);
   } else {
     hud.mode = MBProgressHUDModeIndeterminate;
   }
-  hud.offset = CGPointMake(0.f, -SCALE_SIZE*60.f);
-  hud.label.font = FONTSIZE(14);
+  // 设置背景透明度
+  hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+  hud.bezelView.color = [BASECOLOR_GRAY_E9 colorWithAlphaComponent:0.9];
+  
+  hud.bezelView.layer.cornerRadius = 5;
+  
+  // 显示、隐藏动画样式
+  hud.animationType = MBProgressHUDAnimationZoomOut;
+  // HUD的相对于父视图 x 的偏移，默认居中
+  hud.offset = CGPointMake(0.f, 0.f);
+  // HUD内部视图相对于HUD的边距
+  hud.margin = 16;
+  
   hidden ? [hud hideAnimated:YES afterDelay:1.f] :nil;
 }
 

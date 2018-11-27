@@ -19,7 +19,7 @@
 @implementation BaseNavigationController
 
 
-//APP生命周期中 只会执行一次
+// APP生命周期中 只会执行一次
 + (void)initialize {
   // appearance方法返回一个导航栏的外观对象
   UINavigationBar *navigationBar = [UINavigationBar appearance];
@@ -92,14 +92,14 @@
   return [super popViewControllerAnimated:animated];
 }
 
-#pragma mark - navigationBar button click
 - (void)showLeftNavBtnWithClick:(leftNavigationClickBlock)leftClickBlock {
-
+  
   [CommonUtil getCurrentVC].navigationItem.leftBarButtonItem = self.leftBtnItem;
   self.leftNavBlock = leftClickBlock;
 }
 
-- (void)backBtnClick:(UIButton *)backBtn {
+#pragma mark - navigationBar button click
+- (void)leftNavigationBtnClick:(UIButton *)backBtn {
   if (self.leftNavBlock) {
     self.leftNavBlock(backBtn);
     self.leftNavBlock = nil;
@@ -140,19 +140,6 @@
   [CommonUtil getCurrentVC].navigationItem.rightBarButtonItem = rightBtnItem;
 }
 
-- (UIButton *)rightBtn {
-  UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-  [button setFrame:CGRectMake(0, 0, BASE_HEIGHT*2, BASE_HEIGHT)];
-  [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
-  [button addTarget:self
-             action:@selector(rightNavigationBtnClick:)
-   forControlEvents:UIControlEventTouchUpInside];
-  [button setTitleColor:BASECOLOR_BLACK_333 forState:UIControlStateNormal];
-  [[button titleLabel] setFont:FONTSIZE(14)];
-  
-  return button;
-}
-
 #pragma mark - getters
 -(UIBarButtonItem *)leftBtnItem {
   if (!_leftBtnItem) {
@@ -164,12 +151,25 @@
     [backBtn setImage:[UIImage imageNamed:@"nav_button_left_back_default"] forState:UIControlStateNormal];
     [backBtn setImage:[UIImage imageNamed:@"nav_button_left_back_pressed"] forState:UIControlStateHighlighted];
     [backBtn addTarget:self
-                action:@selector(backBtnClick:)
+                action:@selector(leftNavigationBtnClick:)
       forControlEvents:UIControlEventTouchUpInside];
     _leftBtnItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
   }
   
   return _leftBtnItem;
+}
+
+- (UIButton *)rightBtn {
+  UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+  [button setFrame:CGRectMake(0, 0, BASE_HEIGHT*2, BASE_HEIGHT)];
+  [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
+  [button addTarget:self
+             action:@selector(rightNavigationBtnClick:)
+   forControlEvents:UIControlEventTouchUpInside];
+  [button setTitleColor:BASECOLOR_BLACK_333 forState:UIControlStateNormal];
+  [[button titleLabel] setFont:FONTSIZE(14)];
+  
+  return button;
 }
 
 - (void)didReceiveMemoryWarning {

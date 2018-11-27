@@ -16,15 +16,16 @@
   
   // image center
   CGPoint center;
-  float topSpace = (self.frame.size.height-self.imageView.frame.size.height-self.titleLabel.frame.size.height-3)/2;
+  float itemMargin = 3.f;
+  float topSpace = (self.frame.size.height-self.imageView.frame.size.height-self.titleLabel.frame.size.height-itemMargin)/2;
   center.x = self.frame.size.width/2;
   center.y = self.imageView.frame.size.height/2 + topSpace;
   self.imageView.center = center;
   
-  //text
+  // text
   CGRect newFrame = [self titleLabel].frame;
   newFrame.origin.x = 0;
-  newFrame.origin.y = self.imageView.frame.size.height + topSpace + 3;
+  newFrame.origin.y = self.imageView.frame.size.height + topSpace + itemMargin;
   newFrame.size.width = self.frame.size.width;
   
   self.titleLabel.frame = newFrame;

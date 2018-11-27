@@ -55,12 +55,12 @@
   }];
   
   [self.phoneLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-    make.top.equalTo(self.nameLabel);
+    make.centerY.equalTo(self.nameLabel);
     make.left.equalTo(self.nameLabel.mas_right).offset(SCALE_SIZE * 10);
   }];
   
   [self.addressTypeLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-    make.top.equalTo(self.nameLabel);
+    make.centerY.equalTo(self.nameLabel);
     make.height.mas_equalTo(SCALE_SIZE * 16);
     make.width.mas_equalTo(SCALE_SIZE * 49);
     make.left.equalTo(self.phoneLabel.mas_right).offset(SCALE_SIZE * 14);
@@ -69,7 +69,7 @@
   [self.addressLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
     make.top.equalTo(self.nameLabel.mas_bottom).offset(SCALE_SIZE * 8);
     make.left.equalTo(self.nameLabel);
-    make.right.mas_equalTo(-90);
+    make.right.equalTo(self.lineView.mas_left).offset(SCALE_SIZE*5);
   }];
   
   [self.lineView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -89,7 +89,7 @@
   if (!_nameLabel) {
     _nameLabel = [[UILabel alloc] init];
     [_nameLabel setTextColor:BASECOLOR_BLACK_333];
-    [_nameLabel setFont:[UIFont systemFontOfSize:SCALE_SIZE*14.f]];
+    [_nameLabel setFont:FONTSIZE_REGULAR(14)];
     [_nameLabel setText:@"林坤宝"];
     [self.contentView addSubview:_nameLabel];
   }
@@ -99,7 +99,7 @@
   if (!_phoneLabel) {
     _phoneLabel = [[UILabel alloc] init];
     [_phoneLabel setTextColor:BASECOLOR_BLACK_333];
-    [_phoneLabel setFont:[UIFont systemFontOfSize:SCALE_SIZE*14.f]];
+    [_phoneLabel setFont:FONTSIZE_REGULAR(14)];
     [_phoneLabel setText:@"18345179999"];
     [self.contentView addSubview:_phoneLabel];
   }
@@ -109,8 +109,8 @@
   if (!_addressLabel) {
     _addressLabel = [[UILabel alloc] init];
     [_addressLabel setTextColor:BASECOLOR_BLACK_666];
-    [_addressLabel setFont:[UIFont systemFontOfSize:SCALE_SIZE*14.f]];
-    [_addressLabel setText:@"北京市丰台区火星街道写字公园B座5068"];
+    [_addressLabel setFont:FONTSIZE_LIGHT(14)];
+    [_addressLabel setText:@"北京市丰台区火星街道11号写字公园B座5068"];
     [_addressLabel setNumberOfLines:2];
     [self.contentView addSubview:_addressLabel];
   }
@@ -123,7 +123,7 @@
     [_titleLabel setTextColor:[UIColor whiteColor]];
     [_titleLabel.layer setMasksToBounds:YES];
     [_titleLabel.layer setCornerRadius:SCALE_SIZE*16];
-    [_titleLabel setFont:[UIFont systemFontOfSize:SCALE_SIZE*16.f]];
+    [_titleLabel setFont:FONTSIZE_REGULAR(16)];
     [_titleLabel setText:@"林"];
     [_titleLabel setTextAlignment:(NSTextAlignmentCenter)];
     [self.contentView addSubview:_titleLabel];
@@ -134,11 +134,11 @@
   if (!_addressTypeLabel) {
     _addressTypeLabel = [[UILabel alloc] init];
     [_addressTypeLabel setTextColor:BASECOLOR_BLUE];
-    [_addressTypeLabel.layer setMasksToBounds:YES];
+//    [_addressTypeLabel.layer setMasksToBounds:YES];
     [_addressTypeLabel.layer setCornerRadius:3];
-    [_addressTypeLabel.layer setBorderWidth:SCALE_SIZE*1.f];
+    [_addressTypeLabel.layer setBorderWidth:1.f];
     [_addressTypeLabel.layer setBorderColor:BASECOLOR_BLUE.CGColor];
-    [_addressTypeLabel setFont:[UIFont systemFontOfSize:SCALE_SIZE*10.f]];
+    [_addressTypeLabel setFont:FONTSIZE_REGULAR(10)];
     [_addressTypeLabel setText:@"学校"];
     [_addressTypeLabel setTextAlignment:(NSTextAlignmentCenter)];
     [self.contentView addSubview:_addressTypeLabel];
@@ -157,7 +157,7 @@
   if (!_editBtn) {
     _editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_editBtn setTitle:@"编辑" forState:(UIControlStateNormal)];
-    [_editBtn.titleLabel setFont:[UIFont systemFontOfSize:SCALE_SIZE*12.f] ];
+    [_editBtn.titleLabel setFont:FONTSIZE_LIGHT(12)];
     [_editBtn setTitleColor:BASECOLOR_BLACK_999 forState:(UIControlStateNormal)];
     [_editBtn addTarget:self action:@selector(editBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_editBtn];

@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-//#import "ViewController.h"
 #import "TabBarController.h"
 
 @interface AppDelegate ()
@@ -19,17 +18,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   
-//  [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-  
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   self.window.backgroundColor = [UIColor whiteColor];
   [self.window makeKeyAndVisible];
   
   TabBarController *tabBarController = [[TabBarController alloc] init];
   self.window.rootViewController = tabBarController;
-//  ViewController *vc = [[ViewController alloc] init];
-//  UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-//  self.window.rootViewController = nav;
   
   return YES;
 }

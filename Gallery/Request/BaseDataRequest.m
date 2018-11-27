@@ -34,7 +34,7 @@
     [self successWithResponse:response block:block];
   } failureHandle:^(NSURLSessionTask *task, NSError *error) {
     NSLog(@"%@",error);
-    [CommonUtil promptViewWithText:@"没有网络连接，请稍后再试" view:ROOTVIEW hidden:YES];
+    [CommonUtil promptViewWithText:@"没有网络连接，请稍后再试" view:ROOTVIEWCONTROLLER.view hidden:YES];
     self.failureBlock();
   }];
 }
@@ -60,7 +60,7 @@
     [self successWithResponse:response block:block];
   } failureHandle:^(NSURLSessionTask *task, NSError *error) {
     NSLog(@"%@",error);
-    [CommonUtil promptViewWithText:@"没有网络连接，请稍后再试" view:ROOTVIEW hidden:YES];
+    [CommonUtil promptViewWithText:@"没有网络连接，请稍后再试" view:ROOTVIEWCONTROLLER.view hidden:YES];
     self.failureBlock();
   }];
 }
@@ -114,11 +114,11 @@
 //    [self loginIsInvalid];
   } else {
     if (errorMsg) {
-      [CommonUtil promptViewWithText:errorMsg view:ROOTVIEW hidden:YES];
+      [CommonUtil promptViewWithText:errorMsg view:ROOTVIEWCONTROLLER.view hidden:YES];
     } else {
       NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"DataList"ofType:@"plist"]];
       NSDictionary *errorCodeDic = [dic objectForKey:@"ErrorCode"];
-      [CommonUtil promptViewWithText:[errorCodeDic objectForKey:errorCode] view:ROOTVIEW hidden:YES];
+      [CommonUtil promptViewWithText:[errorCodeDic objectForKey:errorCode] view:ROOTVIEWCONTROLLER.view hidden:YES];
     }
   }
 }

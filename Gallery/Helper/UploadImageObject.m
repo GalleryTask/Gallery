@@ -47,7 +47,7 @@
       AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];//读取设备授权状态
       if(authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied) {
         NSString *errorStr = @"应用相机权限受限,请在设置中启用";
-        [CommonUtil promptViewWithText:errorStr view:ROOTVIEW hidden:YES];
+        [CommonUtil promptViewWithText:errorStr view:ROOTVIEWCONTROLLER.view hidden:YES];
         return;
       } else {
         if ([self isCameraAvailable]) {
@@ -103,11 +103,9 @@
     _imagePicker = [[UIImagePickerController alloc] init];
     [_imagePicker setDelegate:self];
     [_imagePicker setAllowsEditing:YES];
-    if ([self isCameraAvailable]) {
-      _imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    } else {
-      _imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
+    UIImagePickerControllerSourceType type = [self isCameraAvailable] ?
+           UIImagePickerControllerSourceTypeCamera : UIImagePickerControllerSourceTypePhotoLibrary;
+    _imagePicker.sourceType = type;
     [self.myController presentViewController:_imagePicker animated:YES completion:nil];
   }
   return _imagePicker;

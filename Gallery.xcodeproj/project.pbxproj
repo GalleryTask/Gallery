@@ -490,6 +490,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		760FDA1E21ACE73000C53BA4 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				84270211219AAD390025696F /* NextButton.h */,
+				84270212219AAD390025696F /* NextButton.m */,
+				76A961DD21A7EBA6000FB540 /* ImageTitleButton.h */,
+				76A961DE21A7EBA6000FB540 /* ImageTitleButton.m */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
 		7611C4B721942E6A00D6428E /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -734,17 +745,14 @@
 		76605E5D2101CCA600115FA6 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				760FDA1E21ACE73000C53BA4 /* Button */,
 				7605652621A262810096F322 /* PickerView */,
-				84270211219AAD390025696F /* NextButton.h */,
-				84270212219AAD390025696F /* NextButton.m */,
 				76605E5E2101CCB000115FA6 /* CommonUtil.h */,
 				76605E5F2101CCB000115FA6 /* CommonUtil.m */,
 				76605E622101CCBA00115FA6 /* UploadImageObject.h */,
 				76605E612101CCBA00115FA6 /* UploadImageObject.m */,
 				760F2125219ECC2400905234 /* BottomSelectBar.h */,
 				760F2126219ECC2400905234 /* BottomSelectBar.m */,
-				76A961DD21A7EBA6000FB540 /* ImageTitleButton.h */,
-				76A961DE21A7EBA6000FB540 /* ImageTitleButton.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";

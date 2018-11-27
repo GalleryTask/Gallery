@@ -40,7 +40,7 @@
 // 适配iOS11
 #define AdjustsScrollViewInsetNever(controller,view) if(@available(iOS 11.0, *)) {view.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever; view.contentInset = UIEdgeInsetsMake(0, 0, SafeAreaBottomHeight, 0);} else if([controller isKindOfClass:[UIViewController class]]) {controller.automaticallyAdjustsScrollViewInsets = false;}
 // root view
-#define ROOTVIEW                 UIApplication.sharedApplication.delegate.window.rootViewController.view
+#define ROOTVIEWCONTROLLER       UIApplication.sharedApplication.delegate.window.rootViewController
 // 字体大小
 #define FONTSIZE(value)          [UIFont systemFontOfSize:value * SCALE_SIZE]
 
