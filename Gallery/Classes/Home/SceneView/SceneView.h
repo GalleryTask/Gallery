@@ -14,8 +14,7 @@
 - (id)initWithSceneName:(NSString *)sceneName frame:(CGRect)frame;
 // 设置反光效果
 - (void)sceneViewReflectiveImage:(UIImage *)image;
-// 设置贴图图片
-//- (void)sceneViewDiffuseImage:(UIImage *)image;
+
 // 移除节点
 - (void)removeNode;
 // 添加节点

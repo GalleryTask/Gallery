@@ -19,7 +19,6 @@
 		7605652B21A2629A0096F322 /* SelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7605652721A262990096F322 /* SelectTableViewCell.m */; };
 		7605652C21A2629A0096F322 /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7605652A21A2629A0096F322 /* PickerView.m */; };
 		7609C76E219D159D00689D07 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C76D219D159D00689D07 /* OrderViewController.m */; };
-		7609C774219D3B4400689D07 /* 0_T_hezi_tietu_01_d.tga in Resources */ = {isa = PBXBuildFile; fileRef = 7609C773219D3B4300689D07 /* 0_T_hezi_tietu_01_d.tga */; };
 		7609C77B219D49CE00689D07 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C77A219D49CE00689D07 /* ServiceViewController.m */; };
 		7609C77E219D4ADA00689D07 /* PackagingStandardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C77D219D4ADA00689D07 /* PackagingStandardController.m */; };
 		7609C781219D4B1900689D07 /* PackagingTagController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C780219D4B1900689D07 /* PackagingTagController.m */; };
@@ -29,8 +28,6 @@
 		760E94692151ED9B00592929 /* DataList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 760E94682151ED9B00592929 /* DataList.plist */; };
 		760E94762151F0DB00592929 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E94752151F0DB00592929 /* MeViewController.m */; };
 		760F2102219E9E2200905234 /* OrderPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 760F2101219E9E2200905234 /* OrderPreviewController.m */; };
-		760F2104219EA36000905234 /* 03.DAE in Resources */ = {isa = PBXBuildFile; fileRef = 760F2103219EA36000905234 /* 03.DAE */; };
-		760F2106219EA36E00905234 /* 0_3.tga in Resources */ = {isa = PBXBuildFile; fileRef = 760F2105219EA36E00905234 /* 0_3.tga */; };
 		760F210B219EA46500905234 /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 760F2108219EA46500905234 /* AddressCell.m */; };
 		760F210C219EA46500905234 /* AddressEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760F210A219EA46500905234 /* AddressEditView.m */; };
 		760F2112219EA51A00905234 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760F2111219EA51A00905234 /* LoginView.m */; };
@@ -39,10 +36,6 @@
 		760F2121219EB9DA00905234 /* DeliveryDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 760F2120219EB9DA00905234 /* DeliveryDateCell.m */; };
 		760F2124219EC4FA00905234 /* SelectCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 760F2123219EC4FA00905234 /* SelectCountCell.m */; };
 		760F2127219ECC2400905234 /* BottomSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 760F2126219ECC2400905234 /* BottomSelectBar.m */; };
-		7611C4A62193D56E00D6428E /* R.tga in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4A22193D56D00D6428E /* R.tga */; };
-		7611C4A82193D56E00D6428E /* moxing.DAE in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4A42193D56E00D6428E /* moxing.DAE */; };
-		7611C4A92193D56E00D6428E /* B.tga in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4A52193D56E00D6428E /* B.tga */; };
-		7611C4B32194196200D6428E /* HeZiZheDie.DAE in Resources */ = {isa = PBXBuildFile; fileRef = 7611C4B22194196200D6428E /* HeZiZheDie.DAE */; };
 		7611C4C021942FF900D6428E /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7611C4BF21942FF900D6428E /* HomeViewController.m */; };
 		761278EB21955545009A5774 /* HomeShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 761278EA21955545009A5774 /* HomeShowView.m */; };
 		761278EE219584A9009A5774 /* SceneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 761278ED219584A9009A5774 /* SceneViewController.m */; };
@@ -53,11 +46,7 @@
 		761AF2DC215E0B2700F596D3 /* YJToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 761AF2D6215E0B2700F596D3 /* YJToolBar.m */; };
 		761AF2DD215E0B2700F596D3 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 761AF2D7215E0B2700F596D3 /* UIView+Frame.m */; };
 		761AF2DE215E0B2700F596D3 /* YJLocationPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 761AF2D8215E0B2700F596D3 /* YJLocationPicker.m */; };
-		7627E55921898D9E00C7A5A3 /* nbox3gai.dae in Resources */ = {isa = PBXBuildFile; fileRef = 7627E55821898D9E00C7A5A3 /* nbox3gai.dae */; };
-		762A15F221B8F3D3002298A8 /* ww.DAE in Resources */ = {isa = PBXBuildFile; fileRef = 762A15F121B8F3D3002298A8 /* ww.DAE */; };
-		762A15F621B8F44C002298A8 /* 2_lining.png in Resources */ = {isa = PBXBuildFile; fileRef = 762A15F321B8F44B002298A8 /* 2_lining.png */; };
-		762A15F721B8F44C002298A8 /* 0_boxtop.png in Resources */ = {isa = PBXBuildFile; fileRef = 762A15F421B8F44B002298A8 /* 0_boxtop.png */; };
-		762A15F821B8F44C002298A8 /* 1_boxdown.png in Resources */ = {isa = PBXBuildFile; fileRef = 762A15F521B8F44C002298A8 /* 1_boxdown.png */; };
+		762A15FB21B911D1002298A8 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 762A15FA21B911D1002298A8 /* art.scnassets */; };
 		7655CC792150F27E00D206C2 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7655CC742150F27C00D206C2 /* TabBarController.m */; };
 		7655CC7A2150F27E00D206C2 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7655CC762150F27D00D206C2 /* BaseNavigationController.m */; };
 		7655CC872150F81600D206C2 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7655CC862150F81600D206C2 /* BaseViewController.m */; };
@@ -140,7 +129,6 @@
 		7605652A21A2629A0096F322 /* PickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
 		7609C76C219D159D00689D07 /* OrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
 		7609C76D219D159D00689D07 /* OrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
-		7609C773219D3B4300689D07 /* 0_T_hezi_tietu_01_d.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = 0_T_hezi_tietu_01_d.tga; sourceTree = "<group>"; };
 		7609C779219D49C700689D07 /* ServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceViewController.h; sourceTree = "<group>"; };
 		7609C77A219D49CE00689D07 /* ServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceViewController.m; sourceTree = "<group>"; };
 		7609C77C219D4ADA00689D07 /* PackagingStandardController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackagingStandardController.h; sourceTree = "<group>"; };
@@ -158,8 +146,6 @@
 		760E94752151F0DB00592929 /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		760F2100219E9E2200905234 /* OrderPreviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderPreviewController.h; sourceTree = "<group>"; };
 		760F2101219E9E2200905234 /* OrderPreviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderPreviewController.m; sourceTree = "<group>"; };
-		760F2103219EA36000905234 /* 03.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = 03.DAE; sourceTree = "<group>"; };
-		760F2105219EA36E00905234 /* 0_3.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = 0_3.tga; sourceTree = "<group>"; };
 		760F2107219EA46500905234 /* AddressEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressEditView.h; sourceTree = "<group>"; };
 		760F2108219EA46500905234 /* AddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressCell.m; sourceTree = "<group>"; };
 		760F2109219EA46500905234 /* AddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressCell.h; sourceTree = "<group>"; };
@@ -176,10 +162,6 @@
 		760F2123219EC4FA00905234 /* SelectCountCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectCountCell.m; sourceTree = "<group>"; };
 		760F2125219ECC2400905234 /* BottomSelectBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomSelectBar.h; sourceTree = "<group>"; };
 		760F2126219ECC2400905234 /* BottomSelectBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomSelectBar.m; sourceTree = "<group>"; };
-		7611C4A22193D56D00D6428E /* R.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = R.tga; sourceTree = "<group>"; };
-		7611C4A42193D56E00D6428E /* moxing.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = moxing.DAE; sourceTree = "<group>"; };
-		7611C4A52193D56E00D6428E /* B.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = B.tga; sourceTree = "<group>"; };
-		7611C4B22194196200D6428E /* HeZiZheDie.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = HeZiZheDie.DAE; sourceTree = "<group>"; };
 		7611C4BE21942FF900D6428E /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		7611C4BF21942FF900D6428E /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		761278E321952D98009A5774 /* ProductDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailController.h; sourceTree = "<group>"; };
@@ -201,11 +183,7 @@
 		761AF2D9215E0B2700F596D3 /* YJToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJToolBar.h; sourceTree = "<group>"; };
 		761AF2DA215E0B2700F596D3 /* YJLocationPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJLocationPicker.h; sourceTree = "<group>"; };
 		761AF2DB215E0B2700F596D3 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
-		7627E55821898D9E00C7A5A3 /* nbox3gai.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = nbox3gai.dae; sourceTree = "<group>"; };
-		762A15F121B8F3D3002298A8 /* ww.DAE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = ww.DAE; sourceTree = "<group>"; };
-		762A15F321B8F44B002298A8 /* 2_lining.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2_lining.png; sourceTree = "<group>"; };
-		762A15F421B8F44B002298A8 /* 0_boxtop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0_boxtop.png; sourceTree = "<group>"; };
-		762A15F521B8F44C002298A8 /* 1_boxdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_boxdown.png; sourceTree = "<group>"; };
+		762A15FA21B911D1002298A8 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		7655CC732150F27300D206C2 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		7655CC742150F27C00D206C2 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		7655CC752150F27D00D206C2 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
@@ -768,20 +746,9 @@
 		76EE836A216B4B5000D317FF /* SceneView */ = {
 			isa = PBXGroup;
 			children = (
+				762A15FA21B911D1002298A8 /* art.scnassets */,
 				76EE836B216B4B5000D317FF /* SceneView.h */,
 				76EE836C216B4B5000D317FF /* SceneView.m */,
-				7611C4B22194196200D6428E /* HeZiZheDie.DAE */,
-				7609C773219D3B4300689D07 /* 0_T_hezi_tietu_01_d.tga */,
-				7611C4A52193D56E00D6428E /* B.tga */,
-				7611C4A42193D56E00D6428E /* moxing.DAE */,
-				7611C4A22193D56D00D6428E /* R.tga */,
-				7627E55821898D9E00C7A5A3 /* nbox3gai.dae */,
-				760F2103219EA36000905234 /* 03.DAE */,
-				760F2105219EA36E00905234 /* 0_3.tga */,
-				762A15F121B8F3D3002298A8 /* ww.DAE */,
-				762A15F421B8F44B002298A8 /* 0_boxtop.png */,
-				762A15F521B8F44C002298A8 /* 1_boxdown.png */,
-				762A15F321B8F44B002298A8 /* 2_lining.png */,
 			);
 			path = SceneView;
 			sourceTree = "<group>";
@@ -913,22 +880,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				760F2104219EA36000905234 /* 03.DAE in Resources */,
-				762A15F821B8F44C002298A8 /* 1_boxdown.png in Resources */,
-				7609C774219D3B4400689D07 /* 0_T_hezi_tietu_01_d.tga in Resources */,
-				7611C4A62193D56E00D6428E /* R.tga in Resources */,
-				762A15F721B8F44C002298A8 /* 0_boxtop.png in Resources */,
-				760F2106219EA36E00905234 /* 0_3.tga in Resources */,
 				7655CC922150F92A00D206C2 /* Assets.xcassets in Resources */,
-				762A15F621B8F44C002298A8 /* 2_lining.png in Resources */,
 				76F6AC2C219D6D4500EB0325 /* Main.storyboard in Resources */,
-				7611C4A92193D56E00D6428E /* B.tga in Resources */,
-				7627E55921898D9E00C7A5A3 /* nbox3gai.dae in Resources */,
-				7611C4B32194196200D6428E /* HeZiZheDie.DAE in Resources */,
 				76F6AC2E219D6DBF00EB0325 /* LaunchScreen.storyboard in Resources */,
-				762A15F221B8F3D3002298A8 /* ww.DAE in Resources */,
+				762A15FB21B911D1002298A8 /* art.scnassets in Resources */,
 				760E94692151ED9B00592929 /* DataList.plist in Resources */,
-				7611C4A82193D56E00D6428E /* moxing.DAE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

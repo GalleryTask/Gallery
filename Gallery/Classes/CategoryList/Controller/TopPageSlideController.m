@@ -155,8 +155,7 @@
 
 -(SceneView *)sceneView {
   if (!_sceneView) {
-    _sceneView = [[SceneView alloc] initWithSceneName:@"ww.DAE" frame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*300)];
-//    [_sceneView sceneViewDiffuseImage:[UIImage imageNamed:@""]];
+    _sceneView = [[SceneView alloc] initWithSceneName:@"art.scnassets/ww.DAE" frame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*300)];
   }
   return _sceneView;
 }

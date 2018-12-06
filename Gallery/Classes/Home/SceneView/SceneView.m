@@ -20,7 +20,6 @@
 @property (nonatomic, strong) SCNNode  *topNode;
 @property (nonatomic, strong) SCNNode  *liningNode;
 @property (nonatomic, strong) SCNNode  *downNode;
-
 @end
 
 @implementation SceneView
@@ -47,30 +46,30 @@
 
 // 设置贴图图片
 - (void)sceneViewDiffuse {
-//  self.material.diffuse.contents = image;
-  //  self.material.diffuse.contents = [UIImage imageNamed:@"1_boxdown.png"];
-  
+
   SCNMaterial *material = [SCNMaterial new];
   material.lightingModelName = SCNLightingModelLambert;
-  material.diffuse.contents = [UIImage imageNamed:@"0_boxtop.png"];
+  material.diffuse.contents = [UIImage imageNamed:@"art.scnassets/0_boxtop.png"];
   [self.topNode.geometry setMaterials:@[material]];
   
   SCNMaterial *material1 = [SCNMaterial new];
   material1.lightingModelName = SCNLightingModelLambert;
-  material1.diffuse.contents = [UIImage imageNamed:@"1_boxdown.png"];
+  material1.diffuse.contents = [UIImage imageNamed:@"art.scnassets/1_boxdown.png"];
   [self.downNode.geometry setMaterials:@[material1]];
   
   SCNMaterial *material2 = [SCNMaterial new];
   material2.lightingModelName = SCNLightingModelLambert;
-  material2.diffuse.contents = [UIImage imageNamed:@"2_lining.png"];
+  material2.diffuse.contents = [UIImage imageNamed:@"art.scnassets/2_lining.png"];
   [self.liningNode.geometry setMaterials:@[material2]];
 
-  
+  //  self.material.diffuse.contents = image;
+  //  self.material.diffuse.contents = [UIImage imageNamed:@"1_boxdown.png"];
 //  for (SCNNode *aNode in self.scene.rootNode.childNodes) {
 //    [aNode.geometry setMaterials:@[self.material]];
 //  }
 }
 
+// 删除节点
 - (void)removeNode {
 
   if ([self.scene.rootNode.childNodes containsObject:self.topNode]) {
@@ -95,6 +94,7 @@
   }
 }
 
+// 添加节点
 - (void)addNode {
 
   if (![self.scene.rootNode.childNodes containsObject:self.topNode]) {
@@ -132,6 +132,14 @@
   [self.topNode runAction:repeatAction];
   [self.downNode runAction:repeatAction];
   [self.liningNode runAction:repeatAction];
+}
+
+
+
+-(void)doubleTap:(UIGestureRecognizer*)gesture {
+  
+  self.cameraNode.position = SCNVector3Make(0, 10, 70);;
+  [self.cameraNode setRotation:SCNVector4Make(0, 0, 0, 0)];
 }
 
 #pragma mark - 创建3D模型场景
@@ -179,18 +187,6 @@
 - (SCNNode *)spotNode{
   if (!_spotNode) {
     _spotNode = [self.scene.rootNode childNodeWithName:@"EnvironmentAmbientLight" recursively:YES];
-//    SCNLight *spotLight = [SCNLight light];// 创建光对象
-//    spotLight.type = SCNLightTypeAmbient;// 设置类型
-//    spotLight.color = [UIColor whiteColor]; // 设置光的颜色
-//    spotLight.castsShadow = TRUE;// 捕捉阴影
-//    spotLight.attenuationStartDistance = 0;
-//    spotLight.attenuationEndDistance = 100;
-//    spotLight.attenuationFalloffExponent = 2;
-//    spotLight.spotInnerAngle = 0;
-//    spotLight.spotOuterAngle = 30;
-//    _spotNode = [SCNNode node];
-//    _spotNode.position = SCNVector3Make(0, 2, 10); //设置光源节点的位置
-//    _spotNode.light  = spotLight;
   }
   
   return _spotNode;
@@ -202,7 +198,7 @@
     _cameraNode = [SCNNode node];
     _cameraNode.camera = [SCNCamera camera];
     _cameraNode.camera.automaticallyAdjustsZRange = true;
-    _cameraNode.position = SCNVector3Make(0, 10, 50);
+    _cameraNode.position = SCNVector3Make(0, 10, 70);
   }
   return _cameraNode;
 }
