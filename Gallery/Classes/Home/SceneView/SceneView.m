@@ -45,9 +45,30 @@
 - (void)sceneViewDiffuseImage:(UIImage *)image {
   self.material.diffuse.contents = image;
   
-  for (SCNNode *aNode in self.scene.rootNode.childNodes) {
-    [aNode.geometry setMaterials:@[self.material]];
-  }
+  SCNNode *boxtop =  [self.scene.rootNode childNodeWithName:@"boxtop" recursively:YES];
+  SCNNode *boxdown =  [self.scene.rootNode childNodeWithName:@"boxdown" recursively:YES];
+  SCNNode *lining =  [self.scene.rootNode childNodeWithName:@"lining" recursively:YES];
+  
+  SCNMaterial *material = [SCNMaterial new];
+  material.lightingModelName = SCNLightingModelLambert;
+  material.diffuse.contents = [UIImage imageNamed:@"0_boxtop.png"];
+  [boxtop.geometry setMaterials:@[material]];
+  
+//  self.material.diffuse.contents = [UIImage imageNamed:@"1_boxdown.png"];
+  SCNMaterial *material1 = [SCNMaterial new];
+  material1.lightingModelName = SCNLightingModelLambert;
+  material1.diffuse.contents = [UIImage imageNamed:@"1_boxdown.png"];
+  [boxdown.geometry setMaterials:@[material1]];
+  
+  SCNMaterial *material2 = [SCNMaterial new];
+  material2.lightingModelName = SCNLightingModelLambert;
+  material2.diffuse.contents = [UIImage imageNamed:@"2_lining.png"];
+  [lining.geometry setMaterials:@[material2]];
+
+  
+//  for (SCNNode *aNode in self.scene.rootNode.childNodes) {
+//    [aNode.geometry setMaterials:@[self.material]];
+//  }
 }
 
 - (void)removeNode {
@@ -165,18 +186,18 @@
 - (SCNNode *)spotNode{
   if (!_spotNode) {
     _spotNode = [self.scene.rootNode childNodeWithName:@"EnvironmentAmbientLight" recursively:YES];
-//    SCNLight *spotLight = [SCNLight light];// 创建光对象
-//    spotLight.type = SCNLightTypeAmbient;// 设置类型
-//    spotLight.color = [UIColor whiteColor]; // 设置光的颜色
-//    spotLight.castsShadow = TRUE;// 捕捉阴影
-//    spotLight.attenuationStartDistance = 0;
-//    spotLight.attenuationEndDistance = 100;
-//    spotLight.attenuationFalloffExponent = 2;
-//    spotLight.spotInnerAngle = 0;
-//    spotLight.spotOuterAngle = 30;
-//    _spotNode = [SCNNode node];
-//    _spotNode.position = SCNVector3Make(0, 2, 10); //设置光源节点的位置
-//    _spotNode.light  = spotLight;
+    SCNLight *spotLight = [SCNLight light];// 创建光对象
+    spotLight.type = SCNLightTypeAmbient;// 设置类型
+    spotLight.color = [UIColor whiteColor]; // 设置光的颜色
+    spotLight.castsShadow = TRUE;// 捕捉阴影
+    spotLight.attenuationStartDistance = 0;
+    spotLight.attenuationEndDistance = 100;
+    spotLight.attenuationFalloffExponent = 2;
+    spotLight.spotInnerAngle = 0;
+    spotLight.spotOuterAngle = 30;
+    _spotNode = [SCNNode node];
+    _spotNode.position = SCNVector3Make(0, 2, 10); //设置光源节点的位置
+    _spotNode.light  = spotLight;
   }
   
   return _spotNode;
