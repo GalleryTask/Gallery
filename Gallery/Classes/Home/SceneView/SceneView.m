@@ -17,7 +17,10 @@
 @property (nonatomic, strong) SCNScene    *scene;
 @property (nonatomic, strong) SCNMaterial *material;
 
-@property (nonatomic, strong) SCNNode   *ggNode;  //
+@property (nonatomic, strong) SCNNode  *topNode;
+@property (nonatomic, strong) SCNNode  *liningNode;
+@property (nonatomic, strong) SCNNode  *downNode;
+
 @end
 
 @implementation SceneView
@@ -26,6 +29,7 @@
   if (self = [super init]) {
     [self setFrame:frame];
     [self createSceneViewWithSceneName:sceneName];
+    [self sceneViewDiffuse];
   }
   return self;
 }
@@ -42,28 +46,24 @@
 }
 
 // 设置贴图图片
-- (void)sceneViewDiffuseImage:(UIImage *)image {
-  self.material.diffuse.contents = image;
-  
-  SCNNode *boxtop =  [self.scene.rootNode childNodeWithName:@"boxtop" recursively:YES];
-  SCNNode *boxdown =  [self.scene.rootNode childNodeWithName:@"boxdown" recursively:YES];
-  SCNNode *lining =  [self.scene.rootNode childNodeWithName:@"lining" recursively:YES];
+- (void)sceneViewDiffuse {
+//  self.material.diffuse.contents = image;
+  //  self.material.diffuse.contents = [UIImage imageNamed:@"1_boxdown.png"];
   
   SCNMaterial *material = [SCNMaterial new];
   material.lightingModelName = SCNLightingModelLambert;
   material.diffuse.contents = [UIImage imageNamed:@"0_boxtop.png"];
-  [boxtop.geometry setMaterials:@[material]];
+  [self.topNode.geometry setMaterials:@[material]];
   
-//  self.material.diffuse.contents = [UIImage imageNamed:@"1_boxdown.png"];
   SCNMaterial *material1 = [SCNMaterial new];
   material1.lightingModelName = SCNLightingModelLambert;
   material1.diffuse.contents = [UIImage imageNamed:@"1_boxdown.png"];
-  [boxdown.geometry setMaterials:@[material1]];
+  [self.downNode.geometry setMaterials:@[material1]];
   
   SCNMaterial *material2 = [SCNMaterial new];
   material2.lightingModelName = SCNLightingModelLambert;
   material2.diffuse.contents = [UIImage imageNamed:@"2_lining.png"];
-  [lining.geometry setMaterials:@[material2]];
+  [self.liningNode.geometry setMaterials:@[material2]];
 
   
 //  for (SCNNode *aNode in self.scene.rootNode.childNodes) {
@@ -73,12 +73,12 @@
 
 - (void)removeNode {
 
-  if ([self.scene.rootNode.childNodes containsObject:self.ggNode]) {
+  if ([self.scene.rootNode.childNodes containsObject:self.topNode]) {
     
     SCNAnimationEvent *event = [SCNAnimationEvent animationEventWithKeyTime:0.5 block:^(id<SCNAnimation>  _Nonnull animation, id  _Nonnull animatedObject, BOOL playingBackward) {
       
-      [self.ggNode removeAllAnimations];
-      [self.ggNode removeFromParentNode];
+      [self.topNode removeAllAnimations];
+      [self.topNode removeFromParentNode];
     }];
     
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.y"];
@@ -91,13 +91,13 @@
     animation.removedOnCompletion = NO;
     
 
-    [self.ggNode addAnimation:animation forKey:nil];
+    [self.topNode addAnimation:animation forKey:nil];
   }
 }
 
 - (void)addNode {
 
-  if (![self.scene.rootNode.childNodes containsObject:self.ggNode]) {
+  if (![self.scene.rootNode.childNodes containsObject:self.topNode]) {
   SCNAnimationEvent *event = [SCNAnimationEvent animationEventWithKeyTime:0.5
                                                                     block:^(id<SCNAnimation>  _Nonnull animation, id  _Nonnull animatedObject, BOOL playingBackward) {
   }];
@@ -111,25 +111,17 @@
   animation.repeatCount = 0;
   
 
-  [self.scene.rootNode addChildNode:self.ggNode];
-  [self.ggNode addAnimation:animation forKey:nil];
+  [self.scene.rootNode addChildNode:self.topNode];
+  [self.topNode addAnimation:animation forKey:nil];
   }
-}
-
--(SCNNode *)ggNode {
-  if (!_ggNode) {
-    self.ggNode = [self.scene.rootNode childNodeWithName:@"_" recursively:YES];
-    
-  }
-  return _ggNode;
 }
 
 -(void)changeCameraNodePosition {
 
   SCNAction *repeatAction = [SCNAction repeatAction:[SCNAction rotateByX:0 y:1 z:0 duration:0.3] count:6.5];
-  
-  SCNNode *node =  [self.scene.rootNode childNodeWithName:@"Object002" recursively:YES];
-  [node runAction:repeatAction];
+  [self.topNode runAction:repeatAction];
+  [self.downNode runAction:repeatAction];
+  [self.liningNode runAction:repeatAction];
 }
 
 - (void)changeRange {
@@ -137,8 +129,9 @@
   SCNAction *repeatAction = [SCNAction repeatAction:[SCNAction rotateByX:0 y:0.5 z:0 duration:0.3] count:1];
   
   self.cameraNode.position = SCNVector3Make(0, 20, 50);
-  SCNNode *node =  [self.scene.rootNode childNodeWithName:@"Object002" recursively:YES];
-  [node runAction:repeatAction];
+  [self.topNode runAction:repeatAction];
+  [self.downNode runAction:repeatAction];
+  [self.liningNode runAction:repeatAction];
 }
 
 #pragma mark - 创建3D模型场景
@@ -186,18 +179,18 @@
 - (SCNNode *)spotNode{
   if (!_spotNode) {
     _spotNode = [self.scene.rootNode childNodeWithName:@"EnvironmentAmbientLight" recursively:YES];
-    SCNLight *spotLight = [SCNLight light];// 创建光对象
-    spotLight.type = SCNLightTypeAmbient;// 设置类型
-    spotLight.color = [UIColor whiteColor]; // 设置光的颜色
-    spotLight.castsShadow = TRUE;// 捕捉阴影
-    spotLight.attenuationStartDistance = 0;
-    spotLight.attenuationEndDistance = 100;
-    spotLight.attenuationFalloffExponent = 2;
-    spotLight.spotInnerAngle = 0;
-    spotLight.spotOuterAngle = 30;
-    _spotNode = [SCNNode node];
-    _spotNode.position = SCNVector3Make(0, 2, 10); //设置光源节点的位置
-    _spotNode.light  = spotLight;
+//    SCNLight *spotLight = [SCNLight light];// 创建光对象
+//    spotLight.type = SCNLightTypeAmbient;// 设置类型
+//    spotLight.color = [UIColor whiteColor]; // 设置光的颜色
+//    spotLight.castsShadow = TRUE;// 捕捉阴影
+//    spotLight.attenuationStartDistance = 0;
+//    spotLight.attenuationEndDistance = 100;
+//    spotLight.attenuationFalloffExponent = 2;
+//    spotLight.spotInnerAngle = 0;
+//    spotLight.spotOuterAngle = 30;
+//    _spotNode = [SCNNode node];
+//    _spotNode.position = SCNVector3Make(0, 2, 10); //设置光源节点的位置
+//    _spotNode.light  = spotLight;
   }
   
   return _spotNode;
@@ -213,4 +206,27 @@
   }
   return _cameraNode;
 }
+
+
+-(SCNNode *)topNode {
+  if (!_topNode) {
+    _topNode = [self.scene.rootNode childNodeWithName:@"boxtop" recursively:YES];
+  }
+  return _topNode;
+}
+
+-(SCNNode *)liningNode {
+  if (!_liningNode) {
+    _liningNode = [self.scene.rootNode childNodeWithName:@"lining" recursively:YES];
+  }
+  return _liningNode;
+}
+
+-(SCNNode *)downNode {
+  if (!_downNode) {
+    _downNode =  [self.scene.rootNode childNodeWithName:@"boxdown" recursively:YES];
+  }
+  return _downNode;
+}
+
 @end

@@ -116,7 +116,20 @@
 - (void)pageViewController:(YNPageViewController *)pageViewController
          didScrollMenuItem:(UIButton *)itemButton
                      index:(NSInteger)index {
-
+  if ([pageViewController.controllersM[index] isKindOfClass:[PackagingBaseController class]]) {
+    switch (index) {
+      case 0:
+        [self.sceneView addNode];
+        break;
+      case 1:
+        [self.sceneView removeNode];
+        break;
+        
+      default:
+        [self.sceneView addNode];
+        break;
+    }
+  }
 }
 
 - (void)rightNavigationBtnClick:(id)sender {
@@ -142,8 +155,8 @@
 
 -(SceneView *)sceneView {
   if (!_sceneView) {
-    _sceneView = [[SceneView alloc] initWithSceneName:@"nbox3gai" frame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*300)];
-//    [_sceneView sceneViewDiffuseImage:[UIImage imageNamed:@"home_1"]];
+    _sceneView = [[SceneView alloc] initWithSceneName:@"ww.DAE" frame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*300)];
+//    [_sceneView sceneViewDiffuseImage:[UIImage imageNamed:@""]];
   }
   return _sceneView;
 }

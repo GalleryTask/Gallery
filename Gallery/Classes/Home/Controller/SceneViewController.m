@@ -52,7 +52,7 @@
 -(SceneView *)sceneView {
   if (!_sceneView) {
     _sceneView = [[SceneView alloc] initWithSceneName:@"ww.DAE" frame:CGRectMake(0, SCALE_SIZE*52, SCREEN_WIDTH, SCREEN_WIDTH)];
-    [_sceneView sceneViewDiffuseImage:[UIImage imageNamed:@""]];
+//    [_sceneView sceneViewDiffuseImage:[UIImage imageNamed:@""]];
   }
   return _sceneView;
 }

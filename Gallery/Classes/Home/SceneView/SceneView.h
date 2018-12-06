@@ -15,7 +15,7 @@
 // 设置反光效果
 - (void)sceneViewReflectiveImage:(UIImage *)image;
 // 设置贴图图片
-- (void)sceneViewDiffuseImage:(UIImage *)image;
+//- (void)sceneViewDiffuseImage:(UIImage *)image;
 // 移除节点
 - (void)removeNode;
 // 添加节点
