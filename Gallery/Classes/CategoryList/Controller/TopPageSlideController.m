@@ -131,6 +131,7 @@
     }
     [[pageViewController.headerView.subviews objectAtIndex:0] removeFromSuperview];
     [pageViewController.headerView addSubview:self.sceneView];
+  
   }
 }
 
