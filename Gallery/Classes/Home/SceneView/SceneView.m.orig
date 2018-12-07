@@ -82,6 +82,7 @@
     }];
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.y"];
     animation.duration = 1;
+//    animation.fromValue = @"0";
     animation.toValue = @"100";
     animation.animationEvents = @[event];
     animation.repeatCount = 0;
@@ -126,9 +127,12 @@
     [self.liningNode runAction:sequence];
     
   }
+<<<<<<< HEAD
 
   
   self.cameraNode.position = SCNVector3Make(0, 10, 50);
+=======
+>>>>>>> 3fd4ae9b8c54728003e610ba0dad6d302c37a4bb
 }
 
 // 模型旋转
