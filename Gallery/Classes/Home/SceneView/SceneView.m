@@ -91,6 +91,11 @@
     
     [self.topNode addAnimation:animation forKey:nil];
   }
+  
+  SCNAction *action1 = [SCNAction rotateToX:0.7 y:0 z:0 duration:0.5];
+  SCNAction *sequence =[SCNAction sequence:@[action1]];
+  [self.downNode runAction:sequence];
+  [self.liningNode runAction:sequence];
 }
 
 // 添加节点
@@ -111,6 +116,11 @@
   [self.scnView.scene.rootNode addChildNode:self.topNode];
   [self.topNode addAnimation:animation forKey:nil];
   }
+  
+  SCNAction *action = [SCNAction rotateToX:0 y:0 z:0 duration:0.5];
+  SCNAction *sequence =[SCNAction sequence:@[action]];
+  [self.downNode runAction:sequence];
+  [self.liningNode runAction:sequence];
 }
 
 // 模型旋转
