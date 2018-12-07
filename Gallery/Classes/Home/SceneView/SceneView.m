@@ -124,10 +124,8 @@
     SCNAction *sequence =[SCNAction sequence:@[action]];
     [self.downNode runAction:sequence];
     [self.liningNode runAction:sequence];
-    
   }
 
-  
   self.cameraNode.position = SCNVector3Make(0, 10, 50);
 }
 
