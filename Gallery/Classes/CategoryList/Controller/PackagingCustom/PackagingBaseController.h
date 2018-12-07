@@ -8,12 +8,14 @@
 
 #import "BaseViewController.h"
 #import "PackagingCustomView.h"
+#import "BottomSelectBar.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PackagingBaseController : BaseViewController
 
 @property (nonatomic, strong) UIScrollView  *scrollView;
+@property (nonatomic, strong) BottomSelectBar  *bottomBar;
 
 @end
 

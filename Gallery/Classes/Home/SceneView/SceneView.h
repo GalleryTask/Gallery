@@ -21,5 +21,5 @@
 - (void)addNode;
 // 改变模型位置
 - (void)changeCameraNodePosition;
-- (void)changeRange;
+//- (void)changeRange;
 @end

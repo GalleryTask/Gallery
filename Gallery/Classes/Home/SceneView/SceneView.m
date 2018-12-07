@@ -28,7 +28,7 @@
   if (self = [super init]) {
     [self setFrame:frame];
     [self createSceneViewWithSceneName:sceneName];
-    [self sceneViewDiffuse];
+//    [self sceneViewDiffuse];
   }
   return self;
 }
@@ -72,14 +72,16 @@
 // 删除节点
 - (void)removeNode {
 
-  if ([self.scene.rootNode.childNodes containsObject:self.topNode]) {
+  if ([self.scnView.scene.rootNode.childNodes containsObject:self.topNode]) {
     
     SCNAnimationEvent *event = [SCNAnimationEvent animationEventWithKeyTime:0.5 block:^(id<SCNAnimation>  _Nonnull animation, id  _Nonnull animatedObject, BOOL playingBackward) {
       
       [self.topNode removeAllAnimations];
       [self.topNode removeFromParentNode];
+      
     }];
     
+ 
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.y"];
     animation.duration = 1;
     animation.fromValue = @"0";
@@ -88,8 +90,8 @@
     animation.repeatCount = 0;
     animation.fillMode=kCAFillModeForwards;
     animation.removedOnCompletion = NO;
-    
 
+  
     [self.topNode addAnimation:animation forKey:nil];
   }
 }
@@ -111,36 +113,29 @@
   animation.repeatCount = 0;
   
 
-  [self.scene.rootNode addChildNode:self.topNode];
+  [self.scnView.scene.rootNode addChildNode:self.topNode];
   [self.topNode addAnimation:animation forKey:nil];
   }
 }
 
 -(void)changeCameraNodePosition {
 
-  SCNAction *repeatAction = [SCNAction repeatAction:[SCNAction rotateByX:0 y:1 z:0 duration:0.3] count:6.5];
+  SCNAction *repeatAction = [SCNAction repeatAction:[SCNAction rotateByX:0 y:1 z:0 duration:0.3] count:4];
   [self.topNode runAction:repeatAction];
   [self.downNode runAction:repeatAction];
   [self.liningNode runAction:repeatAction];
 }
 
-- (void)changeRange {
-  
-  SCNAction *repeatAction = [SCNAction repeatAction:[SCNAction rotateByX:0 y:0.5 z:0 duration:0.3] count:1];
-  
-  self.cameraNode.position = SCNVector3Make(0, 20, 50);
-  [self.topNode runAction:repeatAction];
-  [self.downNode runAction:repeatAction];
-  [self.liningNode runAction:repeatAction];
-}
+//- (void)changeRange {
+//  
+//  SCNAction *repeatAction = [SCNAction repeatAction:[SCNAction rotateByX:0 y:0.5 z:0 duration:0.3] count:1];
+//
+//  self.cameraNode.position = SCNVector3Make(0, 20, 50);
+//  [self.topNode runAction:repeatAction];
+//  [self.downNode runAction:repeatAction];
+//  [self.liningNode runAction:repeatAction];
+//}
 
-
-
--(void)doubleTap:(UIGestureRecognizer*)gesture {
-  
-  self.cameraNode.position = SCNVector3Make(0, 10, 70);;
-  [self.cameraNode setRotation:SCNVector4Make(0, 0, 0, 0)];
-}
 
 #pragma mark - 创建3D模型场景
 - (void)createSceneViewWithSceneName:(NSString *)sceneName {
@@ -151,7 +146,7 @@
   
   [self.scene.rootNode addChildNode:self.cameraNode];
   // 创建灯光
-  [self.scene.rootNode addChildNode:self.spotNode];
+//  [self.scene.rootNode addChildNode:self.spotNode];
   // 创建展示场景
   [self addSubview:self.scnView];
 }
@@ -168,7 +163,7 @@
     // 允许控制摄像机位置
     _scnView.allowsCameraControl = YES;
     // 不显示数据控制台
-    _scnView.showsStatistics = NO;
+//    _scnView.showsStatistics = YES;
     
   }
   return _scnView;
@@ -188,13 +183,11 @@
   if (!_spotNode) {
     _spotNode = [self.scene.rootNode childNodeWithName:@"EnvironmentAmbientLight" recursively:YES];
   }
-  
   return _spotNode;
 }
 
 -(SCNNode *)cameraNode {
   if (!_cameraNode) {
-    
     _cameraNode = [SCNNode node];
     _cameraNode.camera = [SCNCamera camera];
     _cameraNode.camera.automaticallyAdjustsZRange = true;

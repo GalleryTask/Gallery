@@ -8,11 +8,10 @@
 
 #import "PackagingBaseController.h"
 #import "OrderPreviewController.h"
-#import "BottomSelectBar.h"
 
 @interface PackagingBaseController () <BottomSelectBarDelegate>
 
-@property (nonatomic, strong) BottomSelectBar  *bottomBar;
+
 
 @end
 
@@ -20,7 +19,6 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-
 }
 
 
@@ -56,6 +54,7 @@
 
 -(void)viewDidLayoutSubviews {
   [super viewDidLayoutSubviews];
+  
   [self.bottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
     make.left.width.equalTo(self.view);
     make.bottom.equalTo(self.view).offset(-SafeAreaBottomHeight);

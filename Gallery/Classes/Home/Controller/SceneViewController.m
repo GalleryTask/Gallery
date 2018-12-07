@@ -24,7 +24,8 @@
   self.navigationItem.title = @"3D苹果包装方案";
   [self.view addSubview:self.sceneView];
   [self.view addSubview:self.customizedBtn];
-//  [self.sceneView changeCameraNodePosition];
+  [self.sceneView changeCameraNodePosition];
+  
 }
 
 // 开始定制按钮点击事件
@@ -51,7 +52,7 @@
 
 -(SceneView *)sceneView {
   if (!_sceneView) {
-    _sceneView = [[SceneView alloc] initWithSceneName:@"art.scnassets/ww.DAE" frame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-50-SafeAreaBottomHeight)];
+    _sceneView = [[SceneView alloc] initWithSceneName:@"art.scnassets/box.DAE" frame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-50-SafeAreaBottomHeight)];
 //    [_sceneView sceneViewDiffuseImage:[UIImage imageNamed:@""]];
   }
   return _sceneView;
