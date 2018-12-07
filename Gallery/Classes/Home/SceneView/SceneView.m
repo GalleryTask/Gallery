@@ -127,8 +127,7 @@
     [self.liningNode runAction:sequence];
     
   }
-  NSLog(@"%f %f %f ",self.cameraNode.position.x, self.cameraNode.position.y,self.cameraNode.position.z);
-  NSLog(@"%f %f %f %f",self.cameraNode.rotation.x,self.cameraNode.rotation.y,self.cameraNode.rotation.z,self.cameraNode.rotation.w);
+
   
   self.cameraNode.position = SCNVector3Make(0, 10, 50);
 }
