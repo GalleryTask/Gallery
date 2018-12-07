@@ -9,12 +9,9 @@
 #import "TopPageSlideController.h"
 #import "CategoryDetailController.h"
 #import "SceneView.h"
-#import "PackagingStandardController.h"
-#import "PackagingLiningController.h"
-#import "PackagingTagController.h"
-#import "PackagingPalletController.h"
-#import "PackagingDesignerController.h"
+#import "PackagingBaseController.h"
 #import "MyOrderListController.h"
+
 
 @interface TopPageSlideController ()<YNPageViewControllerDelegate, YNPageViewControllerDataSource>
 
@@ -24,8 +21,6 @@
 @property (nonatomic, strong) UIBarButtonItem  *rightBtnItem;
 @property (nonatomic, strong) YNPageConfigration  *configration;
 @property (nonatomic, strong) SceneView  *sceneView;
-@property (nonatomic, strong) UIView *packagingHeaderView;
-
 
 @end
 
@@ -66,8 +61,10 @@
                                                                                   config:self.configration];
   vc.dataSource = vc;
   vc.delegate = vc;
-  vc.headerView = self.packagingHeaderView;
+  vc.headerView = self.sceneView;
+  
   vc.navigationItem.rightBarButtonItem = self.rightBtnItem;
+  
   
   return vc;
 }
@@ -84,7 +81,6 @@
   self.configration.itemMargin = SCALE_SIZE*38;
   
   self.configration.scrollMenu = NO;
-//  self.configration.aligmentModeCenter = YES;
   
   TopPageSlideController *vc = [TopPageSlideController pageViewControllerWithControllers:[self getOrderListControllers]
                                                                                   titles:self.orderList
@@ -158,21 +154,12 @@
 
 -(SceneView *)sceneView {
   if (!_sceneView) {
-    _sceneView = [[SceneView alloc] initWithSceneName:@"art.scnassets/box.DAE" frame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*300)];
+    _sceneView = [[SceneView alloc] initWithSceneName:@"art.scnassets/box.DAE" frame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*310)];
     _sceneView.cameraNode.position = SCNVector3Make(0, 10, 50);
   }
   return _sceneView;
 }
 
-
--(UIView *)packagingHeaderView {
-  if (!_packagingHeaderView) {
-    _packagingHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*310)];
-    [_packagingHeaderView setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
-    [_packagingHeaderView addSubview:self.sceneView];
-  }
-  return _packagingHeaderView;
-}
 
 -(YNPageConfigration *)configration {
   if (!_configration) {

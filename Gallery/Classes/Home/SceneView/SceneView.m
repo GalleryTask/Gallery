@@ -93,7 +93,7 @@
     [self.topNode addAnimation:animation forKey:nil];
     
     // 开盖后偏移
-    SCNAction *action = [SCNAction rotateToX:0.7 y:0 z:0 duration:0.5];
+    SCNAction *action = [SCNAction rotateToX:0.8 y:0 z:0 duration:0.5];
     SCNAction *sequence =[SCNAction sequence:@[action]];
     [self.downNode runAction:sequence];
     [self.liningNode runAction:sequence];
@@ -165,6 +165,7 @@
     _scnView.backgroundColor = [UIColor hexStringToColor:@"#F5F5F5"];
     // 允许控制摄像机位置
     _scnView.allowsCameraControl = YES;
+    
     // 不显示数据控制台
 //    _scnView.showsStatistics = YES;
     
