@@ -71,6 +71,7 @@
 // 删除节点
 - (void)removeNode {
 
+  
   if ([self.scnView.scene.rootNode.childNodes containsObject:self.topNode]) {
     
     SCNAnimationEvent *event = [SCNAnimationEvent animationEventWithKeyTime:0.5 block:^(id<SCNAnimation>  _Nonnull animation, id  _Nonnull animatedObject, BOOL playingBackward) {
@@ -79,8 +80,6 @@
       [self.topNode removeFromParentNode];
       
     }];
-    
- 
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.y"];
     animation.duration = 1;
 //    animation.fromValue = @"0";
@@ -91,36 +90,50 @@
     animation.removedOnCompletion = NO;
 
   
+    
     [self.topNode addAnimation:animation forKey:nil];
+    
+    // 开盖后偏移
+    SCNAction *action = [SCNAction rotateToX:0.7 y:0 z:0 duration:0.5];
+    SCNAction *sequence =[SCNAction sequence:@[action]];
+    [self.downNode runAction:sequence];
+    [self.liningNode runAction:sequence];
+    
   }
   
   SCNAction *action1 = [SCNAction rotateToX:0.7 y:0 z:0 duration:0.5];
   SCNAction *sequence =[SCNAction sequence:@[action1]];
   [self.downNode runAction:sequence];
   [self.liningNode runAction:sequence];
+  
 }
 
 // 添加节点
 - (void)addNode {
 
   if (![self.scene.rootNode.childNodes containsObject:self.topNode]) {
-  SCNAnimationEvent *event = [SCNAnimationEvent animationEventWithKeyTime:0.5
-                                                                    block:^(id<SCNAnimation>  _Nonnull animation, id  _Nonnull animatedObject, BOOL playingBackward) {
-  }];
-  
-
-  CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.y"];
-  animation.duration = 0.5;
-  animation.fromValue = @"100";
-//  animation.toValue = @"0";
-  animation.animationEvents = @[event];
-  animation.repeatCount = 0;
-  
-
-  [self.scnView.scene.rootNode addChildNode:self.topNode];
-  [self.topNode addAnimation:animation forKey:nil];
+    SCNAnimationEvent *event = [SCNAnimationEvent animationEventWithKeyTime:0.5
+                                                                      block:^(id<SCNAnimation>  _Nonnull animation, id  _Nonnull animatedObject, BOOL playingBackward) {
+                                                                        
+                                                                      }];
+    
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.y"];
+    animation.duration = 0.5;
+    animation.fromValue = @"100";
+    animation.animationEvents = @[event];
+    animation.repeatCount = 0;
+    
+    [self.scnView.scene.rootNode addChildNode:self.topNode];
+    [self.topNode addAnimation:animation forKey:nil];
+    
+    // 恢复之前的偏移
+    SCNAction *action = [SCNAction rotateToX:0 y:0 z:0 duration:0.5];
+    SCNAction *sequence =[SCNAction sequence:@[action]];
+    [self.downNode runAction:sequence];
+    [self.liningNode runAction:sequence];
+    
   }
-  
+
   SCNAction *action = [SCNAction rotateToX:0 y:0 z:0 duration:0.5];
   SCNAction *sequence =[SCNAction sequence:@[action]];
   [self.downNode runAction:sequence];
@@ -128,7 +141,8 @@
 
 }
 
--(void)changeCameraNodePosition {
+// 模型旋转
+-(void)nodeTurnAround {
 
   SCNAction *repeatAction = [SCNAction repeatAction:[SCNAction rotateByX:0 y:1 z:0 duration:0.3] count:4];
   [self.topNode runAction:repeatAction];
@@ -151,6 +165,7 @@
   [self addSubview:self.scnView];
 }
 
+#pragma marks - getters
 // 创建展示场景
 -(SCNView *)scnView {
   if (!_scnView) {
@@ -186,6 +201,7 @@
   return _spotNode;
 }
 
+// 视角
 -(SCNNode *)cameraNode {
   if (!_cameraNode) {
     _cameraNode = [SCNNode node];
@@ -197,6 +213,7 @@
 }
 
 
+// 上盖模型
 -(SCNNode *)topNode {
   if (!_topNode) {
     _topNode = [self.scene.rootNode childNodeWithName:@"boxtop" recursively:YES];
@@ -204,6 +221,7 @@
   return _topNode;
 }
 
+// 内衬模型
 -(SCNNode *)liningNode {
   if (!_liningNode) {
     _liningNode = [self.scene.rootNode childNodeWithName:@"lining" recursively:YES];
@@ -211,6 +229,7 @@
   return _liningNode;
 }
 
+// 下盖模型
 -(SCNNode *)downNode {
   if (!_downNode) {
     _downNode =  [self.scene.rootNode childNodeWithName:@"boxdown" recursively:YES];

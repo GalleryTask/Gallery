@@ -21,7 +21,6 @@
 - (void)removeNode;
 // 添加节点
 - (void)addNode;
-// 改变模型位置
-- (void)changeCameraNodePosition;
-//- (void)changeRange;
+// 模型转一圈
+- (void)nodeTurnAround;
 @end

@@ -29,7 +29,7 @@
   self.title = @"高档礼盒包装方案";
   [self.view addSubview:self.exhibitionBtn];
   [self.view addSubview:self.scrollView];
-  self.cycleScrollView.imageURLStringsGroup = @[@"",@""];
+//  self.cycleScrollView.imageURLStringsGroup = @[@"",@""];
 }
 
 // SDCycleScrollView delegate 点击图片回调
