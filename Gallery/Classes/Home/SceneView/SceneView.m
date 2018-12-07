@@ -125,6 +125,7 @@
   SCNAction *sequence =[SCNAction sequence:@[action]];
   [self.downNode runAction:sequence];
   [self.liningNode runAction:sequence];
+
 }
 
 -(void)changeCameraNodePosition {
