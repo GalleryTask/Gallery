@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SceneKit/SceneKit.h>
 
 @interface SceneView : UIView
 
+@property (nonatomic, strong) SCNNode     *cameraNode; // 角度
 
 - (id)initWithSceneName:(NSString *)sceneName frame:(CGRect)frame;
 // 设置反光效果

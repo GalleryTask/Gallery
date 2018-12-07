@@ -158,6 +158,7 @@
 -(SceneView *)sceneView {
   if (!_sceneView) {
     _sceneView = [[SceneView alloc] initWithSceneName:@"art.scnassets/box.DAE" frame:CGRectMake(0, 0, SCREEN_WIDTH, SCALE_SIZE*300)];
+    _sceneView.cameraNode.position = SCNVector3Make(0, 10, 50);
   }
   return _sceneView;
 }

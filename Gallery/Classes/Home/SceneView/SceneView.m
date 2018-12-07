@@ -7,13 +7,12 @@
 //
 
 #import "SceneView.h"
-#import <SceneKit/SceneKit.h>
+
 
 @interface SceneView()
 
 @property (nonatomic, strong) SCNView     *scnView;
 @property (nonatomic, strong) SCNNode     *spotNode;  // 灯光节点
-@property (nonatomic, strong) SCNNode     *cameraNode; // 角度
 @property (nonatomic, strong) SCNScene    *scene;
 @property (nonatomic, strong) SCNMaterial *material;
 
@@ -84,7 +83,7 @@
  
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.y"];
     animation.duration = 1;
-    animation.fromValue = @"0";
+//    animation.fromValue = @"0";
     animation.toValue = @"100";
     animation.animationEvents = @[event];
     animation.repeatCount = 0;
@@ -108,7 +107,7 @@
   CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.y"];
   animation.duration = 0.5;
   animation.fromValue = @"100";
-  animation.toValue = @"0";
+//  animation.toValue = @"0";
   animation.animationEvents = @[event];
   animation.repeatCount = 0;
   
@@ -125,16 +124,6 @@
   [self.downNode runAction:repeatAction];
   [self.liningNode runAction:repeatAction];
 }
-
-//- (void)changeRange {
-//  
-//  SCNAction *repeatAction = [SCNAction repeatAction:[SCNAction rotateByX:0 y:0.5 z:0 duration:0.3] count:1];
-//
-//  self.cameraNode.position = SCNVector3Make(0, 20, 50);
-//  [self.topNode runAction:repeatAction];
-//  [self.downNode runAction:repeatAction];
-//  [self.liningNode runAction:repeatAction];
-//}
 
 
 #pragma mark - 创建3D模型场景
