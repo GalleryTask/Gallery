@@ -81,7 +81,7 @@ static NSDateFormatter *cachedDateFormatter = nil;
   // 显示、隐藏动画样式
   hud.animationType = MBProgressHUDAnimationZoomOut;
   // HUD的相对于父视图 x 的偏移，默认居中
-  hud.offset = CGPointMake(0.f, 0.f);
+  hud.offset = CGPointMake(0.f, -NAVIGATIONBAR_HEIGHT);
   // HUD内部视图相对于HUD的边距
   hud.margin = 16;
   

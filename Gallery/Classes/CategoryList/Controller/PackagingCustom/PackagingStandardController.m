@@ -101,6 +101,7 @@
   
   [self.view layoutIfNeeded];
   [self.scrollView setContentSize:CGSizeMake(0, self.longLabel.frame.origin.y+self.longLabel.frame.size.height+SCALE_SIZE*75+SafeAreaBottomHeight)];
+  
 }
 
 -(UILabel *)titleLabel {

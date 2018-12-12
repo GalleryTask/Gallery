@@ -162,7 +162,7 @@
     make.right.mas_equalTo(-SCALE_SIZE*20);
     make.height.mas_equalTo(SCALE_SIZE*30);
     make.width.mas_equalTo(SCALE_SIZE*50);
-    make.centerY.equalTo(self);
+    make.centerY.equalTo(self.switchLabel);
   }];
 }
 -(UITextField *)nameTextField {

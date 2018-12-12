@@ -43,7 +43,7 @@
   PackagingCustomView *customThree = [[PackagingCustomView alloc] init];
   NSInteger countRowThree = [customThree packagingCustomWithTitle:@"吸塑托"
                                                        itemsArray:@[@"PET",@"PP"]
-                                                     selectedItem:-1
+                                                     selectedItem:0
                                                 selectedItemBlock:^(id  _Nonnull sender) {
                                                   
                                                 }];

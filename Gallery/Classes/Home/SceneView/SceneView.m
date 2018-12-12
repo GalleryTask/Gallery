@@ -78,8 +78,8 @@
       
       [self.topNode removeAllAnimations];
       [self.topNode removeFromParentNode];
-      
     }];
+    
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.y"];
     animation.duration = 1;
     animation.toValue = @"100";
@@ -88,8 +88,6 @@
     animation.fillMode=kCAFillModeForwards;
     animation.removedOnCompletion = NO;
 
-  
-    
     [self.topNode addAnimation:animation forKey:nil];
     
     // 开盖后偏移

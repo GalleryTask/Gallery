@@ -145,7 +145,7 @@
   // 显示、隐藏动画样式
   self.hud.animationType = MBProgressHUDAnimationZoomOut;
   // HUD的相对于父视图 x 的偏移，默认居中
-  self.hud.offset = CGPointMake(0.f, 0.f);
+  self.hud.offset = CGPointMake(0.f, -NAVIGATIONBAR_HEIGHT);
   // HUD内部视图相对于HUD的边距
   self.hud.margin = 16;
 
