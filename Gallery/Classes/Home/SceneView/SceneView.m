@@ -22,6 +22,8 @@
 @property (nonatomic, strong) SCNNode  *liningNode;
 @property (nonatomic, strong) SCNNode  *downNode;
 @property (nonatomic,assign) CGFloat totalScale;
+@property (nonatomic, strong) NSArray  *nodeArray;
+
 @end
 
 @implementation SceneView
@@ -44,38 +46,23 @@
   for (SCNNode *aNode in self.scene.rootNode.childNodes) {
     [aNode.geometry setMaterials:@[self.material]];
   }
-  
 }
 
-// 设置贴图图片
-- (void)sceneViewDiffuse {
 
-  SCNMaterial *material = [SCNMaterial new];
-  material.lightingModelName = SCNLightingModelLambert;
-  material.diffuse.contents = [UIImage imageNamed:@"art.scnassets/0_boxtop.png"];
-  [self.topNode.geometry setMaterials:@[material]];
-  
-  SCNMaterial *material1 = [SCNMaterial new];
-  material1.lightingModelName = SCNLightingModelLambert;
-  material1.diffuse.contents = [UIImage imageNamed:@"art.scnassets/1_boxdown.png"];
-  [self.downNode.geometry setMaterials:@[material1]];
-  
-  SCNMaterial *material2 = [SCNMaterial new];
-  material2.lightingModelName = SCNLightingModelLambert;
-  material2.diffuse.contents = [UIImage imageNamed:@"art.scnassets/2_lining.png"];
-  [self.liningNode.geometry setMaterials:@[material2]];
-
-  //  self.material.diffuse.contents = image;
-  //  self.material.diffuse.contents = [UIImage imageNamed:@"1_boxdown.png"];
-//  for (SCNNode *aNode in self.scene.rootNode.childNodes) {
-//    [aNode.geometry setMaterials:@[self.material]];
-//  }
+// 更换node的贴图图片
+- (void)changeNodeDiffuseWithImageNameArray:(NSArray *)array {
+  for (int i = 0; i < array.count; i++) {
+    SCNMaterial *material = [SCNMaterial new];
+    material.lightingModelName = SCNLightingModelLambert;
+    material.diffuse.contents = [UIImage imageNamed:array[i]];
+    SCNNode *node = self.nodeArray[i];
+    [node.childNodes[0].geometry setMaterials:@[material]];
+  }
 }
 
 // 删除节点
 - (void)removeNode {
 
-  
   if ([self.scnView.scene.rootNode.childNodes containsObject:self.topNode]) {
     
     SCNAnimationEvent *event = [SCNAnimationEvent animationEventWithKeyTime:0.5 block:^(id<SCNAnimation>  _Nonnull animation, id  _Nonnull animatedObject, BOOL playingBackward) {
@@ -152,6 +139,8 @@
 //  [self.scene.rootNode addChildNode:self.spotNode];
   // 创建展示场景
   [self addSubview:self.scnView];
+  
+  self.nodeArray = @[self.topNode,self.liningNode,self.downNode];
 }
 
 #pragma marks - getters
@@ -167,10 +156,12 @@
     // 允许控制摄像机位置
     _scnView.allowsCameraControl = YES;
     
+
     // 不显示数据控制台
 //    _scnView.showsStatistics = YES;
 //    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];
 //    [_scnView addGestureRecognizer:pinch];
+
 
   }
   return _scnView;
@@ -225,7 +216,7 @@
 // 上盖模型
 -(SCNNode *)topNode {
   if (!_topNode) {
-    _topNode = [self.scene.rootNode childNodeWithName:@"boxtop" recursively:YES];
+    _topNode = [self.scene.rootNode childNodeWithName:@"boxtop01" recursively:YES];
   }
   return _topNode;
 }
@@ -233,7 +224,7 @@
 // 内衬模型
 -(SCNNode *)liningNode {
   if (!_liningNode) {
-    _liningNode = [self.scene.rootNode childNodeWithName:@"lining" recursively:YES];
+    _liningNode = [self.scene.rootNode childNodeWithName:@"lining1" recursively:YES];
   }
   return _liningNode;
 }
@@ -241,7 +232,7 @@
 // 下盖模型
 -(SCNNode *)downNode {
   if (!_downNode) {
-    _downNode =  [self.scene.rootNode childNodeWithName:@"boxdown" recursively:YES];
+    _downNode =  [self.scene.rootNode childNodeWithName:@"boxdown02" recursively:YES];
   }
   return _downNode;
 }

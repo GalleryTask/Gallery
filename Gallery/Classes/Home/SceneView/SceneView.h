@@ -23,4 +23,7 @@
 - (void)addNode;
 // 模型转一圈
 - (void)nodeTurnAround;
+
+// 更换贴图图片
+- (void)changeNodeDiffuseWithImageNameArray:(NSArray *)array;
 @end
