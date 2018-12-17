@@ -149,7 +149,6 @@
   // HUD内部视图相对于HUD的边距
   self.hud.margin = 16;
 
-//  self.hud.bezelView.
   isHidden ? [self.hud hideAnimated:YES afterDelay:1.f] :nil;
 }
 

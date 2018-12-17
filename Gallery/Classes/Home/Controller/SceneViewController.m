@@ -9,6 +9,7 @@
 #import "SceneViewController.h"
 #import "SceneView.h"
 #import "TopPageSlideController.h"
+#import "ARViewController.h"
 
 @interface SceneViewController ()
 
@@ -25,6 +26,12 @@
   [self.view addSubview:self.sceneView];
   [self.view addSubview:self.customizedBtn];
   [self.sceneView nodeTurnAround];
+  
+  BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
+  [nav setNavigationBarRightItemWithButtonTitle:@"AR实景" clickBlock:^(id sender) {
+    ARViewController *arVC = [[ARViewController alloc] init];
+    [self.navigationController pushViewController:arVC animated:YES];
+  }];
   
 }
 
