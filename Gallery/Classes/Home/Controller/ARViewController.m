@@ -293,7 +293,7 @@ API_AVAILABLE(ios(11.0))
   SCNVector3 position = SCNVector3Make(
                                        -hitResult.worldTransform.columns[3].x,
                                        -hitResult.worldTransform.columns[3].y,
-                                       -hitResult.worldTransform.columns[3].z
+                                       -hitResult.worldTransform.columns[3].z * 100
                                        );
   
 //  SCNBox *cube = [SCNBox boxWithWidth:0.2 height:0.05 length:0.1 chamferRadius:0];
