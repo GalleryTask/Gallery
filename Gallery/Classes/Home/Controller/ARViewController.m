@@ -315,7 +315,6 @@ API_AVAILABLE(ios(11.0))
 //  SCNNode *node = [SCNNode nodeWithGeometry:cube];
   
   node.position = position;
-  node.position = SCNVector3Make(0, -20, -200);
   if (self.switchBtn.isOn) {
     node.opacity = 0.3;
   } else {
