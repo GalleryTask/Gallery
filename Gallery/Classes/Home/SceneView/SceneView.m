@@ -8,6 +8,8 @@
 
 #import "SceneView.h"
 
+#define MaxSCale 10.0  //最大缩放比例
+#define MinScale 0.5  //最小缩放比例
 
 @interface SceneView()
 
@@ -19,6 +21,7 @@
 @property (nonatomic, strong) SCNNode  *topNode;
 @property (nonatomic, strong) SCNNode  *liningNode;
 @property (nonatomic, strong) SCNNode  *downNode;
+@property (nonatomic,assign) CGFloat totalScale;
 @end
 
 @implementation SceneView
@@ -26,6 +29,7 @@
 - (id)initWithSceneName:(NSString *)sceneName frame:(CGRect)frame {
   if (self = [super init]) {
     [self setFrame:frame];
+    self.totalScale = 1.0;
     [self createSceneViewWithSceneName:sceneName];
 //    [self sceneViewDiffuse];
   }
@@ -123,7 +127,6 @@
     [self.downNode runAction:sequence];
     [self.liningNode runAction:sequence];
   }
-
   self.cameraNode.position = SCNVector3Make(0, 10, 50);
 }
 
@@ -166,11 +169,30 @@
     
     // 不显示数据控制台
 //    _scnView.showsStatistics = YES;
-    
+//    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];
+//    [_scnView addGestureRecognizer:pinch];
+
   }
   return _scnView;
 }
-
+- (void)pinch:(UIPinchGestureRecognizer *)recognizer{
+  
+  CGFloat scale = recognizer.scale;
+  
+  //放大情况
+  if(scale > 1.0){
+    if(self.totalScale > MaxSCale) return;
+  }
+  
+  //缩小情况
+  if (scale < 1.0) {
+    if (self.totalScale < MinScale) return;
+  }
+  self.scene.rootNode.transform =  SCNMatrix4MakeScale(scale, scale, scale);
+  self.totalScale *=scale;
+  //recognizer.scale = 1.0;
+  
+}
 // 设置材质
 -(SCNMaterial *)material {
   if (!_material) {
