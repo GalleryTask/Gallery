@@ -290,13 +290,11 @@ API_AVAILABLE(ios(11.0))
 
 #pragma mark - 加入立方体箱子
 - (void)insertCube:(ARHitTestResult *)hitResult  API_AVAILABLE(ios(11.0)) {
-
-  SCNVector3 position = SCNVector3Make(
-                                       -hitResult.worldTransform.columns[3].x,
-                                       -hitResult.worldTransform.columns[3].y,
-                                       -hitResult.worldTransform.columns[3].z * 100
-                                       );
-
+//  SCNVector3 position = SCNVector3Make(
+//                                       -hitResult.worldTransform.columns[3].x,
+//                                       -hitResult.worldTransform.columns[3].y,
+//                                       -hitResult.worldTransform.columns[3].z
+//                                       );
   
 //  SCNBox *cube = [SCNBox boxWithWidth:0.2 height:0.05 length:0.1 chamferRadius:0];
 //  cube.firstMaterial.diffuse.contents = [UIImage imageNamed:@"timg"];
@@ -314,8 +312,17 @@ API_AVAILABLE(ios(11.0))
   SCNNode *node = scene.rootNode;
 //  SCNNode *node = [SCNNode nodeWithGeometry:cube];
   
+<<<<<<< HEAD
+  SCNVector3 position = SCNVector3Make(
+                                       -hitResult.worldTransform.columns[3].x,
+                                       -hitResult.worldTransform.columns[3].y,
+                                       -hitResult.worldTransform.columns[3].z
+                                       );
+  
   node.position = position;
+=======
   node.position = SCNVector3Make(0, -20, -200);
+>>>>>>> 8b7ca70ada314b433ae332f9dbe25d462921e5c5
   if (self.switchBtn.isOn) {
     node.opacity = 0.3;
   } else {
