@@ -320,6 +320,7 @@ API_AVAILABLE(ios(11.0))
   }
   
   
+  
   if (self.switchBtn.isOn) {
     node.opacity = 0.3;
   } else {
