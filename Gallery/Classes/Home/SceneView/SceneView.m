@@ -155,14 +155,6 @@
     _scnView.backgroundColor = [UIColor hexStringToColor:@"#F5F5F5"];
     // 允许控制摄像机位置
     _scnView.allowsCameraControl = YES;
-    
-
-    // 不显示数据控制台
-//    _scnView.showsStatistics = YES;
-//    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];
-//    [_scnView addGestureRecognizer:pinch];
-
-
   }
   return _scnView;
 }

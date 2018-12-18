@@ -24,6 +24,7 @@
 		7609C781219D4B1900689D07 /* PackagingTagController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C780219D4B1900689D07 /* PackagingTagController.m */; };
 		7609C784219D4B4000689D07 /* PackagingDesignerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609C783219D4B4000689D07 /* PackagingDesignerController.m */; };
 		7609F4E421C770E1008236F2 /* ARViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609F4E221C770E1008236F2 /* ARViewController.m */; };
+		7609F4E721C7AC6A008236F2 /* ModelLoadingNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 7609F4E621C7AC6A008236F2 /* ModelLoadingNode.m */; };
 		760C419521A7A5900047CBA0 /* SettleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760C419421A7A5900047CBA0 /* SettleView.m */; };
 		760CE63321992A2600CF2306 /* PageRoundScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 760CE63221992A2600CF2306 /* PageRoundScrollView.m */; };
 		760E94692151ED9B00592929 /* DataList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 760E94682151ED9B00592929 /* DataList.plist */; };
@@ -140,6 +141,8 @@
 		7609C783219D4B4000689D07 /* PackagingDesignerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackagingDesignerController.m; sourceTree = "<group>"; };
 		7609F4E221C770E1008236F2 /* ARViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARViewController.m; sourceTree = "<group>"; };
 		7609F4E321C770E1008236F2 /* ARViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARViewController.h; sourceTree = "<group>"; };
+		7609F4E521C7AC6A008236F2 /* ModelLoadingNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelLoadingNode.h; sourceTree = "<group>"; };
+		7609F4E621C7AC6A008236F2 /* ModelLoadingNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelLoadingNode.m; sourceTree = "<group>"; };
 		760C419321A7A5900047CBA0 /* SettleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettleView.h; sourceTree = "<group>"; };
 		760C419421A7A5900047CBA0 /* SettleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettleView.m; sourceTree = "<group>"; };
 		760CE63121992A2600CF2306 /* PageRoundScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageRoundScrollView.h; sourceTree = "<group>"; };
@@ -754,6 +757,8 @@
 				762A15FA21B911D1002298A8 /* art.scnassets */,
 				76EE836B216B4B5000D317FF /* SceneView.h */,
 				76EE836C216B4B5000D317FF /* SceneView.m */,
+				7609F4E521C7AC6A008236F2 /* ModelLoadingNode.h */,
+				7609F4E621C7AC6A008236F2 /* ModelLoadingNode.m */,
 			);
 			path = SceneView;
 			sourceTree = "<group>";
@@ -971,6 +976,7 @@
 				7609C77E219D4ADA00689D07 /* PackagingStandardController.m in Sources */,
 				7609C76E219D159D00689D07 /* OrderViewController.m in Sources */,
 				76EE836E216B4B5000D317FF /* SceneView.m in Sources */,
+				7609F4E721C7AC6A008236F2 /* ModelLoadingNode.m in Sources */,
 				76F6AC31219D855300EB0325 /* PackagingImageView.m in Sources */,
 				8455A4E021942E5A00B52A2B /* CategoryDetailController.m in Sources */,
 				76B901FB219EDC1E0019C481 /* ServiceDetailCell.m in Sources */,
