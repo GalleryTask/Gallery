@@ -158,6 +158,7 @@
   }
   return _scnView;
 }
+
 - (void)pinch:(UIPinchGestureRecognizer *)recognizer{
   
   CGFloat scale = recognizer.scale;

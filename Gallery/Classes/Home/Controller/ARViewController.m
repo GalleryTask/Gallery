@@ -16,6 +16,7 @@
 #import <SceneKit/SceneKit.h>
 
 API_AVAILABLE(ios(11.0))
+// A9芯片及以上支持ARKit
 @interface ARViewController () <ARSCNViewDelegate>
 
 // AR场景视图，展示3D界面
@@ -25,7 +26,7 @@ API_AVAILABLE(ios(11.0))
 @property (nonatomic, strong) ARWorldTrackingConfiguration  *arConfiguration;
 
 // AR会话，负责管理相机追踪配置及3D相机坐标
-@property(nonatomic,strong)ARSession *arSession;
+@property(nonatomic,strong) ARSession *arSession;
 
 @property (nonatomic, assign) ARTrackingState  currentTrackingState;    // 位置跟踪质量的可能值
 
@@ -309,16 +310,15 @@ API_AVAILABLE(ios(11.0))
   SCNNode *node = scene.rootNode;
   
   // 调整模型的位置并缩放，模型较大
-  node.scale = SCNVector3Make(0.1, 0.1, 0.1);
+  node.scale = SCNVector3Make(0.05, 0.05, 0.05);
   node.position = position;
   
   // 子节点要一起调整位置并缩放，否则会设置无效
   for (SCNNode *anode in node.childNodes) {
     
-    anode.scale = SCNVector3Make(0.1, 0.1, 0.1);
+    anode.scale = SCNVector3Make(0.05, 0.05, 0.05);
     anode.position = position;
   }
-  
   
   
   if (self.switchBtn.isOn) {

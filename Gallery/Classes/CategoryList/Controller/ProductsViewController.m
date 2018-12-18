@@ -74,19 +74,13 @@ static NSString *cellIdentList = @"listCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   
-  if (indexPath.row == 3) {
-    AddressListController *addressVC = [[AddressListController alloc] init];
-    [self.navigationController pushViewController:addressVC animated:YES];
-  }else{
-    TopPageSlideController * detailVC = [[TopPageSlideController alloc] initCategoryDetailVC];
-    detailVC.title = @"水果农特";
-    [self.navigationController pushViewController:detailVC animated:YES];
-  }
+  TopPageSlideController * detailVC = [[TopPageSlideController alloc] initCategoryDetailVC];
+  detailVC.title = @"水果农特";
+  [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 #pragma mark - 一级tableView滚动时 实现当前类tableView的联动
 - (void)scrollToSelectedIndexPath:(NSIndexPath *)indexPath {
-  
   
 //  [self.listCollection selectItemAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:0]
 //                                    animated:YES

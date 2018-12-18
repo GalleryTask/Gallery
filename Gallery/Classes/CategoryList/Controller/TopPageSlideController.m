@@ -63,7 +63,7 @@
   vc.delegate = vc;
   vc.headerView = self.sceneView;
   
-  vc.navigationItem.rightBarButtonItem = self.rightBtnItem;
+//  vc.navigationItem.rightBarButtonItem = self.rightBtnItem;
   
   
   return vc;
