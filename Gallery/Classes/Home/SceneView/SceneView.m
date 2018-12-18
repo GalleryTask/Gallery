@@ -21,7 +21,7 @@
 @property (nonatomic, strong) SCNNode  *topNode;
 @property (nonatomic, strong) SCNNode  *liningNode;
 @property (nonatomic, strong) SCNNode  *downNode;
-@property (nonatomic,assign) CGFloat totalScale;
+@property (nonatomic, assign) CGFloat  totalScale;
 @property (nonatomic, strong) NSArray  *nodeArray;
 
 @end
@@ -33,20 +33,19 @@
     [self setFrame:frame];
     self.totalScale = 1.0;
     [self createSceneViewWithSceneName:sceneName];
-//    [self sceneViewDiffuse];
   }
   return self;
 }
 
 // 设置反光效果
--(void)sceneViewReflectiveImage:(UIImage *)image {
-  self.material.fresnelExponent = 1.7;
-  self.material.reflective.contents = image;
-
-  for (SCNNode *aNode in self.scene.rootNode.childNodes) {
-    [aNode.geometry setMaterials:@[self.material]];
-  }
-}
+//-(void)sceneViewReflectiveImage:(UIImage *)image {
+//  self.material.fresnelExponent = 1.7;
+//  self.material.reflective.contents = image;
+//
+//  for (SCNNode *aNode in self.scene.rootNode.childNodes) {
+//    [aNode.geometry setMaterials:@[self.material]];
+//  }
+//}
 
 
 // 更换node的贴图图片
@@ -65,67 +64,35 @@
 
   if ([self.scnView.scene.rootNode.childNodes containsObject:self.topNode]) {
     
-    SCNAnimationEvent *event = [SCNAnimationEvent animationEventWithKeyTime:0.5 block:^(id<SCNAnimation>  _Nonnull animation, id  _Nonnull animatedObject, BOOL playingBackward) {
-      
+    SCNAnimationEvent *event = [SCNAnimationEvent animationEventWithKeyTime:0.5
+                                                                      block:^(id<SCNAnimation>  _Nonnull animation, id  _Nonnull animatedObject, BOOL playingBackward) {
       [self.topNode removeAllAnimations];
       [self.topNode removeFromParentNode];
     }];
     
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.y"];
-    animation.duration = 1;
-    animation.toValue = @"100";
+    
+    CABasicAnimation *animation = [self animationWithKeyPath:@"position.y" duration:1 fromValue:@"0" toValue:@"100" repeatCount:0];
     animation.animationEvents = @[event];
-    animation.repeatCount = 0;
-    animation.fillMode=kCAFillModeForwards;
-    animation.removedOnCompletion = NO;
-
     [self.topNode addAnimation:animation forKey:nil];
     
-    
-    
-
-    
-    CABasicAnimation *animation1 = [CABasicAnimation animationWithKeyPath:@"position.y"];
-    animation1.duration = 1;
-    animation1.toValue = @"-10";
-    animation1.repeatCount = 0;
-    animation1.fillMode=kCAFillModeForwards;
-    animation1.removedOnCompletion = NO;
-    [self.downNode addAnimation:animation1 forKey:nil];
-    
-//    // 开盖后偏移
-//    SCNAction *action = [SCNAction rotateToX:0.8 y:0 z:0 duration:0.5];
-//    SCNAction *sequence =[SCNAction sequence:@[action]];
-//    [self.downNode runAction:sequence];
-//    [self.liningNode runAction:sequence];
-    
+    // 开盖后偏移
+    [self nodeActionWithX:0.8 y:0 z:0 duration:0.5];
   }
 }
+
 
 // 添加节点
 - (void)addNode {
 
   if (![self.scene.rootNode.childNodes containsObject:self.topNode]) {
-    SCNAnimationEvent *event = [SCNAnimationEvent animationEventWithKeyTime:0.5
-                                                                      block:^(id<SCNAnimation>  _Nonnull animation, id  _Nonnull animatedObject, BOOL playingBackward) {
-                                                                        
-                                                                      }];
-    
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.y"];
-    animation.duration = 0.5;
-    animation.fromValue = @"100";
-    animation.animationEvents = @[event];
-    animation.repeatCount = 0;
-    
+
+    [self.topNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"100" toValue:@"0" repeatCount:0] forKey:nil];
     [self.scnView.scene.rootNode addChildNode:self.topNode];
-    [self.topNode addAnimation:animation forKey:nil];
     
     // 恢复之前的偏移
-    SCNAction *action = [SCNAction rotateToX:0 y:0 z:0 duration:0.5];
-    SCNAction *sequence =[SCNAction sequence:@[action]];
-    [self.downNode runAction:sequence];
-    [self.liningNode runAction:sequence];
+    [self nodeActionWithX:0 y:0 z:0 duration:0.5];
   }
+  
   self.cameraNode.position = SCNVector3Make(0, 10, 50);
 }
 
@@ -133,9 +100,21 @@
 -(void)nodeTurnAround {
 
   SCNAction *repeatAction = [SCNAction repeatAction:[SCNAction rotateByX:0 y:1 z:0 duration:0.3] count:4];
-  [self.topNode runAction:repeatAction];
-  [self.downNode runAction:repeatAction];
-  [self.liningNode runAction:repeatAction];
+  for (SCNNode *node in self.nodeArray) {
+    [node runAction:repeatAction];
+  }
+}
+
+- (void)nodeOpenTopAndBottom {
+
+  [self.topNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"0" toValue:@"5" repeatCount:0] forKey:nil];
+  [self.downNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"0" toValue:@"-10" repeatCount:0] forKey:nil];
+}
+
+- (void)nodeCloseTopAndBottom {
+  
+  [self.topNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"5" toValue:@"0" repeatCount:0] forKey:nil];
+  [self.downNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"-10" toValue:@"0" repeatCount:0] forKey:nil];
 }
 
 
@@ -153,22 +132,6 @@
   [self addSubview:self.scnView];
   
   self.nodeArray = @[self.topNode,self.liningNode,self.downNode];
-}
-
-#pragma marks - getters
-// 创建展示场景
--(SCNView *)scnView {
-  if (!_scnView) {
-    // 创建展示场景
-    _scnView = [[SCNView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-    // 设置场景
-    _scnView.scene = self.scene;
-    // 设置背景颜色
-    _scnView.backgroundColor = [UIColor hexStringToColor:@"#F5F5F5"];
-    // 允许控制摄像机位置
-    _scnView.allowsCameraControl = YES;
-  }
-  return _scnView;
 }
 
 - (void)pinch:(UIPinchGestureRecognizer *)recognizer{
@@ -189,6 +152,66 @@
   //recognizer.scale = 1.0;
   
 }
+
+/**
+ 动画
+ 
+ @param keypath 偏移方向 position.x position.y
+ @param duration 动画时长
+ @param fromValue 开始位置
+ @param toValue 结束位置
+ @param count 执行次数
+ @return CABasicAnimation
+ */
+- (CABasicAnimation *)animationWithKeyPath:(NSString *)keypath
+                                  duration:(CGFloat)duration
+                                 fromValue:(NSString *)fromValue
+                                   toValue:(NSString *)toValue
+                               repeatCount:(NSInteger)count {
+  CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:keypath];
+  animation.duration = duration;
+  animation.fromValue = fromValue;
+  animation.toValue = toValue;
+  animation.repeatCount = count;
+  animation.fillMode=kCAFillModeForwards;
+  animation.removedOnCompletion = NO;
+  return animation;
+}
+
+
+/**
+ 模型偏移
+
+ @param x x方向
+ @param y y方向
+ @param z z方向
+ @param duration 时长
+ */
+- (void)nodeActionWithX:(CGFloat)x y:(CGFloat)y z:(CGFloat)z duration:(CGFloat)duration {
+  SCNAction *action = [SCNAction rotateToX:x y:y z:z duration:duration];
+  SCNAction *sequence = [SCNAction sequence:@[action]];
+  for (SCNNode *node in self.nodeArray) {
+    [node runAction:sequence];
+  }
+}
+
+#pragma marks - getters
+// 创建展示场景
+-(SCNView *)scnView {
+  if (!_scnView) {
+    // 创建展示场景
+    _scnView = [[SCNView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    // 设置场景
+    _scnView.scene = self.scene;
+    // 设置背景颜色
+    _scnView.backgroundColor = [UIColor hexStringToColor:@"#F5F5F5"];
+    // 允许控制摄像机位置
+    _scnView.allowsCameraControl = YES;
+  }
+  return _scnView;
+}
+
+
 // 设置材质
 -(SCNMaterial *)material {
   if (!_material) {

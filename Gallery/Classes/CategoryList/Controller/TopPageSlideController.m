@@ -125,6 +125,13 @@
         [self.sceneView addNode];
         [self.sceneView changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/1_boxtop.png",@"art.scnassets/0_lining.png",@"art.scnassets/2_boxdown.png"]];
         break;
+        case 3:
+        [self.sceneView addNode];
+        [self.sceneView nodeOpenTopAndBottom];
+        break;
+        case 4:
+        [self.sceneView nodeCloseTopAndBottom];
+        break;
         
       default:
         [self.sceneView addNode];

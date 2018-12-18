@@ -15,7 +15,7 @@
 
 - (id)initWithSceneName:(NSString *)sceneName frame:(CGRect)frame;
 // 设置反光效果
-- (void)sceneViewReflectiveImage:(UIImage *)image;
+//- (void)sceneViewReflectiveImage:(UIImage *)image;
 
 // 移除节点
 - (void)removeNode;
@@ -23,6 +23,10 @@
 - (void)addNode;
 // 模型转一圈
 - (void)nodeTurnAround;
+
+- (void)nodeOpenTopAndBottom;
+
+- (void)nodeCloseTopAndBottom;
 
 // 更换贴图图片
 - (void)changeNodeDiffuseWithImageNameArray:(NSArray *)array;
