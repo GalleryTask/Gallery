@@ -83,20 +83,14 @@
     
     
     
-    SCNAnimationEvent *event1 = [SCNAnimationEvent animationEventWithKeyTime:0.5 block:^(id<SCNAnimation>  _Nonnull animation, id  _Nonnull animatedObject, BOOL playingBackward) {
-      
-      [self.downNode removeAllAnimations];
-      [self.downNode removeFromParentNode];
-    }];
+
     
     CABasicAnimation *animation1 = [CABasicAnimation animationWithKeyPath:@"position.y"];
     animation1.duration = 1;
-    animation1.toValue = @"-5";
-    animation1.animationEvents = @[event1];
+    animation1.toValue = @"-10";
     animation1.repeatCount = 0;
     animation1.fillMode=kCAFillModeForwards;
     animation1.removedOnCompletion = NO;
-    
     [self.downNode addAnimation:animation1 forKey:nil];
     
 //    // 开盖后偏移
