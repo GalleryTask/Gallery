@@ -81,11 +81,23 @@
 
     [self.topNode addAnimation:animation forKey:nil];
     
-    // 开盖后偏移
-    SCNAction *action = [SCNAction rotateToX:0.8 y:0 z:0 duration:0.5];
-    SCNAction *sequence =[SCNAction sequence:@[action]];
-    [self.downNode runAction:sequence];
-    [self.liningNode runAction:sequence];
+    
+    
+
+    
+    CABasicAnimation *animation1 = [CABasicAnimation animationWithKeyPath:@"position.y"];
+    animation1.duration = 1;
+    animation1.toValue = @"-10";
+    animation1.repeatCount = 0;
+    animation1.fillMode=kCAFillModeForwards;
+    animation1.removedOnCompletion = NO;
+    [self.downNode addAnimation:animation1 forKey:nil];
+    
+//    // 开盖后偏移
+//    SCNAction *action = [SCNAction rotateToX:0.8 y:0 z:0 duration:0.5];
+//    SCNAction *sequence =[SCNAction sequence:@[action]];
+//    [self.downNode runAction:sequence];
+//    [self.liningNode runAction:sequence];
     
   }
 }
@@ -172,7 +184,7 @@
   if (scale < 1.0) {
     if (self.totalScale < MinScale) return;
   }
-  self.scene.rootNode.transform =  SCNMatrix4MakeScale(scale, scale, scale);
+  self.scene.rootNode.scale =  SCNVector3Make(scale, scale, scale);
   self.totalScale *=scale;
   //recognizer.scale = 1.0;
   
