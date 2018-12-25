@@ -236,7 +236,7 @@
 
 -(BOOL) isNodePartOfVirtualObject:(SCNNode*)node {
   
-  if ([@"tubiao01" isEqualToString:node.name]) {
+  if ([@"tubiao006" isEqualToString:node.name]) {
     
     return true;
     
@@ -407,7 +407,7 @@
 
 -(SCNNode *)tapNode {
   if (!_tapNode) {
-    _tapNode = [self.scene.rootNode childNodeWithName:@"tubiao01" recursively:YES];
+    _tapNode = [self.scene.rootNode childNodeWithName:@"tubiao006" recursively:YES];
   }
   return _tapNode;
 }
