@@ -22,7 +22,8 @@
 @property (nonatomic, strong) SCNNode  *topNode;
 @property (nonatomic, strong) SCNNode  *liningNode;
 @property (nonatomic, strong) SCNNode  *downNode;
-@property (nonatomic, strong) SCNNode  *tapNode;
+@property (nonatomic, strong) SCNNode  *tapTopNode;
+@property (nonatomic, strong) SCNNode  *tapLiningNode;
 @property (nonatomic, assign) CGFloat  totalScale;
 @property (nonatomic, strong) NSArray  *nodeArray;
 
@@ -111,7 +112,7 @@
 
   [self.topNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"0" toValue:@"5" repeatCount:0] forKey:nil];
   [self.downNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"0" toValue:@"-10" repeatCount:0] forKey:nil];
-  [self.tapNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"0" toValue:@"5" repeatCount:0] forKey:nil];
+  [self.tapTopNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"0" toValue:@"5" repeatCount:0] forKey:nil];
 }
 
 - (void)nodeCloseTopAndBottom {
@@ -141,7 +142,7 @@
   material.lightingModelName = SCNLightingModelLambert;
   material.diffuse.contents = [UIImage imageNamed:@"3_tubiao"];
   
-  [self.tapNode.childNodes[0].geometry setMaterials:@[material]];
+  [self.tapTopNode.childNodes[0].geometry setMaterials:@[material]];
 }
 
 - (void)tapClick {
@@ -150,15 +151,9 @@
 
 // 系统方法
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-
-{
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
   
   if (self.scene.rootNode) {
-    
-//    self.currentTouches = touches;
-//
-//    UITouch *touch = [self.currentTouches anyObject];
     
     CGPoint tapPoint  = [[touches anyObject] locationInView:self.scnView];//该点就是手指的点击位置
     
@@ -168,24 +163,41 @@
     
     for (SCNHitTestResult *res in results) {//遍历所有的返回结果中的node
       
-      if ([self isNodePartOfVirtualObject:res.node]) {
+      if ([self isTopNodeClick:res.node]) {
         
-//        [self doSomeThing];
         [self nodeOpenTopAndBottom];
+        [self.tapTopNode removeFromParentNode];
+        SCNMaterial *material = [SCNMaterial new];
+        material.lightingModelName = SCNLightingModelLambert;
+        material.diffuse.contents = [UIImage imageNamed:@"3_tubiao"];
         
+        [self.tapLiningNode.childNodes[0].geometry setMaterials:@[material]];
         break;
         
       }
       
+      if ([self isLiningNodeClick:res.node]) {
+        [self.topNode removeFromParentNode];
+        [self.downNode removeFromParentNode];
+        [self.tapLiningNode removeFromParentNode];
+      }
     }
-    
   }
-  
 }
 
--(BOOL) isNodePartOfVirtualObject:(SCNNode*)node {
+- (BOOL)isTopNodeClick:(SCNNode *)node {
   
-  if ([@"tubiao006" isEqualToString:node.name]) {
+  return [self isNodePartOfVirtualObject:node selectedNode:self.tapTopNode];
+}
+
+- (BOOL)isLiningNodeClick:(SCNNode *)node {
+  
+  return [self isNodePartOfVirtualObject:node selectedNode:self.tapLiningNode];
+}
+
+- (BOOL)isNodePartOfVirtualObject:(SCNNode*)node selectedNode:(SCNNode *)selectedNode {
+  
+  if ([selectedNode.name isEqualToString:node.name]) {
     
     return true;
     
@@ -193,7 +205,7 @@
   
   if (node.parentNode != nil) {
     
-    return [self isNodePartOfVirtualObject:node.parentNode];
+    return [self isNodePartOfVirtualObject:node.parentNode selectedNode:selectedNode];
     
   }
   
@@ -354,11 +366,18 @@
   return _downNode;
 }
 
--(SCNNode *)tapNode {
-  if (!_tapNode) {
-    _tapNode = [self.scene.rootNode childNodeWithName:@"tubiao006" recursively:YES];
+-(SCNNode *)tapTopNode {
+  if (!_tapTopNode) {
+    _tapTopNode = [self.scene.rootNode childNodeWithName:@"tubiao006" recursively:YES];
   }
-  return _tapNode;
+  return _tapTopNode;
+}
+
+-(SCNNode *)tapLiningNode {
+  if (!_tapLiningNode) {
+    _tapLiningNode = [self.scene.rootNode childNodeWithName:@"tubiao005" recursively:YES];
+  }
+  return _tapLiningNode;
 }
 
 @end
