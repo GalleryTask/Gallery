@@ -14,8 +14,6 @@
 @property (nonatomic, strong) SCNNode     *cameraNode; // 角度
 
 - (id)initWithSceneName:(NSString *)sceneName frame:(CGRect)frame;
-// 设置反光效果
-//- (void)sceneViewReflectiveImage:(UIImage *)image;
 
 // 移除节点
 - (void)removeNode;

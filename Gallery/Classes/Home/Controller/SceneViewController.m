@@ -23,9 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   self.navigationItem.title = @"3D苹果包装方案";
+//  [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"1"]]];
   [self.view addSubview:self.sceneView];
   [self.view addSubview:self.customizedBtn];
-  [self.sceneView nodeTurnAround];
+//  [self.sceneView nodeTurnAround];
   
   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
   [nav setNavigationBarRightItemWithButtonTitle:@"AR实景" clickBlock:^(id sender) {

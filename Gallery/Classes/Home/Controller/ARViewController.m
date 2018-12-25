@@ -39,6 +39,8 @@ API_AVAILABLE(ios(11.0))
 - (void)viewDidLoad {
   [super viewDidLoad];
   
+  self.title = @"AR实景";
+  
   [self.view setBackgroundColor:[UIColor whiteColor]];
   self.currentTrackingState = ARTrackingStateNormal;
   
@@ -231,7 +233,7 @@ API_AVAILABLE(ios(11.0))
       string = @"相机位置跟踪提供最佳结果";
       break;
   }
-//  [self.messageView queueMessage:string];
+
   [self promptHudViewWithText:string isHidden:YES];
 }
 
@@ -300,6 +302,11 @@ API_AVAILABLE(ios(11.0))
 #pragma mark - 加入立方体箱子
 - (void)insertCube:(ARHitTestResult *)hitResult  API_AVAILABLE(ios(11.0)) {
   
+  // 震动反馈
+  UIImpactFeedbackGenerator *generator = [[UIImpactFeedbackGenerator alloc] initWithStyle: UIImpactFeedbackStyleMedium];
+  [generator prepare];
+  [generator impactOccurred];
+  
   SCNVector3 position = SCNVector3Make(
                                        hitResult.worldTransform.columns[3].x,
                                        hitResult.worldTransform.columns[3].y,
@@ -310,13 +317,13 @@ API_AVAILABLE(ios(11.0))
   SCNNode *node = scene.rootNode;
   
   // 调整模型的位置并缩放，模型较大
-  node.scale = SCNVector3Make(0.05, 0.05, 0.05);
+  node.scale = SCNVector3Make(0.07, 0.07, 0.07);
   node.position = position;
   
   // 子节点要一起调整位置并缩放，否则会设置无效
   for (SCNNode *anode in node.childNodes) {
     
-    anode.scale = SCNVector3Make(0.05, 0.05, 0.05);
+    anode.scale = SCNVector3Make(0.07, 0.07, 0.07);
     anode.position = position;
   }
   

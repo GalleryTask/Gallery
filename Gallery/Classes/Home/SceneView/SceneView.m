@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) SCNView     *scnView;
 @property (nonatomic, strong) SCNNode     *spotNode;  // 灯光节点
+@property (nonatomic, strong) SCNNode     *omiNode; // 泛光源
 @property (nonatomic, strong) SCNScene    *scene;
 @property (nonatomic, strong) SCNMaterial *material;
 
@@ -128,10 +129,29 @@
   [self.scene.rootNode addChildNode:self.cameraNode];
   // 创建灯光
 //  [self.scene.rootNode addChildNode:self.spotNode];
+//  [self.cameraNode addChildNode:self.omiNode];
   // 创建展示场景
   [self addSubview:self.scnView];
   
   self.nodeArray = @[self.topNode,self.liningNode,self.downNode];
+  
+  SCNNode *node = [self.scene.rootNode childNodeWithName:@"tubiao01" recursively:YES];
+//  SCNNode *node2 = [self.scene.rootNode childNodeWithName:@"tubiao02" recursively:YES];
+//  SCNNode *node3 = [self.scene.rootNode childNodeWithName:@"tubiao03" recursively:YES];
+//  NSArray *array = @[node1,node2,node3];
+//
+//  for (int i = 0; i < 3; i++) {
+  
+    SCNMaterial *material = [SCNMaterial new];
+    material.lightingModelName = SCNLightingModelLambert;
+    material.diffuse.contents = [UIImage imageNamed:@"3_tubiao"];
+//    SCNNode *node = array[i];
+  
+    [node.childNodes[0].geometry setMaterials:@[material]];
+    SCNAction *repeatAction = [SCNAction repeatActionForever:[SCNAction fadeOpacityBy:0 duration:10] ];
+    [node runAction:repeatAction];
+//  }
+
 }
 
 - (void)pinch:(UIPinchGestureRecognizer *)recognizer{
@@ -205,6 +225,7 @@
     _scnView.scene = self.scene;
     // 设置背景颜色
     _scnView.backgroundColor = [UIColor hexStringToColor:@"#F5F5F5"];
+//    _scnView.backgroundColor = [UIColor clearColor];
     // 允许控制摄像机位置
     _scnView.allowsCameraControl = YES;
   }
@@ -221,12 +242,33 @@
   return _material;
 }
 
-// 创建灯光
+// 创建环境光
 - (SCNNode *)spotNode{
   if (!_spotNode) {
-    _spotNode = [self.scene.rootNode childNodeWithName:@"EnvironmentAmbientLight" recursively:YES];
+//    _spotNode = [self.scene.rootNode childNodeWithName:@"EnvironmentAmbientLight" recursively:YES];
+    SCNLight *light = [SCNLight light];// 创建光对象
+    light.type = SCNLightTypeAmbient;// 设置类型
+    light.spotOuterAngle = 2;
+    light.color = [UIColor colorWithWhite:0.9 alpha:1.0]; // 设置光的颜色
+    _spotNode = [SCNNode node];
+    _spotNode.light = light;
   }
   return _spotNode;
+}
+
+// 创建泛光源
+-(SCNNode *)omiNode {
+  if (!_omiNode) {
+    SCNLight *light = [SCNLight light];// 创建光对象
+    light.type = SCNLightTypeOmni;// 设置类型
+    light.spotOuterAngle = 2;
+    light.color = [UIColor whiteColor]; // 设置光的颜色
+    light.castsShadow = true;
+    _omiNode = [SCNNode node];
+    _omiNode.position = SCNVector3Make(50, 50, 20);
+    _omiNode.light = light;
+  }
+  return _omiNode;
 }
 
 // 视角
@@ -244,7 +286,7 @@
 // 上盖模型
 -(SCNNode *)topNode {
   if (!_topNode) {
-    _topNode = [self.scene.rootNode childNodeWithName:@"boxtop01" recursively:YES];
+    _topNode = [self.scene.rootNode childNodeWithName:@"boxtop" recursively:YES];
   }
   return _topNode;
 }
@@ -252,7 +294,7 @@
 // 内衬模型
 -(SCNNode *)liningNode {
   if (!_liningNode) {
-    _liningNode = [self.scene.rootNode childNodeWithName:@"lining1" recursively:YES];
+    _liningNode = [self.scene.rootNode childNodeWithName:@"lining" recursively:YES];
   }
   return _liningNode;
 }
@@ -260,7 +302,7 @@
 // 下盖模型
 -(SCNNode *)downNode {
   if (!_downNode) {
-    _downNode =  [self.scene.rootNode childNodeWithName:@"boxdown02" recursively:YES];
+    _downNode =  [self.scene.rootNode childNodeWithName:@"boxdown" recursively:YES];
   }
   return _downNode;
 }
