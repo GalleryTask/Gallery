@@ -25,6 +25,8 @@
 @property (nonatomic, strong) SCNNode  *tapNode;
 @property (nonatomic, assign) CGFloat  totalScale;
 @property (nonatomic, strong) NSArray  *nodeArray;
+@property (nonatomic, assign) NSInteger count;
+@property (nonatomic, assign) NSInteger count1;
 
 @end
 
@@ -142,6 +144,55 @@
   material.diffuse.contents = [UIImage imageNamed:@"3_tubiao"];
   
   [self.tapNode.childNodes[0].geometry setMaterials:@[material]];
+  
+  // GCD定时器
+  static dispatch_source_t _timer;
+  NSTimeInterval period = 0.1; //设置时间间隔
+  dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+  _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+  dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), period * NSEC_PER_SEC, 0); //每秒执行
+  // 事件回调
+  @weakify(self);
+  dispatch_source_set_event_handler(_timer, ^{
+     @strongify(self);
+    dispatch_async(dispatch_get_main_queue(), ^{
+      self.count++;
+      if (self.count1 %2 == 0) {
+        double yushua = self.count%10;
+        double a = 1- yushua/10;
+        if (self.count%10 == 0) {
+          self.count1 = 1;
+          //a = yushua/10;
+        }else{
+          self.tapNode.opacity = a;
+        }
+        //self.tapNode.opacity = a;
+      }else{
+        double yushub = self.count%10;
+        double b = yushub/10;
+        if (self.count%10 == 0) {
+          self.count1 = 0;
+         // b = 1-yushub/10;
+        }else{
+          self.tapNode.opacity = b;
+        }
+        //self.tapNode.opacity = b;
+      }
+      NSLog(@"Count");
+    });
+  });
+  
+  // 开启定时器
+  dispatch_resume(_timer);
+  
+  
+//  SCNAction *action = [SCNAction scaleTo:1.1 duration:0.5];
+//  SCNAction *action1 = [SCNAction scaleTo:1 duration:0.5];
+  
+//  SCNAction *action = [SCNAction rotateToX:0.2 y:0 z:0 duration:0.5];
+//  SCNAction *action1 = [SCNAction rotateToX:0 y:0 z:0 duration:0.5];
+//  SCNAction *sequence =[SCNAction sequence:@[action,action1]];
+//   [self.tapNode runAction:[SCNAction repeatActionForever:sequence]];
 }
 
 - (void)tapClick {
