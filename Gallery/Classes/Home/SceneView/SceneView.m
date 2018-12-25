@@ -22,6 +22,7 @@
 @property (nonatomic, strong) SCNNode  *topNode;
 @property (nonatomic, strong) SCNNode  *liningNode;
 @property (nonatomic, strong) SCNNode  *downNode;
+@property (nonatomic, strong) SCNNode  *tapNode;
 @property (nonatomic, assign) CGFloat  totalScale;
 @property (nonatomic, strong) NSArray  *nodeArray;
 
@@ -110,6 +111,7 @@
 
   [self.topNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"0" toValue:@"5" repeatCount:0] forKey:nil];
   [self.downNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"0" toValue:@"-10" repeatCount:0] forKey:nil];
+  [self.tapNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"0" toValue:@"5" repeatCount:0] forKey:nil];
 }
 
 - (void)nodeCloseTopAndBottom {
@@ -135,23 +137,68 @@
   
   self.nodeArray = @[self.topNode,self.liningNode,self.downNode];
   
-  SCNNode *node = [self.scene.rootNode childNodeWithName:@"tubiao01" recursively:YES];
-//  SCNNode *node2 = [self.scene.rootNode childNodeWithName:@"tubiao02" recursively:YES];
-//  SCNNode *node3 = [self.scene.rootNode childNodeWithName:@"tubiao03" recursively:YES];
-//  NSArray *array = @[node1,node2,node3];
-//
-//  for (int i = 0; i < 3; i++) {
+  SCNMaterial *material = [SCNMaterial new];
+  material.lightingModelName = SCNLightingModelLambert;
+  material.diffuse.contents = [UIImage imageNamed:@"3_tubiao"];
   
-    SCNMaterial *material = [SCNMaterial new];
-    material.lightingModelName = SCNLightingModelLambert;
-    material.diffuse.contents = [UIImage imageNamed:@"3_tubiao"];
-//    SCNNode *node = array[i];
-  
-    [node.childNodes[0].geometry setMaterials:@[material]];
-    SCNAction *repeatAction = [SCNAction repeatActionForever:[SCNAction fadeOpacityBy:0 duration:10] ];
-    [node runAction:repeatAction];
-//  }
+  [self.tapNode.childNodes[0].geometry setMaterials:@[material]];
+}
 
+- (void)tapClick {
+  
+}
+
+// 系统方法
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+
+{
+  
+  if (self.scene.rootNode) {
+    
+//    self.currentTouches = touches;
+//
+//    UITouch *touch = [self.currentTouches anyObject];
+    
+    CGPoint tapPoint  = [[touches anyObject] locationInView:self.scnView];//该点就是手指的点击位置
+    
+    NSDictionary *hitTestOptions = [NSDictionary dictionaryWithObjectsAndKeys:@(true),SCNHitTestBoundingBoxOnlyKey, nil];
+    
+    NSArray<SCNHitTestResult *> * results= [self.scnView hitTest:tapPoint options:hitTestOptions];
+    
+    for (SCNHitTestResult *res in results) {//遍历所有的返回结果中的node
+      
+      if ([self isNodePartOfVirtualObject:res.node]) {
+        
+//        [self doSomeThing];
+        [self nodeOpenTopAndBottom];
+        
+        break;
+        
+      }
+      
+    }
+    
+  }
+  
+}
+
+-(BOOL) isNodePartOfVirtualObject:(SCNNode*)node {
+  
+  if ([@"tubiao01" isEqualToString:node.name]) {
+    
+    return true;
+    
+  }
+  
+  if (node.parentNode != nil) {
+    
+    return [self isNodePartOfVirtualObject:node.parentNode];
+    
+  }
+  
+  return false;
+  
 }
 
 - (void)pinch:(UIPinchGestureRecognizer *)recognizer{
@@ -305,6 +352,13 @@
     _downNode =  [self.scene.rootNode childNodeWithName:@"boxdown" recursively:YES];
   }
   return _downNode;
+}
+
+-(SCNNode *)tapNode {
+  if (!_tapNode) {
+    _tapNode = [self.scene.rootNode childNodeWithName:@"tubiao01" recursively:YES];
+  }
+  return _tapNode;
 }
 
 @end
