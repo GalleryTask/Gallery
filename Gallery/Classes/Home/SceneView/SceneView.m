@@ -8,7 +8,7 @@
 
 #import "SceneView.h"
 
-#define MaxSCale 10.0  //最大缩放比例
+#define MaxSCale 1.5  //最大缩放比例
 #define MinScale 0.5  //最小缩放比例
 
 @interface SceneView()
@@ -25,7 +25,7 @@
 @property (nonatomic, strong) SCNNode  *tapTopNode;
 @property (nonatomic, strong) SCNNode  *tapLiningNode;
 @property (nonatomic, strong) SCNNode  *tapDownNode;
-@property (nonatomic, assign) CGFloat  totalScale;
+@property (nonatomic, assign) CGFloat  lastScale;
 @property (nonatomic, strong) NSArray  *nodeArray;
 @property (nonatomic, assign) NSInteger count;
 @property (nonatomic, assign) NSInteger count1;
@@ -37,7 +37,7 @@
 - (id)initWithSceneName:(NSString *)sceneName frame:(CGRect)frame {
   if (self = [super init]) {
     [self setFrame:frame];
-    self.totalScale = 1.0;
+//    self.totalScale = 1.0;
     [self createSceneViewWithSceneName:sceneName];
   }
   return self;
@@ -223,31 +223,34 @@
   return false;
 }
 
-- (void)pinch:(UIPinchGestureRecognizer *)recognizer{
+// 手势缩放
+- (void)pinch:(UIPinchGestureRecognizer *)recognizer {
   
   CGFloat scale = recognizer.scale;
-  
-  //放大情况
-  if(scale > 1.0){
-    if(self.totalScale > MaxSCale) return;
-  }
+  switch (recognizer.state) {
+      case UIGestureRecognizerStateBegan:
+      scale = self.lastScale;
+      break;
+    case UIGestureRecognizerStateChanged:
+    {
 
-  //缩小情况
-  if (scale < 1.0) {
-    if (self.totalScale < MinScale) return;
+      if (scale >= MaxSCale || scale <= MinScale) {
+        return;
+      }
+      
+      for (SCNNode *node in self.nodeArray) {
+        
+        node.scale = SCNVector3Make(scale, scale, scale);
+      }
+    }
+      break;
+    case UIGestureRecognizerStateEnded:
+      self.lastScale = scale;
+      break;
+      
+    default:
+      break;
   }
-  
-//  if (scale>MaxSCale || scale < MinScale) {
-//    return;
-//  }
-  for (SCNNode *node in self.nodeArray) {
-    node.scale = SCNVector3Make(scale, scale, scale);
-  }
-  
-  //self.scene.rootNode.scale =  SCNVector3Make(scale, scale, scale);
-  self.totalScale *=scale;
-  //recognizer.scale = 1.0;
-  
 }
 
 /**
