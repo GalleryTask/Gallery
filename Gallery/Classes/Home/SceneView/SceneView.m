@@ -27,8 +27,6 @@
 @property (nonatomic, strong) SCNNode  *tapDownNode;
 @property (nonatomic, assign) CGFloat  lastScale;
 @property (nonatomic, strong) NSArray  *nodeArray;
-@property (nonatomic, assign) NSInteger count;
-@property (nonatomic, assign) NSInteger count1;
 
 @end
 
@@ -37,7 +35,6 @@
 - (id)initWithSceneName:(NSString *)sceneName frame:(CGRect)frame {
   if (self = [super init]) {
     [self setFrame:frame];
-//    self.totalScale = 1.0;
     [self createSceneViewWithSceneName:sceneName];
   }
   return self;
@@ -301,41 +298,27 @@
 -(void)changeNodeOpacity:(SCNNode *)node {
   
   @autoreleasepool {
-    
+    __block BOOL opacityBool;
     // GCD定时器
     static dispatch_source_t _timer;
-    NSTimeInterval period = 0.1; //设置时间间隔
+    NSTimeInterval period = 0.3; //设置时间间隔
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
     dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), period * NSEC_PER_SEC, 0); //每秒执行
     // 事件回调
-    @weakify(self);
     dispatch_source_set_event_handler(_timer, ^{
       dispatch_async(dispatch_get_main_queue(), ^{
-        @strongify(self);
-        self.count++;
-        if (self.count1 %2 == 0) {
-          double yushua = self.count%10;
-          double a = 1- yushua/10;
-          if (self.count%10 == 0) {
-            self.count1 = 1;
-            //a = yushua/10;
-          } else {
-            node.opacity = a;
-          }
-          //self.tapNode.opacity = a;
-        } else {
-          double yushub = self.count%10;
-          double b = yushub/10;
-          if (self.count%10 == 0) {
-            self.count1 = 0;
-            // b = 1-yushub/10;
-          }else{
-            node.opacity = b;
-          }
-          //self.tapNode.opacity = b;
+     
+        if (node.opacity <= 0) {
+          opacityBool = NO;
+        }else if(node.opacity >= 1){
+          opacityBool = YES;
         }
-        //      NSLog(@"Count");
+        if (opacityBool) {
+          node.opacity -= 0.2;
+        }else{
+          node.opacity += 0.2;
+        }
       });
     });
     // 开启定时器
