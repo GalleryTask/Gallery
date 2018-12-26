@@ -225,12 +225,20 @@
   if(scale > 1.0){
     if(self.totalScale > MaxSCale) return;
   }
-  
+
   //缩小情况
   if (scale < 1.0) {
     if (self.totalScale < MinScale) return;
   }
-  self.scene.rootNode.scale =  SCNVector3Make(scale, scale, scale);
+  
+//  if (scale>MaxSCale || scale < MinScale) {
+//    return;
+//  }
+  for (SCNNode *node in self.nodeArray) {
+    node.scale = SCNVector3Make(scale, scale, scale);
+  }
+  
+  //self.scene.rootNode.scale =  SCNVector3Make(scale, scale, scale);
   self.totalScale *=scale;
   //recognizer.scale = 1.0;
   
@@ -335,6 +343,8 @@
 //    _scnView.backgroundColor = [UIColor clearColor];
     // 允许控制摄像机位置
     _scnView.allowsCameraControl = YES;
+    UIPinchGestureRecognizer *tap = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];
+    [_scnView addGestureRecognizer:tap];
   }
   return _scnView;
 }
