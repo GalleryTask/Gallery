@@ -24,6 +24,7 @@
 @property (nonatomic, strong) SCNNode  *downNode;
 @property (nonatomic, strong) SCNNode  *tapTopNode;
 @property (nonatomic, strong) SCNNode  *tapLiningNode;
+@property (nonatomic, strong) SCNNode  *tapDownNode;
 @property (nonatomic, assign) CGFloat  totalScale;
 @property (nonatomic, strong) NSArray  *nodeArray;
 @property (nonatomic, assign) NSInteger count;
@@ -60,7 +61,7 @@
     material.lightingModelName = SCNLightingModelLambert;
     material.diffuse.contents = [UIImage imageNamed:array[i]];
     SCNNode *node = self.nodeArray[i];
-    [node.childNodes[0].geometry setMaterials:@[material]];
+    [node.geometry setMaterials:@[material]];
   }
 }
 
@@ -104,7 +105,7 @@
 // 模型旋转
 -(void)nodeTurnAround {
 
-  SCNAction *repeatAction = [SCNAction repeatAction:[SCNAction rotateByX:0 y:1 z:0 duration:0.3] count:4];
+  SCNAction *repeatAction = [SCNAction repeatActionForever:[SCNAction rotateByX:0 y:1 z:0 duration:5]];
   for (SCNNode *node in self.nodeArray) {
     [node runAction:repeatAction];
   }
@@ -121,6 +122,14 @@
   
   [self.topNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"5" toValue:@"0" repeatCount:0] forKey:nil];
   [self.downNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"-10" toValue:@"0" repeatCount:0] forKey:nil];
+  [self.tapTopNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"5" toValue:@"0" repeatCount:0] forKey:nil];
+}
+
+// 移除模型动效
+- (void)removeAllAction {
+  for (SCNNode *node in self.nodeArray) {
+    [node removeAllActions];
+  }
 }
 
 
@@ -138,52 +147,51 @@
   // 创建展示场景
   [self addSubview:self.scnView];
   
-  self.nodeArray = @[self.topNode,self.liningNode,self.downNode];
+  self.nodeArray = @[self.topNode,self.liningNode,self.downNode,self.tapTopNode,self.tapLiningNode,self.tapDownNode];
   
-  SCNMaterial *material = [SCNMaterial new];
-  material.lightingModelName = SCNLightingModelLambert;
-  material.diffuse.contents = [UIImage imageNamed:@"3_tubiao"];
-  
-  [self.tapTopNode.childNodes[0].geometry setMaterials:@[material]];
+//  SCNMaterial *material = [SCNMaterial new];
+//  material.lightingModelName = SCNLightingModelLambert;
+//  material.diffuse.contents = [UIImage imageNamed:@"3_tubiao"];
+//
+//  [self.tapTopNode.geometry setMaterials:@[material]];
   [self changeNodeOpacity:self.tapTopNode];
 }
 
-- (void)tapClick {
-  
-}
 
-// 系统方法
 
+// 系统方法响应者链
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
   
   if (self.scene.rootNode) {
     
-    CGPoint tapPoint  = [[touches anyObject] locationInView:self.scnView];//该点就是手指的点击位置
+    [self removeAllAction];
+    
+    CGPoint tapPoint  = [[touches anyObject] locationInView:self.scnView]; // 该点就是手指的点击位置
     
     NSDictionary *hitTestOptions = [NSDictionary dictionaryWithObjectsAndKeys:@(true),SCNHitTestBoundingBoxOnlyKey, nil];
     
     NSArray<SCNHitTestResult *> * results= [self.scnView hitTest:tapPoint options:hitTestOptions];
     
-    for (SCNHitTestResult *res in results) {//遍历所有的返回结果中的node
+    for (SCNHitTestResult *res in results) { // 遍历所有的返回结果中的node
       
       if ([self isTopNodeClick:res.node]) {
         
         [self nodeOpenTopAndBottom];
         [self.tapTopNode removeFromParentNode];
-        SCNMaterial *material = [SCNMaterial new];
-        material.lightingModelName = SCNLightingModelLambert;
-        material.diffuse.contents = [UIImage imageNamed:@"3_tubiao"];
-        
-        [self.tapLiningNode.childNodes[0].geometry setMaterials:@[material]];
+//        SCNMaterial *material = [SCNMaterial new];
+//        material.lightingModelName = SCNLightingModelLambert;
+//        material.diffuse.contents = [UIImage imageNamed:@"3_tubiao"];
+//
+//        [self.tapLiningNode.geometry setMaterials:@[material]];
         [self changeNodeOpacity:self.tapLiningNode];
         break;
-        
       }
       
       if ([self isLiningNodeClick:res.node]) {
         [self.topNode removeFromParentNode];
         [self.downNode removeFromParentNode];
         [self.tapLiningNode removeFromParentNode];
+        break;
       }
     }
   }
@@ -210,11 +218,9 @@
   if (node.parentNode != nil) {
     
     return [self isNodePartOfVirtualObject:node.parentNode selectedNode:selectedNode];
-    
   }
   
   return false;
-  
 }
 
 - (void)pinch:(UIPinchGestureRecognizer *)recognizer{
@@ -289,45 +295,49 @@
  模型改变透明度
  
  */
--(void)changeNodeOpacity:(SCNNode *)node{
-  // GCD定时器
-  static dispatch_source_t _timer;
-  NSTimeInterval period = 0.1; //设置时间间隔
-  dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-  _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-  dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), period * NSEC_PER_SEC, 0); //每秒执行
-  // 事件回调
-  @weakify(self);
-  dispatch_source_set_event_handler(_timer, ^{
-    @strongify(self);
-    dispatch_async(dispatch_get_main_queue(), ^{
-      self.count++;
-      if (self.count1 %2 == 0) {
-        double yushua = self.count%10;
-        double a = 1- yushua/10;
-        if (self.count%10 == 0) {
-          self.count1 = 1;
-          //a = yushua/10;
-        }else{
-          node.opacity = a;
+-(void)changeNodeOpacity:(SCNNode *)node {
+  
+  @autoreleasepool {
+    
+    // GCD定时器
+    static dispatch_source_t _timer;
+    NSTimeInterval period = 0.1; //设置时间间隔
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), period * NSEC_PER_SEC, 0); //每秒执行
+    // 事件回调
+    @weakify(self);
+    dispatch_source_set_event_handler(_timer, ^{
+      dispatch_async(dispatch_get_main_queue(), ^{
+        @strongify(self);
+        self.count++;
+        if (self.count1 %2 == 0) {
+          double yushua = self.count%10;
+          double a = 1- yushua/10;
+          if (self.count%10 == 0) {
+            self.count1 = 1;
+            //a = yushua/10;
+          } else {
+            node.opacity = a;
+          }
+          //self.tapNode.opacity = a;
+        } else {
+          double yushub = self.count%10;
+          double b = yushub/10;
+          if (self.count%10 == 0) {
+            self.count1 = 0;
+            // b = 1-yushub/10;
+          }else{
+            node.opacity = b;
+          }
+          //self.tapNode.opacity = b;
         }
-        //self.tapNode.opacity = a;
-      }else{
-        double yushub = self.count%10;
-        double b = yushub/10;
-        if (self.count%10 == 0) {
-          self.count1 = 0;
-          // b = 1-yushub/10;
-        }else{
-          node.opacity = b;
-        }
-        //self.tapNode.opacity = b;
-      }
-      //      NSLog(@"Count");
+        //      NSLog(@"Count");
+      });
     });
-  });
-  // 开启定时器
-  dispatch_resume(_timer);
+    // 开启定时器
+    dispatch_resume(_timer);
+  }
 }
 
 #pragma marks - getters
@@ -436,6 +446,13 @@
     _tapLiningNode = [self.scene.rootNode childNodeWithName:@"tubiao005" recursively:YES];
   }
   return _tapLiningNode;
+}
+
+-(SCNNode *)tapDownNode {
+  if (!_tapDownNode) {
+    _tapDownNode = [self.scene.rootNode childNodeWithName:@"tubiao004" recursively:YES];
+  }
+  return _tapDownNode;
 }
 
 @end

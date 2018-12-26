@@ -116,14 +116,14 @@
     switch (index) {
       case 0:
         [self.sceneView addNode];
-        [self.sceneView changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/1_boxtop01.png",@"art.scnassets/0_lining1.png",@"art.scnassets/2_boxdown02.png"]];
+        [self.sceneView changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/2_boxtop01.png",@"art.scnassets/3_lining02.png",@"art.scnassets/1_boxdown02.png"]];
         break;
       case 1:
         [self.sceneView removeNode];
         break;
       case 2:
         [self.sceneView addNode];
-        [self.sceneView changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/1_boxtop.png",@"art.scnassets/0_lining.png",@"art.scnassets/2_boxdown.png"]];
+        [self.sceneView changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/1_boxtop.png",@"art.scnassets/2_lining01.png",@"art.scnassets/3_boxdown.png"]];
         break;
         case 3:
         [self.sceneView addNode];
