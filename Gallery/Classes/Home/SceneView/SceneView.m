@@ -311,7 +311,17 @@
   [self.scene.rootNode addChildNode:self.cameraNode];
   // 创建灯光
     [self.scene.rootNode addChildNode:self.spotNode];
-  //  [self.cameraNode addChildNode:self.omiNode];
+    [self.cameraNode addChildNode:self.omiNode];
+  
+  SCNLight *light = [SCNLight light];// 创建光对象
+  light.type = SCNLightTypeOmni;// 设置类型
+  light.spotOuterAngle = 2;
+  light.color = [UIColor whiteColor]; // 设置光的颜色
+  light.castsShadow = true;
+  SCNNode *node = [SCNNode node];
+  node.position = SCNVector3Make(-50, 50, 20);
+  node.light = light;
+  [self.cameraNode addChildNode:node];
   // 创建展示场景
   [self addSubview:self.scnView];
   
@@ -357,13 +367,13 @@
 // 创建环境光
 - (SCNNode *)spotNode{
   if (!_spotNode) {
-    _spotNode = [self.scene.rootNode childNodeWithName:@"EnvironmentAmbientLight" recursively:YES];
-//    SCNLight *light = [SCNLight light];// 创建光对象
-//    light.type = SCNLightTypeAmbient;// 设置类型
-//    light.spotOuterAngle = 2;
-//    light.color = [UIColor colorWithWhite:0.9 alpha:1.0]; // 设置光的颜色
-//    _spotNode = [SCNNode node];
-//    _spotNode.light = light;
+//    _spotNode = [self.scene.rootNode childNodeWithName:@"EnvironmentAmbientLight" recursively:YES];
+    SCNLight *light = [SCNLight light];// 创建光对象
+    light.type = SCNLightTypeAmbient;// 设置类型
+    light.spotOuterAngle = 2;
+    light.color = [UIColor colorWithWhite:0.2 alpha:1.0]; // 设置光的颜色
+    _spotNode = [SCNNode node];
+    _spotNode.light = light;
   }
   return _spotNode;
 }
