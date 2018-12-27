@@ -11,6 +11,7 @@
 #import "CategoryDetailController.h"
 #import "HomeShowView.h"
 #import "PageRoundScrollView.h"
+#import "SceneViewController.h"
 
 @interface HomeViewController () <SDCycleScrollViewDelegate, PageRoundScrollViewDelegate>
 
@@ -43,7 +44,8 @@
 
 // SDCycleScrollView delegate 点击图片回调
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
-  
+  SceneViewController *vc = [[SceneViewController alloc] init];
+  [self.navigationController pushViewController:vc animated:YES];
 }
 
 // pageRoundScrolView delegate

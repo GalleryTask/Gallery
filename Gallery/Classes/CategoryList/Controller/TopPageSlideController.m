@@ -123,7 +123,7 @@
         break;
       case 2:
         [self.sceneView addNode];
-        [self.sceneView changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/1_boxtop.png",@"art.scnassets/2_lining01.png",@"art.scnassets/3_boxdown.png"]];
+        [self.sceneView changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/boxtop_nolight.png",@"art.scnassets/lining_nolight.jpg",@"art.scnassets/boxdown_nolight.png"]];
         break;
         case 3:
         [self.sceneView addNode];

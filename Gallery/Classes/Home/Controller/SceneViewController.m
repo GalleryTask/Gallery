@@ -25,8 +25,8 @@
   self.navigationItem.title = @"3D苹果包装方案";
 //  [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"1"]]];
   [self.view addSubview:self.sceneView];
-  [self.view addSubview:self.customizedBtn];
-  [self.sceneView nodeTurnAround];
+//  [self.view addSubview:self.customizedBtn];
+//  [self.sceneView nodeTurnAround];
   
   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
   [nav setNavigationBarRightItemWithButtonTitle:@"AR实景" clickBlock:^(id sender) {
@@ -34,6 +34,46 @@
     [self.navigationController pushViewController:arVC animated:YES];
   }];
   
+  UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-SafeAreaBottomHeight-50-NAVIGATIONBAR_HEIGHT, SCREEN_WIDTH, 50)];
+  [backView setBackgroundColor:[UIColor whiteColor]];
+  [self.view addSubview:backView];
+  NSArray *array = @[@"开盖",@"合盖",@"展开",@"收回",@""];
+  for (int i = 0; i < 5; i++) {
+    
+    UIButton *openBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [openBtn setTitle:array[i] forState:UIControlStateNormal];
+    [[openBtn titleLabel] setFont:FONTSIZE(14)];
+    openBtn.tag = 100 + i;
+    [openBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [openBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [openBtn setFrame:CGRectMake(SCREEN_WIDTH/5*i, 0, SCREEN_WIDTH/5, 50)];
+    [backView addSubview:openBtn];
+  }
+  
+}
+
+- (void)btnClick:(UIButton *)btn {
+  switch (btn.tag-100) {
+    case 0:
+      [self.sceneView removeNode];
+      break;
+    case 1:
+      [self.sceneView addNode];
+      break;
+    case 2:
+      [self.sceneView nodeOpenTopAndBottom];
+      break;
+    case 3:
+      [self.sceneView nodeCloseTopAndBottom];
+      break;
+    case 4:
+      [self.sceneView nodeOpenTopAndBottom];
+      break;
+      
+      
+    default:
+      break;
+  }
 }
 
 // 开始定制按钮点击事件

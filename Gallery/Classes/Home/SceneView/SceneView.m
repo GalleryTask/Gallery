@@ -96,7 +96,7 @@
     [self nodeActionWithX:0 y:0 z:0 duration:0.5];
   }
   
-  self.cameraNode.position = SCNVector3Make(0, 10, 50);
+//  self.cameraNode.position = SCNVector3Make(0, 10, 50);
 }
 
 // 模型旋转
@@ -128,32 +128,6 @@
     [node removeAllActions];
   }
 }
-
-
-#pragma mark - 创建3D模型场景
-- (void)createSceneViewWithSceneName:(NSString *)sceneName {
-  
-  // 初始化场景
-  self.scene = [SCNScene sceneNamed:sceneName];
-//   self.scene = [SCNScene sceneWithURL:sceneName options:nil error:nil];
-  
-  [self.scene.rootNode addChildNode:self.cameraNode];
-  // 创建灯光
-//  [self.scene.rootNode addChildNode:self.spotNode];
-//  [self.cameraNode addChildNode:self.omiNode];
-  // 创建展示场景
-  [self addSubview:self.scnView];
-  
-  self.nodeArray = @[self.topNode,self.liningNode,self.downNode,self.tapTopNode,self.tapLiningNode,self.tapDownNode];
-  
-//  SCNMaterial *material = [SCNMaterial new];
-//  material.lightingModelName = SCNLightingModelLambert;
-//  material.diffuse.contents = [UIImage imageNamed:@"3_tubiao"];
-//
-//  [self.tapTopNode.geometry setMaterials:@[material]];
-  [self changeNodeOpacity:self.tapTopNode];
-}
-
 
 
 // 系统方法响应者链
@@ -291,6 +265,7 @@
     [node runAction:sequence];
   }
 }
+
 /**
  模型改变透明度
  
@@ -301,7 +276,7 @@
     __block BOOL opacityBool;
     // GCD定时器
     static dispatch_source_t _timer;
-    NSTimeInterval period = 0.3; //设置时间间隔
+    NSTimeInterval period = 0.15; //设置时间间隔
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
     dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), period * NSEC_PER_SEC, 0); //每秒执行
@@ -315,15 +290,39 @@
           opacityBool = YES;
         }
         if (opacityBool) {
-          node.opacity -= 0.2;
+          node.opacity -= 0.15;
         }else{
-          node.opacity += 0.2;
+          node.opacity += 0.15;
         }
       });
     });
     // 开启定时器
     dispatch_resume(_timer);
   }
+}
+
+#pragma mark - 创建3D模型场景
+- (void)createSceneViewWithSceneName:(NSString *)sceneName {
+  
+  // 初始化场景
+  self.scene = [SCNScene sceneNamed:sceneName];
+  //   self.scene = [SCNScene sceneWithURL:sceneName options:nil error:nil];
+  
+  [self.scene.rootNode addChildNode:self.cameraNode];
+  // 创建灯光
+    [self.scene.rootNode addChildNode:self.spotNode];
+  //  [self.cameraNode addChildNode:self.omiNode];
+  // 创建展示场景
+  [self addSubview:self.scnView];
+  
+  self.nodeArray = @[self.topNode,self.liningNode,self.downNode,self.tapTopNode,self.tapLiningNode,self.tapDownNode];
+  
+    SCNMaterial *material = [SCNMaterial new];
+    material.lightingModelName = SCNLightingModelLambert;
+    material.diffuse.contents = [UIImage imageNamed:@"3_tubiao"];
+  
+    [self.tapTopNode.childNodes[0].geometry setMaterials:@[material]];
+  [self changeNodeOpacity:self.tapTopNode];
 }
 
 #pragma marks - getters
@@ -358,13 +357,13 @@
 // 创建环境光
 - (SCNNode *)spotNode{
   if (!_spotNode) {
-//    _spotNode = [self.scene.rootNode childNodeWithName:@"EnvironmentAmbientLight" recursively:YES];
-    SCNLight *light = [SCNLight light];// 创建光对象
-    light.type = SCNLightTypeAmbient;// 设置类型
-    light.spotOuterAngle = 2;
-    light.color = [UIColor colorWithWhite:0.9 alpha:1.0]; // 设置光的颜色
-    _spotNode = [SCNNode node];
-    _spotNode.light = light;
+    _spotNode = [self.scene.rootNode childNodeWithName:@"EnvironmentAmbientLight" recursively:YES];
+//    SCNLight *light = [SCNLight light];// 创建光对象
+//    light.type = SCNLightTypeAmbient;// 设置类型
+//    light.spotOuterAngle = 2;
+//    light.color = [UIColor colorWithWhite:0.9 alpha:1.0]; // 设置光的颜色
+//    _spotNode = [SCNNode node];
+//    _spotNode.light = light;
   }
   return _spotNode;
 }
@@ -422,21 +421,21 @@
 
 -(SCNNode *)tapTopNode {
   if (!_tapTopNode) {
-    _tapTopNode = [self.scene.rootNode childNodeWithName:@"tubiao006" recursively:YES];
+    _tapTopNode = [self.scene.rootNode childNodeWithName:@"tubiao009" recursively:YES];
   }
   return _tapTopNode;
 }
 
 -(SCNNode *)tapLiningNode {
   if (!_tapLiningNode) {
-    _tapLiningNode = [self.scene.rootNode childNodeWithName:@"tubiao005" recursively:YES];
+    _tapLiningNode = [self.scene.rootNode childNodeWithName:@"tubiao008" recursively:YES];
   }
   return _tapLiningNode;
 }
 
 -(SCNNode *)tapDownNode {
   if (!_tapDownNode) {
-    _tapDownNode = [self.scene.rootNode childNodeWithName:@"tubiao004" recursively:YES];
+    _tapDownNode = [self.scene.rootNode childNodeWithName:@"tubiao007" recursively:YES];
   }
   return _tapDownNode;
 }
