@@ -309,29 +309,23 @@
   //   self.scene = [SCNScene sceneWithURL:sceneName options:nil error:nil];
   
   [self.scene.rootNode addChildNode:self.cameraNode];
-  // 创建灯光
-    [self.scene.rootNode addChildNode:self.spotNode];
-    [self.cameraNode addChildNode:self.omiNode];
   
-  SCNLight *light = [SCNLight light];// 创建光对象
-  light.type = SCNLightTypeOmni;// 设置类型
-  light.spotOuterAngle = 2;
-  light.color = [UIColor whiteColor]; // 设置光的颜色
-  light.castsShadow = true;
-  SCNNode *node = [SCNNode node];
-  node.position = SCNVector3Make(-50, 50, 20);
-  node.light = light;
-  [self.cameraNode addChildNode:node];
   // 创建展示场景
   [self addSubview:self.scnView];
   
+
   self.nodeArray = @[self.topNode,self.liningNode,self.downNode,self.tapTopNode,self.tapLiningNode,self.tapDownNode];
+//
+//    SCNMaterial *material = [SCNMaterial new];
+//    material.lightingModelName = SCNLightingModelLambert;
+//    material.diffuse.contents = [UIImage imageNamed:@"3_tubiao"];
   
-    SCNMaterial *material = [SCNMaterial new];
-    material.lightingModelName = SCNLightingModelLambert;
-    material.diffuse.contents = [UIImage imageNamed:@"3_tubiao"];
+//    [self.tapTopNode.geometry setMaterials:@[material]];
   
-    [self.tapTopNode.geometry setMaterials:@[material]];
+  SCNMaterial *material = [SCNMaterial new];
+  material.lightingModelName = SCNLightingModelLambert;
+  material.diffuse.contents = [UIImage imageNamed:@"lining_nolight.jpg"];
+  [self.liningNode.geometry setMaterials:@[material]];
   [self changeNodeOpacity:self.tapTopNode];
 }
 
@@ -343,6 +337,8 @@
     _scnView = [[SCNView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     // 设置场景
     _scnView.scene = self.scene;
+    // 自动开启默认光源
+    _scnView.autoenablesDefaultLighting = true;
     // 设置背景颜色
 //    _scnView.backgroundColor = [UIColor hexStringToColor:@"#F5F5F5"];
     _scnView.backgroundColor = [UIColor clearColor];
@@ -354,44 +350,6 @@
   return _scnView;
 }
 
-
-// 设置材质
--(SCNMaterial *)material {
-  if (!_material) {
-    _material = [SCNMaterial new];
-    _material.lightingModelName = SCNLightingModelLambert;
-  }
-  return _material;
-}
-
-// 创建环境光
-- (SCNNode *)spotNode{
-  if (!_spotNode) {
-//    _spotNode = [self.scene.rootNode childNodeWithName:@"EnvironmentAmbientLight" recursively:YES];
-    SCNLight *light = [SCNLight light];// 创建光对象
-    light.type = SCNLightTypeAmbient;// 设置类型
-    light.spotOuterAngle = 2;
-    light.color = [UIColor colorWithWhite:0.2 alpha:1.0]; // 设置光的颜色
-    _spotNode = [SCNNode node];
-    _spotNode.light = light;
-  }
-  return _spotNode;
-}
-
-// 创建泛光源
--(SCNNode *)omiNode {
-  if (!_omiNode) {
-    SCNLight *light = [SCNLight light];// 创建光对象
-    light.type = SCNLightTypeOmni;// 设置类型
-    light.spotOuterAngle = 2;
-    light.color = [UIColor whiteColor]; // 设置光的颜色
-    light.castsShadow = true;
-    _omiNode = [SCNNode node];
-    _omiNode.position = SCNVector3Make(50, 50, 20);
-    _omiNode.light = light;
-  }
-  return _omiNode;
-}
 
 // 视角
 -(SCNNode *)cameraNode {
