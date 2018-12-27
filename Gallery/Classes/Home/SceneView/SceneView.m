@@ -321,7 +321,7 @@
     material.lightingModelName = SCNLightingModelLambert;
     material.diffuse.contents = [UIImage imageNamed:@"3_tubiao"];
   
-    [self.tapTopNode.childNodes[0].geometry setMaterials:@[material]];
+    [self.tapTopNode.geometry setMaterials:@[material]];
   [self changeNodeOpacity:self.tapTopNode];
 }
 
@@ -334,8 +334,8 @@
     // 设置场景
     _scnView.scene = self.scene;
     // 设置背景颜色
-    _scnView.backgroundColor = [UIColor hexStringToColor:@"#F5F5F5"];
-//    _scnView.backgroundColor = [UIColor clearColor];
+//    _scnView.backgroundColor = [UIColor hexStringToColor:@"#F5F5F5"];
+    _scnView.backgroundColor = [UIColor clearColor];
     // 允许控制摄像机位置
     _scnView.allowsCameraControl = YES;
     UIPinchGestureRecognizer *tap = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];

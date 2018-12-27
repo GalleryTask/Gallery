@@ -23,10 +23,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   self.navigationItem.title = @"3D苹果包装方案";
-//  [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"1"]]];
-  [self.view addSubview:self.sceneView];
+  [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"scene_background1"]]];
+  
+  UIImageView *imgView = [[UIImageView alloc] init];
+  imgView.frame = self.view.frame;
+  [imgView setContentMode:UIViewContentModeScaleAspectFill];
+  [imgView setImage:[UIImage imageNamed:@"scene_background2"]];
+  [self.view addSubview:imgView];
+  [self.view  addSubview:self.sceneView];
 //  [self.view addSubview:self.customizedBtn];
-//  [self.sceneView nodeTurnAround];
+  [self.sceneView nodeTurnAround];
   
   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
   [nav setNavigationBarRightItemWithButtonTitle:@"AR实景" clickBlock:^(id sender) {
