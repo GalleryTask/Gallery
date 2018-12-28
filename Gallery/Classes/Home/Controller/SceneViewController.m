@@ -32,7 +32,7 @@
   [self.view addSubview:imgView];
   [self.view  addSubview:self.sceneView];
 //  [self.view addSubview:self.customizedBtn];
-//  [self.sceneView nodeTurnAround];
+  [self.sceneView nodeTurnAround];
   
   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
   [nav setNavigationBarRightItemWithButtonTitle:@"AR实景" clickBlock:^(id sender) {
@@ -74,7 +74,6 @@
       [self.sceneView nodeCloseTopAndBottom];
       break;
     case 4:
-//      [self.sceneView nodeOpenTopAndBottom];
       [self.sceneView changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/two_boxtop.png",@"art.scnassets/two_lining.jpg",@"art.scnassets/two_boxdown.png"]];
       break;
       

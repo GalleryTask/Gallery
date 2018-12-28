@@ -17,7 +17,7 @@
 @property (nonatomic, strong) SCNNode     *spotNode;  // 灯光节点
 @property (nonatomic, strong) SCNNode     *omiNode; // 泛光源
 @property (nonatomic, strong) SCNScene    *scene;
-@property (nonatomic, strong) SCNMaterial *material;
+//@property (nonatomic, strong) SCNMaterial *material;
 
 @property (nonatomic, strong) SCNNode  *topNode;
 @property (nonatomic, strong) SCNNode  *liningNode;
@@ -25,6 +25,7 @@
 @property (nonatomic, strong) SCNNode  *tapTopNode;
 @property (nonatomic, strong) SCNNode  *tapLiningNode;
 @property (nonatomic, strong) SCNNode  *tapDownNode;
+@property (nonatomic, strong) SCNNode  *shadowNode;
 @property (nonatomic, assign) CGFloat  lastScale;
 @property (nonatomic, strong) NSArray  *nodeArray;
 
@@ -121,20 +122,24 @@
   }
 }
 
+// 模型展开
 - (void)nodeOpenTopAndBottom {
 
   [self.topNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"0" toValue:@"5" repeatCount:0] forKey:nil];
   [self.downNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"0" toValue:@"-10" repeatCount:0] forKey:nil];
   [self.tapTopNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"0" toValue:@"5" repeatCount:0] forKey:nil];
   [self.tapDownNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"0" toValue:@"-10" repeatCount:0] forKey:nil];
+  [self.shadowNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"0" toValue:@"-10" repeatCount:0] forKey:nil];
 }
 
+// 模型收回
 - (void)nodeCloseTopAndBottom {
   
   [self.topNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"5" toValue:@"0" repeatCount:0] forKey:nil];
   [self.downNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"-10" toValue:@"0" repeatCount:0] forKey:nil];
   [self.tapTopNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"5" toValue:@"0" repeatCount:0] forKey:nil];
   [self.tapDownNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"-10" toValue:@"0" repeatCount:0] forKey:nil];
+  [self.shadowNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"-10" toValue:@"0" repeatCount:0] forKey:nil];
 }
 
 // 移除模型动效
@@ -331,8 +336,9 @@
   [self addSubview:self.scnView];
   
 
-  self.nodeArray = @[self.topNode,self.liningNode,self.downNode,self.tapTopNode,self.tapLiningNode,self.tapDownNode];
-//
+  self.nodeArray = @[self.topNode,self.liningNode,self.downNode,self.tapTopNode,self.tapLiningNode,self.tapDownNode,self.shadowNode];
+
+//  [self nodeActionWithX:0.5 y:0 z:0 duration:0];
 //    SCNMaterial *material = [SCNMaterial new];
 //    material.lightingModelName = SCNLightingModelLambert;
 //    material.diffuse.contents = [UIImage imageNamed:@"3_tubiao"];
@@ -421,6 +427,14 @@
     _tapDownNode = [self.scene.rootNode childNodeWithName:@"tubiao010" recursively:YES];
   }
   return _tapDownNode;
+}
+
+-(SCNNode *)shadowNode {
+  if (!_shadowNode) {
+    _shadowNode = [self.scene.rootNode childNodeWithName:@"touying" recursively:YES];
+    _shadowNode.opacity = 0.1;
+  }
+  return _shadowNode;
 }
 
 @end
