@@ -322,10 +322,8 @@
   
 //    [self.tapTopNode.geometry setMaterials:@[material]];
   
-  SCNMaterial *material = [SCNMaterial new];
-  material.lightingModelName = SCNLightingModelLambert;
-  material.diffuse.contents = [UIImage imageNamed:@"lining_nolight.jpg"];
-  [self.liningNode.geometry setMaterials:@[material]];
+  [self changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/one_boxtop.png",@"art.scnassets/one_lining.jpg",@"art.scnassets/one_boxdown.png"]];
+  
   [self changeNodeOpacity:self.tapTopNode];
 }
 
@@ -396,14 +394,14 @@
 
 -(SCNNode *)tapLiningNode {
   if (!_tapLiningNode) {
-    _tapLiningNode = [self.scene.rootNode childNodeWithName:@"tubiao008" recursively:YES];
+    _tapLiningNode = [self.scene.rootNode childNodeWithName:@"tubiao011" recursively:YES];
   }
   return _tapLiningNode;
 }
 
 -(SCNNode *)tapDownNode {
   if (!_tapDownNode) {
-    _tapDownNode = [self.scene.rootNode childNodeWithName:@"tubiao007" recursively:YES];
+    _tapDownNode = [self.scene.rootNode childNodeWithName:@"tubiao010" recursively:YES];
   }
   return _tapDownNode;
 }

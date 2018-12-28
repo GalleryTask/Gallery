@@ -346,7 +346,7 @@ API_AVAILABLE(ios(11.0))
     _arSCNView.antialiasingMode =SCNAntialiasingModeMultisampling4X;
     // 添加代理
     _arSCNView.delegate = self;
-    
+    _arSCNView.autoenablesDefaultLighting = true;
     _arSCNView.session = self.arSession;
     
     SCNScene *scene = [SCNScene new];

@@ -32,7 +32,7 @@
   [self.view addSubview:imgView];
   [self.view  addSubview:self.sceneView];
 //  [self.view addSubview:self.customizedBtn];
-  [self.sceneView nodeTurnAround];
+//  [self.sceneView nodeTurnAround];
   
   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
   [nav setNavigationBarRightItemWithButtonTitle:@"AR实景" clickBlock:^(id sender) {
@@ -43,7 +43,7 @@
   UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-SafeAreaBottomHeight-50-NAVIGATIONBAR_HEIGHT, SCREEN_WIDTH, 50)];
   [backView setBackgroundColor:[UIColor whiteColor]];
   [self.view addSubview:backView];
-  NSArray *array = @[@"开盖",@"合盖",@"展开",@"收回",@""];
+  NSArray *array = @[@"开盖",@"合盖",@"展开",@"收回",@"更换贴图"];
   for (int i = 0; i < 5; i++) {
     
     UIButton *openBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -61,6 +61,7 @@
 - (void)btnClick:(UIButton *)btn {
   switch (btn.tag-100) {
     case 0:
+      [self.sceneView changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/one_boxtop.png",@"art.scnassets/one_lining.jpg",@"art.scnassets/one_boxdown.png"]];
       [self.sceneView removeNode];
       break;
     case 1:
@@ -73,7 +74,8 @@
       [self.sceneView nodeCloseTopAndBottom];
       break;
     case 4:
-      [self.sceneView nodeOpenTopAndBottom];
+//      [self.sceneView nodeOpenTopAndBottom];
+      [self.sceneView changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/two_boxtop.png",@"art.scnassets/two_lining.jpg",@"art.scnassets/two_boxdown.png"]];
       break;
       
       
