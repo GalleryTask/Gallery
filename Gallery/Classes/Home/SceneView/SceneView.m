@@ -71,13 +71,16 @@
                                                                       block:^(id<SCNAnimation>  _Nonnull animation, id  _Nonnull animatedObject, BOOL playingBackward) {
       [self.topNode removeAllAnimations];
       [self.topNode removeFromParentNode];
+      [self.tapTopNode removeAllAnimations];
+      [self.tapTopNode removeFromParentNode];
+                                                                        
     }];
     
     
     CABasicAnimation *animation = [self animationWithKeyPath:@"position.y" duration:1 fromValue:@"0" toValue:@"100" repeatCount:0];
     animation.animationEvents = @[event];
     [self.topNode addAnimation:animation forKey:nil];
-    
+    [self.tapTopNode addAnimation:animation forKey:nil];
     // 开盖后偏移
     [self nodeActionWithX:0.8 y:0 z:0 duration:0.5];
   }
@@ -91,6 +94,16 @@
 
     [self.topNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"100" toValue:@"0" repeatCount:0] forKey:nil];
     [self.scnView.scene.rootNode addChildNode:self.topNode];
+    [self.tapTopNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"100" toValue:@"0" repeatCount:0] forKey:nil];
+    [self.scnView.scene.rootNode addChildNode:self.tapTopNode];
+    
+   
+    [self.downNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:[NSString stringWithFormat:@"%.2f",self.downNode.position.y] toValue:@"0" repeatCount:0] forKey:nil];
+    [self.scnView.scene.rootNode addChildNode:self.downNode];
+    [self.tapDownNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:[NSString stringWithFormat:@"%.2f",self.downNode.position.y] toValue:@"0" repeatCount:0] forKey:nil];
+    [self.scnView.scene.rootNode addChildNode:self.tapDownNode];
+    
+    
     
     // 恢复之前的偏移
     [self nodeActionWithX:0 y:0 z:0 duration:0.5];
@@ -113,6 +126,7 @@
   [self.topNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"0" toValue:@"5" repeatCount:0] forKey:nil];
   [self.downNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"0" toValue:@"-10" repeatCount:0] forKey:nil];
   [self.tapTopNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"0" toValue:@"5" repeatCount:0] forKey:nil];
+  [self.tapDownNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"0" toValue:@"-10" repeatCount:0] forKey:nil];
 }
 
 - (void)nodeCloseTopAndBottom {
@@ -120,6 +134,7 @@
   [self.topNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"5" toValue:@"0" repeatCount:0] forKey:nil];
   [self.downNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"-10" toValue:@"0" repeatCount:0] forKey:nil];
   [self.tapTopNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"5" toValue:@"0" repeatCount:0] forKey:nil];
+  [self.tapDownNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"-10" toValue:@"0" repeatCount:0] forKey:nil];
 }
 
 // 移除模型动效
@@ -162,6 +177,8 @@
         [self.topNode removeFromParentNode];
         [self.downNode removeFromParentNode];
         [self.tapLiningNode removeFromParentNode];
+        [self.tapTopNode removeFromParentNode];
+        [self.tapDownNode removeFromParentNode];
         break;
       }
     }
