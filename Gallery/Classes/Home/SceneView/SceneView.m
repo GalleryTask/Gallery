@@ -8,7 +8,7 @@
 
 #import "SceneView.h"
 
-#define MaxSCale 1.5  //最大缩放比例
+#define MaxSCale 3  //最大缩放比例
 #define MinScale 0.5  //最小缩放比例
 
 @interface SceneView()
@@ -21,13 +21,15 @@
 
 @property (nonatomic, strong) SCNNode  *topNode;
 @property (nonatomic, strong) SCNNode  *liningNode;
+@property (nonatomic, strong) SCNNode  *liningTwoNode;
 @property (nonatomic, strong) SCNNode  *downNode;
 @property (nonatomic, strong) SCNNode  *tapTopNode;
 @property (nonatomic, strong) SCNNode  *tapLiningNode;
 @property (nonatomic, strong) SCNNode  *tapDownNode;
 @property (nonatomic, strong) SCNNode  *shadowNode;
 @property (nonatomic, assign) CGFloat  lastScale;
-@property (nonatomic, strong) NSArray  *nodeArray;
+@property (nonatomic, strong) NSMutableArray  *nodeArray;
+@property (nonatomic, assign) BOOL  isChangeLining;  // 是否更换内衬
 
 @end
 
@@ -41,33 +43,34 @@
   return self;
 }
 
-// 设置反光效果
-//-(void)sceneViewReflectiveImage:(UIImage *)image {
-//  self.material.fresnelExponent = 1.7;
-//  self.material.reflective.contents = image;
-//
-//  for (SCNNode *aNode in self.scene.rootNode.childNodes) {
-//    [aNode.geometry setMaterials:@[self.material]];
-//  }
-//}
-
-
 // 更换node的贴图图片
 - (void)changeNodeDiffuseWithImageNameArray:(NSArray *)array {
-  for (int i = 0; i < array.count; i++) {
-    SCNMaterial *material = [SCNMaterial new];
-    material.lightingModelName = SCNLightingModelLambert;
-    material.diffuse.contents = [UIImage imageNamed:array[i]];
-    SCNNode *node = self.nodeArray[i];
-    [node.geometry setMaterials:@[material]];
-  }
+  
+  SCNMaterial *materialTop = [SCNMaterial new];
+  materialTop.lightingModelName = SCNLightingModelLambert;
+  materialTop.diffuse.contents = [UIImage imageNamed:array[0]];
+  materialTop.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/boxtop_Mixed_AO.png"];
+  [self.topNode.geometry setMaterials:@[materialTop]];
+  
+  SCNMaterial *materialLining = [SCNMaterial new];
+  materialLining.lightingModelName = SCNLightingModelLambert;
+  materialLining.diffuse.contents = [UIImage imageNamed:array[1]];
+  materialLining.normal.contents = [UIImage imageNamed:@"art.scnassets/lining_NRM.jpg"];
+  [self.liningTwoNode.geometry setMaterials:@[materialLining]];
+  [self.liningNode.geometry setMaterials:@[materialLining]];
+  
+  SCNMaterial *materialDown = [SCNMaterial new];
+  materialDown.lightingModelName = SCNLightingModelLambert;
+  materialDown.diffuse.contents = [UIImage imageNamed:array[2]];
+  materialDown.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/boxdown_Mixed_AO.png"];
+  [self.downNode.geometry setMaterials:@[materialDown]];
 }
 
 // 删除节点
 - (void)removeNode {
 
-  if ([self.scnView.scene.rootNode.childNodes containsObject:self.topNode]) {
-    
+  if ([self.scene.rootNode.childNodes containsObject:self.topNode]) {
+    [self removeAllAction];
     SCNAnimationEvent *event = [SCNAnimationEvent animationEventWithKeyTime:0.5
                                                                       block:^(id<SCNAnimation>  _Nonnull animation, id  _Nonnull animatedObject, BOOL playingBackward) {
       [self.topNode removeAllAnimations];
@@ -83,7 +86,7 @@
     [self.topNode addAnimation:animation forKey:nil];
     [self.tapTopNode addAnimation:animation forKey:nil];
     // 开盖后偏移
-    [self nodeActionWithX:0.8 y:0 z:0 duration:0.5];
+//    [self nodeActionWithX:0.8 y:0 z:0 duration:0.5];
   }
 }
 
@@ -94,16 +97,14 @@
   if (![self.scene.rootNode.childNodes containsObject:self.topNode]) {
 
     [self.topNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"100" toValue:@"0" repeatCount:0] forKey:nil];
-    [self.scnView.scene.rootNode addChildNode:self.topNode];
+    [self.scene.rootNode addChildNode:self.topNode];
     [self.tapTopNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"100" toValue:@"0" repeatCount:0] forKey:nil];
-    [self.scnView.scene.rootNode addChildNode:self.tapTopNode];
+    [self.scene.rootNode addChildNode:self.tapTopNode];
     
    
     [self.downNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:[NSString stringWithFormat:@"%.2f",self.downNode.position.y] toValue:@"0" repeatCount:0] forKey:nil];
-    [self.scnView.scene.rootNode addChildNode:self.downNode];
+    [self.scene.rootNode addChildNode:self.downNode];
     [self.tapDownNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:[NSString stringWithFormat:@"%.2f",self.downNode.position.y] toValue:@"0" repeatCount:0] forKey:nil];
-    [self.scnView.scene.rootNode addChildNode:self.tapDownNode];
-    
     
     
     // 恢复之前的偏移
@@ -168,13 +169,7 @@
       if ([self isTopNodeClick:res.node]) {
         
         [self nodeOpenTopAndBottom];
-        [self.tapTopNode removeFromParentNode];
-//        SCNMaterial *material = [SCNMaterial new];
-//        material.lightingModelName = SCNLightingModelLambert;
-//        material.diffuse.contents = [UIImage imageNamed:@"3_tubiao"];
-//
-//        [self.tapLiningNode.geometry setMaterials:@[material]];
-        [self changeNodeOpacity:self.tapLiningNode];
+//        [self changeNodeOpacity:self.tapLiningNode];
         break;
       }
       
@@ -323,6 +318,23 @@
   }
 }
 
+// 更换模型内衬
+- (void)changeLiningNode {
+
+  SCNNode *node;
+  if (self.isChangeLining) {
+    self.isChangeLining = false;
+    node = self.liningNode;
+    [self.liningTwoNode removeFromParentNode];
+  } else {
+    self.isChangeLining = true;
+    node = self.liningTwoNode;
+    [self.liningNode removeFromParentNode];
+  }
+  [self.scene.rootNode addChildNode:node];
+//  [self.nodeArray replaceObjectAtIndex:1 withObject:node];
+}
+
 #pragma mark - 创建3D模型场景
 - (void)createSceneViewWithSceneName:(NSString *)sceneName {
   
@@ -335,15 +347,11 @@
   // 创建展示场景
   [self addSubview:self.scnView];
   
-
-  self.nodeArray = @[self.topNode,self.liningNode,self.downNode,self.tapTopNode,self.tapLiningNode,self.tapDownNode,self.shadowNode];
-
-//  [self nodeActionWithX:0.5 y:0 z:0 duration:0];
-//    SCNMaterial *material = [SCNMaterial new];
-//    material.lightingModelName = SCNLightingModelLambert;
-//    material.diffuse.contents = [UIImage imageNamed:@"3_tubiao"];
+  [self.liningTwoNode removeFromParentNode];
   
-//    [self.tapTopNode.geometry setMaterials:@[material]];
+//  self.topNode.name;
+
+  self.nodeArray = [NSMutableArray arrayWithArray:@[self.topNode,self.liningNode,self.downNode,self.tapTopNode,self.tapLiningNode,self.tapDownNode,self.shadowNode,self.liningTwoNode]] ;
   
   [self changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/one_boxtop.png",@"art.scnassets/one_lining.jpg",@"art.scnassets/one_boxdown.png"]];
   
@@ -360,13 +368,14 @@
     _scnView.scene = self.scene;
     // 自动开启默认光源
     _scnView.autoenablesDefaultLighting = true;
+    // 场景渲染抗锯齿模式
+    _scnView.antialiasingMode = SCNAntialiasingModeMultisampling4X;
     // 设置背景颜色
-//    _scnView.backgroundColor = [UIColor hexStringToColor:@"#F5F5F5"];
     _scnView.backgroundColor = [UIColor clearColor];
     // 允许控制摄像机位置
     _scnView.allowsCameraControl = YES;
-    UIPinchGestureRecognizer *tap = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];
-    [_scnView addGestureRecognizer:tap];
+//    UIPinchGestureRecognizer *tap = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];
+//    [_scnView addGestureRecognizer:tap];
   }
   return _scnView;
 }
@@ -400,6 +409,14 @@
   return _liningNode;
 }
 
+-(SCNNode *)liningTwoNode {
+  if (!_liningTwoNode) {
+    _liningTwoNode = [self.scene.rootNode childNodeWithName:@"lining01" recursively:YES];
+    [_liningTwoNode removeFromParentNode];
+  }
+  return _liningTwoNode;
+}
+
 // 下盖模型
 -(SCNNode *)downNode {
   if (!_downNode) {
@@ -418,6 +435,7 @@
 -(SCNNode *)tapLiningNode {
   if (!_tapLiningNode) {
     _tapLiningNode = [self.scene.rootNode childNodeWithName:@"tubiao011" recursively:YES];
+    [_tapLiningNode removeFromParentNode];
   }
   return _tapLiningNode;
 }
@@ -425,6 +443,7 @@
 -(SCNNode *)tapDownNode {
   if (!_tapDownNode) {
     _tapDownNode = [self.scene.rootNode childNodeWithName:@"tubiao010" recursively:YES];
+    [_tapDownNode removeFromParentNode];
   }
   return _tapDownNode;
 }
@@ -432,9 +451,16 @@
 -(SCNNode *)shadowNode {
   if (!_shadowNode) {
     _shadowNode = [self.scene.rootNode childNodeWithName:@"touying" recursively:YES];
-    _shadowNode.opacity = 0.1;
+    _shadowNode.opacity = 0.2;
   }
   return _shadowNode;
+}
+
+-(NSMutableArray *)nodeArray {
+  if (!_nodeArray) {
+    _nodeArray = [NSMutableArray array];
+  }
+  return _nodeArray;
 }
 
 @end

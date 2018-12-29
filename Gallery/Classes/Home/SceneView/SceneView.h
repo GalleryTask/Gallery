@@ -26,6 +26,7 @@
 
 - (void)nodeCloseTopAndBottom;
 
+- (void)changeLiningNode;
 // 更换贴图图片
 - (void)changeNodeDiffuseWithImageNameArray:(NSArray *)array;
 @end
