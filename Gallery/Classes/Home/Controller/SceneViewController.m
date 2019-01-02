@@ -77,11 +77,11 @@
     {
       if (self.isChangeDiffuseImage) {
         
-        [self.sceneView changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/one_boxtop.png",@"art.scnassets/one_lining.jpg",@"art.scnassets/one_boxdown.png"]];
+        [self.sceneView changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/one_boxtop.png",@"art.scnassets/one_lining.png",@"art.scnassets/one_boxdown.png"]];
         self.isChangeDiffuseImage = false;
       } else {
         
-        [self.sceneView changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/two_boxtop.png",@"art.scnassets/two_lining.jpg",@"art.scnassets/two_boxdown.png"]];
+        [self.sceneView changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/two_boxtop.png",@"art.scnassets/two_lining.png",@"art.scnassets/two_boxdown.png"]];
         self.isChangeDiffuseImage = true;
       }
     }

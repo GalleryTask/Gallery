@@ -10,7 +10,6 @@
 
 #define MaxSCale 3  //最大缩放比例
 #define MinScale 0.5  //最小缩放比例
-
 @interface SceneView()
 
 @property (nonatomic, strong) SCNView     *scnView;
@@ -49,20 +48,27 @@
   SCNMaterial *materialTop = [SCNMaterial new];
   materialTop.lightingModelName = SCNLightingModelLambert;
   materialTop.diffuse.contents = [UIImage imageNamed:array[0]];
-  materialTop.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/boxtop_Mixed_AO.png"];
+//  materialTop.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/boxtop_Mixed_AO.png"];
+  materialTop.metalness.contents = [UIImage imageNamed:@"art.scnassets/boxtop_Metallic.png"];
   [self.topNode.geometry setMaterials:@[materialTop]];
   
   SCNMaterial *materialLining = [SCNMaterial new];
-  materialLining.lightingModelName = SCNLightingModelLambert;
+  materialLining.lightingModelName = SCNLightingModelBlinn;
   materialLining.diffuse.contents = [UIImage imageNamed:array[1]];
-  materialLining.normal.contents = [UIImage imageNamed:@"art.scnassets/lining_NRM.jpg"];
+  materialLining.normal.contents = [UIImage imageNamed:@"art.scnassets/lining_Normal.jpg"];
+//  materialLining.metalness.contents = [UIImage imageNamed:@"art.scnassets/lining_Metallic.png"];
+//  materialLining.roughness.contents = [UIImage imageNamed:@"art.scnassets/lining_Roughness.png"];
+  materialLining.specular.contents = [UIImage imageNamed:@"art.scnassets/lining_SPEC.jpg"];
+  materialLining.shininess = 0;
+  materialLining.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/lining_AO.jpg"];
   [self.liningTwoNode.geometry setMaterials:@[materialLining]];
   [self.liningNode.geometry setMaterials:@[materialLining]];
   
   SCNMaterial *materialDown = [SCNMaterial new];
   materialDown.lightingModelName = SCNLightingModelLambert;
   materialDown.diffuse.contents = [UIImage imageNamed:array[2]];
-  materialDown.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/boxdown_Mixed_AO.png"];
+//  materialDown.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/boxdown_Mixed_AO.png"];
+  materialDown.metalness.contents = [UIImage imageNamed:@"art.scnassets/boxdown_Metallic.png"];
   [self.downNode.geometry setMaterials:@[materialDown]];
 }
 
@@ -353,7 +359,7 @@
 
   self.nodeArray = [NSMutableArray arrayWithArray:@[self.topNode,self.liningNode,self.downNode,self.tapTopNode,self.tapLiningNode,self.tapDownNode,self.shadowNode,self.liningTwoNode]] ;
   
-  [self changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/one_boxtop.png",@"art.scnassets/one_lining.jpg",@"art.scnassets/one_boxdown.png"]];
+  [self changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/one_boxtop.png",@"art.scnassets/one_lining.png",@"art.scnassets/one_boxdown.png"]];
   
   [self changeNodeOpacity:self.tapTopNode];
 }
