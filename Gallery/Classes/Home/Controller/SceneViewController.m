@@ -120,9 +120,9 @@
   documentsDirectoryURL = [documentsDirectoryURL URLByAppendingPathComponent:@"yisideModel/tianmao.scnassets"];
 
 //  NSString *string = [documentsDirectoryURL absoluteString];
-  NSString *string = @"art.scnassets/box_4.0.DAE";
+  NSString *string = [[[NSBundle mainBundle] URLForResource:@"art.scnassets/box_4.0" withExtension:@"DAE"] absoluteString];
   self.sceneView = [[SceneView alloc] initWithSceneName:string
-                                              frame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-50-SafeAreaBottomHeight)];
+                                                  frame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-50-SafeAreaBottomHeight)];
   [self.view addSubview:self.sceneView];
 }
 

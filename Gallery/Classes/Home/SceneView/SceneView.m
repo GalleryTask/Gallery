@@ -365,10 +365,45 @@
 - (void)createSceneViewWithSceneName:(NSString *)sceneName {
   
   // 初始化场景
-  self.scene = [SCNScene sceneNamed:sceneName];
+//  self.scene = [SCNScene sceneNamed:sceneName];
 //  self.scene = [SCNScene sceneWithURL:[NSURL URLWithString:[sceneName stringByAppendingString:@"/box.DAE"]] options:nil error:nil];
-  
+ SCNSceneSource *sceneSource = [SCNSceneSource sceneSourceWithURL:[NSURL URLWithString:sceneName] options:nil];
+  self.scene  = [sceneSource sceneWithOptions:nil error:nil];
   [self.scene.rootNode addChildNode:self.cameraNode];
+  
+  NSArray *animationIDs =  [sceneSource identifiersOfEntriesWithClass:[CAAnimation class]];
+  
+  NSUInteger animationCount = [animationIDs count];
+  NSMutableArray *longAnimations = [[NSMutableArray alloc] initWithCapacity:animationCount];
+  CFTimeInterval maxDuration = 0;
+  for (NSInteger index = 0; index < animationCount; index++) {
+    CAAnimation *animation = [sceneSource entryWithIdentifier:animationIDs[index] withClass:[CAAnimation class]];
+    if (animation) {
+      maxDuration = MAX(maxDuration, animation.duration);
+      [longAnimations addObject:animation];
+    }
+  }
+  
+  CAAnimationGroup *longAnimationsGroup = [[CAAnimationGroup alloc] init];
+  longAnimationsGroup.animations = longAnimations;
+  longAnimationsGroup.duration = maxDuration;
+  
+//  longAnimationsGroup.repeatCount = 0;
+  
+//  // 截取20秒之后的动画组
+//  CAAnimationGroup *idleAnimationGroup = [longAnimationsGroup copy];
+//  idleAnimationGroup.timeOffset = 20 ;
+//  // 创建一个重复执行这个动画的动画组
+//  CAAnimationGroup *lastAnimationGroup;
+//  lastAnimationGroup = [CAAnimationGroup animation];
+//  lastAnimationGroup.animations = @[idleAnimationGroup];
+//  lastAnimationGroup.duration = 24.71 -20;
+//  lastAnimationGroup.repeatCount = 10000;
+//  lastAnimationGroup.autoreverses = YES;
+  
+  [self.scene.rootNode addAnimation:longAnimationsGroup forKey:@"animation"];
+
+  
   // 设置背景图片
   self.scene.background.contents = [UIImage imageNamed:@"scene_background2"];
   // 创建展示场景
@@ -376,7 +411,6 @@
   
   [self.liningTwoNode removeFromParentNode];
   
-//  self.topNode.name;
 
 //  self.nodeArray = [NSMutableArray arrayWithArray:@[self.topNode,self.liningNode,self.downNode,self.tapTopNode,self.tapLiningNode,self.tapDownNode,self.shadowNode,self.liningTwoNode]] ;
   
