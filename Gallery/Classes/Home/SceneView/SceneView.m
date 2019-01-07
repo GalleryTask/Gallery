@@ -29,6 +29,9 @@
 @property (nonatomic, assign) CGFloat  lastScale;
 @property (nonatomic, strong) NSMutableArray  *nodeArray;
 @property (nonatomic, assign) BOOL  isChangeLining;  // 是否更换内衬
+@property (nonatomic, strong) CAAnimationGroup  *openBoxAnimationGroup; // 开箱动画组
+@property (nonatomic, strong) CAAnimationGroup  *closeBoxAnimationGroup; // 关箱动画组
+@property (nonatomic, assign) CFTimeInterval maxDuration;  // 动画执行时长
 
 
 @end
@@ -93,9 +96,16 @@
   [self.downNode.geometry setMaterials:@[materialDown]];
 }
 
-// 删除节点
+// 删除节点 开箱效果 天地盒时移除节点  为拉链纸箱时执行动画
 - (void)removeNode {
+  // 拉链纸箱时执行动画
+  if (self.openBoxAnimationGroup) {
+    self.openBoxAnimationGroup.speed = 1;
+    [self.scene.rootNode addAnimation:self.openBoxAnimationGroup forKey:@"CloseAnimation"];
+    return;
+  }
 
+  // 天地盒时移除节点
   if ([self.scene.rootNode.childNodes containsObject:self.topNode]) {
     [self removeAllAction];
     SCNAnimationEvent *event = [SCNAnimationEvent animationEventWithKeyTime:0.5
@@ -104,7 +114,6 @@
       [self.topNode removeFromParentNode];
       [self.tapTopNode removeAllAnimations];
       [self.tapTopNode removeFromParentNode];
-                                                                        
     }];
     
     
@@ -118,8 +127,13 @@
 }
 
 
-// 添加节点
+// 添加节点 关箱效果 天地盒时添加  拉链纸箱时执行动画
 - (void)addNode {
+  if (self.openBoxAnimationGroup) {
+    self.closeBoxAnimationGroup.speed = 1;
+    [self.scene.rootNode addAnimation:self.closeBoxAnimationGroup forKey:@"animation"];
+    return;
+  }
 
   if (![self.scene.rootNode.childNodes containsObject:self.topNode]) {
 
@@ -358,52 +372,76 @@
     node = self.liningTwoNode;
     [self.liningNode removeFromParentNode];
   }
+  
   [self.scene.rootNode addChildNode:node];
+}
+
+
+
+/**
+ 加载开箱动画效果
+
+ @param source 资源
+ */
+- (void)loadAnimationWithSource:(SCNSceneSource *)source {
+  NSArray *animationIDs =  [source identifiersOfEntriesWithClass:[CAAnimation class]];
+  
+  NSUInteger animationCount = [animationIDs count];
+  if (animationCount > 0) {
+    
+    NSMutableArray *longAnimations = [[NSMutableArray alloc] initWithCapacity:animationCount];
+    self.maxDuration = 0;
+    for (NSInteger index = 0; index < animationCount; index++) {
+      CAAnimation *animation = [source entryWithIdentifier:animationIDs[index] withClass:[CAAnimation class]];
+      if (animation) {
+        self.maxDuration = MAX(self.maxDuration, animation.duration);
+        [longAnimations addObject:animation];
+      }
+    }
+    
+    // 开箱动画
+    self.openBoxAnimationGroup = [[CAAnimationGroup alloc] init];
+    self.openBoxAnimationGroup.animations = longAnimations;
+    self.openBoxAnimationGroup.duration = self.maxDuration;
+    self.openBoxAnimationGroup.speed = 0;
+//    self.openBoxAnimationGroup.repeatCount = 1;
+    // 动画完成后保持最新状态
+    self.openBoxAnimationGroup.removedOnCompletion = NO;
+    self.openBoxAnimationGroup.fillMode = kCAFillModeForwards;
+    [self.scene.rootNode addAnimation:self.openBoxAnimationGroup forKey:@"animation"];
+    
+    // 回退动画
+    CAAnimationGroup *idleAnimationGroup = [self.openBoxAnimationGroup copy];
+//      idleAnimationGroup.timeOffset = self.maxDuration ;
+    // 创建一个重复执行这个动画的动画组
+    self.closeBoxAnimationGroup = [CAAnimationGroup animation];
+    self.closeBoxAnimationGroup.animations = @[idleAnimationGroup];
+    self.closeBoxAnimationGroup.duration = self.maxDuration;
+    //  lastAnimationGroup.repeatCount = 1;
+    self.closeBoxAnimationGroup.speed = 0;
+    self.closeBoxAnimationGroup.autoreverses = YES;
+    self.closeBoxAnimationGroup.removedOnCompletion = NO;
+    self.closeBoxAnimationGroup.fillMode = kCAFillModeForwards;
+    [self.scene.rootNode addAnimation:self.closeBoxAnimationGroup forKey:@"CloseAnimation"];
+    
+  }
 }
 
 #pragma mark - 创建3D模型场景
 - (void)createSceneViewWithSceneName:(NSString *)sceneName {
   
-  // 初始化场景
 //  self.scene = [SCNScene sceneNamed:sceneName];
 //  self.scene = [SCNScene sceneWithURL:[NSURL URLWithString:[sceneName stringByAppendingString:@"/box.DAE"]] options:nil error:nil];
+  // 初始化场景
  SCNSceneSource *sceneSource = [SCNSceneSource sceneSourceWithURL:[NSURL URLWithString:sceneName] options:nil];
-  self.scene  = [sceneSource sceneWithOptions:nil error:nil];
+ self.scene  = [sceneSource sceneWithOptions:nil error:nil];
+ 
+ // 拉链纸箱加载动画
+  [self loadAnimationWithSource:sceneSource];
+  
+  
+  // 设置照相机节点
   [self.scene.rootNode addChildNode:self.cameraNode];
-  
-  NSArray *animationIDs =  [sceneSource identifiersOfEntriesWithClass:[CAAnimation class]];
-  
-  NSUInteger animationCount = [animationIDs count];
-  NSMutableArray *longAnimations = [[NSMutableArray alloc] initWithCapacity:animationCount];
-  CFTimeInterval maxDuration = 0;
-  for (NSInteger index = 0; index < animationCount; index++) {
-    CAAnimation *animation = [sceneSource entryWithIdentifier:animationIDs[index] withClass:[CAAnimation class]];
-    if (animation) {
-      maxDuration = MAX(maxDuration, animation.duration);
-      [longAnimations addObject:animation];
-    }
-  }
-  
-  CAAnimationGroup *longAnimationsGroup = [[CAAnimationGroup alloc] init];
-  longAnimationsGroup.animations = longAnimations;
-  longAnimationsGroup.duration = maxDuration;
-  
-//  longAnimationsGroup.repeatCount = 0;
-  
-//  // 截取20秒之后的动画组
-//  CAAnimationGroup *idleAnimationGroup = [longAnimationsGroup copy];
-//  idleAnimationGroup.timeOffset = 20 ;
-//  // 创建一个重复执行这个动画的动画组
-//  CAAnimationGroup *lastAnimationGroup;
-//  lastAnimationGroup = [CAAnimationGroup animation];
-//  lastAnimationGroup.animations = @[idleAnimationGroup];
-//  lastAnimationGroup.duration = 24.71 -20;
-//  lastAnimationGroup.repeatCount = 10000;
-//  lastAnimationGroup.autoreverses = YES;
-  
-  [self.scene.rootNode addAnimation:longAnimationsGroup forKey:@"animation"];
-
-  
   // 设置背景图片
   self.scene.background.contents = [UIImage imageNamed:@"scene_background2"];
   // 创建展示场景
