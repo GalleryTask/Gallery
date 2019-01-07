@@ -10,6 +10,7 @@
 #import "SceneView.h"
 #import "TopPageSlideController.h"
 #import "ARViewController.h"
+#import "SSZipArchive.h"
 
 @interface SceneViewController ()
 
@@ -24,14 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   self.navigationItem.title = @"3D苹果包装方案";
-  [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"scene_background1"]]];
-  
-  UIImageView *imgView = [[UIImageView alloc] init];
-  imgView.frame = self.view.frame;
-  [imgView setContentMode:UIViewContentModeScaleAspectFill];
-  [imgView setImage:[UIImage imageNamed:@"scene_background2"]];
-  [self.view addSubview:imgView];
-  [self.view  addSubview:self.sceneView];
+  [self getData];
+ 
 //  [self.view addSubview:self.customizedBtn];
 //  [self.sceneView nodeTurnAround];
   
@@ -100,6 +95,42 @@
   [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)getData {
+  NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+  NSString *documentsDirectory = [paths objectAtIndex:0];
+  NSString *inputPath = [documentsDirectory stringByAppendingPathComponent:@"/yisideModel/tianmao.zip"];
+  
+  NSError *zipError = nil;
+  
+  [SSZipArchive unzipFileAtPath:inputPath toDestination:[documentsDirectory stringByAppendingPathComponent:@"/yisideModel"] overwrite:NO password:nil error:&zipError];
+  
+  if( zipError ){
+    NSLog(@"解压失败: %@", zipError.debugDescription);
+  }else {
+    NSLog(@"解压成功");
+//    [self  clearFlie:inputPath];
+    [self createSceneView];
+  }
+}
+
+- (void)createSceneView {
+  
+  NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+  // 这里的dae文件名字是我们导出时定义的文件名，下面一段代码中加载的SCNNode是我们之前在面板中改过的模型名
+  documentsDirectoryURL = [documentsDirectoryURL URLByAppendingPathComponent:@"yisideModel/tianmao.scnassets"];
+
+//  NSString *string = [documentsDirectoryURL absoluteString];
+  NSString *string = @"art.scnassets/box_4.0.DAE";
+  self.sceneView = [[SceneView alloc] initWithSceneName:string
+                                              frame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-50-SafeAreaBottomHeight)];
+  [self.view addSubview:self.sceneView];
+}
+
+-(void)clearFlie:(NSString *)filePath{
+  NSError * error = nil ;
+  [[NSFileManager defaultManager ] removeItemAtPath :filePath error :&error];
+}
+
 #pragma marks - getters
 -(UIButton *)customizedBtn {
   if (!_customizedBtn) {
@@ -115,13 +146,13 @@
 }
 
 
--(SceneView *)sceneView {
-  if (!_sceneView) {
-    _sceneView = [[SceneView alloc] initWithSceneName:@"art.scnassets/box.DAE"
-                                                frame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-50-SafeAreaBottomHeight)];
-  }
-  return _sceneView;
-}
+//-(SceneView *)sceneView {
+//  if (!_sceneView) {
+//    _sceneView = [[SceneView alloc] initWithSceneName:@"art.scnassets/box.DAE"
+//                                                frame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-50-SafeAreaBottomHeight)];
+//  }
+//  return _sceneView;
+//}
 
 /*
 #pragma mark - Navigation

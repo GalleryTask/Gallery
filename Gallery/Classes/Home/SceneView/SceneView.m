@@ -30,6 +30,7 @@
 @property (nonatomic, strong) NSMutableArray  *nodeArray;
 @property (nonatomic, assign) BOOL  isChangeLining;  // 是否更换内衬
 
+
 @end
 
 @implementation SceneView
@@ -42,14 +43,31 @@
   return self;
 }
 
+
+-(UIImage *) getImageFromURL:(NSString *)fileURL {
+  
+  UIImage * result;
+  
+  NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
+  
+  result = [UIImage imageWithData:data];
+  
+  return result;
+}
+
+
 // 更换node的贴图图片
 - (void)changeNodeDiffuseWithImageNameArray:(NSArray *)array {
   
   SCNMaterial *materialTop = [SCNMaterial new];
   materialTop.lightingModelName = SCNLightingModelLambert;
   materialTop.diffuse.contents = [UIImage imageNamed:array[0]];
-//  materialTop.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/boxtop_Mixed_AO.png"];
-  materialTop.metalness.contents = [UIImage imageNamed:@"art.scnassets/boxtop_Metallic.png"];
+//  materialTop.diffuse.contents = [self getImageFromURL:array[0]];
+  materialTop.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/boxtop_AO.jpg"];
+//  materialTop.metalness.contents = [UIImage imageNamed:@"art.scnassets/boxtop_Metallic.png"];
+  materialTop.normal.contents = [UIImage imageNamed:@"art.scnassets/boxtop_NRM.jpg"];
+//  materialTop.specular.contents = [UIImage imageNamed:@"art.scnassets/boxtop_SPEC.jpg"];
+//  materialTop.shininess = 0;
   [self.topNode.geometry setMaterials:@[materialTop]];
   
   SCNMaterial *materialLining = [SCNMaterial new];
@@ -58,8 +76,8 @@
   materialLining.normal.contents = [UIImage imageNamed:@"art.scnassets/lining_Normal.jpg"];
 //  materialLining.metalness.contents = [UIImage imageNamed:@"art.scnassets/lining_Metallic.png"];
 //  materialLining.roughness.contents = [UIImage imageNamed:@"art.scnassets/lining_Roughness.png"];
-  materialLining.specular.contents = [UIImage imageNamed:@"art.scnassets/lining_SPEC.jpg"];
-  materialLining.shininess = 0;
+//  materialLining.specular.contents = [UIImage imageNamed:@"art.scnassets/lining_SPEC.jpg"];
+//  materialLining.shininess = 0;
   materialLining.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/lining_AO.jpg"];
   [self.liningTwoNode.geometry setMaterials:@[materialLining]];
   [self.liningNode.geometry setMaterials:@[materialLining]];
@@ -67,8 +85,11 @@
   SCNMaterial *materialDown = [SCNMaterial new];
   materialDown.lightingModelName = SCNLightingModelLambert;
   materialDown.diffuse.contents = [UIImage imageNamed:array[2]];
-//  materialDown.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/boxdown_Mixed_AO.png"];
-  materialDown.metalness.contents = [UIImage imageNamed:@"art.scnassets/boxdown_Metallic.png"];
+  //  materialDown.metalness.contents = [UIImage imageNamed:@"art.scnassets/boxdown_Metallic.png"];
+  materialDown.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/boxdown_AO.jpg"];
+  materialDown.normal.contents = [UIImage imageNamed:@"art.scnassets/boxdown_NRM.jpg"];
+//  materialDown.specular.contents = [UIImage imageNamed:@"art.scnassets/boxdown_SPEC.jpg"];
+//  materialDown.shininess = 0;
   [self.downNode.geometry setMaterials:@[materialDown]];
 }
 
@@ -338,7 +359,6 @@
     [self.liningNode removeFromParentNode];
   }
   [self.scene.rootNode addChildNode:node];
-//  [self.nodeArray replaceObjectAtIndex:1 withObject:node];
 }
 
 #pragma mark - 创建3D模型场景
@@ -346,10 +366,11 @@
   
   // 初始化场景
   self.scene = [SCNScene sceneNamed:sceneName];
-  //   self.scene = [SCNScene sceneWithURL:sceneName options:nil error:nil];
+//  self.scene = [SCNScene sceneWithURL:[NSURL URLWithString:[sceneName stringByAppendingString:@"/box.DAE"]] options:nil error:nil];
   
   [self.scene.rootNode addChildNode:self.cameraNode];
-  
+  // 设置背景图片
+  self.scene.background.contents = [UIImage imageNamed:@"scene_background2"];
   // 创建展示场景
   [self addSubview:self.scnView];
   
@@ -357,8 +378,9 @@
   
 //  self.topNode.name;
 
-  self.nodeArray = [NSMutableArray arrayWithArray:@[self.topNode,self.liningNode,self.downNode,self.tapTopNode,self.tapLiningNode,self.tapDownNode,self.shadowNode,self.liningTwoNode]] ;
+//  self.nodeArray = [NSMutableArray arrayWithArray:@[self.topNode,self.liningNode,self.downNode,self.tapTopNode,self.tapLiningNode,self.tapDownNode,self.shadowNode,self.liningTwoNode]] ;
   
+//  [self changeNodeDiffuseWithImageNameArray:@[[sceneName stringByAppendingString:@"one_boxtop.png"],[sceneName stringByAppendingString:@"one_lining.png"],[sceneName stringByAppendingString:@"one_boxdown.png"]]];
   [self changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/one_boxtop.png",@"art.scnassets/one_lining.png",@"art.scnassets/one_boxdown.png"]];
   
   [self changeNodeOpacity:self.tapTopNode];
@@ -376,8 +398,6 @@
     _scnView.autoenablesDefaultLighting = true;
     // 场景渲染抗锯齿模式
     _scnView.antialiasingMode = SCNAntialiasingModeMultisampling4X;
-    // 设置背景颜色
-    _scnView.backgroundColor = [UIColor clearColor];
     // 允许控制摄像机位置
     _scnView.allowsCameraControl = YES;
 //    UIPinchGestureRecognizer *tap = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];
