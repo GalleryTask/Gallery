@@ -16,8 +16,8 @@
 @property (nonatomic, strong) SCNNode     *spotNode;  // 灯光节点
 @property (nonatomic, strong) SCNNode     *omiNode; // 泛光源
 @property (nonatomic, strong) SCNScene    *scene;
-//@property (nonatomic, strong) SCNMaterial *material;
 
+@property (nonatomic, strong) SCNNode  *groupNode;
 @property (nonatomic, strong) SCNNode  *topNode;
 @property (nonatomic, strong) SCNNode  *liningNode;
 @property (nonatomic, strong) SCNNode  *liningTwoNode;
@@ -29,8 +29,9 @@
 @property (nonatomic, assign) CGFloat  lastScale;
 @property (nonatomic, strong) NSMutableArray  *nodeArray;
 @property (nonatomic, assign) BOOL  isChangeLining;  // 是否更换内衬
-@property (nonatomic, strong) CAAnimationGroup  *openBoxAnimationGroup; // 开箱动画组
-@property (nonatomic, strong) CAAnimationGroup  *closeBoxAnimationGroup; // 关箱动画组
+
+@property (nonatomic, strong) CAAnimationGroup  *boxAnimationGroup; // 动画组
+//@property (nonatomic, strong) CAAnimationGroup  *closeBoxAnimationGroup; // 关箱动画组
 @property (nonatomic, assign) CFTimeInterval maxDuration;  // 动画执行时长
 
 
@@ -99,9 +100,9 @@
 // 删除节点 开箱效果 天地盒时移除节点  为拉链纸箱时执行动画
 - (void)removeNode {
   // 拉链纸箱时执行动画
-  if (self.openBoxAnimationGroup) {
-    self.openBoxAnimationGroup.speed = 1;
-    [self.scene.rootNode addAnimation:self.openBoxAnimationGroup forKey:@"CloseAnimation"];
+  if (self.boxAnimationGroup) {
+    self.boxAnimationGroup.speed = 1;
+    [self.scene.rootNode addAnimation:self.boxAnimationGroup forKey:nil];
     return;
   }
 
@@ -129,9 +130,10 @@
 
 // 添加节点 关箱效果 天地盒时添加  拉链纸箱时执行动画
 - (void)addNode {
-  if (self.openBoxAnimationGroup) {
-    self.closeBoxAnimationGroup.speed = 1;
-    [self.scene.rootNode addAnimation:self.closeBoxAnimationGroup forKey:@"animation"];
+  // 拉链纸箱时执行动画
+  if (self.boxAnimationGroup) {
+    self.boxAnimationGroup.speed = -1;
+    [self.scene.rootNode addAnimation:self.boxAnimationGroup forKey:nil];
     return;
   }
 
@@ -383,7 +385,7 @@
 
  @param source 资源
  */
-- (void)loadAnimationWithSource:(SCNSceneSource *)source {
+- (BOOL)loadAnimationWithSource:(SCNSceneSource *)source {
   NSArray *animationIDs =  [source identifiersOfEntriesWithClass:[CAAnimation class]];
   
   NSUInteger animationCount = [animationIDs count];
@@ -399,32 +401,26 @@
       }
     }
     
+    
+//    CAAnimationGroup *group = [source entryWithIdentifier:animationIDs[0] withClass:[CAAnimation class]];
+    
+//    NSArray* reversedArray = [[longAnimations reverseObjectEnumerator] allObjects];
+    
     // 开箱动画
-    self.openBoxAnimationGroup = [[CAAnimationGroup alloc] init];
-    self.openBoxAnimationGroup.animations = longAnimations;
-    self.openBoxAnimationGroup.duration = self.maxDuration;
-    self.openBoxAnimationGroup.speed = 0;
-//    self.openBoxAnimationGroup.repeatCount = 1;
+    self.boxAnimationGroup = [[CAAnimationGroup alloc] init];
+//    self.openBoxAnimationGroup = [source entryWithIdentifier:animationIDs[0] withClass:[CAAnimation class]];
+    self.boxAnimationGroup.animations = longAnimations;
+    self.boxAnimationGroup.duration = self.maxDuration;
+    self.boxAnimationGroup.speed = 0;
     // 动画完成后保持最新状态
-    self.openBoxAnimationGroup.removedOnCompletion = NO;
-    self.openBoxAnimationGroup.fillMode = kCAFillModeForwards;
-    [self.scene.rootNode addAnimation:self.openBoxAnimationGroup forKey:@"animation"];
     
-    // 回退动画
-    CAAnimationGroup *idleAnimationGroup = [self.openBoxAnimationGroup copy];
-//      idleAnimationGroup.timeOffset = self.maxDuration ;
-    // 创建一个重复执行这个动画的动画组
-    self.closeBoxAnimationGroup = [CAAnimationGroup animation];
-    self.closeBoxAnimationGroup.animations = @[idleAnimationGroup];
-    self.closeBoxAnimationGroup.duration = self.maxDuration;
-    //  lastAnimationGroup.repeatCount = 1;
-    self.closeBoxAnimationGroup.speed = 0;
-    self.closeBoxAnimationGroup.autoreverses = YES;
-    self.closeBoxAnimationGroup.removedOnCompletion = NO;
-    self.closeBoxAnimationGroup.fillMode = kCAFillModeForwards;
-    [self.scene.rootNode addAnimation:self.closeBoxAnimationGroup forKey:@"CloseAnimation"];
-    
+    self.boxAnimationGroup.repeatCount = 1;
+    self.boxAnimationGroup.removedOnCompletion = NO;
+    self.boxAnimationGroup.fillMode = kCAFillModeForwards;
+    [self.scene.rootNode addAnimation:self.boxAnimationGroup forKey:nil];
+    return true;
   }
+  return false;
 }
 
 #pragma mark - 创建3D模型场景
@@ -436,26 +432,33 @@
  SCNSceneSource *sceneSource = [SCNSceneSource sceneSourceWithURL:[NSURL URLWithString:sceneName] options:nil];
  self.scene  = [sceneSource sceneWithOptions:nil error:nil];
  
- // 拉链纸箱加载动画
-  [self loadAnimationWithSource:sceneSource];
-  
   
   // 设置照相机节点
   [self.scene.rootNode addChildNode:self.cameraNode];
+  
+  self.groupNode = [self.scene.rootNode childNodeWithName:@"Group" recursively:YES];
+  if (!self.groupNode) {
+    self.groupNode = self.scene.rootNode;
+  }
+  
   // 设置背景图片
   self.scene.background.contents = [UIImage imageNamed:@"scene_background2"];
   // 创建展示场景
   [self addSubview:self.scnView];
   
-  [self.liningTwoNode removeFromParentNode];
   
+  // 是否存在动画 不存在则是天地盒 
+  if (![self loadAnimationWithSource:sceneSource]) {
+    [self.liningTwoNode removeFromParentNode];
+    
+      self.nodeArray = [NSMutableArray arrayWithArray:@[self.topNode,self.liningNode,self.downNode,self.tapTopNode,self.tapLiningNode,self.tapDownNode,self.shadowNode,self.liningTwoNode]] ;
+    
+    //  [self changeNodeDiffuseWithImageNameArray:@[[sceneName stringByAppendingString:@"one_boxtop.png"],[sceneName stringByAppendingString:@"one_lining.png"],[sceneName stringByAppendingString:@"one_boxdown.png"]]];
+    [self changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/one_boxtop.png",@"art.scnassets/one_lining.png",@"art.scnassets/one_boxdown.png"]];
+    
+    [self changeNodeOpacity:self.tapTopNode];
+  }
 
-//  self.nodeArray = [NSMutableArray arrayWithArray:@[self.topNode,self.liningNode,self.downNode,self.tapTopNode,self.tapLiningNode,self.tapDownNode,self.shadowNode,self.liningTwoNode]] ;
-  
-//  [self changeNodeDiffuseWithImageNameArray:@[[sceneName stringByAppendingString:@"one_boxtop.png"],[sceneName stringByAppendingString:@"one_lining.png"],[sceneName stringByAppendingString:@"one_boxdown.png"]]];
-  [self changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/one_boxtop.png",@"art.scnassets/one_lining.png",@"art.scnassets/one_boxdown.png"]];
-  
-  [self changeNodeOpacity:self.tapTopNode];
 }
 
 #pragma marks - getters
@@ -494,7 +497,7 @@
 // 上盖模型
 -(SCNNode *)topNode {
   if (!_topNode) {
-    _topNode = [self.scene.rootNode childNodeWithName:@"boxtop" recursively:YES];
+    _topNode = [self.groupNode childNodeWithName:@"boxtop" recursively:YES];
   }
   return _topNode;
 }
@@ -502,14 +505,14 @@
 // 内衬模型
 -(SCNNode *)liningNode {
   if (!_liningNode) {
-    _liningNode = [self.scene.rootNode childNodeWithName:@"lining" recursively:YES];
+    _liningNode = [self.groupNode childNodeWithName:@"lining" recursively:YES];
   }
   return _liningNode;
 }
 
 -(SCNNode *)liningTwoNode {
   if (!_liningTwoNode) {
-    _liningTwoNode = [self.scene.rootNode childNodeWithName:@"lining01" recursively:YES];
+    _liningTwoNode = [self.groupNode childNodeWithName:@"lining01" recursively:YES];
     [_liningTwoNode removeFromParentNode];
   }
   return _liningTwoNode;
@@ -518,21 +521,21 @@
 // 下盖模型
 -(SCNNode *)downNode {
   if (!_downNode) {
-    _downNode =  [self.scene.rootNode childNodeWithName:@"boxdown" recursively:YES];
+    _downNode =  [self.groupNode childNodeWithName:@"boxdown" recursively:YES];
   }
   return _downNode;
 }
 
 -(SCNNode *)tapTopNode {
   if (!_tapTopNode) {
-    _tapTopNode = [self.scene.rootNode childNodeWithName:@"tubiao009" recursively:YES];
+    _tapTopNode = [self.groupNode childNodeWithName:@"tubiao009" recursively:YES];
   }
   return _tapTopNode;
 }
 
 -(SCNNode *)tapLiningNode {
   if (!_tapLiningNode) {
-    _tapLiningNode = [self.scene.rootNode childNodeWithName:@"tubiao011" recursively:YES];
+    _tapLiningNode = [self.groupNode childNodeWithName:@"tubiao011" recursively:YES];
     [_tapLiningNode removeFromParentNode];
   }
   return _tapLiningNode;
@@ -540,7 +543,7 @@
 
 -(SCNNode *)tapDownNode {
   if (!_tapDownNode) {
-    _tapDownNode = [self.scene.rootNode childNodeWithName:@"tubiao010" recursively:YES];
+    _tapDownNode = [self.groupNode childNodeWithName:@"tubiao010" recursively:YES];
     [_tapDownNode removeFromParentNode];
   }
   return _tapDownNode;
@@ -548,7 +551,7 @@
 
 -(SCNNode *)shadowNode {
   if (!_shadowNode) {
-    _shadowNode = [self.scene.rootNode childNodeWithName:@"touying" recursively:YES];
+    _shadowNode = [self.groupNode childNodeWithName:@"touying" recursively:YES];
     _shadowNode.opacity = 0.2;
   }
   return _shadowNode;
@@ -560,5 +563,6 @@
   }
   return _nodeArray;
 }
+
 
 @end

@@ -54,6 +54,10 @@
   
 }
 
+-(void)viewDidDisappear:(BOOL)animated {
+  [super viewDidDisappear:animated];
+}
+
 - (void)btnClick:(UIButton *)btn {
   switch (btn.tag-100) {
     case 0:
@@ -106,6 +110,7 @@
   
   if( zipError ){
     NSLog(@"解压失败: %@", zipError.debugDescription);
+    [self createSceneView];
   }else {
     NSLog(@"解压成功");
 //    [self  clearFlie:inputPath];
@@ -120,7 +125,7 @@
   documentsDirectoryURL = [documentsDirectoryURL URLByAppendingPathComponent:@"yisideModel/tianmao.scnassets"];
 
 //  NSString *string = [documentsDirectoryURL absoluteString];
-  NSString *string = [[[NSBundle mainBundle] URLForResource:@"art.scnassets/box_4.0" withExtension:@"DAE"] absoluteString];
+  NSString *string = [[[NSBundle mainBundle] URLForResource:@"art.scnassets/box" withExtension:@"DAE"] absoluteString];
   self.sceneView = [[SceneView alloc] initWithSceneName:string
                                                   frame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-50-SafeAreaBottomHeight)];
   [self.view addSubview:self.sceneView];
