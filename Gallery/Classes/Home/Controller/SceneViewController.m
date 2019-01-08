@@ -105,6 +105,7 @@
   [SSZipArchive unzipFileAtPath:inputPath toDestination:[documentsDirectory stringByAppendingPathComponent:@"/yisideModel"] overwrite:NO password:nil error:&zipError];
   
   if( zipError ){
+    [self createSceneView];
     NSLog(@"解压失败: %@", zipError.debugDescription);
   }else {
     NSLog(@"解压成功");
