@@ -15,6 +15,7 @@
 
 - (id)initWithSceneName:(NSString *)sceneName frame:(CGRect)frame;
 
+- (void)changeModelWithName:(NSString *)name;
 // 移除节点
 - (void)removeNode;
 // 添加节点

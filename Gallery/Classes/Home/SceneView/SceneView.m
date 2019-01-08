@@ -27,11 +27,9 @@
 @property (nonatomic, strong) SCNNode  *tapDownNode;
 @property (nonatomic, strong) SCNNode  *shadowNode;
 @property (nonatomic, assign) CGFloat  lastScale;
-@property (nonatomic, strong) NSMutableArray  *nodeArray;
 @property (nonatomic, assign) BOOL  isChangeLining;  // 是否更换内衬
 
 @property (nonatomic, strong) CAAnimationGroup  *boxAnimationGroup; // 动画组
-//@property (nonatomic, strong) CAAnimationGroup  *closeBoxAnimationGroup; // 关箱动画组
 @property (nonatomic, assign) CFTimeInterval maxDuration;  // 动画执行时长
 
 
@@ -59,6 +57,10 @@
   return result;
 }
 
+- (void)changeModelWithName:(NSString *)name {
+  [self.scnView removeFromSuperview];
+  [self createSceneViewWithSceneName:name];
+}
 
 // 更换node的贴图图片
 - (void)changeNodeDiffuseWithImageNameArray:(NSArray *)array {
@@ -66,10 +68,10 @@
   SCNMaterial *materialTop = [SCNMaterial new];
   materialTop.lightingModelName = SCNLightingModelLambert;
   materialTop.diffuse.contents = [UIImage imageNamed:array[0]];
-//  materialTop.diffuse.contents = [self getImageFromURL:array[0]];
   materialTop.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/boxtop_AO.jpg"];
-//  materialTop.metalness.contents = [UIImage imageNamed:@"art.scnassets/boxtop_Metallic.png"];
   materialTop.normal.contents = [UIImage imageNamed:@"art.scnassets/boxtop_NRM.jpg"];
+  //  materialTop.diffuse.contents = [self getImageFromURL:array[0]];
+  //  materialTop.metalness.contents = [UIImage imageNamed:@"art.scnassets/boxtop_Metallic.png"];
 //  materialTop.specular.contents = [UIImage imageNamed:@"art.scnassets/boxtop_SPEC.jpg"];
 //  materialTop.shininess = 0;
   [self.topNode.geometry setMaterials:@[materialTop]];
@@ -89,9 +91,9 @@
   SCNMaterial *materialDown = [SCNMaterial new];
   materialDown.lightingModelName = SCNLightingModelLambert;
   materialDown.diffuse.contents = [UIImage imageNamed:array[2]];
-  //  materialDown.metalness.contents = [UIImage imageNamed:@"art.scnassets/boxdown_Metallic.png"];
   materialDown.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/boxdown_AO.jpg"];
   materialDown.normal.contents = [UIImage imageNamed:@"art.scnassets/boxdown_NRM.jpg"];
+  //  materialDown.metalness.contents = [UIImage imageNamed:@"art.scnassets/boxdown_Metallic.png"];
 //  materialDown.specular.contents = [UIImage imageNamed:@"art.scnassets/boxdown_SPEC.jpg"];
 //  materialDown.shininess = 0;
   [self.downNode.geometry setMaterials:@[materialDown]];
@@ -99,15 +101,17 @@
 
 // 删除节点 开箱效果 天地盒时移除节点  为拉链纸箱时执行动画
 - (void)removeNode {
+  
   // 拉链纸箱时执行动画
   if (self.boxAnimationGroup) {
+     [self removeAllAction];
     self.boxAnimationGroup.speed = 1;
     [self.scene.rootNode addAnimation:self.boxAnimationGroup forKey:nil];
     return;
   }
 
   // 天地盒时移除节点
-  if ([self.scene.rootNode.childNodes containsObject:self.topNode]) {
+  if ([self.groupNode.childNodes containsObject:self.topNode]) {
     [self removeAllAction];
     SCNAnimationEvent *event = [SCNAnimationEvent animationEventWithKeyTime:0.5
                                                                       block:^(id<SCNAnimation>  _Nonnull animation, id  _Nonnull animatedObject, BOOL playingBackward) {
@@ -132,21 +136,22 @@
 - (void)addNode {
   // 拉链纸箱时执行动画
   if (self.boxAnimationGroup) {
+     [self removeAllAction];
     self.boxAnimationGroup.speed = -1;
     [self.scene.rootNode addAnimation:self.boxAnimationGroup forKey:nil];
     return;
   }
 
-  if (![self.scene.rootNode.childNodes containsObject:self.topNode]) {
+  if (![self.groupNode.childNodes containsObject:self.topNode]) {
 
     [self.topNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"100" toValue:@"0" repeatCount:0] forKey:nil];
-    [self.scene.rootNode addChildNode:self.topNode];
+    [self.groupNode addChildNode:self.topNode];
     [self.tapTopNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:@"100" toValue:@"0" repeatCount:0] forKey:nil];
-    [self.scene.rootNode addChildNode:self.tapTopNode];
+    [self.groupNode addChildNode:self.tapTopNode];
     
    
     [self.downNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:[NSString stringWithFormat:@"%.2f",self.downNode.position.y] toValue:@"0" repeatCount:0] forKey:nil];
-    [self.scene.rootNode addChildNode:self.downNode];
+    [self.groupNode addChildNode:self.downNode];
     [self.tapDownNode addAnimation:[self animationWithKeyPath:@"position.y" duration:0.5 fromValue:[NSString stringWithFormat:@"%.2f",self.downNode.position.y] toValue:@"0" repeatCount:0] forKey:nil];
     
     
@@ -161,9 +166,7 @@
 -(void)nodeTurnAround {
 
   SCNAction *repeatAction = [SCNAction repeatActionForever:[SCNAction rotateByX:0 y:1 z:0 duration:5]];
-  for (SCNNode *node in self.nodeArray) {
-    [node runAction:repeatAction];
-  }
+  [self.groupNode runAction:repeatAction];
 }
 
 // 模型展开
@@ -188,9 +191,7 @@
 
 // 移除模型动效
 - (void)removeAllAction {
-  for (SCNNode *node in self.nodeArray) {
-    [node removeAllActions];
-  }
+  [self.groupNode removeAllActions];
 }
 
 
@@ -269,10 +270,7 @@
         return;
       }
       
-      for (SCNNode *node in self.nodeArray) {
-        
-        node.scale = SCNVector3Make(scale, scale, scale);
-      }
+      self.groupNode.scale = SCNVector3Make(scale, scale, scale);
     }
       break;
     case UIGestureRecognizerStateEnded:
@@ -321,9 +319,7 @@
 - (void)nodeActionWithX:(CGFloat)x y:(CGFloat)y z:(CGFloat)z duration:(CGFloat)duration {
   SCNAction *action = [SCNAction rotateToX:x y:y z:z duration:duration];
   SCNAction *sequence = [SCNAction sequence:@[action]];
-  for (SCNNode *node in self.nodeArray) {
-    [node runAction:sequence];
-  }
+  [self.groupNode runAction:sequence];
 }
 
 /**
@@ -375,7 +371,7 @@
     [self.liningNode removeFromParentNode];
   }
   
-  [self.scene.rootNode addChildNode:node];
+  [self.groupNode addChildNode:node];
 }
 
 
@@ -436,7 +432,7 @@
   // 设置照相机节点
   [self.scene.rootNode addChildNode:self.cameraNode];
   
-  self.groupNode = [self.scene.rootNode childNodeWithName:@"Group" recursively:YES];
+  self.groupNode = [self.scene.rootNode childNodeWithName:@"Group001" recursively:YES];
   if (!self.groupNode) {
     self.groupNode = self.scene.rootNode;
   }
@@ -446,12 +442,12 @@
   // 创建展示场景
   [self addSubview:self.scnView];
   
+  self.shadowNode.opacity = 0.2;
   
   // 是否存在动画 不存在则是天地盒 
   if (![self loadAnimationWithSource:sceneSource]) {
     [self.liningTwoNode removeFromParentNode];
-    
-      self.nodeArray = [NSMutableArray arrayWithArray:@[self.topNode,self.liningNode,self.downNode,self.tapTopNode,self.tapLiningNode,self.tapDownNode,self.shadowNode,self.liningTwoNode]] ;
+    [self.tapDownNode removeFromParentNode];
     
     //  [self changeNodeDiffuseWithImageNameArray:@[[sceneName stringByAppendingString:@"one_boxtop.png"],[sceneName stringByAppendingString:@"one_lining.png"],[sceneName stringByAppendingString:@"one_boxdown.png"]]];
     [self changeNodeDiffuseWithImageNameArray:@[@"art.scnassets/one_boxtop.png",@"art.scnassets/one_lining.png",@"art.scnassets/one_boxdown.png"]];
@@ -475,8 +471,8 @@
     _scnView.antialiasingMode = SCNAntialiasingModeMultisampling4X;
     // 允许控制摄像机位置
     _scnView.allowsCameraControl = YES;
-//    UIPinchGestureRecognizer *tap = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];
-//    [_scnView addGestureRecognizer:tap];
+    UIPinchGestureRecognizer *tap = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];
+    [_scnView addGestureRecognizer:tap];
   }
   return _scnView;
 }
@@ -544,7 +540,7 @@
 -(SCNNode *)tapDownNode {
   if (!_tapDownNode) {
     _tapDownNode = [self.groupNode childNodeWithName:@"tubiao010" recursively:YES];
-    [_tapDownNode removeFromParentNode];
+    
   }
   return _tapDownNode;
 }
@@ -552,17 +548,8 @@
 -(SCNNode *)shadowNode {
   if (!_shadowNode) {
     _shadowNode = [self.groupNode childNodeWithName:@"touying" recursively:YES];
-    _shadowNode.opacity = 0.2;
   }
   return _shadowNode;
 }
-
--(NSMutableArray *)nodeArray {
-  if (!_nodeArray) {
-    _nodeArray = [NSMutableArray array];
-  }
-  return _nodeArray;
-}
-
 
 @end

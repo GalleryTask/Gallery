@@ -44,7 +44,13 @@
 
 // SDCycleScrollView delegate 点击图片回调
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
+  
   SceneViewController *vc = [[SceneViewController alloc] init];
+  if (index == 0) {
+    vc.name = @"box";
+  } else {
+    vc.name = @"box_4.0";
+  }
   [self.navigationController pushViewController:vc animated:YES];
 }
 

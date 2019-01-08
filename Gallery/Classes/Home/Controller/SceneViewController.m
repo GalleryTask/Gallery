@@ -17,6 +17,7 @@
 @property (nonatomic, strong) SceneView  *sceneView;
 @property (nonatomic, strong) UIButton   *customizedBtn; // 开始定制
 @property (nonatomic, assign) BOOL  isChangeDiffuseImage;
+//@property (nonatomic, assign) BOOL  isChangeBoxModel;
 
 @end
 
@@ -28,7 +29,7 @@
   [self getData];
  
 //  [self.view addSubview:self.customizedBtn];
-//  [self.sceneView nodeTurnAround];
+  [self.sceneView nodeTurnAround];
   
   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;
   [nav setNavigationBarRightItemWithButtonTitle:@"AR实景" clickBlock:^(id sender) {
@@ -39,8 +40,8 @@
   UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-SafeAreaBottomHeight-50-NAVIGATIONBAR_HEIGHT, SCREEN_WIDTH, 50)];
   [backView setBackgroundColor:[UIColor whiteColor]];
   [self.view addSubview:backView];
-  NSArray *array = @[@"开盖",@"合盖",@"更换内衬",@"收回",@"更换贴图"];
-  for (int i = 0; i < 5; i++) {
+  NSArray *array = @[@"开盖",@"合盖",@"换内衬",@"收回",@"换贴图"];
+  for (int i = 0; i < array.count; i++) {
     
     UIButton *openBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [openBtn setTitle:array[i] forState:UIControlStateNormal];
@@ -48,7 +49,7 @@
     openBtn.tag = 100 + i;
     [openBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [openBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [openBtn setFrame:CGRectMake(SCREEN_WIDTH/5*i, 0, SCREEN_WIDTH/5, 50)];
+    [openBtn setFrame:CGRectMake(SCREEN_WIDTH/array.count*i, 0, SCREEN_WIDTH/array.count, 50)];
     [backView addSubview:openBtn];
   }
   
@@ -85,6 +86,20 @@
       }
     }
       break;
+//    case 5:
+//    {
+//      NSString *string;
+//      if (self.isChangeBoxModel) {
+//        string = @"box";
+//        self.isChangeBoxModel = false;
+//      } else {
+//        string = @"box_4.0";
+//        self.isChangeBoxModel = true;
+//      }
+//      [self.sceneView changeModelWithName: [[[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"art.scnassets/%@",string] withExtension:@"DAE"] absoluteString]];
+//
+//    }
+//      break;
       
       
     default:
@@ -109,7 +124,6 @@
   [SSZipArchive unzipFileAtPath:inputPath toDestination:[documentsDirectory stringByAppendingPathComponent:@"/yisideModel"] overwrite:NO password:nil error:&zipError];
   
   if( zipError ){
-    [self createSceneView];
     NSLog(@"解压失败: %@", zipError.debugDescription);
     [self createSceneView];
   }else {
@@ -126,7 +140,7 @@
   documentsDirectoryURL = [documentsDirectoryURL URLByAppendingPathComponent:@"yisideModel/tianmao.scnassets"];
 
 //  NSString *string = [documentsDirectoryURL absoluteString];
-  NSString *string = [[[NSBundle mainBundle] URLForResource:@"art.scnassets/box_4.0" withExtension:@"DAE"] absoluteString];
+  NSString *string = [[[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"art.scnassets/%@",self.name]  withExtension:@"DAE"] absoluteString];
   self.sceneView = [[SceneView alloc] initWithSceneName:string
                                                   frame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-50-SafeAreaBottomHeight)];
   [self.view addSubview:self.sceneView];
