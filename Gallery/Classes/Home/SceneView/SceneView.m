@@ -524,14 +524,14 @@
 
 -(SCNNode *)tapTopNode {
   if (!_tapTopNode) {
-    _tapTopNode = [self.groupNode childNodeWithName:@"tubiao009" recursively:YES];
+    _tapTopNode = [self.groupNode childNodeWithName:@"tubiao03" recursively:YES];
   }
   return _tapTopNode;
 }
 
 -(SCNNode *)tapLiningNode {
   if (!_tapLiningNode) {
-    _tapLiningNode = [self.groupNode childNodeWithName:@"tubiao011" recursively:YES];
+    _tapLiningNode = [self.groupNode childNodeWithName:@"tubiao01" recursively:YES];
     [_tapLiningNode removeFromParentNode];
   }
   return _tapLiningNode;
@@ -539,7 +539,7 @@
 
 -(SCNNode *)tapDownNode {
   if (!_tapDownNode) {
-    _tapDownNode = [self.groupNode childNodeWithName:@"tubiao010" recursively:YES];
+    _tapDownNode = [self.groupNode childNodeWithName:@"tubiao02" recursively:YES];
     
   }
   return _tapDownNode;
