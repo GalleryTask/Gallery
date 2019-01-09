@@ -9,7 +9,7 @@
 #import "SceneView.h"
 
 #define MaxSCale 2.0  //最大缩放比例
-#define MinScale 0.5  //最小缩放比例
+#define MinScale 0.7  //最小缩放比例
 @interface SceneView()
 
 @property (nonatomic, strong) SCNView     *scnView;
@@ -71,20 +71,12 @@
   materialTop.diffuse.contents = [UIImage imageNamed:array[0]];
   materialTop.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/boxtop_AO.jpg"];
   materialTop.normal.contents = [UIImage imageNamed:@"art.scnassets/boxtop_NRM.jpg"];
-  //  materialTop.diffuse.contents = [self getImageFromURL:array[0]];
-  //  materialTop.metalness.contents = [UIImage imageNamed:@"art.scnassets/boxtop_Metallic.png"];
-//  materialTop.specular.contents = [UIImage imageNamed:@"art.scnassets/boxtop_SPEC.jpg"];
-//  materialTop.shininess = 0;
   [self.topNode.geometry setMaterials:@[materialTop]];
   
   SCNMaterial *materialLining = [SCNMaterial new];
   materialLining.lightingModelName = SCNLightingModelBlinn;
   materialLining.diffuse.contents = [UIImage imageNamed:array[1]];
   materialLining.normal.contents = [UIImage imageNamed:@"art.scnassets/lining_Normal.jpg"];
-//  materialLining.metalness.contents = [UIImage imageNamed:@"art.scnassets/lining_Metallic.png"];
-//  materialLining.roughness.contents = [UIImage imageNamed:@"art.scnassets/lining_Roughness.png"];
-//  materialLining.specular.contents = [UIImage imageNamed:@"art.scnassets/lining_SPEC.jpg"];
-//  materialLining.shininess = 0;
   materialLining.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/lining_AO.jpg"];
   [self.liningTwoNode.geometry setMaterials:@[materialLining]];
   [self.liningNode.geometry setMaterials:@[materialLining]];
@@ -94,9 +86,6 @@
   materialDown.diffuse.contents = [UIImage imageNamed:array[2]];
   materialDown.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/boxdown_AO.jpg"];
   materialDown.normal.contents = [UIImage imageNamed:@"art.scnassets/boxdown_NRM.jpg"];
-  //  materialDown.metalness.contents = [UIImage imageNamed:@"art.scnassets/boxdown_Metallic.png"];
-//  materialDown.specular.contents = [UIImage imageNamed:@"art.scnassets/boxdown_SPEC.jpg"];
-//  materialDown.shininess = 0;
   [self.downNode.geometry setMaterials:@[materialDown]];
 }
 
@@ -159,8 +148,6 @@
     // 恢复之前的偏移
     [self nodeActionWithX:0 y:0 z:0 duration:0.5];
   }
-  
-//  self.cameraNode.position = SCNVector3Make(0, 10, 50);
 }
 
 // 模型旋转
@@ -266,15 +253,14 @@
   
   // 捏合手势默认的系数是1.0
   // 当识别为放大手势时，系数会从1.0开始递加； 当识别为缩小手势时，系数会从1.0开始递减，直到为0.0
-  CGFloat scale = recognizer.scale + self.startScale - 1.0;
-  
-  // 锁定缩放倍数，缩放倍数只能在1.0~3.0之间
-  if (scale - 1.0 < 0.000001)
-  {
-    scale = 1.0;
+  if (self.startScale == 0.0) {
+    self.startScale = 1.0;
   }
-  else if (scale - MaxSCale > 0.000001)
-  {
+  CGFloat scale = recognizer.scale + self.startScale - 1.0;
+  // 锁定缩放倍数
+  if (scale - MinScale < 0.000001) {
+    scale = MinScale;
+  } else if (scale - MaxSCale > 0.000001) {
     scale  = MaxSCale;
   }
   
