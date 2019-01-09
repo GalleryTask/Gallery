@@ -8,7 +8,7 @@
 
 #import "SceneView.h"
 
-#define MaxSCale 3  //最大缩放比例
+#define MaxSCale 2.0  //最大缩放比例
 #define MinScale 0.5  //最小缩放比例
 @interface SceneView()
 
@@ -27,6 +27,7 @@
 @property (nonatomic, strong) SCNNode  *tapDownNode;
 @property (nonatomic, strong) SCNNode  *shadowNode;
 @property (nonatomic, assign) CGFloat  lastScale;
+@property (nonatomic, assign) CGFloat  startScale;
 @property (nonatomic, assign) BOOL  isChangeLining;  // 是否更换内衬
 
 @property (nonatomic, strong) CAAnimationGroup  *boxAnimationGroup; // 动画组
@@ -257,29 +258,29 @@
 
 // 手势缩放
 - (void)pinch:(UIPinchGestureRecognizer *)recognizer {
-  
-  CGFloat scale = recognizer.scale;
-  switch (recognizer.state) {
-      case UIGestureRecognizerStateBegan:
-      scale = self.lastScale;
-      break;
-    case UIGestureRecognizerStateChanged:
-    {
 
-      if (scale >= MaxSCale || scale <= MinScale) {
-        return;
-      }
-      
-      self.groupNode.scale = SCNVector3Make(scale, scale, scale);
-    }
-      break;
-    case UIGestureRecognizerStateEnded:
-      self.lastScale = scale;
-      break;
-      
-    default:
-      break;
+  if (recognizer.state == UIGestureRecognizerStateBegan) {
+    // 记录捏合手势开始时的缩放系数
+    self.startScale = self.lastScale;
   }
+  
+  // 捏合手势默认的系数是1.0
+  // 当识别为放大手势时，系数会从1.0开始递加； 当识别为缩小手势时，系数会从1.0开始递减，直到为0.0
+  CGFloat scale = recognizer.scale + self.startScale - 1.0;
+  
+  // 锁定缩放倍数，缩放倍数只能在1.0~3.0之间
+  if (scale - 1.0 < 0.000001)
+  {
+    scale = 1.0;
+  }
+  else if (scale - MaxSCale > 0.000001)
+  {
+    scale  = MaxSCale;
+  }
+  
+  self.lastScale = scale;
+  
+  self.groupNode.scale = SCNVector3Make(scale, scale, scale);
 }
 
 /**
@@ -471,6 +472,7 @@
     _scnView.antialiasingMode = SCNAntialiasingModeMultisampling4X;
     // 允许控制摄像机位置
     _scnView.allowsCameraControl = YES;
+    
     UIPinchGestureRecognizer *tap = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];
     [_scnView addGestureRecognizer:tap];
   }
