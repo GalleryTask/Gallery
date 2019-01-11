@@ -33,6 +33,12 @@
   }
 }
 
+- (void)btnClick:(UIButton *)btn {
+  if (_delegate && [_delegate respondsToSelector:@selector(pageRoundScrollWithIndex:)]) {
+    [_delegate pageRoundScrollWithIndex:btn.tag-100];
+  }
+}
+
 -(UIScrollView *)scrollView {
   if (!_scrollView) {
     _scrollView = [[UIScrollView alloc] init];
@@ -49,7 +55,9 @@
       [button setFrame:CGRectMake(SCALE_SIZE*337*i, 0, SCALE_SIZE*327, SCALE_SIZE*186)];
       [button setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
       [[button layer] setCornerRadius:5];
+      [button setTag:(100 + i)];
       [button setBackgroundImage:[UIImage imageNamed:@"home_2"] forState:UIControlStateNormal];
+      [button addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
       [_scrollView addSubview:button];
       
       UILabel *titleLabel = [[UILabel alloc] init];
@@ -78,9 +86,10 @@
   return _scrollView;
 }
 
+
+
 #pragma mark---修改hitTest方法
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
-{
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
   UIView *view = [super hitTest:point withEvent:event];
   if ([view isEqual:self]){
     for (UIView *subview in _scrollView.subviews){

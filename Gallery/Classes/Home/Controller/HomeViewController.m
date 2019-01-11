@@ -45,18 +45,24 @@
 // SDCycleScrollView delegate 点击图片回调
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
   
-  SceneViewController *vc = [[SceneViewController alloc] init];
-  if (index == 0) {
-    vc.name = @"box";
-  } else {
-    vc.name = @"box_4.0";
-  }
-  [self.navigationController pushViewController:vc animated:YES];
+  
 }
 
 // pageRoundScrolView delegate
 -(void)pageRoundScrollWithPage:(int)page {
   [self.showView setCurrentCount:page];
+}
+
+-(void)pageRoundScrollWithIndex:(NSInteger)index {
+  SceneViewController *vc = [[SceneViewController alloc] init];
+  if (index == 0) {
+    vc.name = @"box";
+  } else if (index == 1) {
+    vc.name = @"box_4.0";
+  } else if (index == 2) {
+    vc.name = @"box_2.0";
+  }
+  [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)setupNavigationBarButton {

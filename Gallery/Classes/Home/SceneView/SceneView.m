@@ -384,20 +384,13 @@
       }
     }
     
-    
-//    CAAnimationGroup *group = [source entryWithIdentifier:animationIDs[0] withClass:[CAAnimation class]];
-    
-//    NSArray* reversedArray = [[longAnimations reverseObjectEnumerator] allObjects];
-    
     // 开箱动画
     self.boxAnimationGroup = [[CAAnimationGroup alloc] init];
-//    self.openBoxAnimationGroup = [source entryWithIdentifier:animationIDs[0] withClass:[CAAnimation class]];
     self.boxAnimationGroup.animations = longAnimations;
     self.boxAnimationGroup.duration = self.maxDuration;
     self.boxAnimationGroup.speed = 0;
-    // 动画完成后保持最新状态
-    
     self.boxAnimationGroup.repeatCount = 1;
+    // 动画完成后保持最新状态
     self.boxAnimationGroup.removedOnCompletion = NO;
     self.boxAnimationGroup.fillMode = kCAFillModeForwards;
     [self.scene.rootNode addAnimation:self.boxAnimationGroup forKey:nil];

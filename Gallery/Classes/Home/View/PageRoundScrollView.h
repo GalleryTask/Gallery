@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol  PageRoundScrollViewDelegate  <NSObject>
 
 - (void)pageRoundScrollWithPage:(int)page;
+- (void)pageRoundScrollWithIndex:(NSInteger)index;
 
 @end
 
