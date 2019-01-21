@@ -11,7 +11,7 @@
 #import "MeTableViewCell.h"
 #import "MeView.h"
 #import "TopPageSlideController.h"
-
+#import "LoginViewController.h"
 @interface MeViewController ()<MeOrderTableViewCellDelegate,MeTableViewCellDelegate>
 @property(nonatomic, strong)MeView *meView;
 @end
@@ -78,7 +78,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  
+  LoginViewController *login = [[LoginViewController alloc] init];
+  [self.navigationController pushViewController:login animated:YES];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
