@@ -61,6 +61,8 @@
     vc.name = @"box_4.0";
   } else if (index == 2) {
     vc.name = @"box_2.0";
+  } else if (index == 3) {
+    vc.name = @"box_nbag";
   }
   [self.navigationController pushViewController:vc animated:YES];
 }
