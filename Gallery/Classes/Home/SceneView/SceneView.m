@@ -434,6 +434,13 @@
     
     [self changeNodeOpacity:self.tapTopNode];
   }
+  
+//  SCNMaterial *materialDown = [SCNMaterial new];
+//  materialDown.lightingModelName = SCNLightingModelLambert;
+//  materialDown.diffuse.contents = [UIImage imageNamed:@"art.scnassets/0_nbag.png"];
+//  materialDown.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/nbag_NRM_NRM_OCC.jpg"];
+//  materialDown.normal.contents = [UIImage imageNamed:@"art.scnassets/1_nbagnbag_NRM.jpg"];
+//  [self.groupNode.geometry setMaterials:@[materialDown]];
 
 }
 
