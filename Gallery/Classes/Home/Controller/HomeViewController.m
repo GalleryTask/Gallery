@@ -56,13 +56,21 @@
 -(void)pageRoundScrollWithIndex:(NSInteger)index {
   SceneViewController *vc = [[SceneViewController alloc] init];
   if (index == 0) {
-    vc.name = @"box";
+    vc.name = @"天猫精灵/box";
   } else if (index == 1) {
-    vc.name = @"box_4.0";
+    vc.name = @"拉链纸箱/box_4.0";
   } else if (index == 2) {
-    vc.name = @"box_2.0";
+    vc.name = @"一撕得飞机盒/box_2.0";
   } else if (index == 3) {
-    vc.name = @"box_nbag";
+    vc.name = @"nbag/box_nbag";
+  } else if (index == 4) {
+    vc.name = @"中间合盖箱/box_5";
+  } else if (index == 5) {
+    vc.name = @"芒果中间盒/box_mangguo";
+  } else if (index == 6) {
+    vc.name = @"加强堆码箱/box_6";
+  } else if (index == 7) {
+    vc.name = @"芒果天地盖/box_7";
   }
   [self.navigationController pushViewController:vc animated:YES];
 }
