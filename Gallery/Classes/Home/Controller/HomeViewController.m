@@ -45,7 +45,9 @@
 // SDCycleScrollView delegate 点击图片回调
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
   
-  
+   SceneViewController *vc = [[SceneViewController alloc] init];
+  vc.name = @"平口箱/box_9";
+  [self.navigationController pushViewController:vc animated:YES];
 }
 
 // pageRoundScrolView delegate
