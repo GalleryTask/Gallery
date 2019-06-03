@@ -315,7 +315,7 @@ API_AVAILABLE(ios(11.0))
                                          hitResult.worldTransform.columns[3].z
                                          );
     
-    SCNScene *scene = [SCNScene sceneNamed:@"art.scnassets/box.DAE"];
+    SCNScene *scene = [SCNScene sceneNamed:@"art.scnassets/天猫精灵/box.DAE"];
     SCNNode *node = scene.rootNode;
     
     // 调整模型的位置并缩放，模型较大
