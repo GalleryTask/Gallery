@@ -28,7 +28,7 @@
   self.navigationItem.title = @"3D苹果包装方案";
   [self getData];
  
-//  [self.view addSubview:self.customizedBtn];
+  [self.view addSubview:self.customizedBtn];
   [self.sceneView nodeTurnAround];
   
   BaseNavigationController *nav = (BaseNavigationController *)self.navigationController;

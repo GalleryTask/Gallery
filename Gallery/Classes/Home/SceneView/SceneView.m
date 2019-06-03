@@ -72,7 +72,7 @@
   materialTop.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/boxtop_AO.jpg"];
   materialTop.normal.contents = [UIImage imageNamed:@"art.scnassets/boxtop_NRM.jpg"];
   [self.topNode.geometry setMaterials:@[materialTop]];
-  
+
   SCNMaterial *materialLining = [SCNMaterial new];
   materialLining.lightingModelName = SCNLightingModelBlinn;
   materialLining.diffuse.contents = [UIImage imageNamed:array[1]];
@@ -80,13 +80,25 @@
   materialLining.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/lining_AO.jpg"];
   [self.liningTwoNode.geometry setMaterials:@[materialLining]];
   [self.liningNode.geometry setMaterials:@[materialLining]];
-  
+
   SCNMaterial *materialDown = [SCNMaterial new];
   materialDown.lightingModelName = SCNLightingModelLambert;
   materialDown.diffuse.contents = [UIImage imageNamed:array[2]];
   materialDown.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/boxdown_AO.jpg"];
   materialDown.normal.contents = [UIImage imageNamed:@"art.scnassets/boxdown_NRM.jpg"];
   [self.downNode.geometry setMaterials:@[materialDown]];
+  
+//  for (SCNNode *node in self.groupNode.childNodes) {
+//    SCNMaterial *materialDown = [SCNMaterial new];
+//    materialDown.lightingModelName = SCNLightingModelLambert;
+//    materialDown.diffuse.contents = [UIImage imageNamed:@"art.scnassets/中间合盖箱/0_chengzi02.jpg"];
+//    
+//    if (node.childNodes.count > 0) {
+//      [node.childNodes[0].geometry setMaterials:@[materialDown]];
+//    } else {
+//      [node.geometry setMaterials:@[materialDown]];
+//    }
+//  }
 }
 
 // 删除节点 开箱效果 天地盒时移除节点  为拉链纸箱时执行动画
@@ -435,12 +447,12 @@
     [self changeNodeOpacity:self.tapTopNode];
   }
   
-  SCNMaterial *materialDown = [SCNMaterial new];
-  materialDown.lightingModelName = SCNLightingModelLambert;
-  materialDown.diffuse.contents = [UIImage imageNamed:@"art.scnassets/0_nbag.png"];
-  materialDown.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/nbag_NRM_NRM_OCC.jpg"];
-  materialDown.normal.contents = [UIImage imageNamed:@"art.scnassets/1_nbagnbag_NRM.jpg"];
-  [self.groupNode.geometry setMaterials:@[materialDown]];
+//  SCNMaterial *materialDown = [SCNMaterial new];
+//  materialDown.lightingModelName = SCNLightingModelLambert;
+//  materialDown.diffuse.contents = [UIImage imageNamed:@"art.scnassets/中间合盖箱/0_chengzi02.jpg"];
+//  materialDown.ambientOcclusion.contents = [UIImage imageNamed:@"art.scnassets/nbag_NRM_NRM_OCC.jpg"];
+//  materialDown.normal.contents = [UIImage imageNamed:@"art.scnassets/1_nbagnbag_NRM.jpg"];
+//  [self.groupNode.geometry setMaterials:@[materialDown]];
 
 }
 

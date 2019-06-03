@@ -47,10 +47,10 @@
     [_scrollView setDelegate:self];
     [_scrollView setPagingEnabled:YES];
     [_scrollView setClipsToBounds:NO];
-    [_scrollView setContentSize:CGSizeMake(SCALE_SIZE*327*8+SCALE_SIZE*70+SCALE_SIZE*58, 0)];
+    [_scrollView setContentSize:CGSizeMake(SCALE_SIZE*327*9+SCALE_SIZE*70+SCALE_SIZE*58, 0)];
     
-    
-    for (int i = 0; i < 8; i++) {
+    NSArray *array = @[@"天猫精灵",@"拉链纸箱",@"一撕得飞机盒",@"nbag",@"中间合盖箱",@"芒果中间盒",@"加强堆码箱",@"六棱箱",@"平口箱"];
+    for (int i = 0; i < 9; i++) {
       UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
       [button setFrame:CGRectMake(SCALE_SIZE*337*i, 0, SCALE_SIZE*327, SCALE_SIZE*186)];
       [button setBackgroundColor:BASECOLOR_BACKGROUND_GRAY];
@@ -63,18 +63,18 @@
       UILabel *titleLabel = [[UILabel alloc] init];
       [titleLabel setFont:[UIFont systemFontOfSize:SCALE_SIZE*16 weight:UIFontWeightBold]];
       [titleLabel setTextColor:BASECOLOR_BLACK_333];
-      [titleLabel setText:@"苹果包装"];
+      [titleLabel setText:array[i]];
       [_scrollView addSubview:titleLabel];
       
       [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(button);
+        make.centerX.equalTo(button);
         make.top.equalTo(button.mas_bottom).offset(SCALE_SIZE*10);
       }];
       
       UILabel *detailLabel = [[UILabel alloc] init];
       [detailLabel setFont:FONTSIZE(14)];
       [detailLabel setTextColor:BASECOLOR_BLACK_999];
-      [detailLabel setText:@"与生俱来的艺术品，包装本该不同"];
+//      [detailLabel setText:@"与生俱来的艺术品，包装本该不同"];
       [_scrollView addSubview:detailLabel];
       
       [detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {

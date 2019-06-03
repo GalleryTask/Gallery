@@ -63,7 +63,7 @@
     _countLabel = [[UILabel alloc] init];
     [_countLabel setTextColor:BASECOLOR_BLACK_999];
     [_countLabel setFont:[UIFont systemFontOfSize:SCALE_SIZE*16 weight:UIFontWeightRegular]];
-    [_countLabel setText:@" / 8"];
+    [_countLabel setText:@" / 9"];
     [self addSubview:_countLabel];
   }
   return _countLabel;

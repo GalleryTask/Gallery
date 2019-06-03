@@ -17,7 +17,7 @@
 
 @property (nonatomic, strong) SDCycleScrollView  *cycleScrollView; // 轮播图
 @property (nonatomic, strong) HomeShowView  *showView;
-@property (nonatomic, strong) UIScrollView  *showScrollView;
+//@property (nonatomic, strong) UIScrollView  *showScrollView;
 
 @end
 
@@ -45,9 +45,14 @@
 // SDCycleScrollView delegate 点击图片回调
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
   
-   SceneViewController *vc = [[SceneViewController alloc] init];
-  vc.name = @"平口箱/box_9";
-  [self.navigationController pushViewController:vc animated:YES];
+//  SceneViewController *vc = [[SceneViewController alloc] init];
+//  if (index == 0) {
+//
+//    vc.name = @"平口箱/box_9";
+//  } else {
+//    vc.name = @"飞机盒一体分层箱/box_plane";
+//  }
+//  [self.navigationController pushViewController:vc animated:YES];
 }
 
 // pageRoundScrolView delegate
@@ -72,7 +77,9 @@
   } else if (index == 6) {
     vc.name = @"加强堆码箱/box_6";
   } else if (index == 7) {
-    vc.name = @"芒果天地盖/box_7";
+    vc.name = @"六棱箱/eee";
+  } else if (index == 8) {
+    vc.name = @"平口箱/box_9";
   }
   [self.navigationController pushViewController:vc animated:YES];
 }
